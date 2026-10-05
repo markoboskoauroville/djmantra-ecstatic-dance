@@ -58,3 +58,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > change my email on the web page marko.bosko@auroville.community
 
 9. The contact address is marko.bosko@auroville.community everywhere on the page. **Status:** done, v7.
+
+## 5.10.2026, 06:10
+
+> Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoga jutra. Baza mi je Zagreb, spreman sam na put. fix it to Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoge i pokreta. Baza mi je Zagreb, spreman sam na put.
+
+10. The contact line offers rhythm, yoga and movement workshops instead of yoga mornings, in both languages. **Status:** done, v8.
