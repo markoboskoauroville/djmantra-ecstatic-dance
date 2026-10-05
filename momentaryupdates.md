@@ -26,3 +26,15 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > above S and C by improvisation. Find another font which supports coding for Croatian
 
 5. Headings font must carry real Croatian letters (č ć š ž đ), no improvised marks above S and C. **Status:** done, v3
+
+## v4 — requested 5.10.2026
+
+> please, we need to also write in my voice which opened the channels parts of the body for a. We are focusing on a
+> pelvis area for all. We are focusing in the middle of the pelvis for e. We are focusing on belly button for i. We
+> are focusing on belly button for o. We are focusing on our chest area heart area for infinity. We are focusing on
+> our throat for om or intuition and wisdom. We are focusing on the middle of our head where is the seat of the third
+> eye. And for the last part when there is a silence, we are focusing on the crown of our head which is connection
+> with us and with the rest of the universe
+
+6. Each step of the toning ladder names the part of the body it opens, in his words. **Status:** waiting for Marko:
+   O and I are both "belly button", and the third eye has no vowel of its own in the seven-step ladder; asked which.
