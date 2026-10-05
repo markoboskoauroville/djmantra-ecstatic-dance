@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DJ Mantra — Marko Boško</title>
+<meta name="description" content="DJ Mantra, Marko Boško. Perkusionist, osnivač Tribal Jam Orchestre, tvorac Sun Moon Yoga metode. World organic house i etno elektronika za ecstatic dance.">
+<meta name="theme-color" content="#0b0a12">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="DJ Mantra — Marko Boško">
+<meta property="og:description" content="Od Gangesa do Amazone. Yoga i dah, ples, zvučna kupka.">
+<meta property="og:image" content="assets/dj-booth.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%230b0a12'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23e0a257' stroke-width='1.3'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%23e0a257'/%3E%3C/svg%3E">
+
+<style>
+:root{
+  --bg:#0b0a12; --bg2:#100e1a; --surf:#17142400;
+  --line:rgba(224,162,87,.22); --line2:rgba(255,255,255,.08);
+  --ink:#f2ece4; --ink2:#b3a897; --ink3:#7d7488;
+  --amber:#e0a257; --violet:#9f7ae0; --teal:#4fc3c7;
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif; font-weight:300;
+  font-size:17px; line-height:1.72; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(900px 600px at 72% -10%, rgba(224,162,87,.13), transparent 62%),
+    radial-gradient(700px 520px at 8% 22%, rgba(159,122,224,.12), transparent 64%),
+    radial-gradient(600px 500px at 50% 108%, rgba(79,195,199,.08), transparent 62%);
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 26px; position:relative; z-index:1}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber); outline-offset:3px}
+
+h1,h2,h3{margin:0; font-family:"Cormorant Garamond",Georgia,serif; font-weight:300; line-height:1.08}
+p{margin:0 0 1.15em}
+.mono{font-family:"IBM Plex Mono",monospace}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.3em;
+  text-transform:uppercase; color:var(--amber); margin-bottom:18px;
+}
+
+/* ---------- language switch ---------- */
+.lang{
+  position:fixed; top:16px; right:16px; z-index:50; display:flex;
+  border:1px solid var(--line); border-radius:40px; overflow:hidden;
+  background:rgba(11,10,18,.82);
+}
+.lang button{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; font-weight:500;
+  background:transparent; color:var(--ink3); border:0; padding:8px 14px; cursor:pointer; transition:.2s;
+}
+.lang button[aria-pressed="true"]{background:var(--amber); color:#1a1206}
+.lang button:hover:not([aria-pressed="true"]){color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{position:relative; min-height:94svh; display:flex; align-items:flex-end; overflow:hidden}
+.hero-img{position:absolute; inset:0; z-index:0}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 30%; filter:saturate(.92) brightness(.62)}
+.hero-img::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(11,10,18,.62) 0%, rgba(11,10,18,.2) 34%, rgba(11,10,18,.93) 88%, var(--bg) 100%);
+}
+.hero .wrap{padding-bottom:62px; padding-top:120px; width:100%}
+.hero h1{
+  font-size:clamp(52px,13vw,122px); letter-spacing:-.015em; line-height:.92;
+}
+.hero h1 em{display:block; font-style:italic; color:var(--amber); font-size:.52em; letter-spacing:.01em; margin-top:.18em}
+.hero .who{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--ink2); margin:26px 0 0;
+}
+.tagline{
+  font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(20px,3.3vw,30px);
+  color:var(--ink); margin:20px 0 0; max-width:17em; line-height:1.3;
+}
+
+/* ---------- sections ---------- */
+section{padding:76px 0; position:relative}
+.lede{font-size:clamp(19px,2.4vw,23px); line-height:1.62; color:var(--ink); max-width:24em; font-weight:300}
+.body{max-width:34em; color:var(--ink2)}
+.body strong{color:var(--ink); font-weight:600}
+h2.sec{font-size:clamp(32px,5.4vw,56px); letter-spacing:-.01em; margin-bottom:10px}
+h2.sec em{font-style:italic; color:var(--amber)}
+
+.split{display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center}
+.split.rev .fig{order:2}
+.fig{margin:0; position:relative}
+.fig img{width:100%; border-radius:3px}
+.fig figcaption{
+  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink3); margin-top:12px;
+}
+
+/* ---------- the arc ---------- */
+.arc{border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); padding:60px 0}
+.steps{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line2); margin-top:38px}
+.step{background:var(--bg); padding:30px 26px 34px; position:relative}
+.step .n{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.24em;
+  color:var(--amber); display:block; margin-bottom:16px;
+}
+.step h3{font-size:27px; margin-bottom:10px}
+.step p{color:var(--ink2); font-size:15.5px; margin:0; line-height:1.66}
+
+/* ---------- lineage ---------- */
+.names{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
+.name{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.04em;
+  border:1px solid var(--line2); border-radius:30px; padding:7px 14px; color:var(--ink2);
+}
+.name.hi{border-color:var(--line); color:var(--amber)}
+
+/* ---------- quote ---------- */
+.quote{text-align:center; padding:90px 0}
+.quote p{
+  font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:300;
+  font-size:clamp(26px,4.6vw,46px); line-height:1.3; color:var(--ink);
+  max-width:15em; margin:0 auto;
+}
+.quote span{
+  display:block; margin-top:26px; font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink3);
+}
+
+/* ---------- strip ---------- */
+.strip{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+.strip img{width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:3px; filter:saturate(.9) brightness(.82)}
+
+/* ---------- contact ---------- */
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  border:1px solid var(--line); border-radius:40px; padding:13px 22px;
+  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.1em;
+  color:var(--ink); transition:.2s;
+}
+.btn:hover{background:var(--amber); border-color:var(--amber); color:#1a1206}
+.btn.ghost{border-color:var(--line2); color:var(--ink2)}
+.btn.ghost:hover{background:transparent; border-color:var(--amber); color:var(--amber)}
+
+footer{padding:50px 0 70px; border-top:1px solid var(--line2); text-align:center}
+footer p{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.16em; color:var(--ink3); margin:0; line-height:2}
+footer a{color:var(--ink2); text-decoration:none}
+footer a:hover{color:var(--amber)}
+
+.rv{opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1; transform:none}
+
+@media (max-width:860px){
+  .split{grid-template-columns:1fr; gap:30px}
+  .split.rev .fig{order:0}
+  .steps{grid-template-columns:1fr}
+  .strip{grid-template-columns:1fr 1fr}
+  section{padding:58px 0}
+  .hero .wrap{padding-bottom:46px}
+}
+@media (max-width:520px){
+  .wrap{padding:0 20px}
+  body{font-size:16px}
+  .strip{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important}
+  .rv{opacity:1; transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="lang" role="group" aria-label="Jezik / Language">
+  <button type="button" data-lang="hr" aria-pressed="true">HR</button>
+  <button type="button" data-lang="en" aria-pressed="false">EN</button>
+</div>
+
+<header class="hero">
+  <div class="hero-img"><img src="assets/dj-booth.jpg" alt="DJ Mantra" width="1600" height="2385"></div>
+  <div class="wrap">
+    <h1>DJ <em>Mantra</em></h1>
+    <p class="who" data-i18n="who">Marko Boško · Zagreb · Auroville</p>
+    <p class="tagline" data-i18n="tag">Od Gangesa do Amazone. Set je putovanje, ne popis pjesama.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="split rv">
+      <div>
+        <div class="eyebrow" data-i18n="e.who">Tko vodi</div>
+        <h2 class="sec" data-i18n="h.who">Ritam prije <em>riječi</em></h2>
+        <p class="lede" data-i18n="l.who">Perkusionist, tonac i DJ. Dvadeset sedam godina u zvuku, sedam od njih u Aurovilleu u južnoj Indiji.</p>
+        <div class="body">
+          <p data-i18n="b.who1">Osnivač sam <strong>Tribal Jam Orchestre</strong>, world music ansambla iz Zagreba rođenog 21. prosinca 2011. Afričke i arapske udaraljke, indijanske flaute, didgeridoo, hang i gongovi, ono što zovemo plemenskim jazzom.</p>
+          <p data-i18n="b.who2">Ansambl je nastao iz jedne ideje: skupina ljudi koja nikad nije svirala zajedno može se uskladiti u jedan puls unutar nekoliko minuta, ako se ritam uči kroz tijelo, a ne kroz note.</p>
+        </div>
+      </div>
+      <figure class="fig">
+        <img src="assets/djembe.jpg" alt="" width="1100" height="1100" loading="lazy">
+        <figcaption data-i18n="c.djembe">Tribal Jam Orchestra</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split rev rv">
+      <figure class="fig">
+        <img src="assets/matrimandir.jpg" alt="" width="1100" height="1100" loading="lazy">
+        <figcaption data-i18n="c.auro">Auroville, južna Indija</figcaption>
+      </figure>
+      <div>
+        <div class="eyebrow" data-i18n="e.auro">Sedam godina</div>
+        <h2 class="sec" data-i18n="h.auro">Gdje je sav život <em>yoga</em></h2>
+        <div class="body">
+          <p data-i18n="b.auro1">Sedam godina živio sam u <strong>Aurovilleu</strong>, međunarodnoj zajednici u južnoj Indiji nadahnutoj vizijom Sri Aurobinda. Ondje sam snimao zvučne vrtove i ručno izrađene instrumente, i počeo proučavati zvuk kao terapijsku modalnost, ne kao metaforu nego kao praksu.</p>
+          <p data-i18n="b.auro2">Iz tog razdoblja nastala je <strong>Sun Moon Yoga</strong> metoda. Spaja sunce Vinyase s mjesecom Hatha yoge. Tijelo se budi kroz pokret, um se smiruje kroz dah, duša pronalazi prostor tišine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="arc">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow" data-i18n="e.arc">Luk večeri</div>
+      <h2 class="sec" data-i18n="h.arc">Tri <em>dijela</em></h2>
+      <p class="body" data-i18n="b.arc">Vodim cijeli luk, od prvog daha do zadnjeg tona. Ništa se ne gura, sve se otvara svojim tempom.</p>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <span class="n">01</span>
+        <h3 data-i18n="s1.h">Zagrijavanje</h3>
+        <p data-i18n="s1.p">Nježna yoga, pranayama i kratka meditacija. Tijelo se spušta iz glave u stopala, disanje se produžuje, prostor postaje siguran.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3 data-i18n="s2.h">Ples</h3>
+        <p data-i18n="s2.p">World organic house i etno elektronika. Set se diže iz duboke uzemljenosti prema ekstatičnom vrhuncu, pa se meko spušta, tako da tijelo samo zna kada hodati, kada letjeti, a kada mirovati.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3 data-i18n="s3.h">Zvučna kupka</h3>
+        <p data-i18n="s3.p">Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split rv">
+      <div>
+        <div class="eyebrow" data-i18n="e.lin">Učitelji</div>
+        <h2 class="sec" data-i18n="h.lin">Ritam se prenosi <em>rukom</em></h2>
+        <div class="body">
+          <p data-i18n="b.lin1">Učio sam kod perkusionističkih majstora u Hrvatskoj, Sloveniji i Izraelu, te kod gostujućih zapadnoafričkih virtuoza. Danas studiram okvirni bubanj kod Yshaija Aftermana, jednog od vodećih svjetskih svirača i učitelja frame druma.</p>
+          <p data-i18n="b.lin2">Uz to radim i kao tonac i montažer, pa znam kako zvuk putuje prostorom i što tehnička ekipa treba iz DJ pulta. Stajao sam s obje strane.</p>
+        </div>
+        <div class="names">
+          <span class="name hi">Yshai Afterman</span>
+          <span class="name">Nenad Kovačić</span>
+          <span class="name">Mojca Malek</span>
+          <span class="name">Yaniv Shentsera</span>
+          <span class="name">Mamady Keita</span>
+          <span class="name">Famadou Konate</span>
+          <span class="name">Adama Drame</span>
+        </div>
+      </div>
+      <figure class="fig">
+        <img src="assets/profile-bw.jpg" alt="" width="1500" height="1077" loading="lazy">
+        <figcaption data-i18n="c.quiet">Tišina prije pulsa</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="quote">
+  <div class="wrap rv">
+    <p data-i18n="q">U ritmu nalazimo otkucaj srca svemira.</p>
+    <span>Marko Boško · Mantreshwar</span>
+  </div>
+</div>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="strip rv">
+      <img src="assets/portrait.jpg" alt="" loading="lazy">
+      <img src="assets/cosmic.jpg" alt="" loading="lazy">
+      <img src="assets/tea.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="rv" style="max-width:34em">
+      <div class="eyebrow" data-i18n="e.book">Kontakt</div>
+      <h2 class="sec" data-i18n="h.book">Pozovi me u <em>krug</em></h2>
+      <p class="body" data-i18n="b.book">Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoga jutra. Baza mi je Zagreb, spreman sam na put.</p>
+      <div class="links">
+        <a class="btn" href="mailto:marko.bosko@gmail.com">marko.bosko@gmail.com</a>
+        <a class="btn ghost" href="https://www.instagram.com/marko.bosko/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn ghost" href="https://suno.com/@mantreshvar" target="_blank" rel="noopener">Suno</a>
+        <a class="btn ghost" href="https://markobosko.pages.dev" target="_blank" rel="noopener"><span data-i18n="b.cv">Cijeli životopis</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p data-i18n-html="ft">DJ Mantra · Marko Boško · Zagreb i Auroville<br>marko.bosko@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+const DICT = {
+ hr:{
+  "who":"Marko Boško · Zagreb · Auroville",
+  "tag":"Od Gangesa do Amazone. Set je putovanje, ne popis pjesama.",
+  "e.who":"Tko vodi","h.who":"Ritam prije <em>riječi</em>",
+  "l.who":"Perkusionist, tonac i DJ. Dvadeset sedam godina u zvuku, sedam od njih u Aurovilleu u južnoj Indiji.",
+  "b.who1":"Osnivač sam <strong>Tribal Jam Orchestre</strong>, world music ansambla iz Zagreba rođenog 21. prosinca 2011. Afričke i arapske udaraljke, indijanske flaute, didgeridoo, hang i gongovi, ono što zovemo plemenskim jazzom.",
+  "b.who2":"Ansambl je nastao iz jedne ideje: skupina ljudi koja nikad nije svirala zajedno može se uskladiti u jedan puls unutar nekoliko minuta, ako se ritam uči kroz tijelo, a ne kroz note.",
+  "c.djembe":"Tribal Jam Orchestra","c.auro":"Auroville, južna Indija","c.quiet":"Tišina prije pulsa",
+  "e.auro":"Sedam godina","h.auro":"Gdje je sav život <em>yoga</em>",
+  "b.auro1":"Sedam godina živio sam u <strong>Aurovilleu</strong>, međunarodnoj zajednici u južnoj Indiji nadahnutoj vizijom Sri Aurobinda. Ondje sam snimao zvučne vrtove i ručno izrađene instrumente, i počeo proučavati zvuk kao terapijsku modalnost, ne kao metaforu nego kao praksu.",
+  "b.auro2":"Iz tog razdoblja nastala je <strong>Sun Moon Yoga</strong> metoda. Spaja sunce Vinyase s mjesecom Hatha yoge. Tijelo se budi kroz pokret, um se smiruje kroz dah, duša pronalazi prostor tišine.",
+  "e.arc":"Luk večeri","h.arc":"Tri <em>dijela</em>",
+  "b.arc":"Vodim cijeli luk, od prvog daha do zadnjeg tona. Ništa se ne gura, sve se otvara svojim tempom.",
+  "s1.h":"Zagrijavanje","s1.p":"Nježna yoga, pranayama i kratka meditacija. Tijelo se spušta iz glave u stopala, disanje se produžuje, prostor postaje siguran.",
+  "s2.h":"Ples","s2.p":"World organic house i etno elektronika. Set se diže iz duboke uzemljenosti prema ekstatičnom vrhuncu, pa se meko spušta, tako da tijelo samo zna kada hodati, kada letjeti, a kada mirovati.",
+  "s3.h":"Zvučna kupka","s3.p":"Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.",
+  "e.lin":"Učitelji","h.lin":"Ritam se prenosi <em>rukom</em>",
+  "b.lin1":"Učio sam kod perkusionističkih majstora u Hrvatskoj, Sloveniji i Izraelu, te kod gostujućih zapadnoafričkih virtuoza. Danas studiram okvirni bubanj kod Yshaija Aftermana, jednog od vodećih svjetskih svirača i učitelja frame druma.",
+  "b.lin2":"Uz to radim i kao tonac i montažer, pa znam kako zvuk putuje prostorom i što tehnička ekipa treba iz DJ pulta. Stajao sam s obje strane.",
+  "q":"U ritmu nalazimo otkucaj srca svemira.",
+  "e.book":"Kontakt","h.book":"Pozovi me u <em>krug</em>",
+  "b.book":"Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoga jutra. Baza mi je Zagreb, spreman sam na put.",
+  "b.cv":"Cijeli životopis",
+  "ft":"DJ Mantra · Marko Boško · Zagreb i Auroville<br>marko.bosko@gmail.com"
+ },
+ en:{
+  "who":"Marko Boško · Zagreb · Auroville",
+  "tag":"From the Ganges to the Amazon. A set is a journey, not a playlist.",
+  "e.who":"Who holds the room","h.who":"Rhythm before <em>words</em>",
+  "l.who":"Percussionist, sound engineer and DJ. Twenty seven years in sound, seven of them in Auroville in south India.",
+  "b.who1":"I founded <strong>Tribal Jam Orchestra</strong>, a world music ensemble from Zagreb born on 21 December 2011. African and Arabic percussion, Native American flutes, didgeridoo, hang drums and gongs, what we call tribal jazz.",
+  "b.who2":"The ensemble grew from one idea: a group of people who have never played together can lock into a single pulse within minutes, if the rhythm is taught through the body rather than through notation.",
+  "c.djembe":"Tribal Jam Orchestra","c.auro":"Auroville, south India","c.quiet":"The silence before the pulse",
+  "e.auro":"Seven years","h.auro":"Where all life is <em>yoga</em>",
+  "b.auro1":"I lived seven years in <strong>Auroville</strong>, an international community in south India rooted in the vision of Sri Aurobindo. There I filmed sound gardens and handmade instruments, and began studying sound as a healing modality, not as a metaphor but as a practice.",
+  "b.auro2":"The <strong>Sun Moon Yoga</strong> method came out of those years. It weaves the sun of Vinyasa with the moon of Hatha. Body awakened through movement, mind stilled through breath, soul given space to simply be.",
+  "e.arc":"The arc of the evening","h.arc":"Three <em>parts</em>",
+  "b.arc":"I hold the whole arc, from the first breath to the last tone. Nothing is pushed, everything opens at its own pace.",
+  "s1.h":"Warm up","s1.p":"Gentle yoga, pranayama and a short meditation. The body drops out of the head and into the feet, the breath lengthens, the room becomes safe.",
+  "s2.h":"The dance","s2.p":"World organic house and ethno electronic. The set rises from deep grounding towards an ecstatic peak, then settles softly, so the body knows by itself when to walk, when to fly and when to rest.",
+  "s3.h":"Sound bath","s3.p":"Gongs, bowls, frame drum and voice. Lying down, nothing to do. What the dance opened, the sound settles and closes.",
+  "e.lin":"Teachers","h.lin":"Rhythm passes <em>hand to hand</em>",
+  "b.lin1":"I studied with percussion masters in Croatia, Slovenia and Israel, and with visiting West African virtuosos. I currently study frame drum with Yshai Afterman, one of the leading frame drum players and teachers working today.",
+  "b.lin2":"I also work as a sound engineer and editor, so I know how sound travels through a room and what a technical crew needs from the booth. I have stood on both sides of it.",
+  "q":"In rhythm, we find the heartbeat of the universe.",
+  "e.book":"Contact","h.book":"Invite me into the <em>circle</em>",
+  "b.book":"Available for ecstatic dance evenings, sound baths, rhythm workshops and yoga mornings. Based in Zagreb, ready to travel.",
+  "b.cv":"Full CV",
+  "ft":"DJ Mantra · Marko Boško · Zagreb and Auroville<br>marko.bosko@gmail.com"
+ }
+};
+
+const $$ = s => [...document.querySelectorAll(s)];
+let LANG = "hr";
+
+function saveLang(v){
+  try{ localStorage.setItem("mantra_lang", v); }catch(e){}
+  try{ document.cookie = "mantra_lang=" + v + ";path=/;max-age=31536000;SameSite=Lax"; }catch(e){}
+}
+function loadLang(){
+  try{ const v = localStorage.getItem("mantra_lang"); if(v === "hr" || v === "en") return v; }catch(e){}
+  const m = document.cookie.match(/(?:^|;\s*)mantra_lang=(hr|en)/);
+  return m ? m[1] : null;
+}
+function applyLang(l, save){
+  LANG = l;
+  const d = DICT[l];
+  document.documentElement.lang = l;
+  $$("[data-i18n]").forEach(el => { const k = el.getAttribute("data-i18n"); if(d[k] !== undefined) el.innerHTML = d[k]; });
+  $$("[data-i18n-html]").forEach(el => { const k = el.getAttribute("data-i18n-html"); if(d[k] !== undefined) el.innerHTML = d[k]; });
+  $$(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"));
+  if(save !== false) saveLang(l);
+}
+$$(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+applyLang(loadLang() || "hr", false);
+
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+}, {threshold:0.12, rootMargin:"0px 0px -40px 0px"});
+$$(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
