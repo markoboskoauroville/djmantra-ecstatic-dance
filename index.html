@@ -151,6 +151,7 @@ h2.sec em{font-style:italic; color:var(--amber)}
 }
 .rung h3{font-size:21px; margin-bottom:6px}
 .rung p{color:var(--ink2); font-size:15.5px; margin:0; max-width:34em}
+.rung p.place{color:var(--teal); font-weight:400; margin:0 0 6px}
 
 /* ---------- lineage ---------- */
 .names{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
@@ -230,7 +231,7 @@ footer a:hover{color:var(--amber)}
   <button type="button" data-lang="en" aria-pressed="false">EN</button>
 </div>
 
-<div class="ver" title="Verzija / Version">v3</div>
+<div class="ver" title="Verzija / Version">v4</div>
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Slika / Image"><button type="button" class="x" data-i18n="lb.x">Zatvori</button><img alt=""></div>
 
 <header class="hero">
@@ -389,13 +390,13 @@ footer a:hover{color:var(--amber)}
       <p class="body" data-i18n="b.ton">Toniranje nije pjevanje. Držimo jedan vokal i puštamo ga da vibrira u tijelu. Svaki vokal ima svoje mjesto, svoju kvalitetu i svoj element. Slova nisu slučajna.</p>
     </div>
     <div class="ladder rv">
-      <div class="rung"><span class="v">A</span><div><h3 data-i18n="t.a.h">Uzemljenje · Zemlja</h3><p data-i18n="t.a.p">Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.</p></div></div>
-      <div class="rung"><span class="v">U</span><div><h3 data-i18n="t.u.h">Kreativnost · Voda</h3><p data-i18n="t.u.p">U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.</p></div></div>
-      <div class="rung"><span class="v">I</span><div><h3 data-i18n="t.i.h">Energija · Vatra</h3><p data-i18n="t.i.p">Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.</p></div></div>
-      <div class="rung"><span class="v">O</span><div><h3 data-i18n="t.o.h">Ljubav i suosjećanje · Zrak</h3><p data-i18n="t.o.p">Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.</p></div></div>
-      <div class="rung"><span class="v">∞</span><div><h3 data-i18n="t.ov.h">Istina i komunikacija · Alikvotno pjevanje</h3><p data-i18n="t.ov.p">Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.</p></div></div>
-      <div class="rung"><span class="v">OM</span><div><h3 data-i18n="t.om.h">Intuicija i mudrost</h3><p data-i18n="t.om.p">Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.</p></div></div>
-      <div class="rung"><span class="v">·</span><div><h3 data-i18n="t.si.h">Tišina · Duh i povezanost</h3><p data-i18n="t.si.p">Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.</p></div></div>
+      <div class="rung"><span class="v">A</span><div><h3 data-i18n="t.a.h">Uzemljenje · Zemlja</h3><p class="place" data-i18n="t.a.b">Usmjeravamo pažnju na zdjelicu.</p><p data-i18n="t.a.p">Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.</p></div></div>
+      <div class="rung"><span class="v">U</span><div><h3 data-i18n="t.u.h">Kreativnost · Voda</h3><p class="place" data-i18n="t.u.b">Usmjeravamo pažnju na sredinu zdjelice.</p><p data-i18n="t.u.p">U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.</p></div></div>
+      <div class="rung"><span class="v">I</span><div><h3 data-i18n="t.i.h">Energija · Vatra</h3><p class="place" data-i18n="t.i.b">Usmjeravamo pažnju na pupak.</p><p data-i18n="t.i.p">Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.</p></div></div>
+      <div class="rung"><span class="v">O</span><div><h3 data-i18n="t.o.h">Ljubav i suosjećanje · Zrak</h3><p class="place" data-i18n="t.o.b">Usmjeravamo pažnju na prsa, na područje srca.</p><p data-i18n="t.o.p">Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.</p></div></div>
+      <div class="rung"><span class="v">∞</span><div><h3 data-i18n="t.ov.h">Istina i komunikacija · Alikvotno pjevanje</h3><p class="place" data-i18n="t.ov.b">Usmjeravamo pažnju na grlo.</p><p data-i18n="t.ov.p">Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.</p></div></div>
+      <div class="rung"><span class="v">OM</span><div><h3 data-i18n="t.om.h">Intuicija i mudrost</h3><p class="place" data-i18n="t.om.b">Usmjeravamo pažnju na sredinu glave, gdje je sjedište trećeg oka.</p><p data-i18n="t.om.p">Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.</p></div></div>
+      <div class="rung"><span class="v">·</span><div><h3 data-i18n="t.si.h">Tišina · Duh i povezanost</h3><p class="place" data-i18n="t.si.b">Usmjeravamo pažnju na tjeme, vezu između nas i ostatka svemira.</p><p data-i18n="t.si.p">Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.</p></div></div>
     </div>
   </div>
 </section>
@@ -527,13 +528,13 @@ const DICT = {
   "s6.h":"Zvučna kupka","s6.p":"Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.",
   "e.ton":"Vokali i elementi","h.ton":"Glas otvara <em>kanale</em>",
   "b.ton":"Toniranje nije pjevanje. Držimo jedan vokal i puštamo ga da vibrira u tijelu. Svaki vokal ima svoje mjesto, svoju kvalitetu i svoj element. Slova nisu slučajna.",
-  "t.a.h":"Uzemljenje · Zemlja","t.a.p":"Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.",
-  "t.u.h":"Kreativnost · Voda","t.u.p":"U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.",
-  "t.i.h":"Energija · Vatra","t.i.p":"Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.",
-  "t.o.h":"Ljubav i suosjećanje · Zrak","t.o.p":"Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.",
-  "t.ov.h":"Istina i komunikacija · Alikvotno pjevanje","t.ov.p":"Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.",
-  "t.om.h":"Intuicija i mudrost","t.om.p":"Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.",
-  "t.si.h":"Tišina · Duh i povezanost","t.si.p":"Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.",
+  "t.a.h":"Uzemljenje · Zemlja","t.a.b":"Usmjeravamo pažnju na zdjelicu.","t.a.p":"Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.",
+  "t.u.h":"Kreativnost · Voda","t.u.b":"Usmjeravamo pažnju na sredinu zdjelice.","t.u.p":"U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.",
+  "t.i.h":"Energija · Vatra","t.i.b":"Usmjeravamo pažnju na pupak.","t.i.p":"Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.",
+  "t.o.h":"Ljubav i suosjećanje · Zrak","t.o.b":"Usmjeravamo pažnju na prsa, na područje srca.","t.o.p":"Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.",
+  "t.ov.h":"Istina i komunikacija · Alikvotno pjevanje","t.ov.b":"Usmjeravamo pažnju na grlo.","t.ov.p":"Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.",
+  "t.om.h":"Intuicija i mudrost","t.om.b":"Usmjeravamo pažnju na sredinu glave, gdje je sjedište trećeg oka.","t.om.p":"Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.",
+  "t.si.h":"Tišina · Duh i povezanost","t.si.b":"Usmjeravamo pažnju na tjeme, vezu između nas i ostatka svemira.","t.si.p":"Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.",
   "e.rfe":"Rhythms for Evolution","h.rfe":"Ritam se ne uči, <em>sjeti ga se</em>",
   "b.rfe1":"Rhythms for Evolution je moja praksa u kojoj se spajaju bubnjevi, pokret, glas, svjesni ples i DJ setovi. Istražujemo drevni puls koji nas sve povezuje.",
   "b.rfe2":"<strong>Sve se okreće. Sve se razvija.</strong> Namjera, rezonancija, melodija, ritam, dah, tok. Tim redom i uvijek iznova.",
@@ -581,13 +582,13 @@ const DICT = {
   "s6.h":"Sound bath","s6.p":"Gongs, bowls, frame drum and voice. Lying down, nothing to do. What the dance opened, the sound settles and closes.",
   "e.ton":"Vowels and elements","h.ton":"The voice opens the <em>channels</em>",
   "b.ton":"Toning is not singing. We hold one vowel and let it vibrate in the body. Each vowel has its own place, its own quality and its own element. The letters are not random.",
-  "t.a.h":"Grounding · Earth","t.a.p":"The beginning, the ground we stand on. Open sound, open mouth, weight dropping into the feet.",
-  "t.u.h":"Creativity · Water","t.u.p":"U is the shape of a cup that holds water, and water is what creates. The sound gathers and deepens.",
-  "t.i.h":"Energy · Fire","t.i.p":"The sound projects outward. With fire we move through life and reach what we set out to reach.",
-  "t.o.h":"Love and compassion · Air","t.o.p":"A circle. No beginning and no end, we are all one. The sound widens in the chest and out into the room.",
-  "t.ov.h":"Truth and communication · Overtone singing","t.ov.p":"We join all four vowels into one unbroken sound. Overtones are born from it, higher tones above the tone. Throat, honesty, what we actually have to say.",
-  "t.om.h":"Intuition and wisdom","t.om.p":"The sound that contains all the previous ones. Attention climbs behind the eyes and settles.",
-  "t.si.h":"Silence · Spirit and connection","t.si.p":"At the end we do not sing. We sit in what is left and feel that everything is connected to everything.",
+  "t.a.h":"Grounding · Earth","t.a.b":"We focus on the pelvis.","t.a.p":"The beginning, the ground we stand on. Open sound, open mouth, weight dropping into the feet.",
+  "t.u.h":"Creativity · Water","t.u.b":"We focus on the middle of the pelvis.","t.u.p":"U is the shape of a cup that holds water, and water is what creates. The sound gathers and deepens.",
+  "t.i.h":"Energy · Fire","t.i.b":"We focus on the belly button.","t.i.p":"The sound projects outward. With fire we move through life and reach what we set out to reach.",
+  "t.o.h":"Love and compassion · Air","t.o.b":"We focus on the chest, the heart area.","t.o.p":"A circle. No beginning and no end, we are all one. The sound widens in the chest and out into the room.",
+  "t.ov.h":"Truth and communication · Overtone singing","t.ov.b":"We focus on the throat.","t.ov.p":"We join all four vowels into one unbroken sound. Overtones are born from it, higher tones above the tone. Throat, honesty, what we actually have to say.",
+  "t.om.h":"Intuition and wisdom","t.om.b":"We focus on the middle of the head, the seat of the third eye.","t.om.p":"The sound that contains all the previous ones. Attention climbs behind the eyes and settles.",
+  "t.si.h":"Silence · Spirit and connection","t.si.b":"We focus on the crown of the head, the connection between us and the rest of the universe.","t.si.p":"At the end we do not sing. We sit in what is left and feel that everything is connected to everything.",
   "e.rfe":"Rhythms for Evolution","h.rfe":"Rhythm is not learned, <em>it is remembered</em>",
   "b.rfe1":"Rhythms for Evolution is my own practice, where drumming, movement, voice, conscious dance and DJ sets come together. We explore the ancient pulse that connects us all.",
   "b.rfe2":"<strong>Everything is revolving. Everything is evolving.</strong> Intention, resonance, melody, rhythm, breath, flow. In that order and again and again.",

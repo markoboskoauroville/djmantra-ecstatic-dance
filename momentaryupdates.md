@@ -36,5 +36,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > eye. And for the last part when there is a silence, we are focusing on the crown of our head which is connection
 > with us and with the rest of the universe
 
-6. Each step of the toning ladder names the part of the body it opens, in his words. **Status:** waiting for Marko:
+6. Each step of the toning ladder names the part of the body it opens, in his words. **Status:** done, v4 (his screenshot settled it: the ladder text already says chest for O, throat for ∞, behind the eyes for OM, so the chakra order). Was:
    O and I are both "belly button", and the third eye has no vowel of its own in the seven-step ladder; asked which.
