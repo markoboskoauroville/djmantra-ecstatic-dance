@@ -19,4 +19,4 @@ Cloudflare Pages, project `djmantra`. The `main` branch is the source of truth.
 
 ## Contact
 
-marko.bosko@gmail.com
+marko.bosko@auroville.community
