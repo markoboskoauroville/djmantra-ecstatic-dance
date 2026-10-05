@@ -97,6 +97,13 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .split.rev .fig{order:2}
 .fig{margin:0; position:relative}
 .fig img{width:100%; border-radius:3px}
+.fig.duo{display:grid; grid-template-columns:1fr; gap:12px}
+.fig.duo figcaption{grid-column:1}
+@media (min-width:861px){
+  .fig.duo{grid-template-columns:1.25fr 1fr; align-items:stretch}
+  .fig.duo img{height:100%; object-fit:cover}
+  .fig.duo figcaption{grid-column:1 / -1}
+}
 .fig figcaption{
   font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.2em;
   text-transform:uppercase; color:var(--ink3); margin-top:12px;
@@ -293,8 +300,9 @@ footer a:hover{color:var(--amber)}
 <section>
   <div class="wrap">
     <div class="split rev rv">
-      <figure class="fig">
-        <img src="assets/yoga-auro.jpg" alt="" width="1300" height="937" loading="lazy">
+      <figure class="fig duo">
+        <img src="assets/yoga-hall.jpg" alt="" width="1300" height="975" loading="lazy">
+        <img src="assets/tea.jpg" alt="" width="1000" height="1571" loading="lazy">
         <figcaption data-i18n="c.auro">Auroville, južna Indija</figcaption>
       </figure>
       <div>
@@ -466,8 +474,8 @@ footer a:hover{color:var(--amber)}
   <div class="wrap">
     <div class="strip rv">
       <img src="assets/warli.jpg" alt="" loading="lazy">
-      <img src="assets/yoga-hall.jpg" alt="" loading="lazy">
       <img src="assets/portrait.jpg" alt="" loading="lazy">
+      <img src="assets/cosmic.jpg" alt="" loading="lazy">
     </div>
   </div>
 </section>
