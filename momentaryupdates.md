@@ -21,3 +21,8 @@ Every request is saved here word for word before any code, so a quota cut loses 
 2. Tribal Jam Orchestra (Zagreb) images from ~/Pictures/tribal jam orchestra. **Status:** in progress
 3. Tribal Jam Collective (India) images from ~/Pictures/tribal jam collective. **Status:** in progress
 4. Deploy to djmantra.pages.dev. **Status:** pending
+
+> also, you were improvising on website decoration letters and you need to find Croatian font. Don't add these marks
+> above S and C by improvisation. Find another font which supports coding for Croatian
+
+5. Headings font must carry real Croatian letters (č ć š ž đ), no improvised marks above S and C. **Status:** in progress
