@@ -113,6 +113,16 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .step h3{font-size:27px; margin-bottom:10px}
 .step p{color:var(--ink2); font-size:15.5px; margin:0; line-height:1.66}
 
+/* ---------- toning ladder ---------- */
+.ladder{margin-top:38px; border-top:1px solid var(--line2)}
+.rung{display:grid; grid-template-columns:86px 1fr; gap:26px; align-items:start; padding:22px 0; border-bottom:1px solid var(--line2)}
+.rung .v{
+  font-family:"Cormorant Garamond",serif; font-size:44px; line-height:1; color:var(--amber);
+  text-align:center; padding-top:2px;
+}
+.rung h3{font-size:21px; margin-bottom:6px}
+.rung p{color:var(--ink2); font-size:15.5px; margin:0; max-width:34em}
+
 /* ---------- lineage ---------- */
 .names{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
 .name{
@@ -161,6 +171,8 @@ footer a:hover{color:var(--amber)}
   .split{grid-template-columns:1fr; gap:30px}
   .split.rev .fig{order:0}
   .steps{grid-template-columns:1fr}
+  .rung{grid-template-columns:54px 1fr; gap:16px}
+  .rung .v{font-size:32px}
   .strip{grid-template-columns:1fr 1fr}
   section{padding:58px 0}
   .hero .wrap{padding-bottom:46px}
@@ -217,7 +229,7 @@ footer a:hover{color:var(--amber)}
   <div class="wrap">
     <div class="split rev rv">
       <figure class="fig">
-        <img src="assets/matrimandir.jpg" alt="" width="1100" height="1100" loading="lazy">
+        <img src="assets/tea.jpg" alt="" width="1000" height="1571" loading="lazy">
         <figcaption data-i18n="c.auro">Auroville, južna Indija</figcaption>
       </figure>
       <div>
@@ -226,6 +238,7 @@ footer a:hover{color:var(--amber)}
         <div class="body">
           <p data-i18n="b.auro1">Sedam godina živio sam u <strong>Aurovilleu</strong>, međunarodnoj zajednici u južnoj Indiji nadahnutoj vizijom Sri Aurobinda. Ondje sam snimao zvučne vrtove i ručno izrađene instrumente, i počeo proučavati zvuk kao terapijsku modalnost, ne kao metaforu nego kao praksu.</p>
           <p data-i18n="b.auro2">Iz tog razdoblja nastala je <strong>Sun Moon Yoga</strong> metoda. Spaja sunce Vinyase s mjesecom Hatha yoge. Tijelo se budi kroz pokret, um se smiruje kroz dah, duša pronalazi prostor tišine.</p>
+          <p data-i18n="b.auro3">Praksa počinje toplo i polako, otvara kukove i kralježnicu, pa se diže u tok koji grije. Zatim se spušta u duže zadržane položaje gdje disanje preuzima vodstvo. Nema ogledala i nema natjecanja. Tko dolazi prvi put, prati vlastiti tempo.</p>
         </div>
       </div>
     </div>
@@ -235,26 +248,84 @@ footer a:hover{color:var(--amber)}
 <section class="arc">
   <div class="wrap">
     <div class="rv">
-      <div class="eyebrow" data-i18n="e.arc">Luk večeri</div>
-      <h2 class="sec" data-i18n="h.arc">Tri <em>dijela</em></h2>
-      <p class="body" data-i18n="b.arc">Vodim cijeli luk, od prvog daha do zadnjeg tona. Ništa se ne gura, sve se otvara svojim tempom.</p>
+      <div class="eyebrow" data-i18n="e.arc">Što nudim</div>
+      <h2 class="sec" data-i18n="h.arc">Složite me gdje <em>treba</em></h2>
+      <p class="body" data-i18n="b.arc">Ne tražim cijelu večer. Ovo su dijelovi koje mogu voditi, svaki stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.</p>
     </div>
     <div class="steps rv">
       <div class="step">
         <span class="n">01</span>
-        <h3 data-i18n="s1.h">Zagrijavanje</h3>
-        <p data-i18n="s1.p">Nježna yoga, pranayama i kratka meditacija. Tijelo se spušta iz glave u stopala, disanje se produžuje, prostor postaje siguran.</p>
+        <h3 data-i18n="s1.h">Yoga i dah</h3>
+        <p data-i18n="s1.p">Zagrijavanje kroz Sun Moon Yogu, sunce Vinyase i mjesec Hathe. Uz to pranayame: kapalabhati za buđenje, bhastrika za vatru, nadi shodhana za smirivanje i balans.</p>
       </div>
       <div class="step">
         <span class="n">02</span>
-        <h3 data-i18n="s2.h">Ples</h3>
-        <p data-i18n="s2.p">World organic house i etno elektronika. Set se diže iz duboke uzemljenosti prema ekstatičnom vrhuncu, pa se meko spušta, tako da tijelo samo zna kada hodati, kada letjeti, a kada mirovati.</p>
+        <h3 data-i18n="s2.h">Vođena meditacija</h3>
+        <p data-i18n="s2.p">Vođenje prema svjetlu u srcu i svjetlu u glavi, uz sanskrtske mantre. Kratko, jednostavno, bez potrebe za iskustvom.</p>
       </div>
       <div class="step">
         <span class="n">03</span>
-        <h3 data-i18n="s3.h">Zvučna kupka</h3>
-        <p data-i18n="s3.p">Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.</p>
+        <h3 data-i18n="s3.h">Toniranje i otvaranje kanala</h3>
+        <p data-i18n="s3.p">Zajedničko pjevanje vokala koje otvara energetske kanale i povezuje s pet elemenata. Glas kao alat, ne kao nastup. Nitko ne mora znati pjevati.</p>
       </div>
+      <div class="step">
+        <span class="n">04</span>
+        <h3 data-i18n="s4.h">DJ set</h3>
+        <p data-i18n="s4.p">World organic house i etno elektronika. Gradim luk iz duboke uzemljenosti prema vrhuncu pa meko natrag u tišinu. Mogu pokriti cijeli ples ili samo jedan dio.</p>
+      </div>
+      <div class="step">
+        <span class="n">05</span>
+        <h3 data-i18n="s5.h">Živi bubnjevi</h3>
+        <p data-i18n="s5.p">Perkusije uživo, same ili preko seta. Okvirni bubanj, djembe, darbuka, shakeri. Mogu i voditi ritmičku radionicu prije plesa.</p>
+      </div>
+      <div class="step">
+        <span class="n">06</span>
+        <h3 data-i18n="s6.h">Zvučna kupka</h3>
+        <p data-i18n="s6.p">Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="rv" style="max-width:40em">
+      <div class="eyebrow" data-i18n="e.ton">Vokali i elementi</div>
+      <h2 class="sec" data-i18n="h.ton">Glas otvara <em>kanale</em></h2>
+      <p class="body" data-i18n="b.ton">Toniranje nije pjevanje. Držimo jedan vokal i puštamo ga da vibrira u tijelu. Svaki vokal ima svoje mjesto, svoju kvalitetu i svoj element. Slova nisu slučajna.</p>
+    </div>
+    <div class="ladder rv">
+      <div class="rung"><span class="v">A</span><div><h3 data-i18n="t.a.h">Uzemljenje · Zemlja</h3><p data-i18n="t.a.p">Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.</p></div></div>
+      <div class="rung"><span class="v">U</span><div><h3 data-i18n="t.u.h">Kreativnost · Voda</h3><p data-i18n="t.u.p">U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.</p></div></div>
+      <div class="rung"><span class="v">I</span><div><h3 data-i18n="t.i.h">Energija · Vatra</h3><p data-i18n="t.i.p">Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.</p></div></div>
+      <div class="rung"><span class="v">O</span><div><h3 data-i18n="t.o.h">Ljubav i suosjećanje · Zrak</h3><p data-i18n="t.o.p">Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.</p></div></div>
+      <div class="rung"><span class="v">∞</span><div><h3 data-i18n="t.ov.h">Istina i komunikacija · Alikvotno pjevanje</h3><p data-i18n="t.ov.p">Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.</p></div></div>
+      <div class="rung"><span class="v">OM</span><div><h3 data-i18n="t.om.h">Intuicija i mudrost</h3><p data-i18n="t.om.p">Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.</p></div></div>
+      <div class="rung"><span class="v">·</span><div><h3 data-i18n="t.si.h">Tišina · Duh i povezanost</h3><p data-i18n="t.si.p">Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="split rv">
+      <div>
+        <div class="eyebrow" data-i18n="e.rfe">Rhythms for Evolution</div>
+        <h2 class="sec" data-i18n="h.rfe">Ritam se ne uči, <em>sjeti ga se</em></h2>
+        <div class="body">
+          <p data-i18n="b.rfe1">Rhythms for Evolution je moja praksa u kojoj se spajaju bubnjevi, pokret, glas, svjesni ples i DJ setovi. Istražujemo drevni puls koji nas sve povezuje.</p>
+          <p data-i18n="b.rfe2"><strong>Sve se okreće. Sve se razvija.</strong> Namjera, rezonancija, melodija, ritam, dah, tok. Tim redom i uvijek iznova.</p>
+        </div>
+      </div>
+      <figure class="fig">
+        <img src="assets/rfe-words.jpg" alt="" width="1400" height="788" loading="lazy">
+        <figcaption data-i18n="c.rfe">Rhythms for Evolution</figcaption>
+      </figure>
+    </div>
+    <div class="strip rv" style="margin-top:34px">
+      <img src="assets/toning.jpg" alt="" loading="lazy">
+      <img src="assets/guiding.jpg" alt="" loading="lazy">
+      <img src="assets/circle.jpg" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -289,7 +360,7 @@ footer a:hover{color:var(--amber)}
 
 <div class="quote">
   <div class="wrap rv">
-    <p data-i18n="q">U ritmu nalazimo otkucaj srca svemira.</p>
+    <p data-i18n="q">Ritam nije nešto što se nauči. Ritam je nešto čega se sjetiš.</p>
     <span>Marko Boško · Mantreshwar</span>
   </div>
 </div>
@@ -297,9 +368,9 @@ footer a:hover{color:var(--amber)}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="strip rv">
+      <img src="assets/warli.jpg" alt="" loading="lazy">
       <img src="assets/portrait.jpg" alt="" loading="lazy">
       <img src="assets/cosmic.jpg" alt="" loading="lazy">
-      <img src="assets/tea.jpg" alt="" loading="lazy">
     </div>
   </div>
 </section>
@@ -313,6 +384,7 @@ footer a:hover{color:var(--amber)}
       <div class="links">
         <a class="btn" href="mailto:marko.bosko@gmail.com">marko.bosko@gmail.com</a>
         <a class="btn ghost" href="https://www.instagram.com/marko.bosko/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn ghost" href="https://www.facebook.com/profile.php?id=61583116213676" target="_blank" rel="noopener">Rhythms for Evolution</a>
         <a class="btn ghost" href="https://suno.com/@mantreshvar" target="_blank" rel="noopener">Suno</a>
         <a class="btn ghost" href="https://markobosko.pages.dev" target="_blank" rel="noopener"><span data-i18n="b.cv">Cijeli životopis</span></a>
       </div>
@@ -339,15 +411,32 @@ const DICT = {
   "e.auro":"Sedam godina","h.auro":"Gdje je sav život <em>yoga</em>",
   "b.auro1":"Sedam godina živio sam u <strong>Aurovilleu</strong>, međunarodnoj zajednici u južnoj Indiji nadahnutoj vizijom Sri Aurobinda. Ondje sam snimao zvučne vrtove i ručno izrađene instrumente, i počeo proučavati zvuk kao terapijsku modalnost, ne kao metaforu nego kao praksu.",
   "b.auro2":"Iz tog razdoblja nastala je <strong>Sun Moon Yoga</strong> metoda. Spaja sunce Vinyase s mjesecom Hatha yoge. Tijelo se budi kroz pokret, um se smiruje kroz dah, duša pronalazi prostor tišine.",
-  "e.arc":"Luk večeri","h.arc":"Tri <em>dijela</em>",
-  "b.arc":"Vodim cijeli luk, od prvog daha do zadnjeg tona. Ništa se ne gura, sve se otvara svojim tempom.",
-  "s1.h":"Zagrijavanje","s1.p":"Nježna yoga, pranayama i kratka meditacija. Tijelo se spušta iz glave u stopala, disanje se produžuje, prostor postaje siguran.",
-  "s2.h":"Ples","s2.p":"World organic house i etno elektronika. Set se diže iz duboke uzemljenosti prema ekstatičnom vrhuncu, pa se meko spušta, tako da tijelo samo zna kada hodati, kada letjeti, a kada mirovati.",
-  "s3.h":"Zvučna kupka","s3.p":"Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.",
+  "e.arc":"Što nudim","h.arc":"Složite me gdje <em>treba</em>",
+  "b.arc":"Ne tražim cijelu večer. Ovo su dijelovi koje mogu voditi, svaki stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.",
+  "s1.h":"Yoga i dah","s1.p":"Zagrijavanje kroz Sun Moon Yogu, sunce Vinyase i mjesec Hathe. Uz to pranayame: kapalabhati za buđenje, bhastrika za vatru, nadi shodhana za smirivanje i balans.",
+  "s2.h":"Vođena meditacija","s2.p":"Vođenje prema svjetlu u srcu i svjetlu u glavi, uz sanskrtske mantre. Kratko, jednostavno, bez potrebe za iskustvom.",
+  "s3.h":"Toniranje i otvaranje kanala","s3.p":"Zajedničko pjevanje vokala koje otvara energetske kanale i povezuje s pet elemenata. Glas kao alat, ne kao nastup. Nitko ne mora znati pjevati.",
+  "s4.h":"DJ set","s4.p":"World organic house i etno elektronika. Gradim luk iz duboke uzemljenosti prema vrhuncu pa meko natrag u tišinu. Mogu pokriti cijeli ples ili samo jedan dio.",
+  "s5.h":"Živi bubnjevi","s5.p":"Perkusije uživo, same ili preko seta. Okvirni bubanj, djembe, darbuka, shakeri. Mogu i voditi ritmičku radionicu prije plesa.",
+  "s6.h":"Zvučna kupka","s6.p":"Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.",
+  "e.ton":"Vokali i elementi","h.ton":"Glas otvara <em>kanale</em>",
+  "b.ton":"Toniranje nije pjevanje. Držimo jedan vokal i puštamo ga da vibrira u tijelu. Svaki vokal ima svoje mjesto, svoju kvalitetu i svoj element. Slova nisu slučajna.",
+  "t.a.h":"Uzemljenje · Zemlja","t.a.p":"Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala.",
+  "t.u.h":"Kreativnost · Voda","t.u.p":"U je oblik čaše koja drži vodu, a voda je ono što stvara. Zvuk se skuplja i produbljuje.",
+  "t.i.h":"Energija · Vatra","t.i.p":"Zvuk se projicira prema van. Vatrom idemo kroz život i postižemo ono što želimo postići.",
+  "t.o.h":"Ljubav i suosjećanje · Zrak","t.o.p":"Krug. Nema početka ni kraja, svi smo jedno. Zvuk se širi u prsima i dalje u prostor.",
+  "t.ov.h":"Istina i komunikacija · Alikvotno pjevanje","t.ov.p":"Spajamo sva četiri vokala u jedan neprekinuti zvuk. Iz toga se rađaju alikvoti, viši tonovi iznad tona. Grlo, iskrenost, ono što stvarno imamo za reći.",
+  "t.om.h":"Intuicija i mudrost","t.om.p":"Zvuk koji sadrži sve prethodne. Pažnja se penje iza očiju i smiruje.",
+  "t.si.h":"Tišina · Duh i povezanost","t.si.p":"Na kraju ne pjevamo. Sjedimo u onome što je ostalo i osjećamo da je sve povezano sa svime.",
+  "e.rfe":"Rhythms for Evolution","h.rfe":"Ritam se ne uči, <em>sjeti ga se</em>",
+  "b.rfe1":"Rhythms for Evolution je moja praksa u kojoj se spajaju bubnjevi, pokret, glas, svjesni ples i DJ setovi. Istražujemo drevni puls koji nas sve povezuje.",
+  "b.rfe2":"<strong>Sve se okreće. Sve se razvija.</strong> Namjera, rezonancija, melodija, ritam, dah, tok. Tim redom i uvijek iznova.",
+  "c.rfe":"Rhythms for Evolution, radionica",
+  "b.auro3":"Praksa počinje toplo i polako, otvara kukove i kralježnicu, pa se diže u tok koji grije. Zatim se spušta u duže zadržane položaje gdje disanje preuzima vodstvo. Nema ogledala i nema natjecanja. Tko dolazi prvi put, prati vlastiti tempo.",
+  "q":"Ritam nije nešto što se nauči. Ritam je nešto čega se sjetiš.",
   "e.lin":"Učitelji","h.lin":"Ritam se prenosi <em>rukom</em>",
   "b.lin1":"Učio sam kod perkusionističkih majstora u Hrvatskoj, Sloveniji i Izraelu, te kod gostujućih zapadnoafričkih virtuoza. Danas studiram okvirni bubanj kod Yshaija Aftermana, jednog od vodećih svjetskih svirača i učitelja frame druma.",
   "b.lin2":"Uz to radim i kao tonac i montažer, pa znam kako zvuk putuje prostorom i što tehnička ekipa treba iz DJ pulta. Stajao sam s obje strane.",
-  "q":"U ritmu nalazimo otkucaj srca svemira.",
   "e.book":"Kontakt","h.book":"Pozovi me u <em>krug</em>",
   "b.book":"Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoga jutra. Baza mi je Zagreb, spreman sam na put.",
   "b.cv":"Cijeli životopis",
@@ -364,15 +453,32 @@ const DICT = {
   "e.auro":"Seven years","h.auro":"Where all life is <em>yoga</em>",
   "b.auro1":"I lived seven years in <strong>Auroville</strong>, an international community in south India rooted in the vision of Sri Aurobindo. There I filmed sound gardens and handmade instruments, and began studying sound as a healing modality, not as a metaphor but as a practice.",
   "b.auro2":"The <strong>Sun Moon Yoga</strong> method came out of those years. It weaves the sun of Vinyasa with the moon of Hatha. Body awakened through movement, mind stilled through breath, soul given space to simply be.",
-  "e.arc":"The arc of the evening","h.arc":"Three <em>parts</em>",
-  "b.arc":"I hold the whole arc, from the first breath to the last tone. Nothing is pushed, everything opens at its own pace.",
-  "s1.h":"Warm up","s1.p":"Gentle yoga, pranayama and a short meditation. The body drops out of the head and into the feet, the breath lengthens, the room becomes safe.",
-  "s2.h":"The dance","s2.p":"World organic house and ethno electronic. The set rises from deep grounding towards an ecstatic peak, then settles softly, so the body knows by itself when to walk, when to fly and when to rest.",
-  "s3.h":"Sound bath","s3.p":"Gongs, bowls, frame drum and voice. Lying down, nothing to do. What the dance opened, the sound settles and closes.",
+  "e.arc":"What I offer","h.arc":"Place me where you <em>need me</em>",
+  "b.arc":"I am not asking for the whole evening. These are the parts I can hold, each one stands on its own. You decide what you need and where I fit in the programme.",
+  "s1.h":"Yoga and breath","s1.p":"Warm up through Sun Moon Yoga, the sun of Vinyasa and the moon of Hatha. Plus pranayama: kapalabhati to wake up, bhastrika for fire, nadi shodhana to settle and balance.",
+  "s2.h":"Guided meditation","s2.p":"Guidance towards the light in the heart and the light in the head, with Sanskrit mantras. Short, simple, no experience needed.",
+  "s3.h":"Toning and opening the channels","s3.p":"Collective vowel toning that opens the energy channels and connects with the five elements. Voice as a tool, not a performance. Nobody needs to be able to sing.",
+  "s4.h":"DJ set","s4.p":"World organic house and ethno electronic. I build an arc from deep grounding to a peak and softly back into silence. I can cover the whole dance or just one stretch of it.",
+  "s5.h":"Live drums","s5.p":"Live percussion, alone or over the set. Frame drum, djembe, darbuka, shakers. I can also hold a rhythm workshop before the dance.",
+  "s6.h":"Sound bath","s6.p":"Gongs, bowls, frame drum and voice. Lying down, nothing to do. What the dance opened, the sound settles and closes.",
+  "e.ton":"Vowels and elements","h.ton":"The voice opens the <em>channels</em>",
+  "b.ton":"Toning is not singing. We hold one vowel and let it vibrate in the body. Each vowel has its own place, its own quality and its own element. The letters are not random.",
+  "t.a.h":"Grounding · Earth","t.a.p":"The beginning, the ground we stand on. Open sound, open mouth, weight dropping into the feet.",
+  "t.u.h":"Creativity · Water","t.u.p":"U is the shape of a cup that holds water, and water is what creates. The sound gathers and deepens.",
+  "t.i.h":"Energy · Fire","t.i.p":"The sound projects outward. With fire we move through life and reach what we set out to reach.",
+  "t.o.h":"Love and compassion · Air","t.o.p":"A circle. No beginning and no end, we are all one. The sound widens in the chest and out into the room.",
+  "t.ov.h":"Truth and communication · Overtone singing","t.ov.p":"We join all four vowels into one unbroken sound. Overtones are born from it, higher tones above the tone. Throat, honesty, what we actually have to say.",
+  "t.om.h":"Intuition and wisdom","t.om.p":"The sound that contains all the previous ones. Attention climbs behind the eyes and settles.",
+  "t.si.h":"Silence · Spirit and connection","t.si.p":"At the end we do not sing. We sit in what is left and feel that everything is connected to everything.",
+  "e.rfe":"Rhythms for Evolution","h.rfe":"Rhythm is not learned, <em>it is remembered</em>",
+  "b.rfe1":"Rhythms for Evolution is my own practice, where drumming, movement, voice, conscious dance and DJ sets come together. We explore the ancient pulse that connects us all.",
+  "b.rfe2":"<strong>Everything is revolving. Everything is evolving.</strong> Intention, resonance, melody, rhythm, breath, flow. In that order and again and again.",
+  "c.rfe":"Rhythms for Evolution, workshop",
+  "b.auro3":"The practice starts warm and slow, opening the hips and the spine, then rises into a flow that heats. After that it settles into longer held postures where the breath takes the lead. No mirrors and no competition. Anyone arriving for the first time follows their own pace.",
+  "q":"Rhythm is not something you learn. Rhythm is something you remember.",
   "e.lin":"Teachers","h.lin":"Rhythm passes <em>hand to hand</em>",
   "b.lin1":"I studied with percussion masters in Croatia, Slovenia and Israel, and with visiting West African virtuosos. I currently study frame drum with Yshai Afterman, one of the leading frame drum players and teachers working today.",
   "b.lin2":"I also work as a sound engineer and editor, so I know how sound travels through a room and what a technical crew needs from the booth. I have stood on both sides of it.",
-  "q":"In rhythm, we find the heartbeat of the universe.",
   "e.book":"Contact","h.book":"Invite me into the <em>circle</em>",
   "b.book":"Available for ecstatic dance evenings, sound baths, rhythm workshops and yoga mornings. Based in Zagreb, ready to travel.",
   "b.cv":"Full CV",
