@@ -38,3 +38,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 6. Each step of the toning ladder names the part of the body it opens, in his words. **Status:** done, v4 (his screenshot settled it: the ladder text already says chest for O, throat for ∞, behind the eyes for OM, so the chakra order). Was:
    O and I are both "belly button", and the third eye has no vowel of its own in the seven-step ladder; asked which.
+
+## 5.10.2026, 05:35
+
+> Svirao sam djembe i na Plesovima univerzalnog mira s Ashani Pluchino, u dvorani Maloka u Aurovilleu. this is not correct it was in Anitya community maloka hall plese fix
+
+7. The Maloka is the hall of the Anitya community in Auroville. **Status:** done, v5.
