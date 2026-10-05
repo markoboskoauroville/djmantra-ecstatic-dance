@@ -12,7 +12,7 @@
 <meta property="og:image" content="assets/dj-booth.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,600;1,200;1,300&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%230b0a12'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23e0a257' stroke-width='1.3'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%23e0a257'/%3E%3C/svg%3E">
 
 <style>
@@ -42,7 +42,7 @@ img{max-width:100%; height:auto; display:block}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--amber); outline-offset:3px}
 
-h1,h2,h3{margin:0; font-family:"Cormorant Garamond",Georgia,serif; font-weight:300; line-height:1.08}
+h1,h2,h3{margin:0; font-family:"Spectral",Georgia,serif; font-weight:300; line-height:1.08}
 p{margin:0 0 1.15em}
 .mono{font-family:"IBM Plex Mono",monospace}
 .eyebrow{
@@ -81,7 +81,7 @@ p{margin:0 0 1.15em}
   text-transform:uppercase; color:var(--ink2); margin:26px 0 0;
 }
 .tagline{
-  font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(20px,3.3vw,30px);
+  font-family:"Spectral",Georgia,serif; font-style:italic; font-size:clamp(20px,3.3vw,30px);
   color:var(--ink); margin:20px 0 0; max-width:17em; line-height:1.3;
 }
 
@@ -113,11 +113,40 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .step h3{font-size:27px; margin-bottom:10px}
 .step p{color:var(--ink2); font-size:15.5px; margin:0; line-height:1.66}
 
+/* ---------- the three acts ---------- */
+.acts{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:42px}
+.act{display:flex; flex-direction:column}
+.act .ph{margin:0 0 22px; aspect-ratio:4/5; overflow:hidden; border-radius:3px; cursor:zoom-in}
+.act .ph img{width:100%; height:100%; object-fit:cover; filter:saturate(.92) brightness(.86); transition:transform 1.2s ease}
+.act .ph:hover img{transform:scale(1.035)}
+.act .roman{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.3em; text-transform:uppercase; color:var(--amber)}
+.act h3.act-h{font-size:34px; margin:6px 0 4px}
+.act .act-sub{font-family:"Spectral",Georgia,serif; font-style:italic; font-size:19px; color:var(--ink2); margin:0 0 18px; line-height:1.35}
+.mod{border-top:1px solid var(--line2); padding:16px 0 4px}
+.mod .n{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.22em; color:var(--ink3); margin-right:10px}
+.mod h4{margin:0 0 6px; font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:15px; letter-spacing:.02em; color:var(--ink)}
+.mod p{color:var(--ink2); font-size:15px; line-height:1.64; margin:0 0 10px}
+
+/* ---------- galleries ---------- */
+.gal{columns:3; column-gap:14px; margin-top:38px}
+.gal button{display:block; width:100%; padding:0; margin:0 0 14px; border:0; background:none; cursor:zoom-in; break-inside:avoid; border-radius:3px; overflow:hidden}
+.gal img{width:100%; filter:saturate(.92) brightness(.84); transition:filter .4s ease, transform 1.2s ease}
+.gal button:hover img{filter:none; transform:scale(1.03)}
+.facts{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed; inset:0; z-index:80; background:rgba(6,5,10,.94); display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%; max-height:100%; object-fit:contain; border-radius:3px}
+.lb .x{position:absolute; top:14px; right:16px; font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.14em; color:var(--ink2); background:none; border:1px solid var(--line2); border-radius:30px; padding:8px 14px; cursor:pointer}
+
+.ver{position:fixed; top:20px; left:18px; z-index:50; font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.16em; color:var(--ink3)}
+
 /* ---------- toning ladder ---------- */
 .ladder{margin-top:38px; border-top:1px solid var(--line2)}
 .rung{display:grid; grid-template-columns:86px 1fr; gap:26px; align-items:start; padding:22px 0; border-bottom:1px solid var(--line2)}
 .rung .v{
-  font-family:"Cormorant Garamond",serif; font-size:44px; line-height:1; color:var(--amber);
+  font-family:"Spectral",Georgia,serif; font-size:44px; line-height:1; color:var(--amber);
   text-align:center; padding-top:2px;
 }
 .rung h3{font-size:21px; margin-bottom:6px}
@@ -134,7 +163,7 @@ h2.sec em{font-style:italic; color:var(--amber)}
 /* ---------- quote ---------- */
 .quote{text-align:center; padding:90px 0}
 .quote p{
-  font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:300;
+  font-family:"Spectral",Georgia,serif; font-style:italic; font-weight:300;
   font-size:clamp(26px,4.6vw,46px); line-height:1.3; color:var(--ink);
   max-width:15em; margin:0 auto;
 }
@@ -171,6 +200,9 @@ footer a:hover{color:var(--amber)}
   .split{grid-template-columns:1fr; gap:30px}
   .split.rev .fig{order:0}
   .steps{grid-template-columns:1fr}
+  .acts{grid-template-columns:1fr; gap:46px}
+  .act .ph{aspect-ratio:16/10}
+  .gal{columns:2}
   .rung{grid-template-columns:54px 1fr; gap:16px}
   .rung .v{font-size:32px}
   .strip{grid-template-columns:1fr 1fr}
@@ -181,6 +213,8 @@ footer a:hover{color:var(--amber)}
   .wrap{padding:0 20px}
   body{font-size:16px}
   .strip{grid-template-columns:1fr}
+  .gal{column-gap:10px}
+  .gal button{margin-bottom:10px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important; transition:none !important}
@@ -195,6 +229,9 @@ footer a:hover{color:var(--amber)}
   <button type="button" data-lang="hr" aria-pressed="true">HR</button>
   <button type="button" data-lang="en" aria-pressed="false">EN</button>
 </div>
+
+<div class="ver" title="Verzija / Version">v3</div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Slika / Image"><button type="button" class="x" data-i18n="lb.x">Zatvori</button><img alt=""></div>
 
 <header class="hero">
   <div class="hero-img"><img src="assets/dj-booth.jpg" alt="DJ Mantra" width="1600" height="2385"></div>
@@ -225,6 +262,31 @@ footer a:hover{color:var(--amber)}
   </div>
 </section>
 
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="rv" style="max-width:40em">
+      <div class="eyebrow" data-i18n="e.tjo">Zagreb · od 2011.</div>
+      <h2 class="sec" data-i18n="h.tjo">Tribal Jam <em>Orchestra</em></h2>
+      <p class="body" data-i18n="b.tjo">Krovovi, pozornice, vatre i krugovi svijeća. Djembe, okvirni bubanj, didgeridoo, gongovi i gitara. Ansambl u slikama.</p>
+    </div>
+    <div class="gal rv">
+      <button type="button" data-full="assets/tjo/01.jpg" aria-label="TJO 1"><img src="assets/tjo/01.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/02.jpg" aria-label="TJO 2"><img src="assets/tjo/02.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/03.jpg" aria-label="TJO 3"><img src="assets/tjo/03.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/04.jpg" aria-label="TJO 4"><img src="assets/tjo/04.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/05.jpg" aria-label="TJO 5"><img src="assets/tjo/05.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/06.jpg" aria-label="TJO 6"><img src="assets/tjo/06.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/07.jpg" aria-label="TJO 7"><img src="assets/tjo/07.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/08.jpg" aria-label="TJO 8"><img src="assets/tjo/08.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/09.jpg" aria-label="TJO 9"><img src="assets/tjo/09.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/10.jpg" aria-label="TJO 10"><img src="assets/tjo/10.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/11.jpg" aria-label="TJO 11"><img src="assets/tjo/11.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/12.jpg" aria-label="TJO 12"><img src="assets/tjo/12.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjo/13.jpg" aria-label="TJO 13"><img src="assets/tjo/13.jpg" alt="" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="split rev rv">
@@ -245,43 +307,75 @@ footer a:hover{color:var(--amber)}
   </div>
 </section>
 
+<section>
+  <div class="wrap">
+    <div class="split rv">
+      <div>
+        <div class="eyebrow" data-i18n="e.tjc">Auroville · Indija</div>
+        <h2 class="sec" data-i18n="h.tjc">Tribal Jam <em>Collective</em></h2>
+        <p class="lede" data-i18n="l.tjc">Indijska sestra orkestra. Krug bubnjara, pjevača i plesača u studiju KalaBhumi u Aurovilleu.</p>
+        <div class="body">
+          <p data-i18n="b.tjc1">Subotom u podne držali smo <strong>Dancing the Fire</strong>: plešemo i odmaramo uz živu glazbu kolektiva. Bubnjevi, glas i svi instrumenti koje ljudi donesu sa sobom.</p>
+          <p data-i18n="b.tjc2">Nedjeljom su bili satovi <strong>Rhythms for Evolution</strong> za djembe, u pet koraka: dah i ritam srca, svijest o tijelu, zapadnoafrički ritmovi, kreativnost i improvizacija, i na kraju krug bubnjeva. Bez prethodnog iskustva.</p>
+          <p data-i18n="b.tjc3">Svirao sam djembe i na Plesovima univerzalnog mira s Ashani Pluchino, u dvorani Maloka u Aurovilleu.</p>
+        </div>
+        <div class="facts">
+          <span class="name hi">KalaBhumi Studio</span>
+          <span class="name" data-i18n="f.tjc1">Dancing the Fire · subotom</span>
+          <span class="name" data-i18n="f.tjc2">Djembe · nedjeljom</span>
+          <span class="name" data-i18n="f.tjc3">Ples univerzalnog mira</span>
+        </div>
+      </div>
+      <figure class="fig">
+        <img src="assets/tjc/01.jpg" alt="" width="1248" height="872" loading="lazy">
+        <figcaption data-i18n="c.tjc">Tribal Jam Collective, KalaBhumi</figcaption>
+      </figure>
+    </div>
+    <div class="gal rv">
+      <button type="button" data-full="assets/tjc/02.jpg" aria-label="TJC 2"><img src="assets/tjc/02.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/03.jpg" aria-label="TJC 3"><img src="assets/tjc/03.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/04.jpg" aria-label="TJC 4"><img src="assets/tjc/04.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/05.jpg" aria-label="TJC 5"><img src="assets/tjc/05.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/06.jpg" aria-label="TJC 6"><img src="assets/tjc/06.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/07.jpg" aria-label="TJC 7"><img src="assets/tjc/07.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/08.jpg" aria-label="TJC 8"><img src="assets/tjc/08.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/09.jpg" aria-label="TJC 9"><img src="assets/tjc/09.jpg" alt="" loading="lazy"></button>
+      <button type="button" data-full="assets/tjc/10.jpg" aria-label="TJC 10"><img src="assets/tjc/10.jpg" alt="" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
 <section class="arc">
   <div class="wrap">
     <div class="rv">
       <div class="eyebrow" data-i18n="e.arc">Što nudim</div>
       <h2 class="sec" data-i18n="h.arc">Složite me gdje <em>treba</em></h2>
-      <p class="body" data-i18n="b.arc">Ne tražim cijelu večer. Ovo su dijelovi koje mogu voditi, svaki stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.</p>
+      <p class="body" data-i18n="b.arc">Večer ima tri dijela: otvaranje, ples i zatvaranje. Radim u sva tri. Ne tražim cijelu večer, svaki modul stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.</p>
     </div>
-    <div class="steps rv">
-      <div class="step">
-        <span class="n">01</span>
-        <h3 data-i18n="s1.h">Yoga i dah</h3>
-        <p data-i18n="s1.p">Zagrijavanje kroz Sun Moon Yogu, sunce Vinyase i mjesec Hathe. Uz to pranayame: kapalabhati za buđenje, bhastrika za vatru, nadi shodhana za smirivanje i balans.</p>
+    <div class="acts rv">
+      <div class="act">
+        <figure class="ph" data-full="assets/act-opening.jpg"><img src="assets/act-opening.jpg" alt="" width="1246" height="786" loading="lazy"></figure>
+        <span class="roman" data-i18n="a1.r">I · Otvaranje</span>
+        <h3 class="act-h" data-i18n="a1.h">Tijelo, dah i glas</h3>
+        <p class="act-sub" data-i18n="a1.s">Prije plesa. Budimo tijelo, smirujemo um, otvaramo kanale.</p>
+        <div class="mod"><h4><span class="n">01</span><span data-i18n="s1.h">Yoga i dah</span></h4><p data-i18n="s1.p">Zagrijavanje kroz Sun Moon Yogu, sunce Vinyase i mjesec Hathe. Uz to pranayame: kapalabhati za buđenje, bhastrika za vatru, nadi shodhana za smirivanje i balans.</p></div>
+        <div class="mod"><h4><span class="n">02</span><span data-i18n="s2.h">Vođena meditacija</span></h4><p data-i18n="s2.p">Vođenje prema svjetlu u srcu i svjetlu u glavi, uz sanskrtske mantre. Kratko, jednostavno, bez potrebe za iskustvom.</p></div>
+        <div class="mod"><h4><span class="n">03</span><span data-i18n="s3.h">Toniranje i otvaranje kanala</span></h4><p data-i18n="s3.p">Zajedničko pjevanje vokala koje otvara energetske kanale i povezuje s pet elemenata. Glas kao alat, ne kao nastup. Nitko ne mora znati pjevati.</p></div>
       </div>
-      <div class="step">
-        <span class="n">02</span>
-        <h3 data-i18n="s2.h">Vođena meditacija</h3>
-        <p data-i18n="s2.p">Vođenje prema svjetlu u srcu i svjetlu u glavi, uz sanskrtske mantre. Kratko, jednostavno, bez potrebe za iskustvom.</p>
+      <div class="act">
+        <figure class="ph" data-full="assets/act-dance.jpg"><img src="assets/act-dance.jpg" alt="" width="1244" height="670" loading="lazy"></figure>
+        <span class="roman" data-i18n="a2.r">II · Ples</span>
+        <h3 class="act-h" data-i18n="a2.h">Ritam</h3>
+        <p class="act-sub" data-i18n="a2.s">Srce večeri. Iz ploča ili iz ruku, ili oboje u isto vrijeme.</p>
+        <div class="mod"><h4><span class="n">04</span><span data-i18n="s4.h">DJ set</span></h4><p data-i18n="s4.p">World organic house i etno elektronika. Gradim luk iz duboke uzemljenosti prema vrhuncu pa meko natrag u tišinu. Mogu pokriti cijeli ples ili samo jedan dio.</p></div>
+        <div class="mod"><h4><span class="n">05</span><span data-i18n="s5.h">Živi bubnjevi</span></h4><p data-i18n="s5.p">Perkusije uživo, same ili preko seta. Okvirni bubanj, djembe, darbuka, shakeri. Mogu i voditi ritmičku radionicu prije plesa.</p></div>
       </div>
-      <div class="step">
-        <span class="n">03</span>
-        <h3 data-i18n="s3.h">Toniranje i otvaranje kanala</h3>
-        <p data-i18n="s3.p">Zajedničko pjevanje vokala koje otvara energetske kanale i povezuje s pet elemenata. Glas kao alat, ne kao nastup. Nitko ne mora znati pjevati.</p>
-      </div>
-      <div class="step">
-        <span class="n">04</span>
-        <h3 data-i18n="s4.h">DJ set</h3>
-        <p data-i18n="s4.p">World organic house i etno elektronika. Gradim luk iz duboke uzemljenosti prema vrhuncu pa meko natrag u tišinu. Mogu pokriti cijeli ples ili samo jedan dio.</p>
-      </div>
-      <div class="step">
-        <span class="n">05</span>
-        <h3 data-i18n="s5.h">Živi bubnjevi</h3>
-        <p data-i18n="s5.p">Perkusije uživo, same ili preko seta. Okvirni bubanj, djembe, darbuka, shakeri. Mogu i voditi ritmičku radionicu prije plesa.</p>
-      </div>
-      <div class="step">
-        <span class="n">06</span>
-        <h3 data-i18n="s6.h">Zvučna kupka</h3>
-        <p data-i18n="s6.p">Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.</p>
+      <div class="act">
+        <figure class="ph" data-full="assets/act-closing.jpg"><img src="assets/act-closing.jpg" alt="" width="1600" height="1200" loading="lazy"></figure>
+        <span class="roman" data-i18n="a3.r">III · Zatvaranje</span>
+        <h3 class="act-h" data-i18n="a3.h">Zvuk i tišina</h3>
+        <p class="act-sub" data-i18n="a3.s">Poslije plesa. Ono što se otvorilo, zvuk slegne i zatvori.</p>
+        <div class="mod"><h4><span class="n">06</span><span data-i18n="s6.h">Zvučna kupka</span></h4><p data-i18n="s6.p">Gongovi, zdjele, okvirni bubanj i glas. Ležeći, bez zadatka. Ono što je ples otvorio, zvuk slegne i zatvori.</p></div>
       </div>
     </div>
   </div>
@@ -412,7 +506,19 @@ const DICT = {
   "b.auro1":"Sedam godina živio sam u <strong>Aurovilleu</strong>, međunarodnoj zajednici u južnoj Indiji nadahnutoj vizijom Sri Aurobinda. Ondje sam snimao zvučne vrtove i ručno izrađene instrumente, i počeo proučavati zvuk kao terapijsku modalnost, ne kao metaforu nego kao praksu.",
   "b.auro2":"Iz tog razdoblja nastala je <strong>Sun Moon Yoga</strong> metoda. Spaja sunce Vinyase s mjesecom Hatha yoge. Tijelo se budi kroz pokret, um se smiruje kroz dah, duša pronalazi prostor tišine.",
   "e.arc":"Što nudim","h.arc":"Složite me gdje <em>treba</em>",
-  "b.arc":"Ne tražim cijelu večer. Ovo su dijelovi koje mogu voditi, svaki stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.",
+  "b.arc":"Večer ima tri dijela: otvaranje, ples i zatvaranje. Radim u sva tri. Ne tražim cijelu večer, svaki modul stoji sam za sebe. Vi odlučite što vam treba i gdje me staviti u program.",
+  "a1.r":"I · Otvaranje","a1.h":"Tijelo, dah i glas","a1.s":"Prije plesa. Budimo tijelo, smirujemo um, otvaramo kanale.",
+  "a2.r":"II · Ples","a2.h":"Ritam","a2.s":"Srce večeri. Iz ploča ili iz ruku, ili oboje u isto vrijeme.",
+  "a3.r":"III · Zatvaranje","a3.h":"Zvuk i tišina","a3.s":"Poslije plesa. Ono što se otvorilo, zvuk slegne i zatvori.",
+  "e.tjo":"Zagreb · od 2011.","h.tjo":"Tribal Jam <em>Orchestra</em>",
+  "b.tjo":"Krovovi, pozornice, vatre i krugovi svijeća. Djembe, okvirni bubanj, didgeridoo, gongovi i gitara. Ansambl u slikama.",
+  "e.tjc":"Auroville · Indija","h.tjc":"Tribal Jam <em>Collective</em>",
+  "l.tjc":"Indijska sestra orkestra. Krug bubnjara, pjevača i plesača u studiju KalaBhumi u Aurovilleu.",
+  "b.tjc1":"Subotom u podne držali smo <strong>Dancing the Fire</strong>: plešemo i odmaramo uz živu glazbu kolektiva. Bubnjevi, glas i svi instrumenti koje ljudi donesu sa sobom.",
+  "b.tjc2":"Nedjeljom su bili satovi <strong>Rhythms for Evolution</strong> za djembe, u pet koraka: dah i ritam srca, svijest o tijelu, zapadnoafrički ritmovi, kreativnost i improvizacija, i na kraju krug bubnjeva. Bez prethodnog iskustva.",
+  "b.tjc3":"Svirao sam djembe i na Plesovima univerzalnog mira s Ashani Pluchino, u dvorani Maloka u Aurovilleu.",
+  "f.tjc1":"Dancing the Fire · subotom","f.tjc2":"Djembe · nedjeljom","f.tjc3":"Ples univerzalnog mira",
+  "c.tjc":"Tribal Jam Collective, KalaBhumi","lb.x":"Zatvori",
   "s1.h":"Yoga i dah","s1.p":"Zagrijavanje kroz Sun Moon Yogu, sunce Vinyase i mjesec Hathe. Uz to pranayame: kapalabhati za buđenje, bhastrika za vatru, nadi shodhana za smirivanje i balans.",
   "s2.h":"Vođena meditacija","s2.p":"Vođenje prema svjetlu u srcu i svjetlu u glavi, uz sanskrtske mantre. Kratko, jednostavno, bez potrebe za iskustvom.",
   "s3.h":"Toniranje i otvaranje kanala","s3.p":"Zajedničko pjevanje vokala koje otvara energetske kanale i povezuje s pet elemenata. Glas kao alat, ne kao nastup. Nitko ne mora znati pjevati.",
@@ -454,7 +560,19 @@ const DICT = {
   "b.auro1":"I lived seven years in <strong>Auroville</strong>, an international community in south India rooted in the vision of Sri Aurobindo. There I filmed sound gardens and handmade instruments, and began studying sound as a healing modality, not as a metaphor but as a practice.",
   "b.auro2":"The <strong>Sun Moon Yoga</strong> method came out of those years. It weaves the sun of Vinyasa with the moon of Hatha. Body awakened through movement, mind stilled through breath, soul given space to simply be.",
   "e.arc":"What I offer","h.arc":"Place me where you <em>need me</em>",
-  "b.arc":"I am not asking for the whole evening. These are the parts I can hold, each one stands on its own. You decide what you need and where I fit in the programme.",
+  "b.arc":"An evening has three parts: the opening, the dance and the closing. I work in all three. I am not asking for the whole evening, each module stands on its own. You decide what you need and where I fit in the programme.",
+  "a1.r":"I · Opening","a1.h":"Body, breath and voice","a1.s":"Before the dance. We wake the body, settle the mind, open the channels.",
+  "a2.r":"II · The dance","a2.h":"Rhythm","a2.s":"The heart of the evening. From the decks or from the hands, or both at once.",
+  "a3.r":"III · Closing","a3.h":"Sound and silence","a3.s":"After the dance. What has opened, the sound settles and closes.",
+  "e.tjo":"Zagreb · since 2011","h.tjo":"Tribal Jam <em>Orchestra</em>",
+  "b.tjo":"Rooftops, stages, fires and candle circles. Djembe, frame drum, didgeridoo, gongs and guitar. The ensemble in pictures.",
+  "e.tjc":"Auroville · India","h.tjc":"Tribal Jam <em>Collective</em>",
+  "l.tjc":"The Indian sister of the orchestra. A circle of drummers, singers and dancers at KalaBhumi Studio in Auroville.",
+  "b.tjc1":"Every Saturday at noon we held <strong>Dancing the Fire</strong>: we dance and we rest to live music by the collective. Drums, voice and whatever instruments people bring with them.",
+  "b.tjc2":"On Sundays the <strong>Rhythms for Evolution</strong> djembe classes, in five steps: breath and heart rhythm, body awareness, West African rhythms, creativity and improvisation, and finally the drum circle. No experience needed.",
+  "b.tjc3":"I also played djembe for the Dances of Universal Peace with Ashani Pluchino, at Maloka Hall in Auroville.",
+  "f.tjc1":"Dancing the Fire · Saturdays","f.tjc2":"Djembe · Sundays","f.tjc3":"Dances of Universal Peace",
+  "c.tjc":"Tribal Jam Collective, KalaBhumi","lb.x":"Close",
   "s1.h":"Yoga and breath","s1.p":"Warm up through Sun Moon Yoga, the sun of Vinyasa and the moon of Hatha. Plus pranayama: kapalabhati to wake up, bhastrika for fire, nadi shodhana to settle and balance.",
   "s2.h":"Guided meditation","s2.p":"Guidance towards the light in the heart and the light in the head, with Sanskrit mantras. Short, simple, no experience needed.",
   "s3.h":"Toning and opening the channels","s3.p":"Collective vowel toning that opens the energy channels and connects with the five elements. Voice as a tool, not a performance. Nobody needs to be able to sing.",
@@ -514,6 +632,13 @@ const io = new IntersectionObserver(es => {
   es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
 }, {threshold:0.12, rootMargin:"0px 0px -40px 0px"});
 $$(".rv").forEach(el => io.observe(el));
+const lb = document.getElementById("lb"), lbImg = lb.querySelector("img");
+let lbFrom = null;
+function lbOpen(src, from){ lbImg.src = src; lb.classList.add("open"); lbFrom = from; lb.querySelector(".x").focus(); }
+function lbClose(){ lb.classList.remove("open"); lbImg.removeAttribute("src"); if(lbFrom) lbFrom.focus(); }
+$$("[data-full]").forEach(el => el.addEventListener("click", () => lbOpen(el.dataset.full, el)));
+lb.addEventListener("click", lbClose);
+document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classList.contains("open")) lbClose(); });
 </script>
 </body>
 </html>

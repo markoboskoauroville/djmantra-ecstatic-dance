@@ -17,12 +17,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
 (He pasted the claude.ai handover of 5.10.2026 with it; "Gem" is the voice transcript of "Jam".)
 
 1. The three parts of the evening (opening: yoga and breath; the dance: DJ and drums; closing: sound bath) each
-   shown as his own skill. **Status:** in progress
-2. Tribal Jam Orchestra (Zagreb) images from ~/Pictures/tribal jam orchestra. **Status:** in progress
-3. Tribal Jam Collective (India) images from ~/Pictures/tribal jam collective. **Status:** in progress
+   shown as his own skill. **Status:** done, v3
+2. Tribal Jam Orchestra (Zagreb) images from ~/Pictures/tribal jam orchestra. **Status:** done, v3
+3. Tribal Jam Collective (India) images from ~/Pictures/tribal jam collective. **Status:** done, v3
 4. Deploy to djmantra.pages.dev. **Status:** pending
 
 > also, you were improvising on website decoration letters and you need to find Croatian font. Don't add these marks
 > above S and C by improvisation. Find another font which supports coding for Croatian
 
-5. Headings font must carry real Croatian letters (č ć š ž đ), no improvised marks above S and C. **Status:** in progress
+5. Headings font must carry real Croatian letters (č ć š ž đ), no improvised marks above S and C. **Status:** done, v3
