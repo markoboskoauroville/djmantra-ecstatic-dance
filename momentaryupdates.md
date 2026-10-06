@@ -64,3 +64,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoga jutra. Baza mi je Zagreb, spreman sam na put. fix it to Dostupan sam za ecstatic dance večeri, zvučne kupke, radionice ritma i yoge i pokreta. Baza mi je Zagreb, spreman sam na put.
 
 10. The contact line offers rhythm, yoga and movement workshops instead of yoga mornings, in both languages. **Status:** done, v8.
+
+## 6.10.2026, 08:30
+
+> please take my DJ mix I sent to Nicolina. There is a message for her for starting dance. There is my page djmantra pages dev. I want you to take my mix and publish it on this website with a player which has aesthetics of DJPro algorithm software I'm using for mixing. This is the demo of my mix, and please publish it on the website
+
+11. The demo mix sent to Nicolina is on the page, in a player that looks like djay Pro (Algoriddim), the software he mixes in. **Status:** in progress.
