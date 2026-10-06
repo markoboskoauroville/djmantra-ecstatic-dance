@@ -152,8 +152,7 @@ h2.sec em{font-style:italic; color:var(--amber)}
   font-family:"IBM Plex Sans",system-ui,sans-serif; color:var(--d-ink); user-select:none; -webkit-user-select:none;
 }
 .deck canvas{display:block; width:100%; height:100%}
-.deck .wv{position:relative; height:150px; background:#0a0b0d; border-radius:8px; overflow:hidden; cursor:grab; touch-action:pan-y}
-.deck .wv:active{cursor:grabbing}
+.deck .wv{position:relative; height:150px; background:#0a0b0d; border-radius:8px; overflow:hidden; cursor:text; touch-action:pan-y}
 .deck .wv .ph{position:absolute; top:0; bottom:0; left:50%; width:2px; margin-left:-1px; background:#fff; box-shadow:0 0 10px var(--d-blue), 0 0 2px #fff; pointer-events:none}
 .deck .wv .ph::before,.deck .wv .ph::after{content:""; position:absolute; left:-5px; border:6px solid transparent}
 .deck .wv .ph::before{top:0; border-top-color:var(--d-blue)}
@@ -667,7 +666,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v11</p>
+    <p class="ver">v12</p>
   </div>
 </footer>
 
@@ -893,9 +892,9 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
 /* ---------- the deck: demo mix in HLS; waveform precomputed (low, mid, high, peak at 25 per second); each track a colored section ---------- */
 (() => {
   const deck = document.getElementById("deck"); if(!deck) return;
-  const RATE = 25, SRC = "assets/mix/mix.m3u8", HLSJS = "https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.6.16/hls.min.js";
+  const RATE = 25, PAGE = 20, SRC = "assets/mix/mix.m3u8", HLSJS = "https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.6.16/hls.min.js";
   const $ = id => document.getElementById(id);
-  const wv = $("dWv"), wc = wv.querySelector("canvas"), ov = $("dOv"), oc = ov.querySelector("canvas");
+  const wv = $("dWv"), wc = wv.querySelector("canvas"), phEl = wv.querySelector(".ph"), ov = $("dOv"), oc = ov.querySelector("canvas");
   const playB = $("dPlay"), ico = $("dIco"), elT = $("dEl"), rmT = $("dRm"), tl = $("dTl");
   const audio = new Audio(); audio.preload = "none"; deck.audio = audio;
   let W = null, N = 0, DUR = 6803.9, TR = [], cur = -1, loading = null, drag = null, shown = -1, pending = null, ovImg = null;
@@ -923,23 +922,27 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.fillStyle = HIGH; const k = hi/255*a*.5;  g.fillRect(x, mid-k, w, k*2);
   }
   function drawWv(t){
-    const [w, h, d] = fit(wc), g = wc.getContext("2d"), strip = 16*d, mid = (h - strip)/2, span = 6, pps = w/(span*2), step = 2*d;
+    // PAGE BY PAGE (Marko, 6.10.2026): the waveform stands still, the playhead walks across it, and at the end of
+    // the page the next page comes, as in a video or audio editor
+    const [w, h, d] = fit(wc), g = wc.getContext("2d"), strip = 16*d, mid = (h - strip)/2, pps = w/PAGE, step = 2*d;
+    const p0 = Math.floor(t/PAGE)*PAGE, at = s => (s - p0)*pps;
     g.clearRect(0, 0, w, h); if(!W) return;
     for(let x = 0; x < w; x += step){
-      const s = t + (x - w/2)/pps; if(s < 0 || s >= DUR) continue;
-      const i = Math.floor(s*RATE)*4; g.globalAlpha = x < w/2 ? .5 : 1;
+      const s = p0 + x/pps; if(s >= DUR) break;
+      const i = Math.floor(s*RATE)*4; g.globalAlpha = s < t ? .5 : 1;
       band(g, x, step - d*.5, mid, mid*.94, W[i], W[i+1], W[i+2]);
     }
     g.globalAlpha = 1;
     g.fillStyle = "rgba(255,255,255,.16)";
-    for(let s = Math.ceil(t - span); s <= t + span; s++){ const x = w/2 + (s - t)*pps, tall = s % 10 === 0; g.fillRect(x, 0, d, tall ? 8*d : 3*d); }
+    for(let s = Math.ceil(p0); s <= p0 + PAGE; s++){ const x = at(s), tall = s % 10 === 0; g.fillRect(x, 0, d, tall ? 8*d : 3*d); }
+    phEl.style.left = (at(t)/w*100) + "%";
     // the track sections, colored, with the name where a track comes in
     const y = h - strip; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
     TR.forEach((tr, i) => {
-      const a = w/2 + (tr[0] - t)*pps, b = w/2 + ((TR[i+1] ? TR[i+1][0] : DUR) - t)*pps; if(b < 0 || a > w) return;
+      const a = at(tr[0]), b = at(TR[i+1] ? TR[i+1][0] : DUR); if(b < 0 || a > w) return;
       g.fillStyle = hue(i); g.globalAlpha = .07; g.fillRect(a, 0, b - a, y);
       g.globalAlpha = .95; g.fillRect(a, y, b - a - 2*d, strip); g.globalAlpha = .6; g.fillRect(a, 0, d, y);
-      g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; g.fillText(String(i+1).padStart(2,"0") + "  " + tr[1], Math.max(a, 0) + 6*d, y + strip/2, Math.max(0, b - Math.max(a, 0) - 10*d));
+      g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; if(b - Math.max(a, 0) > 110*d) g.fillText(String(i+1).padStart(2,"0") + "  " + tr[1], Math.max(a, 0) + 6*d, y + strip/2, Math.max(0, b - Math.max(a, 0) - 10*d));
     });
   }
   function drawOv(){
@@ -1008,16 +1011,18 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   $("dFwd").addEventListener("click", () => seek(pos() + 30));
   const pos = () => pending != null ? pending : now();
 
-  // the big waveform: drag it like a jog wheel
-  wv.addEventListener("pointerdown", e => { wv.setPointerCapture(e.pointerId); drag = {x:e.clientX, t0:pos(), t:pos()}; kick(); });
-  wv.addEventListener("pointermove", e => { if(!drag || drag.x == null) return; drag.t = Math.max(0, Math.min(DUR - .5, drag.t0 - (e.clientX - drag.x)/(wv.clientWidth/12))); });
+  // the big waveform: click or drag on the page puts the playhead there
+  const wvAt = e => { const r = wv.getBoundingClientRect(), p0 = Math.floor(pos()/PAGE)*PAGE; return Math.max(0, Math.min(DUR - .5, p0 + (e.clientX - r.left)/r.width*PAGE)); };
+  let wvPage = 0;
+  wv.addEventListener("pointerdown", e => { wv.setPointerCapture(e.pointerId); wvPage = Math.floor(pos()/PAGE)*PAGE; drag = {t:wvAt(e), wv:true}; kick(); });
+  wv.addEventListener("pointermove", e => { if(!drag || !drag.wv) return; const r = wv.getBoundingClientRect(); drag.t = Math.max(wvPage, Math.min(Math.min(DUR - .5, wvPage + PAGE - .05), wvPage + (e.clientX - r.left)/r.width*PAGE)); });
   const endDrag = () => { if(!drag) return; const t = drag.t; drag = null; seek(t); };
   wv.addEventListener("pointerup", endDrag); wv.addEventListener("pointercancel", endDrag);
 
   // the overview: click or drag anywhere to jump
   const ovAt = e => { const r = ov.getBoundingClientRect(); return Math.max(0, Math.min(DUR, (e.clientX - r.left)/r.width*DUR)); };
   ov.addEventListener("pointerdown", e => { ov.setPointerCapture(e.pointerId); drag = {t:ovAt(e)}; kick(); });
-  ov.addEventListener("pointermove", e => { if(drag && drag.x == null) drag.t = ovAt(e); });
+  ov.addEventListener("pointermove", e => { if(drag && !drag.wv) drag.t = ovAt(e); });
   ov.addEventListener("pointerup", endDrag); ov.addEventListener("pointercancel", endDrag);
   ov.addEventListener("keydown", e => { const k = {ArrowLeft:-10, ArrowRight:10, PageDown:-60, PageUp:60}[e.key]; if(k){ e.preventDefault(); seek(pos() + k); } });
 

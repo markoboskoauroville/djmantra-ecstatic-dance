@@ -108,5 +108,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 > Here is more pictures to choose from. And please, on my— all the players in my application DJ Mantra webpage, please don't make a static playhead and scrolling wave. Make it opposite. So the playhead is scrolling and the waveform is static. When the playhead comes to the end, then next page is scrolling. So it's kind of emulating from video editors or audio programs, page by page scrolling.
 
-21. More of his pictures (17) to choose the song artwork from. **Status:** in progress.
-22. Every player: the waveform stands still and the playhead moves; at the end of the page the next page comes (page by page, as in a video or audio editor). **Status:** in progress.
+21. More of his pictures (17) to choose the song artwork from. **Status:** done, v12: Adi Shakti Moja Majko the dancer with open arms under the rose window (Shakti rising), Healing Scale the woman on the cliff above the purple sea (Mamta); the other eight kept.
+22. Every player: the waveform stands still and the playhead moves; at the end of the page the next page comes (page by page, as in a video or audio editor). **Status:** done, v12: the mix deck shows 20 s pages, the playhead walks, the next page comes at the edge; a click or drag on the page puts the playhead there. The album player already was one still page per song. Seen on the emulator: 01:03:10 mid page, 01:03:23 next page.
