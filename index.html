@@ -235,7 +235,9 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .alb li .n{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--a-ink2); text-align:right}
 .alb li .d{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--a-ink2)}
 .alb li em{font-style:normal; font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em; color:var(--a-acc); margin-left:8px; text-transform:uppercase}
-.alb details{grid-column:1 / -1; border-top:1px solid var(--a-line); padding-top:12px}
+.alb li.story{display:block; cursor:default; padding:12px 8px 6px 42px; background:#1a1612; border-bottom:1px solid var(--a-line); border-radius:0 0 4px 4px; color:#c8bfb3; font-size:15px; line-height:1.7; user-select:text; -webkit-user-select:text}
+.alb li.story:hover{background:#1a1612}
+.alb li.story p{margin:0 0 .9em}
 .alb summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--a-acc); list-style:none}
 .alb summary::-webkit-details-marker{display:none}
 .alb summary::before{content:"+ "}
@@ -424,7 +426,6 @@ footer a:hover{color:var(--amber)}
       <div class="main">
         <div class="k1"><span id="aNo">01 / 11</span> · Mantreshvar</div>
         <h3 class="t1" id="aT">Adi Shakti Moja Majko</h3>
-        <p class="hr1" id="aHr"></p>
         <div class="wf" id="aWf" role="slider" tabindex="0" aria-label="Pozicija / Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><canvas></canvas></div>
         <div class="row">
           <button type="button" class="r" id="aPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
@@ -434,7 +435,6 @@ footer a:hover{color:var(--amber)}
         </div>
         <ol id="aList" aria-label="Sounding Silence"></ol>
       </div>
-      <details id="aDet"><summary data-i18n="a.more">Priča pjesme (na engleskom, mojim riječima)</summary><div class="txt" id="aTxt"></div></details>
     </div>
   </div>
 </section>
@@ -666,7 +666,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v13</p>
+    <p class="ver">v14</p>
   </div>
 </footer>
 
@@ -852,15 +852,19 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.globalAlpha = 1; g.fillStyle = "#fff"; g.fillRect(Math.round(p*w) - d, 0, 2*d, h);
     $("aEl").textContent = fmt(t); wf.setAttribute("aria-valuenow", Math.round(p*100));
   }
+  // the playing song's text opens under it in the playlist, always open; the previous one closes (Marko, 6.10.2026)
   function text(){
     const tr = A[cur]; if(!tr) return;
-    $("aHr").textContent = document.documentElement.lang === "en" ? tr.en.split(/(?<=[.!?])\s/)[0] : tr.hr;
-    $("aTxt").innerHTML = ""; tr.en.split(/\n\s*\n|\n/).filter(s => s.trim()).forEach(s => { const p = document.createElement("p"); p.textContent = s.trim(); $("aTxt").appendChild(p); });
+    list.querySelectorAll(".story").forEach(e => e.remove());
+    const box = document.createElement("li"); box.className = "story";
+    tr.en.split(/\n\s*\n|\n/).filter(s => s.trim()).forEach(s => { const p = document.createElement("p"); p.textContent = s.trim(); box.appendChild(p); });
+    const li = list.children[cur]; if(li) li.after(box);
   }
   function pick(i, play){
     if(!A[i]) return; cur = i; const tr = A[i];
     audio.src = tr.src; $("aT").textContent = tr.t; $("aNo").textContent = String(i+1).padStart(2,"0") + " / " + A.length; $("aDu").textContent = fmt(tr.dur);
     $("aArt").src = tr.art; $("aArt").style.objectPosition = tr.pos || "50% 50%"; root.classList.toggle("bonus", !!tr.bonus);
+    list.querySelectorAll(".story").forEach(e => e.remove());
     [...list.children].forEach((li, j) => li.classList.toggle("cur", j === i));
     text(); draw(); if(play) go();
   }
@@ -885,7 +889,6 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const end = () => { if(drag == null) return; const t = drag; drag = null; audio.currentTime = t; draw(); };
   wf.addEventListener("pointerup", end); wf.addEventListener("pointercancel", end);
   wf.addEventListener("keydown", e => { const k = {ArrowLeft:-5, ArrowRight:5}[e.key]; if(k){ e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime + k); draw(); } });
-  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", text));
   new ResizeObserver(draw).observe(wf);
 })();
 
