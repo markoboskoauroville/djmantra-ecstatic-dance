@@ -103,3 +103,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > This is some of my AI artwork. Please, you analyze images and give to song artwork to each individual song based on your assumption and your ideas where it fits the best.
 
 20. Each Sounding Silence song gets its own artwork from his 19 AI images (one of 20 attachments did not arrive), chosen by the song's text. **Status:** done, v11: Adi Shakti red earth terraces with walkers, Banam Kevala four on the spiral hill, Dinda djembe hands, So Ham face into stardust, Healing Scale golden lotus, Ho'oponopono candle circle, Kali Durga bonfire, Om Tare Himalayan hut, Rama lone figure in the storm, Shiva dancer in a ring of fire; Window of Wisdom keeps its own; the album cover until a song plays. assets/ss/art, a crop position per song.
+
+## 6.10.2026, 13:40
+
+> Here is more pictures to choose from. And please, on my— all the players in my application DJ Mantra webpage, please don't make a static playhead and scrolling wave. Make it opposite. So the playhead is scrolling and the waveform is static. When the playhead comes to the end, then next page is scrolling. So it's kind of emulating from video editors or audio programs, page by page scrolling.
+
+21. More of his pictures (17) to choose the song artwork from. **Status:** in progress.
+22. Every player: the waveform stands still and the playhead moves; at the end of the page the next page comes (page by page, as in a video or audio editor). **Status:** in progress.
