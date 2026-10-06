@@ -110,3 +110,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 21. More of his pictures (17) to choose the song artwork from. **Status:** done, v12: Adi Shakti Moja Majko the dancer with open arms under the rose window (Shakti rising), Healing Scale the woman on the cliff above the purple sea (Mamta); the other eight kept.
 22. Every player: the waveform stands still and the playhead moves; at the end of the page the next page comes (page by page, as in a video or audio editor). **Status:** done, v12: the mix deck shows 20 s pages, the playhead walks, the next page comes at the edge; a click or drag on the page puts the playhead there. The album player already was one still page per song. Seen on the emulator: 01:03:10 mid page, 01:03:23 next page.
+
+## 6.10.2026, 14:05
+
+> I meant to say stone arch. Go on the picture for a window of wisdom.
+
+23. Window of Wisdom gets the stone arch with the figure under the stars. **Status:** done, v13.
