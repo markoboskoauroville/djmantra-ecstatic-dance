@@ -97,3 +97,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 17. The original mix on GitHub. **Status:** done, Release mix-2026-10-04 (273 MB, 320 kbps), linked as the download; the 683 HLS segments are in the repo too.
 18. Cloudflare free space. **Status:** answered (Pages: 20,000 files, 25 MiB each; R2: 10 GB free).
 19. A player for the Sounding Silence album: audio from the Drive folder, descriptions and album art from the YouTube playlist via yt-dlp, in the section that mentions it. **Status:** done, v10 (tested on the Pixel 7 emulator: plays, bonus art, HR line).
+
+## 6.10.2026, 13:10
+
+> This is some of my AI artwork. Please, you analyze images and give to song artwork to each individual song based on your assumption and your ideas where it fits the best.
+
+20. Each Sounding Silence song gets its own artwork from his 19 AI images (one of 20 attachments did not arrive), chosen by the song's text. **Status:** in progress.
