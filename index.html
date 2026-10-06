@@ -208,6 +208,47 @@ h2.sec em{font-style:italic; color:var(--amber)}
   .deck .phases{grid-template-columns:1fr 1fr}
 }
 
+/* ---------- Sounding Silence: the album player ---------- */
+.alb{--a-ink:#ece6dc; --a-ink2:#9a9187; --a-line:#2b2621; --a-acc:#f0a35a; margin-top:30px; display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:22px;
+  background:linear-gradient(180deg,#1b1714,#110f0d); border:1px solid #2e2823; border-radius:14px; padding:16px; box-shadow:0 30px 80px rgba(0,0,0,.5); user-select:none; -webkit-user-select:none}
+.alb .art{position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; background:#000}
+.alb .art img{width:100%; height:100%; object-fit:cover; transition:opacity .4s}
+.alb .art .bon{position:absolute; left:10px; top:10px; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; background:rgba(0,0,0,.6); color:var(--a-acc); padding:3px 8px; border-radius:4px; display:none}
+.alb.bonus .art .bon{display:block}
+.alb .main{min-width:0; display:flex; flex-direction:column}
+.alb .k1{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--a-ink2)}
+.alb .t1{font-family:"Spectral",Georgia,serif; font-size:30px; line-height:1.1; margin:6px 0 4px; color:var(--a-ink)}
+.alb .hr1{font-size:14.5px; color:var(--a-ink2); margin:0 0 12px; line-height:1.5}
+.alb .wf{height:74px; background:#0c0a09; border-radius:6px; cursor:pointer; touch-action:none; position:relative}
+.alb .wf canvas{display:block; width:100%; height:100%}
+.alb .row{display:flex; align-items:center; gap:10px; margin-top:12px}
+.alb button.r{width:40px; height:40px; border-radius:50%; border:1px solid #3a332c; background:#1d1915; color:var(--a-ink); cursor:pointer; display:grid; place-items:center}
+.alb button.r svg{width:16px; height:16px}
+.alb button.p{width:54px; height:54px; border-radius:50%; border:2px solid var(--a-acc); background:transparent; color:var(--a-acc); cursor:pointer; display:grid; place-items:center; transition:background .3s, box-shadow .3s}
+.alb.on button.p{background:var(--a-acc); color:#1a0f05; box-shadow:0 0 22px rgba(240,163,90,.45)}
+.alb button.p svg{width:20px; height:20px}
+.alb .tm{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--a-ink2); font-variant-numeric:tabular-nums}
+.alb .tm b{color:var(--a-ink); font-weight:500}
+.alb ol{list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--a-line)}
+.alb li{display:grid; grid-template-columns:26px 1fr auto; gap:10px; align-items:center; padding:7px 6px; border-bottom:1px solid #1f1b17; cursor:pointer; border-radius:4px; font-size:14.5px; color:var(--a-ink)}
+.alb li:hover{background:#221d18}
+.alb li.cur{background:#2a2017; color:var(--a-acc)}
+.alb li .n{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--a-ink2); text-align:right}
+.alb li .d{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--a-ink2)}
+.alb li em{font-style:normal; font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em; color:var(--a-acc); margin-left:8px; text-transform:uppercase}
+.alb details{grid-column:1 / -1; border-top:1px solid var(--a-line); padding-top:12px}
+.alb summary{cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--a-acc); list-style:none}
+.alb summary::-webkit-details-marker{display:none}
+.alb summary::before{content:"+ "}
+.alb details[open] summary::before{content:"− "}
+.alb .txt{margin-top:10px; columns:2 22em; column-gap:34px; color:#c8bfb3; font-size:15px; line-height:1.7; user-select:text; -webkit-user-select:text}
+.alb .txt p{margin:0 0 .9em; break-inside:avoid-column}
+@media (max-width:760px){
+  .alb{grid-template-columns:1fr; padding:12px; gap:14px}
+  .alb .art{width:min(64vw,280px); justify-self:center}
+  .alb .t1{font-size:25px}
+}
+
 /* ---------- lightbox ---------- */
 .lb{position:fixed; inset:0; z-index:80; background:rgba(6,5,10,.94); display:none; align-items:center; justify-content:center; padding:24px; cursor:zoom-out}
 .lb.open{display:flex}
@@ -368,6 +409,33 @@ footer a:hover{color:var(--amber)}
         <img src="assets/djembe.jpg" alt="" width="1100" height="1100" loading="lazy">
         <figcaption data-i18n="c.djembe">Tribal Jam Orchestra</figcaption>
       </figure>
+    </div>
+  </div>
+</section>
+
+<section id="album" style="padding-top:10px">
+  <div class="wrap">
+    <div class="rv" style="max-width:40em">
+      <div class="eyebrow" data-i18n="e.alb">Mantreshvar · album</div>
+      <h2 class="sec">Sounding <em>Silence</em></h2>
+      <p class="body" data-i18n="b.alb">Neka glazba se ne stvara. Ona se sjeti. Sounding Silence je zbirka mantri koje sam primio tijekom godina života u Indiji i Aurovilleu i donio kući u Hrvatsku preko mora. Te melodije nisu počele sa mnom: izronile su iz tišine, prošle kroz mene i sad se vraćaju tebi, tražeći samo da ih se čuje u istoj tišini iz koje su došle. Deset prijenosa, drevni zvukovi u svom prvom obliku, sjeme koje još nije drvo.</p>
+    </div>
+    <div class="alb rv" id="alb">
+      <div class="art"><img id="aArt" src="assets/ss/cover.jpg" alt="Mantreshvar, Sounding Silence" loading="lazy"><span class="bon">Bonus</span></div>
+      <div class="main">
+        <div class="k1"><span id="aNo">01 / 11</span> · Mantreshvar</div>
+        <h3 class="t1" id="aT">Adi Shakti Moja Majko</h3>
+        <p class="hr1" id="aHr"></p>
+        <div class="wf" id="aWf" role="slider" tabindex="0" aria-label="Pozicija / Position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><canvas></canvas></div>
+        <div class="row">
+          <button type="button" class="r" id="aPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+          <button type="button" class="p" id="aPlay" aria-label="Play"><svg viewBox="0 0 24 24" fill="currentColor"><path id="aIco" d="M7 4.5v15l13-7.5z"/></svg></button>
+          <button type="button" class="r" id="aNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+          <span class="tm"><b id="aEl">0:00</b> / <span id="aDu">0:00</span></span>
+        </div>
+        <ol id="aList" aria-label="Sounding Silence"></ol>
+      </div>
+      <details id="aDet"><summary data-i18n="a.more">Priča pjesme (na engleskom, mojim riječima)</summary><div class="txt" id="aTxt"></div></details>
     </div>
   </div>
 </section>
@@ -599,7 +667,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v9</p>
+    <p class="ver">v10</p>
   </div>
 </footer>
 
@@ -655,7 +723,8 @@ const DICT = {
   "e.lin":"Učitelji","h.lin":"Ritam se prenosi <em>rukom</em>",
   "b.lin1":"Učio sam kod perkusionističkih majstora u Hrvatskoj, Sloveniji i Izraelu, te kod gostujućih zapadnoafričkih virtuoza. Danas studiram okvirni bubanj kod Yshaija Aftermana, jednog od vodećih svjetskih svirača i učitelja frame druma.",
   "b.lin2":"Dvadeset sedam godina radio sam zvuk i sliku za hrvatske televizije, pa znam kako zvuk putuje prostorom i što tehnička ekipa treba iz DJ pulta. Stajao sam s obje strane.",
-  "e.mix":"Demo mix","h.mix":"Poslušaj <em>set</em>","d.dl":"Preuzmi","d.leg":"Val ecstatic dance večeri: boja ispod valnog oblika je energija dijela",
+  "e.mix":"Demo mix","h.mix":"Poslušaj <em>set</em>","d.dl":"Preuzmi","e.alb":"Mantreshvar · album","a.more":"Priča pjesme (na engleskom, mojim riječima)",
+  "b.alb":"Neka glazba se ne stvara. Ona se sjeti. Sounding Silence je zbirka mantri koje sam primio tijekom godina života u Indiji i Aurovilleu i donio kući u Hrvatsku preko mora. Te melodije nisu počele sa mnom: izronile su iz tišine, prošle kroz mene i sad se vraćaju tebi, tražeći samo da ih se čuje u istoj tišini iz koje su došle. Deset prijenosa, drevni zvukovi u svom prvom obliku, sjeme koje još nije drvo.","d.leg":"Val ecstatic dance večeri: boja ispod valnog oblika je energija dijela",
   "ph0":"Dolazak i uzemljenje","pd0":"Tijelo stiže, dah se smiruje, stopala nalaze pod.","ph1":"Buđenje","pd1":"Zglobovi se otvaraju, prvi pokreti, prostor se grije.",
   "ph2":"Rast","pd2":"Dolazi puls, srce ubrzava, krećemo se zajedno.","ph3":"Vrhunac","pd3":"Predaja ritmu, znoj i divljina, cijela soba u jednom pulsu.",
   "ph4":"Otpuštanje","pd4":"Val se lomi, mekoća, puštanje.","ph5":"Tišina","pd5":"Ležanje, tišina, integracija.",
@@ -715,7 +784,8 @@ const DICT = {
   "e.lin":"Teachers","h.lin":"Rhythm passes <em>hand to hand</em>",
   "b.lin1":"I studied with percussion masters in Croatia, Slovenia and Israel, and with visiting West African virtuosos. I currently study frame drum with Yshai Afterman, one of the leading frame drum players and teachers working today.",
   "b.lin2":"For twenty seven years I worked sound and picture for Croatian televisions, so I know how sound travels through a room and what a technical crew needs from the booth. I have stood on both sides of it.",
-  "e.mix":"Demo mix","h.mix":"Hear the <em>set</em>","d.dl":"Download","d.leg":"The wave of an ecstatic dance evening: the color under the waveform is the energy of each part",
+  "e.mix":"Demo mix","h.mix":"Hear the <em>set</em>","d.dl":"Download","e.alb":"Mantreshvar · album","a.more":"The story of the song, in my words",
+  "b.alb":"Some music is not made. It is remembered. Sounding Silence is a collection of mantras I received during years of living in India and Auroville, and carried back home to Croatia across the sea. These melodies did not begin with me. They arose from stillness, passed through me, and now return to you, asking only to be heard in the same quiet they came from. Ten transmissions, ancient sounds in their first form, seeds not yet trees.","d.leg":"The wave of an ecstatic dance evening: the color under the waveform is the energy of each part",
   "ph0":"Arrival and grounding","pd0":"The body lands, the breath slows, the feet find the floor.","ph1":"Awakening","pd1":"Joints open, first movements, the room warms up.",
   "ph2":"Building","pd2":"The pulse arrives, the heart speeds up, we start moving together.","ph3":"Peak","pd3":"Surrender to the rhythm, sweat and wildness, the whole room in one pulse.",
   "ph4":"Release","pd4":"The wave breaks, softness, letting go.","ph5":"Stillness","pd5":"Lying down, silence, integration.",
@@ -762,6 +832,62 @@ function lbClose(){ lb.classList.remove("open"); lbImg.removeAttribute("src"); i
 $$("[data-full]").forEach(el => el.addEventListener("click", () => lbOpen(el.dataset.full, el)));
 lb.addEventListener("click", lbClose);
 document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classList.contains("open")) lbClose(); });
+
+/* ---------- Sounding Silence: one audio element, the eleven songs from assets/ss/album.json ---------- */
+(() => {
+  const root = document.getElementById("alb"); if(!root) return;
+  const $ = id => document.getElementById(id);
+  const audio = new Audio(); audio.preload = "none"; root.audio = audio;
+  const wf = $("aWf"), wc = wf.querySelector("canvas"), list = $("aList");
+  let A = [], cur = 0, drag = null;
+  const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s/60) + ":" + String(s%60).padStart(2,"0"); };
+  const cols = ["#ff4d3d","#ffb23e","#7fe3ff"];
+  function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); const w = Math.round(r.width*d), h = Math.round(r.height*d); if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
+  function draw(){
+    const [w, h, d] = fit(wc), g = wc.getContext("2d"); g.clearRect(0, 0, w, h); const tr = A[cur]; if(!tr) return;
+    const n = tr.w[0].length, t = drag != null ? drag : audio.currentTime, p = tr.dur ? t/tr.dur : 0, mid = h/2, bw = w/n;
+    for(let i = 0; i < n; i++){
+      const x = i*bw; g.globalAlpha = i/n <= p ? 1 : .38;
+      [1, .78, .5].forEach((k, b) => { const a = tr.w[b][i]/99*mid*.94*k; g.fillStyle = cols[b]; g.fillRect(x, mid - a, Math.max(1, bw - d*.6), a*2); });
+    }
+    g.globalAlpha = 1; g.fillStyle = "#fff"; g.fillRect(Math.round(p*w) - d, 0, 2*d, h);
+    $("aEl").textContent = fmt(t); wf.setAttribute("aria-valuenow", Math.round(p*100));
+  }
+  function text(){
+    const tr = A[cur]; if(!tr) return;
+    $("aHr").textContent = document.documentElement.lang === "en" ? tr.en.split(/(?<=[.!?])\s/)[0] : tr.hr;
+    $("aTxt").innerHTML = ""; tr.en.split(/\n\s*\n|\n/).filter(s => s.trim()).forEach(s => { const p = document.createElement("p"); p.textContent = s.trim(); $("aTxt").appendChild(p); });
+  }
+  function pick(i, play){
+    if(!A[i]) return; cur = i; const tr = A[i];
+    audio.src = tr.src; $("aT").textContent = tr.t; $("aNo").textContent = String(i+1).padStart(2,"0") + " / " + A.length; $("aDu").textContent = fmt(tr.dur);
+    $("aArt").src = tr.art; root.classList.toggle("bonus", !!tr.bonus);
+    [...list.children].forEach((li, j) => li.classList.toggle("cur", j === i));
+    text(); draw(); if(play) go();
+  }
+  function go(){ const p = audio.play(); if(p) p.catch(() => {}); }
+  function loop(){ draw(); if(!audio.paused || drag != null) requestAnimationFrame(loop); }
+  fetch("assets/ss/album.json").then(r => r.json()).then(a => {
+    A = a;
+    A.forEach((tr, i) => { const li = document.createElement("li"); li.innerHTML = '<span class="n">' + String(i+1).padStart(2,"0") + '</span><span class="nm"></span><span class="d">' + fmt(tr.dur) + '</span>'; li.querySelector(".nm").textContent = tr.t; if(tr.bonus){ const e = document.createElement("em"); e.textContent = "bonus"; li.querySelector(".nm").appendChild(e); } li.addEventListener("click", () => pick(i, true)); list.appendChild(li); });
+    pick(0, false);
+  });
+  $("aPlay").addEventListener("click", () => audio.paused ? go() : audio.pause());
+  $("aPrev").addEventListener("click", () => audio.currentTime > 3 ? (audio.currentTime = 0) : pick((cur - 1 + A.length) % A.length, !audio.paused));
+  $("aNext").addEventListener("click", () => pick((cur + 1) % A.length, !audio.paused));
+  audio.addEventListener("ended", () => { if(cur + 1 < A.length) pick(cur + 1, true); });
+  audio.addEventListener("play", () => { root.classList.add("on"); $("aIco").setAttribute("d", "M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z"); document.dispatchEvent(new CustomEvent("mantra-play", {detail:"album"})); requestAnimationFrame(loop); });
+  audio.addEventListener("pause", () => { root.classList.remove("on"); $("aIco").setAttribute("d", "M7 4.5v15l13-7.5z"); draw(); });
+  document.addEventListener("mantra-play", e => { if(e.detail !== "album" && !audio.paused) audio.pause(); });
+  const at = e => { const r = wf.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left)/r.width))*(A[cur] ? A[cur].dur : 0); };
+  wf.addEventListener("pointerdown", e => { wf.setPointerCapture(e.pointerId); drag = at(e); requestAnimationFrame(loop); });
+  wf.addEventListener("pointermove", e => { if(drag != null) drag = at(e); });
+  const end = () => { if(drag == null) return; const t = drag; drag = null; audio.currentTime = t; draw(); };
+  wf.addEventListener("pointerup", end); wf.addEventListener("pointercancel", end);
+  wf.addEventListener("keydown", e => { const k = {ArrowLeft:-5, ArrowRight:5}[e.key]; if(k){ e.preventDefault(); audio.currentTime = Math.max(0, audio.currentTime + k); draw(); } });
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", text));
+  new ResizeObserver(draw).observe(wf);
+})();
 
 /* ---------- the deck: demo mix in HLS; waveform precomputed (low, mid, high, peak at 25 per second); each track a colored section ---------- */
 (() => {
@@ -901,6 +1027,8 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     try{ navigator.mediaSession.setActionHandler("seekto", d => seek(d.seekTime)); }catch(e){}
   }
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { const c = cur; cur = -1; if(TR.length) setCur(c < 0 ? 0 : c); }));
+  document.addEventListener("mantra-play", e => { if(e.detail !== "mix" && !audio.paused) audio.pause(); });
+  audio.addEventListener("play", () => document.dispatchEvent(new CustomEvent("mantra-play", {detail:"mix"})));
   new ResizeObserver(() => { ovImg = null; paint(true); }).observe(deck);
   paint(true);
 })();

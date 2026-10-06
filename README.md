@@ -22,9 +22,16 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 * Phase = the six part ecstatic dance wave of his own library folders (01 Arrival/Ground, 02 Awakening, 03 Building, 04 Peak, 05 Release, 06 Stillness); each section is underlined in its phase color, with a color guide.
 * The original 320 kbps file is a GitHub Release asset (`mix-2026-10-04`), linked as the download.
 
+## Sounding Silence, the album player (v10, 6.10.2026)
+
+* Under the "who" section, which names the album: Mantreshvar, Sounding Silence, ten mantras and the bonus Window of Wisdom.
+* Audio from his masters in ~/Music/DJMantra/Sounding Silence (the same songs as the Drive folder 1fljam_WMaYfIvjAvmh8jyp9TQhO8L90X), AAC 192 kbps in `assets/ss/`.
+* `assets/ss/album.json`: title, duration, a one line Croatian summary, his full English text from the YouTube playlist PLCxh3j1gI2nqVCXRWbWYWKMN7l_kVwa9d (yt-dlp --write-info-json), the art (album cover, the bonus has its own), a three band waveform of 480 bins.
+* The album and the mix never play together (a `mantra-play` event pauses the other).
+
 ## Deploy
 
-Cloudflare Pages, project `djmantra`. The `main` branch is the source of truth.
+Cloudflare Pages, project `djmantra`, by direct upload (not connected to git): `npx wrangler pages deploy . --project-name djmantra --branch main` with CLOUDFLARE_ACCOUNT_ID and the token from ~/Downloads/API/Cloudflare.api.txt (the last line of 30+ token characters, as SHOP_FINDER/deploy.sh reads it). A push alone does not publish.
 
 ## Contact
 

@@ -96,4 +96,4 @@ Every request is saved here word for word before any code, so a quota cut loses 
 16. Waveform colors copied from djay Pro itself. **Status:** open.
 17. The original mix on GitHub. **Status:** done, Release mix-2026-10-04 (273 MB, 320 kbps), linked as the download; the 683 HLS segments are in the repo too.
 18. Cloudflare free space. **Status:** answered (Pages: 20,000 files, 25 MiB each; R2: 10 GB free).
-19. A player for the Sounding Silence album: audio from the Drive folder, descriptions and album art from the YouTube playlist via yt-dlp, in the section that mentions it. **Status:** open.
+19. A player for the Sounding Silence album: audio from the Drive folder, descriptions and album art from the YouTube playlist via yt-dlp, in the section that mentions it. **Status:** done, v10 (tested on the Pixel 7 emulator: plays, bonus art, HR line).
