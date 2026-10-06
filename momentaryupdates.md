@@ -116,3 +116,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > I meant to say stone arch. Go on the picture for a window of wisdom.
 
 23. Window of Wisdom gets the stone arch with the figure under the stars. **Status:** done, v13.
+
+## 6.10.2026, 14:20
+
+> I need correction in my player for my album Sounding Silence. Please, under the title of each song, when user clicks in the playlist, there is summary. No summary, remove. And the text itself should be by default open. There should be no user interaction. And the text for each song, it's opening under the song in the playlist, not outside. So When the next song starts to play, previous text is closing, next song is opening, and below the song we have the text. Thank you.
+
+24. No summary line under the title; no "story" toggle; the song's full text opens by itself inside the playlist, under the playing song, and closes when the next one starts. **Status:** in progress.
