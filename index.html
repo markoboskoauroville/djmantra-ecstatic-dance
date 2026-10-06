@@ -667,7 +667,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v10</p>
+    <p class="ver">v11</p>
   </div>
 </footer>
 
@@ -861,7 +861,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   function pick(i, play){
     if(!A[i]) return; cur = i; const tr = A[i];
     audio.src = tr.src; $("aT").textContent = tr.t; $("aNo").textContent = String(i+1).padStart(2,"0") + " / " + A.length; $("aDu").textContent = fmt(tr.dur);
-    $("aArt").src = tr.art; root.classList.toggle("bonus", !!tr.bonus);
+    $("aArt").src = tr.art; $("aArt").style.objectPosition = tr.pos || "50% 50%"; root.classList.toggle("bonus", !!tr.bonus);
     [...list.children].forEach((li, j) => li.classList.toggle("cur", j === i));
     text(); draw(); if(play) go();
   }
@@ -871,6 +871,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     A = a;
     A.forEach((tr, i) => { const li = document.createElement("li"); li.innerHTML = '<span class="n">' + String(i+1).padStart(2,"0") + '</span><span class="nm"></span><span class="d">' + fmt(tr.dur) + '</span>'; li.querySelector(".nm").textContent = tr.t; if(tr.bonus){ const e = document.createElement("em"); e.textContent = "bonus"; li.querySelector(".nm").appendChild(e); } li.addEventListener("click", () => pick(i, true)); list.appendChild(li); });
     pick(0, false);
+    $("aArt").src = "assets/ss/cover.jpg"; $("aArt").style.objectPosition = "50% 50%";   // the album cover until a song is played
   });
   $("aPlay").addEventListener("click", () => audio.paused ? go() : audio.pause());
   $("aPrev").addEventListener("click", () => audio.currentTime > 3 ? (audio.currentTime = 0) : pick((cur - 1 + A.length) % A.length, !audio.paused));

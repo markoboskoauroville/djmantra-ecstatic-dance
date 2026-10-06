@@ -102,4 +102,4 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 > This is some of my AI artwork. Please, you analyze images and give to song artwork to each individual song based on your assumption and your ideas where it fits the best.
 
-20. Each Sounding Silence song gets its own artwork from his 19 AI images (one of 20 attachments did not arrive), chosen by the song's text. **Status:** in progress.
+20. Each Sounding Silence song gets its own artwork from his 19 AI images (one of 20 attachments did not arrive), chosen by the song's text. **Status:** done, v11: Adi Shakti red earth terraces with walkers, Banam Kevala four on the spiral hill, Dinda djembe hands, So Ham face into stardust, Healing Scale golden lotus, Ho'oponopono candle circle, Kali Durga bonfire, Om Tare Himalayan hut, Rama lone figure in the storm, Shiva dancer in a ring of fire; Window of Wisdom keeps its own; the album cover until a song plays. assets/ss/art, a crop position per song.
