@@ -69,4 +69,4 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 > please take my DJ mix I sent to Nicolina. There is a message for her for starting dance. There is my page djmantra pages dev. I want you to take my mix and publish it on this website with a player which has aesthetics of DJPro algorithm software I'm using for mixing. This is the demo of my mix, and please publish it on the website
 
-11. The demo mix sent to Nicolina is on the page, in a player that looks like djay Pro (Algoriddim), the software he mixes in. **Status:** in progress.
+11. The demo mix sent to Nicolina (Indra) is on the page, in a player that looks like djay Pro (Algoriddim). **Status:** done, v9: right under the hero, waveform only (no platter, his 09:30 word), 26 tracks in colored sections by ecstatic phase with a color guide, the whole playlist, the original as a GitHub Release download. Tested in the Pixel 7 emulator (plays). Colors copied from djay itself: open.
