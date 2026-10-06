@@ -70,3 +70,30 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > please take my DJ mix I sent to Nicolina. There is a message for her for starting dance. There is my page djmantra pages dev. I want you to take my mix and publish it on this website with a player which has aesthetics of DJPro algorithm software I'm using for mixing. This is the demo of my mix, and please publish it on the website
 
 11. The demo mix sent to Nicolina (Indra) is on the page, in a player that looks like djay Pro (Algoriddim). **Status:** done, v9: right under the hero, waveform only (no platter, his 09:30 word), 26 tracks in colored sections by ecstatic phase with a color guide, the whole playlist, the original as a GitHub Release download. Tested in the Pixel 7 emulator (plays). Colors copied from djay itself: open.
+
+## 6.10.2026, 09:30–11:20 (said while the player was being built)
+
+> player should appear just below this image and the text dj mantra for current mix
+
+> Please don't include any spinning platters in my player. It should be only waveform style from DJ Pro-Bi algorithm.and they clearly mark in color each section of the song
+
+> please note, in my mix, the last 3 or 4 songs I mixed manually later in the Android program so that the same songs only mix was wrong. I redo the mix if that makes any difference. Anyway, you know the history of the songs, so you can make the whole playlist visible on the website. Thank you
+
+> Also research ecstatic dance form, and based on the selection of the song, just write or underline different sections of the waveform with different colors. And down there, do the color map, or how you call it, I don't know, color guide, and just name each color in the same algorithm or the mindset or the language of ecstatic dance people, to which energy each section actually belonged to.
+
+> For exact coloring match, you open my DJ Pro, load the mix in and see the colors, and then just copy the colors. So that's the best reference point that there can be. If you can do that, you can use a hammer spoon to be your mouse, invisible hand.
+
+> can you host the original mix in one big file in my github, or even break it into parts but use github as a storage space
+
+> Please inform me how big is the space on Cloudflare for my page. How much as a free user I can actually store?
+
+> https://drive.google.com/drive/folders/1fljam_WMaYfIvjAvmh8jyp9TQhO8L90X You used this link to build my Sounding Silence album in my DJ Mantra and under section that it's mentioned. And also from this link you need to get descriptions for each song and album art. https://youtube.com/playlist?list=PLCxh3j1gI2nqVCXRWbWYWKMN7l_kVwa9d&si=5RSqKfarBwWrsGXy Use local tools in terminal to get the album art and also descriptions. It's called yt-dlp or some other tools similar to this. You know all of them, so go ahead and make a player also for my album.
+
+12. Player right under the hero. **Status:** done, v9.
+13. No platter, waveform only, sections in color. **Status:** done, v9.
+14. The whole playlist; the last songs redone on Android. **Status:** done, v9 (all 26; the redone five placed by matching their files against the mix).
+15. Ecstatic dance phases as section colors with a color guide. **Status:** done, v9 (his own six library folders: Arrival/Ground, Awakening, Building, Peak, Release, Stillness).
+16. Waveform colors copied from djay Pro itself. **Status:** open.
+17. The original mix on GitHub. **Status:** done, Release mix-2026-10-04 (273 MB, 320 kbps), linked as the download; the 683 HLS segments are in the repo too.
+18. Cloudflare free space. **Status:** answered (Pages: 20,000 files, 25 MiB each; R2: 10 GB free).
+19. A player for the Sounding Silence album: audio from the Drive folder, descriptions and album art from the YouTube playlist via yt-dlp, in the section that mentions it. **Status:** open.
