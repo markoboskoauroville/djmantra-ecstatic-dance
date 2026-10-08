@@ -230,3 +230,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Also regarding different views of the app, there must be a view which totally uses real estate of the phone. In that view, let's call it full screen waveform view. I don't see anything on the screen, just up and down current song and incoming song waveforms. Or we can call it upper is the deck 1, lower is the deck 2. So I only need waveforms when I work with my controller. No other nonsense on the screen. And then on that waveform on the upper left is a song name on both of waveforms of course. So this is one immersive view for mixing and like that. We need to have immersive view for any part of user interface. Any. We have waveform immersive, and we're going to have library immersive. I think that's enough.
 
 38. App: full-screen waveform view and full-screen library view, part of the touch interface step. **Status:** planned, v21.
+
+> Please check the testing results and update the app so it runs without errors.
+
+39. App: phone test run #31 read and fixed: resources (skins, mappings) inside the APK, the name DJ Mantra (launcher, titles, version 0.5.0), no dialog that stops the start, no OpenGL widgets on Android (the crash). Every build now starts on an emulator in CI first; run #38 is green. **Status:** done, waiting for the phone test, v22.
+
+> Also, you need to create a suitable icon. The icon will be two waveforms, one atop the other, in these DJ colors in different sections, different colors. Kind of immersive view we are already creating for WaveformView.
+
+40. App: launcher icon, two waveforms (deck 1 above deck 2) colored by song section, with a white playhead. **Status:** done, in the APK of run #38, v22.

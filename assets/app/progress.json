@@ -20,6 +20,11 @@
     },
     {
       "status": "done",
+      "hr": "Aplikacija se pokreće na Androidu: zove se DJ Mantra i ima svoju ikonu (dvije valne linije u bojama dijelova pjesme), skinovi i mapiranja su u APK-u, nema dijaloga koji zaustavlja pokretanje, a svaka nova verzija se prvo sama pokrene na emulatoru (test pokretanja). Čeka test na telefonu.",
+      "en": "The app starts on Android: it is called DJ Mantra and has its own icon (two waveforms in song-section colors), skins and mappings are inside the APK, no dialog stops the start, and every new build first starts itself on an emulator (launch test). Waiting for the phone test."
+    },
+    {
+      "status": "done",
       "hr": "Video datoteke kao pjesme: MP4, MKV, WebM i drugi sviraju svoj zvuk, a prvi kadar videa postaje omot.",
       "en": "Video files as tracks: MP4, MKV, WebM and others play their audio, and the first frame of the video becomes the cover."
     },
