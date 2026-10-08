@@ -35,8 +35,8 @@
     },
     {
       "status": "done",
-      "hr": "Vanjski diskovi (USB stick, USB disk, SD kartica): pjesma se prije sviranja kopira u memoriju mobitela, pa izvlačenje diska ne prekida glazbu; pjesme s izvađenog diska ostaju u biblioteci, a kad se disk vrati, sve se samo nastavi.",
-      "en": "External drives (USB stick, USB disk, SD card): a song is copied to the phone's memory before it plays, so pulling the drive out does not stop the music; songs on an unplugged drive stay in the library, and when the drive comes back everything simply continues."
+      "hr": "Vanjski diskovi (USB stick, USB disk, SD kartica): Android-ov odabir mape na disku, pjesma se prije sviranja kopira u memoriju mobitela, pa izvlačenje diska ne prekida glazbu; pjesme s izvađenog diska ostaju u biblioteci.",
+      "en": "External drives (USB stick, USB disk, SD card): Android's folder picker on the drive, a song is copied to the phone's memory before it plays, so pulling the drive out does not stop the music; songs on an unplugged drive stay in the library."
     },
     {
       "status": "done",
@@ -55,8 +55,13 @@
     },
     {
       "status": "doing",
-      "hr": "Hercules DJControl Mix Ultra preko Bluetooth MIDI-ja: sve tipke, LED lampice i načini padova, i MIDI learn: bilo koja tipka na bilo koju funkciju.",
-      "en": "Hercules DJControl Mix Ultra over Bluetooth MIDI: every button, LED and pad mode, and MIDI learn: any button on any function."
+      "hr": "Hercules DJControl Mix Ultra: cijeli kontroler snimljen i mapiran (svaka tipka, SHIFT, padovi u 8 načina, LED-ice), spajanje preko USB-C i Bluetootha bez uparivanja; čeka test na mobitelu.",
+      "en": "Hercules DJControl Mix Ultra: the whole controller captured and mapped (every button, SHIFT, pads in 8 modes, LEDs), connecting over USB-C and Bluetooth without pairing; waiting for the phone test."
+    },
+    {
+      "status": "doing",
+      "hr": "Svjetla takta kao u djayu: padovi na kontroleru pokazuju takt 1–8 fraze u svakom načinu rada, za poravnanje dviju pjesama \"1 na 1\"; pad skače na taj takt.",
+      "en": "Beat lights like djay's: the controller's pads show beat 1–8 of the phrase in every mode, to align two songs \"1 with 1\"; a pad jumps to that beat."
     },
     {
       "status": "todo",
@@ -70,8 +75,13 @@
     },
     {
       "status": "todo",
-      "hr": "Sučelje za dodir: dva decka, valni oblici, mikser i padovi na ekranu mobitela.",
-      "en": "Touch interface: two decks, waveforms, mixer and pads on a phone screen."
+      "hr": "Pametni žanrovi i noćna analiza cijele biblioteke: BPM, beat grid, tonalitet, valni oblik i žanr za sve pjesme odjednom.",
+      "en": "Smart genres and overnight analysis of the whole library: BPM, beat grid, key, waveform and genre for every song at once."
+    },
+    {
+      "status": "todo",
+      "hr": "Sučelje za dodir: dva decka, valni oblici, mikser i padovi; preko cijelog ekrana prikaz samo valnih oblika (deck 1 gore, deck 2 dolje) i prikaz samo biblioteke.",
+      "en": "Touch interface: two decks, waveforms, mixer and pads; a full-screen waveform view (deck 1 on top, deck 2 below) and a full-screen library view."
     },
     {
       "status": "todo",
