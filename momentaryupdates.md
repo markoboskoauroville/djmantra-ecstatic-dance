@@ -138,3 +138,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 27. The app section was missing from djmantra.pages.dev. **Status:** done, v16: v15 had been pushed only to the branch claude/admiring-feynman-hym3vp and never deployed; merged to main and deployed.
 28. The hero photo at normal brightness. **Status:** done, v16: the brightness(.62) filter removed and the dark overlay kept only thin at the top (language buttons) and at the bottom, where the title and tagline sit.
+
+## 8.10.2026, 07:20
+
+> How can we make pushing on the Cloudflare my page automatically after update? Can you make the workflow inside this repo so this is happening by automatic processes?
+
+29. A push to main publishes the page by itself. **Status:** workflow written (`.github/workflows/deploy.yml`, wrangler-action); waits for the two Cloudflare secrets in the repository.

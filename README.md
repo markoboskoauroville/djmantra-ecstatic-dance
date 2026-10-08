@@ -36,7 +36,10 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 
 ## Deploy
 
-Cloudflare Pages, project `djmantra`, by direct upload (not connected to git): `npx wrangler pages deploy . --project-name djmantra --branch main` with CLOUDFLARE_ACCOUNT_ID and the token from ~/Downloads/API/Cloudflare.api.txt (the last line of 30+ token characters, as SHOP_FINDER/deploy.sh reads it). A push alone does not publish.
+Cloudflare Pages, project `djmantra`, https://djmantra.pages.dev.
+
+* **Automatic (since v16, 8.10.2026):** every push to `main` runs `.github/workflows/deploy.yml`, which publishes the page with wrangler. It needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. A push to any other branch publishes nothing, so work on a branch is merged into `main` to go live. The Actions tab shows each deploy; it can also be started by hand there (Run workflow).
+* **By hand:** `npx wrangler pages deploy . --project-name djmantra --branch main` with CLOUDFLARE_ACCOUNT_ID and the token from ~/Downloads/API/Cloudflare.api.txt (the last line of 30+ token characters, as SHOP_FINDER/deploy.sh reads it).
 
 ## Contact
 

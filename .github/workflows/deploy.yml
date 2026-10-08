@@ -1,0 +1,30 @@
+# Every push to main publishes the page to Cloudflare Pages (project djmantra,
+# https://djmantra.pages.dev). Needs two repository secrets:
+#   CLOUDFLARE_API_TOKEN   a token with "Cloudflare Pages: Edit"
+#   CLOUDFLARE_ACCOUNT_ID  the account that owns the djmantra project
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name djmantra --branch main --commit-hash ${{ github.sha }}
