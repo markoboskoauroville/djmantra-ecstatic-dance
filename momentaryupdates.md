@@ -122,3 +122,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > I need correction in my player for my album Sounding Silence. Please, under the title of each song, when user clicks in the playlist, there is summary. No summary, remove. And the text itself should be by default open. There should be no user interaction. And the text for each song, it's opening under the song in the playlist, not outside. So When the next song starts to play, previous text is closing, next song is opening, and below the song we have the text. Thank you.
 
 24. No summary line under the title; no "story" toggle; the song's full text opens by itself inside the playlist, under the playing song, and closes when the next one starts. **Status:** done, v14 (seen on the emulator: Adi Shakti open, then Dinda open and Adi Shakti closed).
+
+## 8.10.2026, 04:50
+
+> Please on my djmantra pages always update the progress of this application and give a link to it so we can promote my coding skills on my djmantra so other Djs can get their app for phones. djmantra.pages.dev
+
+("this application" is DJ Mantra for Android, repository markoboskoauroville/djmantra_app: the Mixxx engine ported to phones, Hercules DJControl Mix Ultra, MIDI learn, Bluetooth + USB outputs, video files, TIDAL playlists, missing songs export, song sections.)
+
+25. A section on the page about the DJ Mantra phone app: what it does, its progress, a link to it, so other DJs can get it. **Status:** done, v15: "DJ Mantra za Android / for Android" before Contact, a progress bar and the 12 steps (gotovo / u tijeku / slijedi), links to the source code and the automatic builds. Checked in Chromium at 412 px and 1280 px, HR and EN, no console errors, no sideways scroll. Needs a deploy to go live.
+26. Keep that progress current after every step of the app. **Status:** standing rule: progress lives in `assets/app/progress.json`, updated with each app milestone (noted in djmantra_app's CLAUDE.md too).

@@ -29,6 +29,11 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 * `assets/ss/album.json`: title, duration, a one line Croatian summary, his full English text from the YouTube playlist PLCxh3j1gI2nqVCXRWbWYWKMN7l_kVwa9d (yt-dlp --write-info-json), the art (album cover, the bonus has its own), a three band waveform of 480 bins.
 * The album and the mix never play together (a `mantra-play` event pauses the other).
 
+## The phone app section (v15, 8.10.2026)
+
+* "DJ Mantra za Android", before Contact: his DJ app for Android phones (repository markoboskoauroville/djmantra_app, the Mixxx engine ported to phones), a progress bar and the list of steps, links to the source code and the automatic Android builds.
+* The steps live in `assets/app/progress.json` (`status`: done / doing / todo, `hr` and `en` text, `updated` date, `repo` and `builds` links). Update that file with every app milestone; the page renders it in the chosen language. When an APK is published, add a step or change the links to the GitHub Release.
+
 ## Deploy
 
 Cloudflare Pages, project `djmantra`, by direct upload (not connected to git): `npx wrangler pages deploy . --project-name djmantra --branch main` with CLOUDFLARE_ACCOUNT_ID and the token from ~/Downloads/API/Cloudflare.api.txt (the last line of 30+ token characters, as SHOP_FINDER/deploy.sh reads it). A push alone does not publish.

@@ -303,6 +303,18 @@ h2.sec em{font-style:italic; color:var(--amber)}
 }
 .btn:hover{background:var(--amber); border-color:var(--amber); color:#1a1206}
 .btn.ghost{border-color:var(--line2); color:var(--ink2)}
+/* DJ Mantra app: progress list from assets/app/progress.json */
+.app-bar{height:6px; border-radius:3px; background:var(--line2); overflow:hidden; margin:22px 0 6px; max-width:34em}
+.app-bar b{display:block; height:100%; width:0; background:var(--teal); transition:width .8s ease}
+.app-sum{color:var(--ink2); font-size:14px; margin:0 0 6px}
+.app-list{list-style:none; margin:18px 0 0; padding:0; border-top:1px solid var(--line2); max-width:46em}
+.app-list li{display:grid; grid-template-columns:92px 1fr; gap:18px; padding:14px 0; border-bottom:1px solid var(--line2); color:var(--ink2); font-size:15.5px}
+.app-list .st{font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding-top:3px}
+.app-list .done .st{color:var(--teal)}
+.app-list .doing .st{color:var(--amber)}
+.app-list .todo .st{color:var(--ink3, var(--ink2)); opacity:.7}
+.app-list .done span:last-child{color:var(--ink)}
+@media (max-width:560px){ .app-list li{grid-template-columns:1fr; gap:4px} }
 .btn.ghost:hover{background:transparent; border-color:var(--amber); color:var(--amber)}
 
 footer{padding:50px 0 70px; border-top:1px solid var(--line2); text-align:center}
@@ -646,6 +658,24 @@ footer a:hover{color:var(--amber)}
   </div>
 </section>
 
+<section id="app">
+  <div class="wrap">
+    <div class="rv" style="max-width:40em">
+      <div class="eyebrow" data-i18n="e.app">DJ Mantra za Android</div>
+      <h2 class="sec" data-i18n="h.app">Moj DJ pult <em>u mobitelu</em></h2>
+      <p class="body" data-i18n="b.app1">Sam programiram vlastitu DJ aplikaciju za Android mobitele, na otvorenom motoru Mixxx. Zamišljena je za mobilnog DJ-a: kontroler Hercules DJControl Mix Ultra preko Bluetootha, glavni izlaz na Bluetooth zvučnik i slušalice na USB, svaka tipka na bilo koju funkciju.</p>
+      <p class="body" data-i18n="b.app2">Kod je otvoren i besplatan (GPL). Kad bude spremna, svaki DJ će je moći preuzeti za svoj mobitel. Ovdje pratim napredak, korak po korak.</p>
+      <div class="app-bar" aria-hidden="true"><b id="appBar"></b></div>
+      <p class="app-sum" id="appSum"></p>
+      <ul class="app-list" id="appList"></ul>
+      <div class="links" style="margin-top:22px">
+        <a class="btn" id="appRepo" href="https://github.com/markoboskoauroville/djmantra_app" target="_blank" rel="noopener"><span data-i18n="app.src">Izvorni kod na GitHubu</span></a>
+        <a class="btn ghost" id="appBuilds" href="https://github.com/markoboskoauroville/djmantra_app/actions" target="_blank" rel="noopener"><span data-i18n="app.builds">Automatski buildovi</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="rv" style="max-width:34em">
@@ -666,7 +696,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v14</p>
+    <p class="ver">v15</p>
   </div>
 </footer>
 
@@ -734,6 +764,10 @@ const DICT = {
   "ft":"DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community"
  },
  en:{
+  "e.app":"DJ Mantra for Android","h.app":"My DJ deck <em>in a phone</em>",
+  "b.app1":"I am coding my own DJ app for Android phones, on the open source Mixxx engine. It is made for the mobile DJ: the Hercules DJControl Mix Ultra controller over Bluetooth, the main output on a Bluetooth speaker and headphones on USB, any button on any function.",
+  "b.app2":"The code is open and free (GPL). When it is ready, any DJ will be able to download it for their phone. I follow the progress here, step by step.",
+  "app.src":"Source code on GitHub","app.builds":"Automatic builds",
   "who":"Marko Boško · Zagreb · Auroville",
   "tag":"From the Ganges to the Amazon. A set is a journey, not a playlist.",
   "e.who":"Who holds the room","h.who":"Rhythm before <em>words</em>",
@@ -808,6 +842,34 @@ function loadLang(){
   const m = document.cookie.match(/(?:^|;\s*)mantra_lang=(hr|en)/);
   return m ? m[1] : null;
 }
+/* ---------- DJ Mantra app progress, from assets/app/progress.json ---------- */
+let APP = null;
+const APP_ST = {hr:{done:"gotovo",doing:"u tijeku",todo:"slijedi"}, en:{done:"done",doing:"in progress",todo:"next"}};
+function renderApp(){
+  const list = document.getElementById("appList");
+  if(!APP || !list) return;
+  const l = (typeof LANG !== "undefined" && LANG) || "hr";
+  list.innerHTML = "";
+  APP.steps.forEach(st => {
+    const li = document.createElement("li"); li.className = st.status;
+    const a = document.createElement("span"); a.className = "st"; a.textContent = APP_ST[l][st.status] || st.status;
+    const b = document.createElement("span"); b.textContent = st[l] || st.en;
+    li.append(a, b); list.append(li);
+  });
+  const done = APP.steps.filter(s => s.status === "done").length;
+  const doing = APP.steps.filter(s => s.status === "doing").length;
+  const pct = Math.round(100 * (done + doing * 0.5) / APP.steps.length);
+  document.getElementById("appBar").style.width = pct + "%";
+  const d = new Date(APP.updated + "T12:00:00");
+  const date = d.toLocaleDateString(l === "hr" ? "hr-HR" : "en-GB", {day:"numeric", month:"long", year:"numeric"});
+  document.getElementById("appSum").textContent = l === "hr"
+    ? `Gotovo ${done} od ${APP.steps.length} koraka · ${pct} % · ažurirano ${date}`
+    : `${done} of ${APP.steps.length} steps done · ${pct} % · updated ${date}`;
+  if(APP.repo) document.getElementById("appRepo").href = APP.repo;
+  if(APP.builds) document.getElementById("appBuilds").href = APP.builds;
+}
+fetch("assets/app/progress.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : null).then(j => { if(j){ APP = j; renderApp(); } }).catch(() => {});
+
 function applyLang(l, save){
   LANG = l;
   const d = DICT[l];
@@ -815,6 +877,7 @@ function applyLang(l, save){
   $$("[data-i18n]").forEach(el => { const k = el.getAttribute("data-i18n"); if(d[k] !== undefined) el.innerHTML = d[k]; });
   $$("[data-i18n-html]").forEach(el => { const k = el.getAttribute("data-i18n-html"); if(d[k] !== undefined) el.innerHTML = d[k]; });
   $$(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === l ? "true" : "false"));
+  renderApp();
   if(save !== false) saveLang(l);
 }
 $$(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
