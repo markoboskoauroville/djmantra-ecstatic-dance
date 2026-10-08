@@ -144,3 +144,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > How can we make pushing on the Cloudflare my page automatically after update? Can you make the workflow inside this repo so this is happening by automatic processes?
 
 29. A push to main publishes the page by itself. **Status:** workflow written (`.github/workflows/deploy.yml`, wrangler-action); waits for the two Cloudflare secrets in the repository.
+
+## 8.10.2026, 07:55 (app progress, standing rule 26)
+
+30. App progress: the first Android APK of DJ Mantra builds (x86_64 for the emulator, 90 MB; the phone build follows). progress.json step 3 is done. **Status:** done, v17.
