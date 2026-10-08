@@ -131,3 +131,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 25. A section on the page about the DJ Mantra phone app: what it does, its progress, a link to it, so other DJs can get it. **Status:** done, v15: "DJ Mantra za Android / for Android" before Contact, a progress bar and the 12 steps (gotovo / u tijeku / slijedi), links to the source code and the automatic builds. Checked in Chromium at 412 px and 1280 px, HR and EN, no console errors, no sideways scroll. Needs a deploy to go live.
 26. Keep that progress current after every step of the app. **Status:** standing rule: progress lives in `assets/app/progress.json`, updated with each app milestone (noted in djmantra_app's CLAUDE.md too).
+
+## 8.10.2026, 07:10
+
+> I don't see a section on my page with software development and publishing progress of my DJ app that's missing. Also, the hero image at the top is grayed out. I want it to be in normal brightness.
+
+27. The app section was missing from djmantra.pages.dev. **Status:** done, v16: v15 had been pushed only to the branch claude/admiring-feynman-hym3vp and never deployed; merged to main and deployed.
+28. The hero photo at normal brightness. **Status:** done, v16: the brightness(.62) filter removed and the dark overlay kept only thin at the top (language buttons) and at the bottom, where the title and tagline sit.
