@@ -34,6 +34,11 @@
       "en": "Library: ★ 1–5 rating (each click raises it), an \"Export\" column with tick marks and export of the marked songs as a list with links; sort by any column, otherwise the playlist's manual order."
     },
     {
+      "status": "done",
+      "hr": "Vanjski diskovi (USB stick, USB disk, SD kartica): pjesma se prije sviranja kopira u memoriju mobitela, pa izvlačenje diska ne prekida glazbu; pjesme s izvađenog diska ostaju u biblioteci, a kad se disk vrati, sve se samo nastavi.",
+      "en": "External drives (USB stick, USB disk, SD card): a song is copied to the phone's memory before it plays, so pulling the drive out does not stop the music; songs on an unplugged drive stay in the library, and when the drive comes back everything simply continues."
+    },
+    {
       "status": "doing",
       "hr": "TIDAL: prijava, moje playliste u aplikaciji, pjesme povezane s mojim datotekama. Razvojna aplikacija registrirana.",
       "en": "TIDAL: log in, my playlists in the app, songs matched to my own files. Developer app registered."

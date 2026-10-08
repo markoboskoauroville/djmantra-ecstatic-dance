@@ -158,3 +158,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Please make sure you understand the whole mapping of my DJ controller DJMix Ultra, and you can activate each LED and each button and all its modes. So everything that is there should also be in the software. You need to model the software based on this controller so they are completely compatible with everything. So you deeply research this controller, Hercules DJ Mix Ultra, and make it integrate with this software flawlessly.
 
 32. App: full Hercules DJControl Mix Ultra integration (every button, LED and pad mode). progress.json step set to doing. **Status:** in progress, v18.
+
+## 8.10.2026, 11:53 (app progress, standing rule 26)
+
+> There will be a lot of usage of external drives on Android phone. The songs are on external drive, disk, USB stick. Please make this part robust for recognizing attached drives and buffer songs before you play them. So in case of momentary failure and replugging again, you just continue like nothing happened.
+
+33. App: songs on external drives are copied to internal storage before they play (pulling the drive out does not stop playback), a drive that drops out during loading is waited for, the library keeps the songs of an unplugged drive, and a returning drive is rescanned by itself. New done step in progress.json. **Status:** done, v19 (to be confirmed on the phone).
