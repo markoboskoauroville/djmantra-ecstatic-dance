@@ -29,6 +29,11 @@
       "en": "Missing songs export: a text file with a link to every song (TIDAL, Bandcamp, Beatport, Qobuz)."
     },
     {
+      "status": "done",
+      "hr": "Biblioteka: ocjena ★ 1–5 (klik povećava), stupac \"Export\" s kvačicama i izvoz označenih pjesama kao popis s poveznicama; sortiranje po bilo kojem stupcu, inače ručni redoslijed playliste.",
+      "en": "Library: ★ 1–5 rating (each click raises it), an \"Export\" column with tick marks and export of the marked songs as a list with links; sort by any column, otherwise the playlist's manual order."
+    },
+    {
       "status": "doing",
       "hr": "TIDAL: prijava, moje playliste u aplikaciji, pjesme povezane s mojim datotekama. Razvojna aplikacija registrirana.",
       "en": "TIDAL: log in, my playlists in the app, songs matched to my own files. Developer app registered."
@@ -39,9 +44,9 @@
       "en": "Sound on the phone (Oboe): two outputs at once, Bluetooth speaker and USB headphones, with delay to keep them in sync."
     },
     {
-      "status": "todo",
-      "hr": "Hercules DJControl Mix Ultra preko Bluetooth MIDI-ja, i MIDI learn: bilo koja tipka na bilo koju funkciju.",
-      "en": "Hercules DJControl Mix Ultra over Bluetooth MIDI, and MIDI learn: any button on any function."
+      "status": "doing",
+      "hr": "Hercules DJControl Mix Ultra preko Bluetooth MIDI-ja: sve tipke, LED lampice i načini padova, i MIDI learn: bilo koja tipka na bilo koju funkciju.",
+      "en": "Hercules DJControl Mix Ultra over Bluetooth MIDI: every button, LED and pad mode, and MIDI learn: any button on any function."
     },
     {
       "status": "todo",

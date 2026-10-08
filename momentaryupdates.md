@@ -148,3 +148,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
 ## 8.10.2026, 07:55 (app progress, standing rule 26)
 
 30. App progress: the first Android APK of DJ Mantra builds (x86_64 for the emulator, 90 MB; the phone build follows). progress.json step 3 is done. **Status:** done, v17.
+
+## 8.10.2026, 08:58 (app progress, standing rule 26)
+
+> Please add features to DJ app. The first feature is song ranking. Basically, it's a 5-star system. So there will be 5 stars in one row and user click multiple times until it gets the right star value. And to save space, you can just put star and then number from 1 to 5. And also there should be mark for export, also column. When user put checks mark and then he can export the list with title links. So these are the latest updates, please. And of course, if not already, all the columns can be sorted. It means playlist can be sorted by any criteria. If there is no criteria, then it's sorted by manual sorting.
+
+31. App: star rating shown as ★ n, click to raise; Export tick column and export of marked songs as a list with links; every column sortable, playlists in manual order otherwise. New done step in progress.json. **Status:** done, v18.
+
+> Please make sure you understand the whole mapping of my DJ controller DJMix Ultra, and you can activate each LED and each button and all its modes. So everything that is there should also be in the software. You need to model the software based on this controller so they are completely compatible with everything. So you deeply research this controller, Hercules DJ Mix Ultra, and make it integrate with this software flawlessly.
+
+32. App: full Hercules DJControl Mix Ultra integration (every button, LED and pad mode). progress.json step set to doing. **Status:** in progress, v18.
