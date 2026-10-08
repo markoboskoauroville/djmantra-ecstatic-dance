@@ -174,7 +174,48 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 ## 8.10.2026, 15:33 (app progress, standing rule 26)
 
-> Read the latest test results on claude/admiring-feynman-hym3vp: testing/results/2026-10-08_mix-ultra.md (+ mix-ultra-capture.json, 2026-10-08_mix-ultra/), testing/results/2026-10-08_1342_sdk-gphone64-arm64.md (emulator, run #23), testing/results/2026-10-08_1320_Pixel-7.md (real Pixel 7, run #23). Then work in this order, each step committed, pushed and CI-green before the next: 1. BLOCKER: the APK crashes at launch (libomp.so) … 2. USB sticks: … Storage Access Framework … 3. Write the Hercules DJControl Mix Ultra mapping … 4. M5 Android MIDI … 5. Add to testing/TEST_PLAN.md … (full text in the app repo session)
+> Read the latest test results on claude/admiring-feynman-hym3vp:
+> testing/results/2026-10-08_mix-ultra.md (+ mix-ultra-capture.json, 2026-10-08_mix-ultra/),
+> testing/results/2026-10-08_1342_sdk-gphone64-arm64.md (emulator, run #23),
+> testing/results/2026-10-08_1320_Pixel-7.md (real Pixel 7, run #23).
+>
+> Then work in this order, each step committed, pushed and CI-green before the next:
+>
+> 1. BLOCKER: the APK crashes at launch on both devices:
+>    UnsatisfiedLinkError: dlopen failed: library "libomp.so" not found, needed by libmixxx_arm64-v8a.so
+>    (llvm-readelf shows NEEDED libomp.so; the APK has no libomp.so). Fix it: link OpenMP statically
+>    (-fopenmp -static-openmp) or package the NDK's libomp.so for each ABI. In CI, after the build, check
+>    that every NEEDED library of libmixxx is either in the APK or a system library, so this cannot come back.
+>    Signing is fixed (APK installs).
+>
+> 2. USB sticks: on the Pixel 7 an OTG stick mounts with mountFlags=0 (not visible): only
+>    /mnt/media_rw/<id>, no /storage/<id>, so "All files access" will not reach it. Rework the external-drive
+>    path to use the Storage Access Framework: ACTION_OPEN_DOCUMENT_TREE on the drive, a persisted tree URI,
+>    reading through ContentResolver/DocumentFile into the track cache; watch drives with
+>    StorageManager.getStorageVolumes() / StorageVolume, not /storage. Keep the desktop behaviour unchanged.
+>    Update testing/TEST_PLAN.md (External drives, Folders) to match.
+>
+> 3. Write the Hercules DJControl Mix Ultra mapping (res/controllers/) from the capture, not from the MIX:
+>    one SHIFT per deck (91 04 / 92 04); all knobs/faders 14-bit (MSB n, LSB n+0x20); GAIN = B4 04 / B5 04;
+>    jog touch 08, top CC 0A, ring CC 09, ±1 per tick, ~240 ticks per turn; mode buttons 0F-12, with SHIFT
+>    notes 13-16 on the same channel; pads 96/97 note = mode base (00,10,20,30,40,50,60,70) + pad, +8 with
+>    SHIFT; LOAD 0D, PFL 0C; browser B0 01 (01/7F), press 90 00; STEMS 90 01; master B0 03; crossfader B0 00;
+>    init B0 7F 7F. LEDs: same note as the button (SYNC red, CUE amber, PLAY green, PFL blue, modes white),
+>    pads lit on 30-37 (colour fixed by firmware in that mode). Open questions are in the report (deck 1
+>    SHIFT+jog, pad LED colours per mode): leave them as TODOs, the next local test checks them.
+>
+> 4. M5 Android MIDI: MidiManager, USB device type 1 named "Guillemot Corporation DJControl Mix Ultra"
+>    (1 in, 1 out); BLE advertises as "DJControl Mix Ultra": scan for the BLE MIDI service and
+>    openBluetoothDevice(), never ask the user to pair in Settings; reconnect to the last address, send
+>    B0 7F 7F and refresh LEDs after every connect; keep the screen on while connected. Log every incoming
+>    message to logcat (tag DJMantraMIDI) so the local test can verify the mapping on the phone.
+>
+> 5. Add to testing/TEST_PLAN.md, for the newest milestone: launch time, the All files access prompt, the
+>    SAF drive picker, the Mix Ultra over USB-C and over Bluetooth with the DJMantraMIDI log lines, each
+>    pad mode, and LEDs following the app.
+>
+> Rules as in CLAUDE.md: no credentials, keep desktop Linux building and passing, update the progress page.
+> When a new APK is green, tell Marko: "test the DJ app" for the local session.
 
 35. App: the launch crash (libomp.so) fixed and checked in every build; USB sticks through Android's folder picker; the full Mix Ultra mapping; Android MIDI over USB-C and Bluetooth; test plan. **Status:** done (CI runs #25, #27, #28, #30), waiting for the phone test, v21.
 
