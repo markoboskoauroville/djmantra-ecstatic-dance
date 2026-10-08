@@ -164,3 +164,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > There will be a lot of usage of external drives on Android phone. The songs are on external drive, disk, USB stick. Please make this part robust for recognizing attached drives and buffer songs before you play them. So in case of momentary failure and replugging again, you just continue like nothing happened.
 
 33. App: songs on external drives are copied to internal storage before they play (pulling the drive out does not stop playback), a drive that drops out during loading is waited for, the library keeps the songs of an unplugged drive, and a returning drive is rescanned by itself. New done step in progress.json. **Status:** done, v19 (to be confirmed on the phone).
+
+## 8.10.2026, 12:21 (app progress, standing rule 26)
+
+> The functionality should be like in DJ Pro. You just press plus, choose the folder, and then the content of this folder and its subfolders become available inside the tree— folder tree in the app. And then it acts— basically, the folder is like a playlist. Application scans the folder and makes playlist automatically out of it.
+> Once the song folder with plus is in the library, it stays there forever. Only marks the song offline or online. After— bust, like your video editor, which can easily detect offline and online files.
+
+34. App: Folders in the sidebar ("+ Add folder", tree of folders and subfolders with song counts, each folder a playlist of its songs), folders stay, songs marked online (green) or offline (red). New done step in progress.json. **Status:** done, v20 (desktop screenshots; phone test pending).

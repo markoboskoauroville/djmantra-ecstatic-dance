@@ -39,6 +39,11 @@
       "en": "External drives (USB stick, USB disk, SD card): a song is copied to the phone's memory before it plays, so pulling the drive out does not stop the music; songs on an unplugged drive stay in the library, and when the drive comes back everything simply continues."
     },
     {
+      "status": "done",
+      "hr": "Mape kao u djayu: \"+\" doda mapu, ona i sve podmape pojave se u stablu i svaka radi kao playlista; mapa ostaje zauvijek, a pjesme su označene online (zeleno) ili offline (crveno) ovisno o tome je li disk spojen.",
+      "en": "Folders like in djay: \"+\" adds a folder, it and all its subfolders appear in a tree and each one works like a playlist; a folder stays for good, and songs are marked online (green) or offline (red) depending on whether the drive is connected."
+    },
+    {
       "status": "doing",
       "hr": "TIDAL: prijava, moje playliste u aplikaciji, pjesme povezane s mojim datotekama. Razvojna aplikacija registrirana.",
       "en": "TIDAL: log in, my playlists in the app, songs matched to my own files. Developer app registered."
