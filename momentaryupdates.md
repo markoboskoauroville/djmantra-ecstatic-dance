@@ -238,3 +238,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Also, you need to create a suitable icon. The icon will be two waveforms, one atop the other, in these DJ colors in different sections, different colors. Kind of immersive view we are already creating for WaveformView.
 
 40. App: launcher icon, two waveforms (deck 1 above deck 2) colored by song section, with a white playhead. **Status:** done, in the APK of run #38, v22.
+
+> And continue updating and testing app from this environment. I cannot test it anymore till tomorrow morning, so you do everything you can do— commit to main, write README, compile APK— and repository should look like the app is done, and we're going to test it soon on real phones.
+
+41. App: sound on Android (Oboe, running on the emulator in every build), a README for testers, landscape and full screen, the tested APKs published as the "android-latest" download on every green build of main, and main updated. **Status:** done, waiting for the phone test, v23.

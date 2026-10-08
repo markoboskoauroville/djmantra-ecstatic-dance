@@ -54,9 +54,9 @@
       "en": "TIDAL: log in, my playlists in the app, songs matched to my own files. Developer app registered."
     },
     {
-      "status": "todo",
-      "hr": "Zvuk na mobitelu (Oboe): dva izlaza odjednom, Bluetooth zvučnik i USB slušalice, s kašnjenjem za sinkronizaciju.",
-      "en": "Sound on the phone (Oboe): two outputs at once, Bluetooth speaker and USB headphones, with delay to keep them in sync."
+      "status": "doing",
+      "hr": "Zvuk na telefonu (Oboe): svira kroz zvučnik, USB audio ili Bluetooth i prati promjenu kad se spoje slušalice ili zvučnik; radi na emulatoru u svakoj verziji. Sljedeće: dva izlaza odjednom (Bluetooth zvučnik i USB slušalice) s kašnjenjem da budu usklađeni.",
+      "en": "Sound on the phone (Oboe): plays through the speaker, USB audio or Bluetooth and follows the route when headphones or a speaker are connected; runs on the emulator in every build. Next: two outputs at once (Bluetooth speaker and USB headphones) with delay to keep them in sync."
     },
     {
       "status": "doing",
