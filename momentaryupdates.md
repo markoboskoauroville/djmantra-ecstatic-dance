@@ -259,3 +259,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 43. App: the new DJ Mantra interface after djay's layout, with album art instead of turntables, in portrait and landscape; double tap on the waveforms for full screen; the icon redrawn as the vertical waveform view. **Status:** doing, built and checked on the computer, the phone test is next, v24.
 
+
+> Please make in this app these note icons at the top left and right actually file pickers to upload the song to corresponding deck. Left note is to upload song in Deck 1, right note is to upload the song in Deck 2, and the file picker itself, it will look like the picker from the second screen. Please do that after the limitation is over.
+
+> The last screenshot is how the testing of this app, the settings looks like, and it's complete mess and it's unorganized. This part of the application should look like settings from Android phone with the same selections and the same style. Copy that user interface which was developed by Google going through thousands of iterations is the best for the phone. This one You just transfer from computer, better say Linux machine, to the Android phone, it's useless. You need to rewrite completely user interface for this part to match the phone layout. Understand?The whole application needs to be in the style of Android application. I will send you in next message few screenshots for your reference.
+
+44. App: VU meters fixed (green on the Pixel 7 emulator), system bars hidden, deck 2 controls respond; the note icons open an Android-style song picker for their deck (Files, Queue, History); a djay-style menu (Library, Controller, Rec, Settings) and an Android-style Settings screen. **Status:** doing, emulator tests pass, the real Pixel 7 is next, v25.

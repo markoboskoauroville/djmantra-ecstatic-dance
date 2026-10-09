@@ -85,8 +85,8 @@
     },
     {
       "status": "doing",
-      "hr": "Sučelje na dodir kao u djayu (prema snimkama djaya na Pixelu 7), s omotima albuma umjesto gramofona: dva decka, mikser, valni oblici i padovi, uspravno i položeno; dvostruki dodir na valne oblike prikazuje ih preko cijelog zaslona. Gotovo na računalu, sljedeće: test na tri telefona.",
-      "en": "Touch interface like djay's (from screenshots of djay on the Pixel 7), with album art instead of turntables: two decks, mixer, waveforms and pads, in portrait and landscape; a double tap on the waveforms shows them full screen. Done on the computer, next: the test on the three phones."
+      "hr": "Sučelje na dodir kao u djayu (prema snimkama djaya na Pixelu 7), s omotima albuma umjesto gramofona: dva decka, mikser, valni oblici i padovi, uspravno i položeno; dvostruki dodir na valne oblike prikazuje ih preko cijelog zaslona. Na emulatoru Pixela 7: VU-metri svijetle zeleno, sistemske trake skrivene, svi kontrolni elementi rade. Novo: dodir na ikonu note učitava pjesmu u deck (birač datoteka kao na Androidu: Datoteke, Red, Povijest), izbornik kao u djayu (Knjižnica, Kontroler, Snimanje, Postavke) i Postavke u stilu Androida. Sljedeće: test na pravom Pixelu 7.",
+      "en": "Touch interface like djay's (from screenshots of djay on the Pixel 7), with album art instead of turntables: two decks, mixer, waveforms and pads, in portrait and landscape; a double tap on the waveforms shows them full screen. On the Pixel 7 emulator: the VU meters light up green, the system bars stay hidden, every control works. New: a tap on a deck's note icon loads a song into it (an Android-style file picker: Files, Queue, History), a menu like djay's (Library, Controller, Rec, Settings) and Settings in the Android style. Next: the test on the real Pixel 7."
     },
     {
       "status": "todo",
