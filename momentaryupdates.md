@@ -242,3 +242,20 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > And continue updating and testing app from this environment. I cannot test it anymore till tomorrow morning, so you do everything you can do— commit to main, write README, compile APK— and repository should look like the app is done, and we're going to test it soon on real phones.
 
 41. App: sound on Android (Oboe, running on the emulator in every build), a README for testers, landscape and full screen, the tested APKs published as the "android-latest" download on every green build of main, and main updated. **Status:** done, waiting for the phone test, v23.
+
+> So now you have control over my local cloud and use it to test the app and inform when you are done. So you just write it there and everything from now on happens without my interaction until we have a completely running DJ app.
+>
+> So I have also 3 phones actually connected for test on three phones. I have 2 physical phones. One is Nothing Phone 2, a second is Pixel 7, and we have an emulator which also has Pixel 7. So app must work on all three. If some features are not able to work on all three, then we make it work on whatever is possible.
+>
+> For the last phase we're going to test the output when I'm going to be present. Output through USB-C, input through stick. That's the last phase. Now make it just work through the speaker of a phone and start communicating and write test commands for a local cloud. For now just test all 3 devices. Are they working? When it is confirmed, you start to test locally and fix code and develop features in the cloud.
+
+42. App: tests now run on Marko's three devices (Nothing Phone 2, Pixel 7, Pixel 7 emulator) through the local Claude session, without Marko. Round 1: the app starts on all three, opens the sound output and runs the engine. The missing permissions ("All files access" switch, Bluetooth) were found and fixed. **Status:** done, v24.
+
+> Please get the screenshot from my real Pixel phone 7 and change the user interface to match this screenshot. But instead of turning turntables and everything related to turntables needs to go out, and instead of that album art is displayed, the user interface should be the same as this one. Please take a screenshot and adjust my user interface so this is the principle of user interface we need to copy.
+
+> So now create a double tap on the waveform. Make it full screen. It removes all other interface parts. This same waveform is also working in the horizontal view. It becomes horizontal and it also can be double clicked to fill the whole screen.
+
+> Icon is good, but try to mimic the screenshot. The view that shows the same waveform as is on the screenshot should be in the icon, filling the whole circle. Let's change the icon based on the screenshot.
+
+43. App: the new DJ Mantra interface after djay's layout, with album art instead of turntables, in portrait and landscape; double tap on the waveforms for full screen; the icon redrawn as the vertical waveform view. **Status:** doing, built and checked on the computer, the phone test is next, v24.
+

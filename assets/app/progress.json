@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "repo": "https://github.com/markoboskoauroville/djmantra_app/tree/claude/admiring-feynman-hym3vp",
   "builds": "https://github.com/markoboskoauroville/djmantra_app/actions/workflows/android.yml",
   "steps": [
@@ -84,9 +84,9 @@
       "en": "Smart genres and overnight analysis of the whole library: BPM, beat grid, key, waveform and genre for every song at once."
     },
     {
-      "status": "todo",
-      "hr": "Sučelje za dodir: dva decka, valni oblici, mikser i padovi; preko cijelog ekrana prikaz samo valnih oblika (deck 1 gore, deck 2 dolje) i prikaz samo biblioteke.",
-      "en": "Touch interface: two decks, waveforms, mixer and pads; a full-screen waveform view (deck 1 on top, deck 2 below) and a full-screen library view."
+      "status": "doing",
+      "hr": "Sučelje na dodir kao u djayu (prema snimkama djaya na Pixelu 7), s omotima albuma umjesto gramofona: dva decka, mikser, valni oblici i padovi, uspravno i položeno; dvostruki dodir na valne oblike prikazuje ih preko cijelog zaslona. Gotovo na računalu, sljedeće: test na tri telefona.",
+      "en": "Touch interface like djay's (from screenshots of djay on the Pixel 7), with album art instead of turntables: two decks, mixer, waveforms and pads, in portrait and landscape; a double tap on the waveforms shows them full screen. Done on the computer, next: the test on the three phones."
     },
     {
       "status": "todo",
