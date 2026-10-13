@@ -265,3 +265,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > The last screenshot is how the testing of this app, the settings looks like, and it's complete mess and it's unorganized. This part of the application should look like settings from Android phone with the same selections and the same style. Copy that user interface which was developed by Google going through thousands of iterations is the best for the phone. This one You just transfer from computer, better say Linux machine, to the Android phone, it's useless. You need to rewrite completely user interface for this part to match the phone layout. Understand?The whole application needs to be in the style of Android application. I will send you in next message few screenshots for your reference.
 
 44. App: VU meters fixed (green on the Pixel 7 emulator), system bars hidden, deck 2 controls respond; the note icons open an Android-style song picker for their deck (Files, Queue, History); a djay-style menu (Library, Controller, Rec, Settings) and an Android-style Settings screen. **Status:** doing, emulator tests pass, the real Pixel 7 is next, v25.
+
+> We need to also start building effects. Out of all DJPro effects, this is one I choose to replicate. Please replicate them in the app.
+
+45. App: djay Pro's favourite effects (Flanger, Underwater, Cooldown, Echo Out) built and matched to djay's own recordings, one FX button per deck, one EQ / Neural Mix menu. **Status:** done, tested on the Pixel 7 (app V29), v26.
