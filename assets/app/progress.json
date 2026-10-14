@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-14",
   "repo": "https://github.com/markoboskoauroville/djmantra_app/tree/claude/admiring-feynman-hym3vp",
   "builds": "https://github.com/markoboskoauroville/djmantra_app/actions/workflows/android.yml",
   "steps": [
@@ -90,8 +90,8 @@
     },
     {
       "status": "done",
-      "hr": "Efekti kao u djay Pro: Flanger, Underwater, Cooldown i Echo Out, jedna FX tipka po decku (dodir = uključi/isključi, držanje = izbor efekta). Zvuk izmjeren prema snimkama djaya na Macu: sva četiri unutar nekoliko dB od djaya na mobitelu. Jedan EQ izbornik za oba decka: Ekvilajzer ili Neural Mix (bubnjevi, vokali, harmonije).",
-      "en": "Effects like djay Pro's: Flanger, Underwater, Cooldown and Echo Out, one FX button per deck (tap = on/off, hold = choose the effect). The sound measured against recordings of djay on the Mac: all four within a few dB of djay on the phone. One EQ menu for both decks: Equalizer or Neural Mix (drums, vocals, harmonies)."
+      "hr": "Efekti kao u djay Pro: Flanger, Underwater, Cooldown i Echo Out, jedna FX tipka po decku (dodir = uključi/isključi, držanje = izbor efekta). Zvuk izmjeren prema snimkama djaya na Macu: sva četiri unutar nekoliko dB od djaya na mobitelu. Jedan EQ izbornik za oba decka: Ekvilajzer ili Neural Mix (bubnjevi, vokali, harmonije). Uz to klasični Pioneer DJM: FILTER (rezonantni low-pass lijevo, high-pass desno, sredina isključena; dugi pritisak na GAIN) i beat efekti DJM-600: DELAY, ECHO, TRANS, PAN (aplikacija V41, čeka test).",
+      "en": "Effects like djay Pro's: Flanger, Underwater, Cooldown and Echo Out, one FX button per deck (tap = on/off, hold = choose the effect). The sound measured against recordings of djay on the Mac: all four within a few dB of djay on the phone. One EQ menu for both decks: Equalizer or Neural Mix (drums, vocals, harmonies). Plus the classic Pioneer DJM: the FILTER (resonant low-pass left, high-pass right, off in the middle; long press GAIN) and the DJM-600 beat effects DELAY, ECHO, TRANS, PAN (app V41, to be tested)."
     },
     {
       "status": "todo",

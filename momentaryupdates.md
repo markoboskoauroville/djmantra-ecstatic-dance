@@ -269,3 +269,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > We need to also start building effects. Out of all DJPro effects, this is one I choose to replicate. Please replicate them in the app.
 
 45. App: djay Pro's favourite effects (Flanger, Underwater, Cooldown, Echo Out) built and matched to djay's own recordings, one FX button per deck, one EQ / Neural Mix menu. **Status:** done, tested on the Pixel 7 (app V29), v26.
+
+> Another magic pitch is— another magic change of the button is a long press on the gain button, first one. It can— it will turn to the filter button, understand? To the filter button. And the filter algorithm was wrong last time. It didn't sound like Pioneer. Please find in manual anywhere on the internet the effects of a Pioneer DJM mixer, the most popular mixer among the crowd, and we need to emulate its effects in filter and other audio effects. So let's make, make it, because Pioneer is smart, they put most interesting effects. Take some classic old Pioneer, some of the first version which they have just few features. The most important ones. Later fancy features which are just for selling and people not using much, don't bother copying. DJM mixer, please, emulations.
+
+46. App: Pioneer DJM emulation: a DJM-style resonant FILTER on every deck (long press GAIN turns it into FILTER) and the DJM-600's beat effects (DELAY, ECHO, TRANS, PAN) in the FX menu. **Status:** built (app V41, CI green), to be tested on the Pixel 7, v27.
