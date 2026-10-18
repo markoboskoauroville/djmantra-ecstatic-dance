@@ -361,3 +361,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 53. The guide gets its own educational player with two whole songs from the set, taken from the Mac: one instrumental
     (the clearest structure) and one vocal; the player teaches while it plays.
     **Status:** in progress (the Mac session).
+
+> For local stamp separation you need to run Ableton Live. You can even make a swift application called stamp separation that will automatically load the song into Ableton Live and you'll separate stamps, export stems and analyze them. It's just one shot action to do with the file picker.
+
+54. A Swift app "Stem Separation": pick a song, it loads it into Ableton Live, separates the stems, exports them and
+    analyses them, in one action. Its own project (repo of its own), after request 53.
+    **Status:** waiting (logged 18.10.2026; for request 53 the voice was already separated with Demucs).
