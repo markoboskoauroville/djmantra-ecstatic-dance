@@ -432,6 +432,7 @@ footer a:hover{color:var(--amber)}
 .edu .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px}
 .edu .top b{font-family:"Spectral",Georgia,serif; font-size:26px; font-weight:400; margin-right:10px}
 .edu .top span{font-size:14px; color:#9AA3C7}
+.edu .cr{font:500 11.5px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:-4px 0 10px; letter-spacing:.02em}
 .edu .top code{margin-left:auto; font:500 12.5px "IBM Plex Mono",monospace; background:#151C3D; border-radius:6px; padding:5px 9px; color:#FFD54A}
 .edu canvas{display:block; width:100%; height:170px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
 .edu .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
@@ -549,6 +550,7 @@ footer a:hover{color:var(--amber)}
     <div class="edu" id="edu" aria-label="Educational player">
       <p class="lead" data-i18n="edu.h">Edukativni player: slušaj i gledaj kako se pjesma mijenja. Klikni dio, ponovi ga s LOOP, prati brojanje taktova.</p>
       <div class="top"><div><b id="eT">—</b><span id="eA"></span></div><code id="eC"></code></div>
+      <p class="cr" id="eCr"></p>
       <canvas id="eWv" aria-label="Waveform: click to jump"></canvas>
       <div class="ctl">
         <button type="button" id="ePrev" aria-label="Previous section">◀◀</button>
@@ -900,7 +902,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v34</p>
+    <p class="ver">v35</p>
   </div>
 </footer>
 
@@ -1702,7 +1704,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     attach(S.src);
     BT = Float64Array.from(S.beats, b => b[0]); DN = Float64Array.from(S.beats.filter(b => b[1] === 1), b => b[0]);
     S.secT = S.sections.map(x => x[0]);
-    $("eT").textContent = S.title; $("eA").textContent = S.artist; $("eC").textContent = S.code; $("eBpm").textContent = S.bpm;
+    $("eT").textContent = S.title; $("eA").textContent = S.artist; $("eCr").textContent = "Credits · " + (S.credits || S.title + " · " + S.artist); $("eC").textContent = S.code; $("eBpm").textContent = S.bpm;
     $("eDu").textContent = mmss(S.dur);
     const ch = $("eChips"); ch.innerHTML = "";
     S.sections.forEach(([t, k], n) => { const b = document.createElement("button"); b.type = "button"; b.style.setProperty("--c", col(k));

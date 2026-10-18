@@ -381,4 +381,6 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 55. The two songs of the educational player stay, whole, with full credits (title, artists, remixers, label, year).
     The Stem Separation app (request 54) starts now as its own project.
-    **Status:** in progress (the Mac session).
+    **Status:** credits done, v35: a "Credits ·" line under each title (Secret ID · Moojo & Da Capo · 2023 · Calamar
+    Records; I Follow Rivers · Sean Finn, Play!On · 2025 · ℗ Mukoko Groove · ISRC DE1QW2509832 · original song by Lykke Li,
+    written by Lykke Li, Björn Yttling). Calamar from Moojo's SoundCloud profile; the rest from the files' tags.
