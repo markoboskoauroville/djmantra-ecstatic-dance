@@ -286,3 +286,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 48. A "DJ Mantra app" title bar on top of the player (as the app's own top bar), so it is clear the player comes from
     his app; it links to the app section. **Status:** doing, v28.
+
+## v29 — requested 18.10.2026
+
+> Please talk with my local Cloud code session after it finishes its tasks. To scan the whole mix in DJ Pro to get the right bit grid. To insert this mix into the record box and get the sections right. So everything works flawlessly. All these displays are showing the right LEDs and right numbers.
+
+> After this is done, you need to attach this data to the player in Cloudflare so everything works correctly.
+
+49. The exact beat grid and sections from djay Pro and rekordbox (dynamic analysis + phrases) on the Mac, by the local
+    session, into assets/mix/grid.json; the player already reads it (v29) and falls back to beats.json until then.
+    **Status:** doing: the request is with the local Mac session; the data will be checked and merged to go live.
