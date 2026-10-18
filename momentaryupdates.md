@@ -318,4 +318,14 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 51. The sections of the demo mix named the way DJs and producers name them (intro, build-up, drop, breakdown, outro …)
     instead of rekordbox's mood labels (UP / DOWN / CHORUS).
-    **Status:** in progress (the Mac session).
+    **Status:** done, v32: the sections are cut where the beat stops and where it comes back (Marko: "the easiest test"),
+    named INTRO / BUILD-UP / DROP / BREAKDOWN / GROOVE / OUTRO / AMBIENT (tools/grid/README.md); the NEXT SECTION box and
+    the yellow flags show them. Checked in Chrome (HR mode) on Astral Passage: BREAKDOWN, BUILD-UP, DROP, GROOVE.
+
+> Next section add just I mean the name of the section you're going to fix now you need to add under next section I don't know now it's down up what that means you need to be the right name
+
+(Done in 51: NEXT SECTION shows the new names, no more UP / DOWN.)
+
+> The easiest test is when the beat stops and then comes back. Between these two points, there is one section that needs to be fixed if it is missed.
+
+(Done in 51: that is how the sections are cut now.)

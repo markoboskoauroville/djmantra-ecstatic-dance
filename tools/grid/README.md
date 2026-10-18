@@ -20,3 +20,24 @@ stretches without a grid. Made on Marko's Mac from the original file
 `python3 -I make_grid.py` next to `mix_djay.json` (from djay_metadata.py), `rb/ANLZ0000.DAT|EXT` and nothing else.
 `assets/mix/rekordbox-mix.xml` is built from rekordbox's ANLZ files in the shape of its XML export (TEMPO per tempo
 change, in rekordbox's time base) plus the phrases; rekordbox's own Export Collection was not run.
+
+## The section names (v32, 18.10.2026)
+
+Marko: *"name the sections ... intro, breakdown, etc. All the standard names for this kind of music"*, and *"the easiest
+test is when the beat stops and then comes back. Between these two points, there is one section."* rekordbox's phrases
+(UP / DOWN / CHORUS, kept as `sections_rekordbox`) did not follow the kick, so `label.py` cuts the mix by the beat:
+`feats.py` measures every bar (between djay downbeats): loudness, bass, mids, highs and the kick (low band <150 Hz on
+the beats). A bar is beatless when its kick is 9 dB under the track's usual kick (its 70th percentile); a beatless run
+under 4 bars is a fill, a beat run under 2 bars inside silence a stray hit. Then:
+
+| Name | When |
+|---|---|
+| INTRO | the first beatless stretch of the mix or after free time; the beat that returns after an OUTRO (the next track coming in), 16 bars |
+| BREAKDOWN | the beat stops inside a track |
+| BUILD-UP | the end of a breakdown where the energy climbs bar by bar, 4+ bars and 3+ dB |
+| DROP | the beat comes back after a breakdown or build-up, its first 16 bars |
+| GROOVE | the beat running: after the drop, at a new track over a beat that never stopped |
+| OUTRO | the beat stops in the last 30 s before the next track |
+| AMBIENT | free time, no beat at all |
+
+110 sections: 37 GROOVE, 31 BREAKDOWN, 31 DROP, 3 BUILD-UP, 3 INTRO, 3 OUTRO, 2 AMBIENT.
