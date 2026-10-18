@@ -353,3 +353,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Please download all the lessons and store them in my movies folder.
 
 (~/Movies/DJ Course/Instrumental Structure, 9 lessons; ~/Movies/DJ Course/Vocal-Based Music, 5 of 10 so far.)
+
+## v34 — requested 18.10.2026
+
+> Please take the songs from my set to give an example. One instrumental song, only one, the best section you can assess. One vocal song.All these songs are available on my computer. You can get them from here and publish them in the educational player. Please adjust the educational player so it functions as an educational player actually.
+
+53. The guide gets its own educational player with two whole songs from the set, taken from the Mac: one instrumental
+    (the clearest structure) and one vocal; the player teaches while it plays.
+    **Status:** in progress (the Mac session).
