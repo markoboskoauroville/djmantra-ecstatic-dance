@@ -389,4 +389,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 56. The educational player shows a waveform per stem (drums, bass, vocals, other, as many as the separation gives)
     under the whole song's waveform, all moving together. Stems from the Stem Separation app (request 54).
-    **Status:** waiting for request 54.
+    **Status:** done, v36: both songs separated by Ableton Live 12.4.6 (Create → Separate Stems to New Audio Tracks,
+    the app's steps run by hand on the first run; the stems' sum matches the songs at 99.7 % and 99.3 %, aligned to
+    the song to the millisecond). Four lanes under the waveform (VOCALS, DRUMS, BASS, OTHERS, one shared scale), the
+    section lines and the playhead through them, click to jump, and "IN · …" in NOW naming the stems sounding now.
+    tools/edu/build_stems.py. Seen in Chrome: Secret ID's drums stop in both breakdowns, its voice is one phrase; I
+    Follow Rivers' voice is silent in the instrumental.

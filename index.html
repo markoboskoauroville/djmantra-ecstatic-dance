@@ -435,6 +435,9 @@ footer a:hover{color:var(--amber)}
 .edu .cr{font:500 11.5px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:-4px 0 10px; letter-spacing:.02em}
 .edu .top code{margin-left:auto; font:500 12.5px "IBM Plex Mono",monospace; background:#151C3D; border-radius:6px; padding:5px 9px; color:#FFD54A}
 .edu canvas{display:block; width:100%; height:170px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
+.edu canvas.stems{height:132px; margin-top:6px}
+.edu .now .in{display:block; margin-top:4px; font:500 10.5px "IBM Plex Mono",monospace; letter-spacing:.08em; color:#9AA3C7; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.edu .now .in i{font-style:normal; color:var(--c)}
 .edu .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
 .edu .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
 .edu .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
@@ -552,6 +555,7 @@ footer a:hover{color:var(--amber)}
       <div class="top"><div><b id="eT">—</b><span id="eA"></span></div><code id="eC"></code></div>
       <p class="cr" id="eCr"></p>
       <canvas id="eWv" aria-label="Waveform: click to jump"></canvas>
+      <canvas id="eSt" class="stems" aria-label="The stems: vocals, drums, bass, others"></canvas>
       <div class="ctl">
         <button type="button" id="ePrev" aria-label="Previous section">◀◀</button>
         <button type="button" id="ePlay" class="play" aria-label="Play">▶</button>
@@ -560,7 +564,7 @@ footer a:hover{color:var(--amber)}
         <span class="tm"><b id="eEl">0:00</b> / <span id="eDu">0:00</span> · <span id="eBpm"></span> BPM</span>
       </div>
       <div class="now">
-        <div class="cur"><span class="lbl">NOW</span><b id="eNow">—</b><span id="eBar">—</span></div>
+        <div class="cur"><span class="lbl">NOW</span><b id="eNow">—</b><span id="eBar">—</span><span class="in" id="eIn"></span></div>
         <div class="cnt"><div class="beats" id="eBeats"><i></i><i></i><i></i><i></i></div><div class="phr" id="ePhr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <div class="nxt"><span class="lbl">NEXT</span><b id="eNx">—</b><span id="eNt">—</span></div>
       </div>
@@ -902,7 +906,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v35</p>
+    <p class="ver">v36</p>
   </div>
 </footer>
 
@@ -1694,7 +1698,10 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const mmss = t => Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2, "0");
   const tx = k => { const el = document.querySelector('#eDict [data-i18n="' + k + '"]'); return el ? el.textContent : ""; };
   const audio = new Audio(); audio.preload = "metadata";
-  let SONGS = [], S = null, W = null, BT = null, DN = null, loop = false, raf = 0;
+  let SONGS = [], S = null, W = null, ST = null, BT = null, DN = null, loop = false, raf = 0;
+  // v36: the stems, Ableton Live's separation: one lane each under the waveform (Marko: "four waveforms ... running
+  // together, plus a whole waveform. So the user can see how the instruments are changing through time")
+  const STEM = [["VOCALS", "--s-verse"], ["DRUMS", "--s-build"], ["BASS", "--d-low"], ["OTHERS", "--d-high"]], sc = $("eSt");
   const RATE = 25, wc = $("eWv");
   const below = (a, t) => { let lo = 0, hi = a.length - 1, r = -1; while(lo <= hi){ const m = (lo + hi) >> 1; if(a[m] <= t){ r = m; lo = m + 1; } else hi = m - 1; } return r; };
   fetch("assets/edu/edu.json").then(r => r.json()).then(j => { SONGS = j.songs; load(0); });
@@ -1710,6 +1717,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     S.sections.forEach(([t, k], n) => { const b = document.createElement("button"); b.type = "button"; b.style.setProperty("--c", col(k));
       b.textContent = k + " · " + mmss(t); b.addEventListener("click", () => go(n, true)); ch.appendChild(b); });
     fetch(S.wave).then(r => r.arrayBuffer()).then(b => { W = new Uint8Array(b); paint(); });
+    ST = null; if(S.stems) fetch(S.stems).then(r => r.arrayBuffer()).then(b => { ST = new Uint8Array(b); paint(); });
     paint();
   }
   const secAt = t => Math.max(0, below(S.secT, t + 1e-3));
@@ -1738,6 +1746,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   // crossed that section's end: a time read during a seek must not move it
   let loopSec = 0;
   $("eLoop").addEventListener("click", () => { loop = !loop; loopSec = secAt(now()); $("eLoop").setAttribute("aria-pressed", loop ? "true" : "false"); });
+  sc.addEventListener("click", e => { const r = sc.getBoundingClientRect(), t = (e.clientX - r.left)/r.width*S.dur; loopSec = secAt(t); seekTo(t); paint(); });
   wc.addEventListener("click", e => { const r = wc.getBoundingClientRect(), t = (e.clientX - r.left)/r.width*S.dur; loopSec = secAt(t); seekTo(t); paint(); });
   audio.addEventListener("play", () => { $("ePlay").textContent = "❚❚"; $("ePlay").setAttribute("aria-label", "Pause");
     document.dispatchEvent(new CustomEvent("mantra-play", {detail:"edu"})); tick(); });
@@ -1774,6 +1783,24 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       g.globalAlpha = .6; g.fillRect(x0, 0, 1.5*d, h - strip); g.globalAlpha = 1;
       if(x1 - x0 > g.measureText(nm).width + 10*d){ g.fillStyle = "#14121c"; g.fillText(nm, x0 + 5*d, h - strip/2); } });
     g.fillStyle = "#fff"; g.fillRect(at(t) - d, 0, 2*d, h);
+    // the four stem lanes, mirrored, the played part dimmed, the section lines through them
+    { const [sw, sh, sd] = fit(sc), q = sc.getContext("2d"), lane = sh/4, ats = x => x/S.dur*sw;
+      q.clearRect(0, 0, sw, sh); q.font = "500 " + (9.5*sd) + "px 'IBM Plex Mono', monospace"; q.textBaseline = "top";
+      STEM.forEach(([nm, cv], k) => { const y0 = k*lane, mid = y0 + lane/2;
+        q.fillStyle = "rgba(238,240,255,.04)"; q.fillRect(0, y0 + sd, sw, lane - 2*sd);
+        if(ST){ q.fillStyle = css(cv); const step = 2*sd;
+          for(let x = 0; x < sw; x += step){ const s = x/sw*S.dur, i = Math.floor(s*RATE)*4 + k; if(i >= ST.length) break;
+            q.globalAlpha = s < t ? .5 : 1; const a = ST[i]/255*(lane/2 - 3*sd); q.fillRect(x, mid - a, step - sd*.5, Math.max(sd*.6, a*2)); }
+          q.globalAlpha = 1; }
+        const lw = q.measureText(nm).width + 8*sd; q.fillStyle = "rgba(7,11,28,.82)"; q.fillRect(2*sd, y0 + 2*sd, lw, 13*sd);
+        q.fillStyle = css(cv); q.fillText(nm, 6*sd, y0 + 4*sd); });
+      q.fillStyle = "rgba(238,240,255,.18)"; S.sections.forEach(([s0]) => q.fillRect(ats(s0), 0, sd, sh));
+      q.fillStyle = "#fff"; q.fillRect(ats(t) - sd, 0, 2*sd, sh); }
+    // which stems sound now: the average of the last half second over a fixed line
+    if(ST){ const f0 = Math.max(0, Math.floor((t - .5)*RATE)), f1 = Math.max(f0 + 1, Math.floor(t*RATE) + 1), on = [];
+      STEM.forEach(([nm, cv], k) => { let a = 0, n = 0; for(let f = f0; f < f1; f++){ const i = f*4 + k; if(i < ST.length){ a += ST[i]; n++; } }
+        if(n && a/n > 40) on.push('<i style="--c:' + css(cv) + '">' + nm + '</i>'); });
+      $("eIn").innerHTML = "IN · " + (on.length ? on.join(" · ") : "—"); }
     // NOW, the count, NEXT
     E.querySelector(".cur").style.setProperty("--c", col(name)); E.querySelector(".teach").style.setProperty("--c", col(name));
     $("eNow").textContent = name;

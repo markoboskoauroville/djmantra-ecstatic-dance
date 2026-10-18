@@ -16,3 +16,10 @@ ranges, so a single file could not be jumped in; measured 18.10.2026), with a 3-
 - Picked over Rapture Pt.II (one 64-bar breakdown), DMT (four breakdowns), Back To The Roots, Rej; Falling and Halele
   are mostly their hook repeated.
 - The All-In-One structure analyser (~/.venvs/allin1) does not run on this Mac (natten needs CUDA).
+
+## The stems (v36)
+
+Ableton Live 12.4.6 separated both songs (vocals, drums, bass, others; High Speed, Live's default) on 18.10.2026, the
+Stem Separation app's steps run by hand on its first run. Live writes them into the set's project; for an unsaved set
+that is `~/Music/Ableton/Live Recordings/<date> Temp Project/Samples/Processed/Stems/<song> [time] (Vocals).wav` etc.
+Copies in ~/Music/Stems/<song>/. `build_stems.py` writes `<id>.stems.bin` (see its header).
