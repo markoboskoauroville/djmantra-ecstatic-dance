@@ -99,6 +99,11 @@
       "en": "A manual inside the app: how to use it and the technology behind it, with screenshots; export to MD and a printable PDF (V88)."
     },
     {
+      "status": "doing",
+      "hr": "Izvoz na Pioneer USB: playliste iz aplikacije na USB stick koji čitaju Pioneer DJ playeri (CDJ-2000NXS2, CDJ-3000, XDJ): baza export.pdb, beat grid od prve dobe takta i waveformi za svaku pjesmu, pjesme u mapi Contents. Datoteke su bajt-za-bajt iste kao one koje piše rbxport (otvoreni zamjenski rekordbox). Postavke → PIONEER USB (aplikacija V92, čeka test na mobitelu sa stickom).",
+      "en": "Pioneer USB export: the app's playlists onto a USB stick that Pioneer DJ players read (CDJ-2000NXS2, CDJ-3000, XDJ): the export.pdb database, each song's beat grid from the downbeat and its waveforms, the songs in a Contents folder. The files are byte-for-byte the same as rbxport's (the open-source rekordbox replacement). Settings → PIONEER USB (app V92, to be tested on the phone with a stick)."
+    },
+    {
       "status": "done",
       "hr": "Testiranje na Pixelu 7 bez mene: Claude na samom mobitelu instalira svaku verziju, svira, provjerava i javlja (V86–V90).",
       "en": "Testing on the Pixel 7 without me: Claude on the phone itself installs each version, plays, checks and reports (V86–V90)."

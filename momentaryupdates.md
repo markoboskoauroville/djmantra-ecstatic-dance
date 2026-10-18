@@ -395,3 +395,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
     section lines and the playhead through them, click to jump, and "IN · …" in NOW naming the stems sounding now.
     tools/edu/build_stems.py. Seen in Chrome: Secret ID's drums stop in both breakdowns, its voice is one phrase; I
     Follow Rivers' voice is silent in the instrumental.
+
+## v37 — requested 18.10.2026
+
+> after you've done this test, run the new test in local emulator, in your sandbox android emulator, please add pioneer export so i can export my playlists to usb stick compatible with pioneer players
+
+57. A new progress step: the Pioneer USB export (DJ Mantra app V92).
+    **Status:** done, v37: step added as "doing" (built and verified against rbxport; the phone test with a stick is next).
