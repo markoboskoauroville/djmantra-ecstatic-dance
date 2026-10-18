@@ -384,3 +384,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** credits done, v35: a "Credits ·" line under each title (Secret ID · Moojo & Da Capo · 2023 · Calamar
     Records; I Follow Rivers · Sean Finn, Play!On · 2025 · ℗ Mukoko Groove · ISRC DE1QW2509832 · original song by Lykke Li,
     written by Lykke Li, Björn Yttling). Calamar from Moojo's SoundCloud profile; the rest from the files' tags.
+
+> Since now, when we break the song into stems, we have different waveforms for different parts of the song. We can use that to actually make four waveforms or whatever many are running together, plus a whole waveform. So the user can see how the instruments are changing through time. This is a very good educational tool, please.
+
+56. The educational player shows a waveform per stem (drums, bass, vocals, other, as many as the separation gives)
+    under the whole song's waveform, all moving together. Stems from the Stem Separation app (request 54).
+    **Status:** waiting for request 54.
