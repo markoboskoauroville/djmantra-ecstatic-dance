@@ -281,3 +281,8 @@ Every request is saved here word for word before any code, so a quota cut loses 
 47. The demo mix player in the DJ Mantra app's look (navy, one yellow accent, the app's deck, waveform and pads), plus a
     new part of the player that counts the beats (beat, bar, 8-bar phrase, BPM) and the beats and time to the next
     section, as the app's Phrasing view does. The page stays for listening; the app is for DJing. **Status:** doing, v28.
+
+> Above that section, please add the DJ Mantra app title or maybe better say DJ Mantra app so people understand it's coming from the app which is my brain child.
+
+48. A "DJ Mantra app" title bar on top of the player (as the app's own top bar), so it is clear the player comes from
+    his app; it links to the app section. **Status:** doing, v28.

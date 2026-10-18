@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-14",
+  "updated": "2026-10-18",
   "repo": "https://github.com/markoboskoauroville/djmantra_app/tree/claude/admiring-feynman-hym3vp",
   "builds": "https://github.com/markoboskoauroville/djmantra_app/actions/workflows/android.yml",
   "steps": [
@@ -50,8 +50,8 @@
     },
     {
       "status": "doing",
-      "hr": "TIDAL: prijava, moje playliste u aplikaciji, pjesme povezane s mojim datotekama. Razvojna aplikacija registrirana.",
-      "en": "TIDAL: log in, my playlists in the app, songs matched to my own files. Developer app registered."
+      "hr": "TIDAL: jedan gumb za prijavu (u Firefoxu), ostaje prijavljen; playliste iz BeatStats ljestvica napravljene na TIDAL-u, pjesme s mobitela idu u playlistu aplikacije (V90).",
+      "en": "TIDAL: one LOGIN button (in Firefox), stays logged in; BeatStats charts become TIDAL playlists, and the songs on the phone go into the app's playlist (V90)."
     },
     {
       "status": "doing",
@@ -69,7 +69,7 @@
       "en": "Beat lights like djay's: the controller's pads show beat 1–8 of the phrase in every mode, to align two songs \"1 with 1\"; a pad jumps to that beat."
     },
     {
-      "status": "todo",
+      "status": "doing",
       "hr": "Dijelovi pjesme u boji: intro, build-up, drop, breakdown, verse, outro, prepoznati na samom mobitelu.",
       "en": "Song sections in color: intro, build-up, drop, breakdown, verse, outro, detected on the phone itself."
     },
@@ -92,6 +92,16 @@
       "status": "done",
       "hr": "Efekti kao u djay Pro: Flanger, Underwater, Cooldown i Echo Out, jedna FX tipka po decku (dodir = uključi/isključi, držanje = izbor efekta). Zvuk izmjeren prema snimkama djaya na Macu: sva četiri unutar nekoliko dB od djaya na mobitelu. Jedan EQ izbornik za oba decka: Ekvilajzer ili Neural Mix (bubnjevi, vokali, harmonije). Uz to klasični Pioneer DJM: FILTER (rezonantni low-pass lijevo, high-pass desno, sredina isključena; dugi pritisak na GAIN) i beat efekti DJM-600: DELAY, ECHO, TRANS, PAN (aplikacija V41, čeka test).",
       "en": "Effects like djay Pro's: Flanger, Underwater, Cooldown and Echo Out, one FX button per deck (tap = on/off, hold = choose the effect). The sound measured against recordings of djay on the Mac: all four within a few dB of djay on the phone. One EQ menu for both decks: Equalizer or Neural Mix (drums, vocals, harmonies). Plus the classic Pioneer DJM: the FILTER (resonant low-pass left, high-pass right, off in the middle; long press GAIN) and the DJM-600 beat effects DELAY, ECHO, TRANS, PAN (app V41, to be tested)."
+    },
+    {
+      "status": "done",
+      "hr": "Priručnik u aplikaciji: kako se koristi i tehnologija, sa slikama zaslona; izvoz u MD i PDF za ispis (V88).",
+      "en": "A manual inside the app: how to use it and the technology behind it, with screenshots; export to MD and a printable PDF (V88)."
+    },
+    {
+      "status": "done",
+      "hr": "Testiranje na Pixelu 7 bez mene: Claude na samom mobitelu instalira svaku verziju, svira, provjerava i javlja (V86–V90).",
+      "en": "Testing on the Pixel 7 without me: Claude on the phone itself installs each version, plays, checks and reports (V86–V90)."
     },
     {
       "status": "todo",

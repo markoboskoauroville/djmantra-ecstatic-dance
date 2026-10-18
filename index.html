@@ -142,17 +142,17 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .gal button:hover img{filter:none; transform:scale(1.03)}
 .facts{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px}
 
-/* ---------- the deck: demo mix, djay Pro waveform look ---------- */
+/* ---------- the deck: demo mix in the DJ Mantra app's look (v28: its Style.qml palette, one yellow accent) ---------- */
 .deck{
-  --d-panel:#1b1c20; --d-line:#2a2c31; --d-ink:#e9eaee; --d-ink2:#8b8f99; --d-blue:#2f9bff;
-  --d-low:#ff4d3d; --d-mid:#ffb23e; --d-high:#7fe3ff;
+  --d-panel:#151C3D; --d-line:#1F2850; --d-ink:#EEF0FF; --d-ink2:#9AA3C7; --d-blue:#FFD54A; --d-tile:#1F2850; --d-wave:#070B1C;
+  --d-low:#FF6B5E; --d-mid:#6CCB72; --d-high:#5AA2F0;
   --p0:#b5713f; --p1:#e9c84a; --p2:#ff8a2b; --p3:#ff3d7a; --p4:#38b6ec; --p5:#a48cff;
-  margin-top:30px; background:linear-gradient(180deg,#1a1b1f,#111215); border:1px solid #26282d;
+  margin-top:30px; background:#0B1026; border:1px solid #1F2850;
   border-radius:14px; padding:12px; box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05);
   font-family:"IBM Plex Sans",system-ui,sans-serif; color:var(--d-ink); user-select:none; -webkit-user-select:none;
 }
 .deck canvas{display:block; width:100%; height:100%}
-.deck .wv{position:relative; height:150px; background:#0a0b0d; border-radius:8px; overflow:hidden; cursor:text; touch-action:pan-y}
+.deck .wv{position:relative; height:150px; background:var(--d-wave); border-radius:8px; overflow:hidden; cursor:text; touch-action:pan-y}
 .deck .wv .ph{position:absolute; top:0; bottom:0; left:50%; width:2px; margin-left:-1px; background:#fff; box-shadow:0 0 10px var(--d-blue), 0 0 2px #fff; pointer-events:none}
 .deck .wv .ph::before,.deck .wv .ph::after{content:""; position:absolute; left:-5px; border:6px solid transparent}
 .deck .wv .ph::before{top:0; border-top-color:var(--d-blue)}
@@ -166,29 +166,29 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .deck .el{font-size:24px; color:var(--d-ink); display:block}
 .deck .rm{font-size:14px; color:var(--d-blue)}
 .deck .ctl{display:flex; align-items:center; gap:8px}
-.deck button.play{width:56px; height:56px; border-radius:50%; border:2px solid var(--d-blue); background:radial-gradient(circle at 50% 35%,#24272d,#141518);
+.deck button.play{width:56px; height:56px; border-radius:12px; border:0; background:var(--d-tile);
   color:var(--d-blue); cursor:pointer; display:grid; place-items:center; transition:box-shadow .3s, background .3s}
-.deck.on button.play{background:var(--d-blue); color:#04121f; box-shadow:0 0 24px rgba(47,155,255,.55)}
+.deck.on button.play{background:var(--d-blue); color:#1A1A1A; box-shadow:0 0 22px rgba(255,213,74,.45)}
 .deck button.play svg{width:22px; height:22px}
-.deck button.k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; color:var(--d-ink); background:linear-gradient(180deg,#2a2c31,#1f2125);
-  border:1px solid #34373d; border-radius:8px; height:38px; padding:0 10px; cursor:pointer}
-.deck button.k:hover,.deck a.k:hover{border-color:#4a4e56}
-.deck .lgd a.dl{margin-left:auto; color:var(--d-blue); text-decoration:none; border-bottom:1px solid rgba(47,155,255,.4)}
+.deck button.k{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; color:var(--d-ink); background:var(--d-tile);
+  border:0; border-radius:10px; height:38px; padding:0 10px; cursor:pointer}
+.deck button.k:hover,.deck a.k:hover{background:#2C3870}
+.deck .lgd a.dl{margin-left:auto; color:var(--d-blue); text-decoration:none; border-bottom:1px solid rgba(255,213,74,.4)}
 .deck .lgd a.dl:hover{color:#fff}
-.deck .ov{position:relative; height:46px; margin-top:12px; background:#0a0b0d; border-radius:6px; overflow:hidden; cursor:pointer; touch-action:none}
+.deck .ov{position:relative; height:46px; margin-top:12px; background:var(--d-wave); border-radius:6px; overflow:hidden; cursor:pointer; touch-action:none}
 .deck .lgd{display:flex; flex-wrap:wrap; gap:14px; margin-top:9px; font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.16em; color:var(--d-ink2); text-transform:uppercase}
 .deck .lgd b{display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:6px}
-.deck .phases{display:grid; grid-template-columns:repeat(3,1fr); gap:10px 18px; margin-top:14px; padding:12px; background:#15161a; border:1px solid var(--d-line); border-radius:8px}
+.deck .phases{display:grid; grid-template-columns:repeat(3,1fr); gap:10px 18px; margin-top:14px; padding:12px; background:var(--d-panel); border:1px solid var(--d-line); border-radius:8px}
 .deck .ph-h{grid-column:1 / -1; margin:0; font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--d-ink2)}
 .deck .pg{display:flex; gap:10px; align-items:flex-start; font-size:13px; line-height:1.4}
 .deck .pg b{flex:none; width:22px; height:10px; border-radius:2px; margin-top:4px}
 .deck .pg strong{display:block; font-weight:600; color:var(--d-ink); font-size:13.5px}
 .deck .pg span{color:var(--d-ink2)}
 .deck .now .top .pn{font-weight:500}
-.deck ol.tl{list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--d-line); max-height:340px; overflow:auto; scrollbar-width:thin; scrollbar-color:#34373d transparent}
-.deck ol.tl li{display:grid; grid-template-columns:26px 4px 64px 1fr; gap:10px; align-items:center; padding:7px 6px; border-bottom:1px solid #1e2024; cursor:pointer; border-radius:4px}
-.deck ol.tl li:hover{background:#1c1e22}
-.deck ol.tl li.cur{background:#16222f}
+.deck ol.tl{list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--d-line); max-height:340px; overflow:auto; scrollbar-width:thin; scrollbar-color:#2C3870 transparent}
+.deck ol.tl li{display:grid; grid-template-columns:26px 4px 64px 1fr; gap:10px; align-items:center; padding:7px 6px; border-bottom:1px solid #1F2850; cursor:pointer; border-radius:4px}
+.deck ol.tl li:hover{background:#151C3D}
+.deck ol.tl li.cur{background:#1F2850}
 .deck ol.tl .no{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--d-ink2); text-align:right}
 .deck ol.tl .sw{height:26px; border-radius:2px}
 .deck ol.tl .at{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--d-ink2); font-variant-numeric:tabular-nums}
@@ -196,6 +196,42 @@ h2.sec em{font-style:italic; color:var(--amber)}
 .deck ol.tl .nm{min-width:0; font-size:14px; line-height:1.3}
 .deck ol.tl .nm span{display:block; color:var(--d-ink2); font-size:12.5px}
 .deck ol.tl .nm,.deck ol.tl .nm span{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+/* v28: the app's top bar: menu button, the name, the yellow clock */
+.deck .app{display:flex; align-items:center; gap:12px; margin:0 0 10px; padding:6px 8px 6px 6px; background:var(--d-panel); border-radius:10px; text-decoration:none; color:var(--d-ink)}
+.deck .app .mn{display:flex; flex-direction:column; justify-content:center; gap:4px; width:38px; height:38px; padding:0 10px; background:var(--d-tile); border:1px solid #6B76A8; border-radius:10px}
+.deck .app .mn i{display:block; height:2px; background:var(--d-ink); border-radius:1px}
+.deck .app .nm{font-size:17px; font-weight:600; letter-spacing:.02em; white-space:nowrap}
+.deck .app .nm b{color:var(--d-blue); font-weight:600}
+.deck .app .sb{font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--d-ink2); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.deck .app .ck{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:22px; font-weight:500; color:var(--d-blue); letter-spacing:.06em; font-variant-numeric:tabular-nums; text-shadow:0 0 8px rgba(255,213,74,.35)}
+.deck .app:hover .mn{background:#2C3870}
+@media (max-width:520px){ .deck .app .sb{display:none} }
+/* v28: the beat and section counter, as the app's Phrasing view (beat, bar, 8-bar phrase, the next section) */
+.deck .cnt{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:12px; align-items:stretch; margin-top:10px}
+.deck .cnt > div{background:var(--d-panel); border-radius:10px; padding:8px 12px}
+.deck .cnt .lbl{font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--d-ink2)}
+.deck .cnt .bpm b{display:block; font-family:"IBM Plex Mono",monospace; font-size:24px; font-weight:500; color:var(--d-ink); font-variant-numeric:tabular-nums; line-height:1.15}
+.deck .cnt .pos{display:flex; flex-direction:column; gap:6px; min-width:0}
+.deck .cnt .pos .row{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.deck .cnt .bb{font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--d-ink); font-variant-numeric:tabular-nums; min-width:9.5em}
+.deck .cnt .beats,.deck .cnt .bars{display:flex; gap:4px}
+.deck .cnt .beats i{width:20px; height:20px; border-radius:5px; background:var(--d-tile)}
+.deck .cnt .beats i.on{background:var(--d-blue); box-shadow:0 0 10px rgba(255,213,74,.5)}
+.deck .cnt .beats i.on.one{background:#fff}
+.deck .cnt .bars i{flex:1; min-width:16px; height:22px; border-radius:5px; background:var(--d-tile); font:500 10px/22px "IBM Plex Mono",monospace; font-style:normal; color:var(--d-ink2); text-align:center}
+.deck .cnt .bars i.done{background:#2C3870; color:var(--d-ink)}
+.deck .cnt .bars i.on{background:var(--d-blue); color:#1A1A1A}
+.deck .cnt .nx{text-align:right; min-width:9em}
+.deck .cnt .nx b{display:block; font-family:"IBM Plex Mono",monospace; font-size:15px; font-weight:500; color:var(--d-blue); letter-spacing:.06em}
+.deck .cnt .nx #dNt{display:block; font-family:"IBM Plex Mono",monospace; font-size:20px; color:var(--d-ink); font-variant-numeric:tabular-nums; line-height:1.2}
+.deck .cnt .nx #dNt.soon{color:var(--d-blue)}
+.deck .cnt.free .beats,.deck .cnt.free .bars{opacity:.25}
+@media (max-width:760px){
+  .deck .cnt{grid-template-columns:auto minmax(0,1fr)}
+  .deck .cnt .pos{grid-column:1 / -1; grid-row:2}
+  .deck .cnt .nx{text-align:left}
+  .deck .cnt .nx #dNt{font-size:16px; white-space:nowrap}
+}
 @media (max-width:760px){
   .deck{padding:9px}
   .deck .wv{height:118px}
@@ -378,7 +414,16 @@ footer a:hover{color:var(--amber)}
       <p class="body" data-i18n="b.mix">Ecstatic dance demo, 4. listopada 2026. Jedan sat i pedeset tri minute, dvadeset šest pjesama, jedno putovanje od prvog daha do tišine.</p>
     </div>
     <div class="deck rv" id="deck">
+      <a class="app" href="#app"><span class="mn" aria-hidden="true"><i></i><i></i><i></i></span><span class="nm">DJ Mantra <b>app</b></span><span class="sb" data-i18n="d.app">Android DJ aplikacija · moje djelo</span><span class="ck" id="dCk">00:00</span></a>
       <div class="wv" id="dWv" aria-hidden="true"><canvas></canvas><div class="ph"></div></div>
+      <div class="cnt" id="dCnt" aria-live="off">
+        <div class="bpm"><span class="lbl">BPM</span><b id="dBpm">—</b></div>
+        <div class="pos">
+          <div class="row"><span class="bb" id="dBB">—</span><span class="beats" id="dBeats"><i></i><i></i><i></i><i></i></span></div>
+          <div class="bars" id="dBars"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div>
+        </div>
+        <div class="nx"><span class="lbl" data-i18n="d.next">Sljedeći dio</span><b id="dNx">—</b><span id="dNt">—</span></div>
+      </div>
       <div class="bar">
         <div class="now"><div class="top"><span id="dNo">01 / 26</span> · <span class="pn" id="dPn"></span></div><p class="t1" id="dT1">Forest Spirits (Live)</p><p class="t2" id="dT2">Chantress Seba</p></div>
         <div class="ctl">
@@ -696,7 +741,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v27</p>
+    <p class="ver">v28</p>
   </div>
 </footer>
 
@@ -752,7 +797,7 @@ const DICT = {
   "e.lin":"Učitelji","h.lin":"Ritam se prenosi <em>rukom</em>",
   "b.lin1":"Učio sam kod perkusionističkih majstora u Hrvatskoj, Sloveniji i Izraelu, te kod gostujućih zapadnoafričkih virtuoza. Danas studiram okvirni bubanj kod Yshaija Aftermana, jednog od vodećih svjetskih svirača i učitelja frame druma.",
   "b.lin2":"Dvadeset sedam godina radio sam zvuk i sliku za hrvatske televizije, pa znam kako zvuk putuje prostorom i što tehnička ekipa treba iz DJ pulta. Stajao sam s obje strane.",
-  "e.mix":"Demo mix","h.mix":"Poslušaj <em>set</em>","d.dl":"Preuzmi","e.alb":"Mantreshvar · album","a.more":"Priča pjesme (na engleskom, mojim riječima)",
+  "e.mix":"Demo mix","h.mix":"Poslušaj <em>set</em>","d.dl":"Preuzmi","d.next":"Sljedeći dio","d.app":"Android DJ aplikacija · moje djelo","e.alb":"Mantreshvar · album","a.more":"Priča pjesme (na engleskom, mojim riječima)",
   "b.alb":"Neka glazba se ne stvara. Ona se sjeti. Sounding Silence je zbirka mantri koje sam primio tijekom godina života u Indiji i Aurovilleu i donio kući u Hrvatsku preko mora. Te melodije nisu počele sa mnom: izronile su iz tišine, prošle kroz mene i sad se vraćaju tebi, tražeći samo da ih se čuje u istoj tišini iz koje su došle. Deset prijenosa, drevni zvukovi u svom prvom obliku, sjeme koje još nije drvo.","d.leg":"Val ecstatic dance večeri: boja ispod valnog oblika je energija dijela",
   "ph0":"Dolazak i uzemljenje","pd0":"Tijelo stiže, dah se smiruje, stopala nalaze pod.","ph1":"Buđenje","pd1":"Zglobovi se otvaraju, prvi pokreti, prostor se grije.",
   "ph2":"Rast","pd2":"Dolazi puls, srce ubrzava, krećemo se zajedno.","ph3":"Vrhunac","pd3":"Predaja ritmu, znoj i divljina, cijela soba u jednom pulsu.",
@@ -817,7 +862,7 @@ const DICT = {
   "e.lin":"Teachers","h.lin":"Rhythm passes <em>hand to hand</em>",
   "b.lin1":"I studied with percussion masters in Croatia, Slovenia and Israel, and with visiting West African virtuosos. I currently study frame drum with Yshai Afterman, one of the leading frame drum players and teachers working today.",
   "b.lin2":"For twenty seven years I worked sound and picture for Croatian televisions, so I know how sound travels through a room and what a technical crew needs from the booth. I have stood on both sides of it.",
-  "e.mix":"Demo mix","h.mix":"Hear the <em>set</em>","d.dl":"Download","e.alb":"Mantreshvar · album","a.more":"The story of the song, in my words",
+  "e.mix":"Demo mix","h.mix":"Hear the <em>set</em>","d.dl":"Download","d.next":"Next section","d.app":"my Android DJ app","e.alb":"Mantreshvar · album","a.more":"The story of the song, in my words",
   "b.alb":"Some music is not made. It is remembered. Sounding Silence is a collection of mantras I received during years of living in India and Auroville, and carried back home to Croatia across the sea. These melodies did not begin with me. They arose from stillness, passed through me, and now return to you, asking only to be heard in the same quiet they came from. Ten transmissions, ancient sounds in their first form, seeds not yet trees.","d.leg":"The wave of an ecstatic dance evening: the color under the waveform is the energy of each part",
   "ph0":"Arrival and grounding","pd0":"The body lands, the breath slows, the feet find the floor.","ph1":"Awakening","pd1":"Joints open, first movements, the room warms up.",
   "ph2":"Building","pd2":"The pulse arrives, the heart speeds up, we start moving together.","ph3":"Peak","pd3":"Surrender to the rhythm, sweat and wildness, the whole room in one pulse.",
@@ -974,8 +1019,12 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const at = t => { let i = 0; while(i + 1 < TR.length && TR[i+1][0] <= t) i++; return i; };
   function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); const w = Math.round(r.width*d), h = Math.round(r.height*d); if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
 
-  Promise.all([fetch("assets/mix/wave.bin").then(r => r.arrayBuffer()), fetch("assets/mix/tracks.json").then(r => r.json())]).then(([b, t]) => {
-    W = new Uint8Array(b); N = W.length/4; DUR = N/RATE; TR = t;
+  // v28: the beat grid and the sections of every track (assets/mix/beats.json: bpm, a downbeat, an 8-bar phrase
+  // start, [time, label] sections; bpm 0 = no steady beat), found by analysing the mix as the app analyses a song
+  let BT = [];
+  Promise.all([fetch("assets/mix/wave.bin").then(r => r.arrayBuffer()), fetch("assets/mix/tracks.json").then(r => r.json()),
+               fetch("assets/mix/beats.json").then(r => r.json()).catch(() => [])]).then(([b, t, g]) => {
+    W = new Uint8Array(b); N = W.length/4; DUR = N/RATE; TR = t; BT = g;
     tl.innerHTML = TR.map((x, i) => '<li data-i="' + i + '"><span class="no">' + String(i+1).padStart(2,"0") + '</span><span class="sw" style="background:' + hue(i) + '"></span><span class="at">' + fmt(x[0]).replace(/^00:/, "") + '</span><span class="nm"></span></li>').join("");
     [...tl.children].forEach((li, i) => { const nm = li.querySelector(".nm"); nm.textContent = TR[i][1]; const a = document.createElement("span"); a.textContent = TR[i][2]; nm.appendChild(a); li.addEventListener("click", () => { seek(TR[i][0] + .05); if(audio.paused) toggle(); }); });
     ovImg = null; paint(true);
@@ -1001,6 +1050,22 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.globalAlpha = 1;
     g.fillStyle = "rgba(255,255,255,.16)";
     for(let s = Math.ceil(p0); s <= p0 + PAGE; s++){ const x = at(s), tall = s % 10 === 0; g.fillRect(x, 0, d, tall ? 8*d : 3*d); }
+    // the beat grid as in the app: a thin line every beat, a brighter one every bar, a yellow one every 8-bar phrase
+    for(let k = 0; k < TR.length; k++){
+      const gr = BT[k], a = TR[k][0], b = TR[k+1] ? TR[k+1][0] : DUR; if(!gr || !gr.bpm || b < p0 || a > p0 + PAGE) continue;
+      const per = 60/gr.bpm; let n = Math.ceil((Math.max(a, p0) - gr.down)/per);
+      for(let tb = gr.down + n*per; tb < Math.min(b, p0 + PAGE); tb += per, n++){
+        const x = at(tb), bar = ((n % 4) + 4) % 4 === 0, q = (tb - gr.phrase)/per/32, ph = Math.abs(q - Math.round(q))*32 < .5;
+        g.fillStyle = ph ? "rgba(255,213,74,.75)" : bar ? "rgba(238,240,255,.32)" : "rgba(238,240,255,.1)";
+        g.fillRect(x, 0, ph ? 2*d : d, h - strip);
+      }
+      // the sections: a yellow flag with the name
+      g.font = "600 " + (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "top";
+      for(const [ts, lab] of gr.sections){ if(ts < p0 || ts > p0 + PAGE) continue; const x = at(ts);
+        g.fillStyle = "#FFD54A"; g.fillRect(x, 0, 2*d, h - strip); const tw = g.measureText(lab).width + 8*d;
+        g.fillRect(x, 0, tw, 14*d); g.fillStyle = "#1A1A1A"; g.fillText(lab, x + 4*d, 2*d); }
+      g.textBaseline = "middle";
+    }
     phEl.style.left = (at(t)/w*100) + "%";
     // the track sections, colored, with the name where a track comes in
     const y = h - strip; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
@@ -1038,9 +1103,38 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     [...tl.children].forEach((li, j) => li.classList.toggle("cur", j === i));
     const li = tl.children[i]; if(li && !audio.paused) tl.scrollTo({top: li.offsetTop - tl.offsetTop - 60, behavior:"smooth"});
   }
+  // v28: the counter (the app's Phrasing view): BPM, bar and beat, the 8 bars of the phrase, the next section
+  const cnt = $("dCnt"), bpmEl = $("dBpm"), bbEl = $("dBB"), beatEls = [...$("dBeats").children], barEls = [...$("dBars").children], nxEl = $("dNx"), ntEl = $("dNt");
+  const en = () => document.documentElement.lang === "en";
+  const NAMES = {DROP:["DROP","DROP"], BREAKDOWN:["BREAKDOWN","BREAKDOWN"], BUILD:["RAST","BUILD-UP"], CHANGE:["PROMJENA","CHANGE"], NEXT:["SLJEDEĆA PJESMA","NEXT SONG"]};
+  const mmss = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2, "0"); };
+  function counter(t){
+    if(!TR.length) return; const i = at(t), gr = BT[i] || {bpm:0, sections:[]}, L = en() ? 1 : 0;
+    let nt = TR[i+1] ? TR[i+1][0] : DUR, nl = TR[i+1] ? "NEXT" : null;
+    for(const [ts, lab] of gr.sections){ if(ts > t + .05){ if(ts < nt){ nt = ts; nl = lab; } break; } }
+    const per = gr.bpm ? 60/gr.bpm : 0;
+    cnt.classList.toggle("free", !per);
+    if(per){
+      const n = Math.floor((t - gr.down)/per + 1e-6), beat = ((n % 4) + 4) % 4, nb = Math.floor((t - gr.phrase)/per + 1e-6), bar = Math.floor((((nb % 32) + 32) % 32)/4);
+      const barNo = Math.floor(n/4) + 1;
+      bpmEl.textContent = gr.bpm.toFixed(1);
+      bbEl.textContent = (en() ? "BAR " : "TAKT ") + barNo + " · " + (en() ? "BEAT " : "UDARAC ") + (beat + 1);
+      beatEls.forEach((e, k) => { e.classList.toggle("on", k === beat); e.classList.toggle("one", k === 0 && beat === 0); });
+      barEls.forEach((e, k) => { e.classList.toggle("on", k === bar); e.classList.toggle("done", k < bar); });
+    } else {
+      bpmEl.textContent = "—"; bbEl.textContent = en() ? "FREE TIME" : "SLOBODAN TEMPO";
+      beatEls.forEach(e => e.classList.remove("on", "one")); barEls.forEach(e => e.classList.remove("on", "done"));
+    }
+    nxEl.textContent = nl ? NAMES[nl][L] : (en() ? "END" : "KRAJ");
+    const left = nt - t, beats = per ? Math.ceil(left/per - 1e-6) : 0;
+    ntEl.textContent = (per ? beats + (en() ? (beats === 1 ? " beat" : " beats") : (beats === 1 ? " udarac" : " udaraca")) + " · " : "") + mmss(left);
+    ntEl.classList.toggle("soon", per ? beats <= 8 : left <= 5);
+  }
+  const ck = $("dCk"); const clock = () => { const d = new Date(); ck.textContent = String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0"); };
+  clock(); setInterval(clock, 10000);
   function paint(force){
     const t = drag ? drag.t : pos();
-    drawWv(t); paintOv(t); if(TR.length) setCur(at(t));
+    drawWv(t); paintOv(t); if(TR.length){ setCur(at(t)); counter(t); }
     const sec = Math.floor(t); if(force || sec !== shown){ shown = sec; elT.textContent = fmt(t); rmT.textContent = "-" + fmt(DUR - t); ov.setAttribute("aria-valuenow", sec); }
   }
   function loop(){ paint(); if(!audio.paused || drag) requestAnimationFrame(loop); }

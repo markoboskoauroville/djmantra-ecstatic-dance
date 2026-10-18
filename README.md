@@ -44,3 +44,18 @@ Cloudflare Pages, project `djmantra`, https://djmantra.pages.dev.
 ## Contact
 
 marko.bosko@auroville.community
+
+## The player in the DJ Mantra app's look, with a beat and section counter (v28, 18.10.2026)
+
+* The deck uses the app's palette (`res/qml/djmantra/Style.qml`: navy #0B1026, one yellow accent #FFD54A, the knobs'
+  band colours LOW red, MID green, HIGH blue) and starts with the app's top bar: "DJ Mantra **app**" and its yellow clock,
+  linking to the app section.
+* Under the waveform, the app's Phrasing view: BPM, bar and beat (four beat lights), the 8 bars of the phrase, and the
+  next section with the beats and time to it ("DROP · 24 beats · 0:12"); tracks without a steady beat say FREE TIME and
+  count the time to the next change. The big waveform shows the beat grid (bar lines brighter, 8-bar phrases yellow) and
+  the sections as yellow flags.
+* `assets/mix/beats.json`, one entry per track: `bpm` (0 = no steady beat), `down` (a downbeat), `phrase` (the start of an
+  8-bar phrase), `sections` [[time, DROP / BREAKDOWN / BUILD / CHANGE]]. Made from the HLS audio: librosa's tempo, then
+  the grid fitted to the kick (below 150 Hz), the downbeat and phrase where the bands change most, the sections where the
+  16 beats after a phrase line differ most from the 16 before (wave.bin bands). Approximate: it is for listening, the
+  app is for DJing.
