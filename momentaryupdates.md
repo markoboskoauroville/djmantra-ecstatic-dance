@@ -360,7 +360,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 53. The guide gets its own educational player with two whole songs from the set, taken from the Mac: one instrumental
     (the clearest structure) and one vocal; the player teaches while it plays.
-    **Status:** in progress (the Mac session).
+    **Status:** done, v34: the educational player (#edu) in the guide, the tabs choose the song: Secret ID (instrumental,
+    I16 · I32 · B36 · M48 · B24 · M32 · O16) and I Follow Rivers (vocal, verse / pre-chorus / chorus ×2, bridge, chorus);
+    whole waveform with sections, ◀◀ ▶ ▶▶, LOOP the section, NOW (bar n / m), beat and 8-bar phrase lights, NEXT in
+    bars and time, what happens in this section of this song and what to LISTEN for at this bar, section chips. The two
+    mix examples of the songs went; the Reframing → Miss You mix point stays. Tested in Chrome (muted): jump, count,
+    LOOP, the vocal tab; the phone width not seen. tools/edu/README.md.
 
 > For local stamp separation you need to run Ableton Live. You can even make a swift application called stamp separation that will automatically load the song into Ableton Live and you'll separate stamps, export stems and analyze them. It's just one shot action to do with the file picker.
 

@@ -424,6 +424,47 @@ footer a:hover{color:var(--amber)}
 .guide .codes div{white-space:nowrap}
 .guide .codes span{color:var(--ink3)}
 @media (max-width:760px){ .guide .units{grid-template-columns:1fr 1fr} .guide .ex canvas{height:120px} .guide .ex .hd code{margin-left:0} }
+
+/* ---------- v34: the educational player ---------- */
+.edu{margin:6px 0 34px; border:1px solid #1F2850; border-radius:16px; padding:16px; background:#0B1026; color:#EEF0FF}
+.edu .lead{font-size:14.5px; color:#9AA3C7; margin:0 0 12px}
+.edu .lbl{display:block; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7}
+.edu .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px}
+.edu .top b{font-family:"Spectral",Georgia,serif; font-size:26px; font-weight:400; margin-right:10px}
+.edu .top span{font-size:14px; color:#9AA3C7}
+.edu .top code{margin-left:auto; font:500 12.5px "IBM Plex Mono",monospace; background:#151C3D; border-radius:6px; padding:5px 9px; color:#FFD54A}
+.edu canvas{display:block; width:100%; height:170px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
+.edu .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
+.edu .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
+.edu .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
+.edu .ctl button.loop[aria-pressed="true"]{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A}
+.edu .ctl .tm{margin-left:auto; font:500 14px "IBM Plex Mono",monospace; color:#9AA3C7; font-variant-numeric:tabular-nums}
+.edu .ctl .tm b{color:#EEF0FF; font-weight:500}
+.edu .now{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:10px}
+.edu .now > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
+.edu .now b{display:block; font:500 19px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.edu .now span:not(.lbl){font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; font-variant-numeric:tabular-nums}
+.edu .now .nxt{text-align:right}
+.edu .cnt{display:flex; flex-direction:column; justify-content:center; gap:6px}
+.edu .beats,.edu .phr{display:flex; gap:4px}
+.edu .beats i{width:22px; height:22px; border-radius:5px; background:#1F2850}
+.edu .beats i.on{background:#FFD54A; box-shadow:0 0 10px rgba(255,213,74,.5)}
+.edu .beats i.on.one{background:#fff}
+.edu .phr i{width:10px; height:10px; border-radius:3px; background:#1F2850}
+.edu .phr i.done{background:#2C3870}
+.edu .phr i.on{background:#FFD54A}
+.edu .teach{margin-top:10px; background:#151C3D; border-radius:10px; padding:12px 14px; border-left:3px solid var(--c,#FFD54A)}
+.edu .teach p{margin:0; font-size:15.5px; line-height:1.6; color:#EEF0FF}
+.edu .teach .ev{margin-top:8px; font-size:14px; color:#FFD54A}
+.edu .teach .ev .lbl{display:inline; margin-right:8px}
+.edu .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
+.edu .chips button{font:500 11px/1 "IBM Plex Mono",monospace; letter-spacing:.08em; color:#14121c; background:var(--c); border:0; border-radius:20px; padding:8px 11px; cursor:pointer; opacity:.75}
+.edu .chips button.on{opacity:1; outline:2px solid #fff; outline-offset:2px}
+@media (max-width:760px){
+  .edu{padding:10px} .edu canvas{height:130px} .edu .top code{margin-left:0}
+  .edu .now{grid-template-columns:1fr 1fr} .edu .now .cnt{grid-column:1 / -1; grid-row:2; flex-direction:row; justify-content:space-between; background:none; padding:0}
+  .edu .ctl .tm{margin-left:0; width:100%}
+}
 </style>
 </head>
 <body>
@@ -505,6 +546,26 @@ footer a:hover{color:var(--amber)}
       <button type="button" role="tab" aria-selected="true" data-part="gI" data-i18n="g.t1">Instrumentalna glazba</button>
       <button type="button" role="tab" aria-selected="false" data-part="gV" data-i18n="g.t2">Vokalna glazba</button>
     </div>
+    <div class="edu" id="edu" aria-label="Educational player">
+      <p class="lead" data-i18n="edu.h">Edukativni player: slušaj i gledaj kako se pjesma mijenja. Klikni dio, ponovi ga s LOOP, prati brojanje taktova.</p>
+      <div class="top"><div><b id="eT">—</b><span id="eA"></span></div><code id="eC"></code></div>
+      <canvas id="eWv" aria-label="Waveform: click to jump"></canvas>
+      <div class="ctl">
+        <button type="button" id="ePrev" aria-label="Previous section">◀◀</button>
+        <button type="button" id="ePlay" class="play" aria-label="Play">▶</button>
+        <button type="button" id="eNext" aria-label="Next section">▶▶</button>
+        <button type="button" id="eLoop" class="loop" aria-pressed="false">LOOP</button>
+        <span class="tm"><b id="eEl">0:00</b> / <span id="eDu">0:00</span> · <span id="eBpm"></span> BPM</span>
+      </div>
+      <div class="now">
+        <div class="cur"><span class="lbl">NOW</span><b id="eNow">—</b><span id="eBar">—</span></div>
+        <div class="cnt"><div class="beats" id="eBeats"><i></i><i></i><i></i><i></i></div><div class="phr" id="ePhr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="nxt"><span class="lbl">NEXT</span><b id="eNx">—</b><span id="eNt">—</span></div>
+      </div>
+      <div class="teach"><p id="eTxt"></p><p class="ev"><span class="lbl">LISTEN</span> <span id="eEv">—</span></p></div>
+      <div class="chips" id="eChips"></div>
+    </div>
+    <div hidden id="eDict"><span data-i18n="edu.secret-id.i1">Prvih 16 taktova samo bas bubanj i bas: čisti DJ intro. Na 17. taktu ulaze hi-hatovi, ali glavna melodija još čeka. Intro od 48 taktova, 16 + 32.</span><span data-i18n="edu.secret-id.b1">Bubanj i bas nestaju u jednom taktu. Ostaju akordi i prostor. 16 taktova.</span><span data-i18n="edu.secret-id.u1">Visoki tonovi rastu takt po takt; u zadnja četiri takta bas je izrezan, napetost prije dropa. 20 taktova.</span><span data-i18n="edu.secret-id.d1">Sve se vraća: bubanj, bas i glavna melodija, sredina glasnija za 5 dB nego u introu. 48 taktova maina.</span><span data-i18n="edu.secret-id.b2">Drugi breakdown, isto 16 taktova tišine bez bubnja.</span><span data-i18n="edu.secret-id.u2">Kratak build-up od 8 taktova: napetost brže dođe do vrha.</span><span data-i18n="edu.secret-id.d2">Drugi drop, 32 takta maina. Ovdje DJ najčešće pušta sljedeću pjesmu.</span><span data-i18n="edu.secret-id.o1">Outro je intro unatrag: melodija odlazi, ostaju bubanj, bas i hi-hatovi, točno kao u taktovima 17 do 48. 16 taktova za izlaz.</span><span data-i18n="edu.i-follow-rivers.v1">Pjesma počinje glasom: prva strofa, priča. Nema introa za DJ-a, ovo je kratka verzija pjesme.</span><span data-i18n="edu.i-follow-rivers.p1">Ritam staje, glas se penje prema refrenu. 8 taktova.</span><span data-i18n="edu.i-follow-rivers.c1">Refren: naslov pjesme, hook. Bubanj se vraća. 8 taktova.</span><span data-i18n="edu.i-follow-rivers.n1">8 taktova bez glasa: instrumentalni dio, predah prije druge strofe.</span><span data-i18n="edu.i-follow-rivers.v2">Druga strofa: nove riječi na istoj melodiji. 8 taktova.</span><span data-i18n="edu.i-follow-rivers.p2">Pre-chorus, ovaj put kraći: samo 4 takta.</span><span data-i18n="edu.i-follow-rivers.c2">Refren opet: isti hook, isto 8 taktova.</span><span data-i18n="edu.i-follow-rivers.br">Most: ritam staje, ostaje samo jeka hooka. Jednom u pjesmi, drugačiji od svega ostalog.</span><span data-i18n="edu.i-follow-rivers.c3">Zadnji refren, dvaput: 16 taktova. Pjesma završava refrenom, bez outra; za miksanje biraj extended verziju.</span><span data-i18n="e.kick">Samo bubanj i bas.</span><span data-i18n="e.hats">Ulaze hi-hatovi.</span><span data-i18n="e.stop">Ritam staje.</span><span data-i18n="e.rise">Napetost raste.</span><span data-i18n="e.bascut">Bas je izrezan: drop dolazi.</span><span data-i18n="e.drop">Drop!</span><span data-i18n="e.out">Melodija odlazi: outro.</span><span data-i18n="e.end">Kraj.</span><span data-i18n="e.voice">Glas od prvog takta.</span><span data-i18n="e.stopv">Ritam staje, glas ostaje.</span><span data-i18n="e.hook">Hook: ime pjesme.</span><span data-i18n="e.novoice">Glas odlazi.</span><span data-i18n="e.story">Nova strofa, nastavak priče.</span><span data-i18n="e.echo">Jeka hooka, bez ritma.</span><span data-i18n="e.last">Zadnji refren.</span><span data-i18n="e.noout">Kraj bez outra.</span></div>
     <div class="part" id="gI">
       <p class="body" style="max-width:44em" data-i18n="g.i.l">House, organic house, techno, trance, drum and bass: glazba građena oko instrumenata, ne oko pjevača. Pravljena je za DJ-e, pa su joj počeci i krajevi jednostavni i lako se miksaju. Ako se pojavi glas, obično je to kratki uzorak koji služi kao instrument. Redoslijed je gotovo uvijek isti: intro, breakdown i build-up, main, opet breakdown i build-up, main, outro.</p>
       <div class="secs">
@@ -515,7 +576,7 @@ footer a:hover{color:var(--amber)}
         <div class="sc" data-s="MAIN"><h3>MAIN<small>16 / 32 / 64</small></h3><p data-i18n="g.i.main">Meso pjesme: sve je unutra, fraza za frazom, svakih 16 taktova nešto novo. Zove se i drop, groove.</p><p data-i18n="g.i.main.w">Široko, gusto, sve tri boje.</p><p class="dj" data-i18n="g.i.main.dj">Najsigurnije mjesto za miks: nema glasa koji bi se sudario s drugim glasom.</p></div>
         <div class="sc" data-s="OUTRO"><h3>OUTRO<small>16 / 32</small></h3><p data-i18n="g.i.outro">Kraj pjesme, intro unatrag: instrumenti odlaze jedan po jedan dok ne ostane samo bubanj i jeka.</p><p data-i18n="g.i.outro.w">Valni oblik se stanjuje, boje blijede.</p><p class="dj" data-i18n="g.i.outro.dj">Ovdje izlaziš: outro i intro sljedeće pjesme sviraju zajedno, 16 ili 32 takta.</p></div>
       </div>
-      <div class="ex" data-t0="3044.4" data-t1="3420"><div class="hd"><b data-i18n="g.x1.h">Primjer 1 · Secret ID</b><span data-i18n="g.x1.s">Main, breakdown, build-up, drop, dvaput. Klikni dio da ga čuješ u playeru.</span><code>M48 · B37 · M49 · B23 · M40</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x1.n">U miksu je intro ove pjesme bio ispod outra prethodne, pa primjer počinje mainom. Brojevi taktova su izmjereni iz analize ritma.</p></div>
+      
       <div class="ex" data-t0="1800" data-t1="1960"><div class="hd"><b data-i18n="g.x2.h">Primjer 2 · točka miksa</b><span data-i18n="g.x2.s">Reframing završava, Miss You dolazi: outro preko introa.</span><code>… M · O19 → I16 · M …</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x2.n">Ritam Reframinga staje u outru; bubanj koji se vraća je intro pjesme Miss You. Sljedeći main je već nova pjesma.</p></div>
     </div>
     <div class="part" id="gV" hidden>
@@ -528,7 +589,7 @@ footer a:hover{color:var(--amber)}
         <div class="sc" data-s="BRIDGE"><h3>BRIDGE<small>4 / 8</small></h3><p data-i18n="g.v.bridge">Most: jednom u pjesmi, drugačiji od svega ostalog. Spaja refren s nečim drugim i daje predah prije zadnjeg refrena.</p><p class="dj" data-i18n="g.v.bridge.dj">Ako ne zvuči ni kao strofa, ni kao refren, ni kao kraj, to je most.</p></div>
         <div class="sc" data-s="OUTRO"><h3>OUTRO<small>8 / 16 / 32</small></h3><p data-i18n="g.v.outro">Kraj: često ponovljeni refren koji se gasi, ili ritam bez glasa za DJ-a.</p><p class="dj" data-i18n="g.v.outro.dj">Izlazi kad glas završi: dva pjevača u isto vrijeme zbunjuju podij.</p></div>
       </div>
-      <div class="ex" data-t0="6188" data-t1="6330" data-secs='[[6192.485, "INTRO"], [6208.277, "CHORUS"], [6246.792, "BRIDGE"], [6262.152, "VERSE"], [6277.517, "PRE-CHORUS"], [6285.211, "CHORUS"], [6315.915, "NEXT TRACK"]]'><div class="hd"><b data-i18n="g.x3.h">Primjer 3 · I Follow Rivers</b><span data-i18n="g.x3.s">Glas izdvojen iz miksa (Demucs) pokazuje gdje je koji dio.</span><code>I8 · C20vo · B8 · V12vo · C16vo</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x3.n">Remiks otvara refrenom: naslov pjesme ponovljen sam, preko breakdowna. Zatim 8 taktova bez glasa (most), strofa, pre-chorus i pun refren od 16 taktova. Ispod zadnjeg refrena već dolazi ritam sljedeće pjesme: ovdje sam izašao iz pjesme, prije njezinog mosta i outra.</p></div>
+      
     </div>
     <div class="split rv" style="margin-top:10px">
       <div>
@@ -543,7 +604,7 @@ footer a:hover{color:var(--amber)}
         <p class="body" data-i18n="g.m.v">Kod vokalne glazbe pazi na glas: miksaj u introu, outru i refrenu, nikad usred strofe. Kad se preklapaju dvije pjesme, glas smije imati samo jedna.</p>
       </div>
     </div>
-    <p class="body" style="max-width:none;font-size:13px;color:var(--ink3);margin-top:18px" data-i18n="g.src">Po tečaju Instrumental Structure i Vocal-Based Music; primjeri su iz mog demo miksa, sekcije iz analize ritma (djay Pro, rekordbox) i glasa (Demucs).</p>
+    <p class="body" style="max-width:none;font-size:13px;color:var(--ink3);margin-top:18px" data-i18n="g.src">Po tečaju Instrumental Structure i Vocal-Based Music. Pjesme u edukativnom playeru su iz mog seta; ritam iz djay Pro analize, dijelovi iz bubnja, frekvencija i glasa izdvojenog iz pjesme (Demucs, Whisper).</p>
   </div>
 </section>
 
@@ -839,13 +900,47 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v33</p>
+    <p class="ver">v34</p>
   </div>
 </footer>
 
 <script>
 const DICT = {
  hr:{
+  "edu.h":"Edukativni player: slušaj i gledaj kako se pjesma mijenja. Klikni dio, ponovi ga s LOOP, prati brojanje taktova.",
+  "edu.secret-id.i1":"Prvih 16 taktova samo bas bubanj i bas: čisti DJ intro. Na 17. taktu ulaze hi-hatovi, ali glavna melodija još čeka. Intro od 48 taktova, 16 + 32.",
+  "edu.secret-id.b1":"Bubanj i bas nestaju u jednom taktu. Ostaju akordi i prostor. 16 taktova.",
+  "edu.secret-id.u1":"Visoki tonovi rastu takt po takt; u zadnja četiri takta bas je izrezan, napetost prije dropa. 20 taktova.",
+  "edu.secret-id.d1":"Sve se vraća: bubanj, bas i glavna melodija, sredina glasnija za 5 dB nego u introu. 48 taktova maina.",
+  "edu.secret-id.b2":"Drugi breakdown, isto 16 taktova tišine bez bubnja.",
+  "edu.secret-id.u2":"Kratak build-up od 8 taktova: napetost brže dođe do vrha.",
+  "edu.secret-id.d2":"Drugi drop, 32 takta maina. Ovdje DJ najčešće pušta sljedeću pjesmu.",
+  "edu.secret-id.o1":"Outro je intro unatrag: melodija odlazi, ostaju bubanj, bas i hi-hatovi, točno kao u taktovima 17 do 48. 16 taktova za izlaz.",
+  "edu.i-follow-rivers.v1":"Pjesma počinje glasom: prva strofa, priča. Nema introa za DJ-a, ovo je kratka verzija pjesme.",
+  "edu.i-follow-rivers.p1":"Ritam staje, glas se penje prema refrenu. 8 taktova.",
+  "edu.i-follow-rivers.c1":"Refren: naslov pjesme, hook. Bubanj se vraća. 8 taktova.",
+  "edu.i-follow-rivers.n1":"8 taktova bez glasa: instrumentalni dio, predah prije druge strofe.",
+  "edu.i-follow-rivers.v2":"Druga strofa: nove riječi na istoj melodiji. 8 taktova.",
+  "edu.i-follow-rivers.p2":"Pre-chorus, ovaj put kraći: samo 4 takta.",
+  "edu.i-follow-rivers.c2":"Refren opet: isti hook, isto 8 taktova.",
+  "edu.i-follow-rivers.br":"Most: ritam staje, ostaje samo jeka hooka. Jednom u pjesmi, drugačiji od svega ostalog.",
+  "edu.i-follow-rivers.c3":"Zadnji refren, dvaput: 16 taktova. Pjesma završava refrenom, bez outra; za miksanje biraj extended verziju.",
+  "e.kick":"Samo bubanj i bas.",
+  "e.hats":"Ulaze hi-hatovi.",
+  "e.stop":"Ritam staje.",
+  "e.rise":"Napetost raste.",
+  "e.bascut":"Bas je izrezan: drop dolazi.",
+  "e.drop":"Drop!",
+  "e.out":"Melodija odlazi: outro.",
+  "e.end":"Kraj.",
+  "e.voice":"Glas od prvog takta.",
+  "e.stopv":"Ritam staje, glas ostaje.",
+  "e.hook":"Hook: ime pjesme.",
+  "e.novoice":"Glas odlazi.",
+  "e.story":"Nova strofa, nastavak priče.",
+  "e.echo":"Jeka hooka, bez ritma.",
+  "e.last":"Zadnji refren.",
+  "e.noout":"Kraj bez outra.",
   "g.e":"Škola · struktura pjesme",
   "g.h":"Kako je pjesma <em>građena</em>",
   "g.l":"DJ ne miksa pjesme, miksa dijelove pjesama. Tko čuje gdje počinje intro, gdje se ritam lomi i gdje se vraća, zna kada ući i kada izaći. Ovaj vodič to pokazuje na mom demo miksu: svaki primjer je pravi valni oblik, svaki dio se može poslušati.",
@@ -906,7 +1001,7 @@ const DICT = {
   "g.m.h":"Točke miksa",
   "g.m.i":"Kod instrumentalne glazbe gotovo sve se može miksati: intro preko outra je klasika, main preko maina sigurno, a breakdown samo ako nakon njega dolazi drop. Broji fraze: nova pjesma ulazi na prvi takt fraze, nikad usred.",
   "g.m.v":"Kod vokalne glazbe pazi na glas: miksaj u introu, outru i refrenu, nikad usred strofe. Kad se preklapaju dvije pjesme, glas smije imati samo jedna.",
-  "g.src":"Po tečaju Instrumental Structure i Vocal-Based Music; primjeri su iz mog demo miksa, sekcije iz analize ritma (djay Pro, rekordbox) i glasa (Demucs).",
+  "g.src":"Po tečaju Instrumental Structure i Vocal-Based Music. Pjesme u edukativnom playeru su iz mog seta; ritam iz djay Pro analize, dijelovi iz bubnja, frekvencija i glasa izdvojenog iz pjesme (Demucs, Whisper).",
   "who":"Marko Boško · Zagreb · Auroville",
   "tag":"Od Gangesa do Amazone. Set je putovanje, ne popis pjesama.",
   "e.who":"Tko vodi","h.who":"Ritam prije <em>riječi</em>",
@@ -968,6 +1063,40 @@ const DICT = {
   "ft":"DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community"
  },
  en:{
+  "edu.h":"The educational player: listen and watch the song change. Click a part, repeat it with LOOP, follow the bar count.",
+  "edu.secret-id.i1":"The first 16 bars are only kick and bass: a pure DJ intro. At bar 17 the hi-hats come in, but the main melody is still waiting. A 48-bar intro, 16 + 32.",
+  "edu.secret-id.b1":"Kick and bass leave in a single bar. Chords and space remain. 16 bars.",
+  "edu.secret-id.u1":"The highs climb bar by bar; in the last four bars the bass is cut, the tension before the drop. 20 bars.",
+  "edu.secret-id.d1":"Everything returns: kick, bass and the main melody, the mids 5 dB louder than in the intro. 48 bars of main.",
+  "edu.secret-id.b2":"The second breakdown, again 16 bars without the kick.",
+  "edu.secret-id.u2":"A short build-up of 8 bars: the tension peaks faster.",
+  "edu.secret-id.d2":"The second drop, 32 bars of main. This is where a DJ usually brings in the next song.",
+  "edu.secret-id.o1":"The outro is the intro in reverse: the melody leaves, kick, bass and hi-hats remain, exactly as in bars 17 to 48. 16 bars to mix out.",
+  "edu.i-follow-rivers.v1":"The song starts with the voice: the first verse, the story. There's no DJ intro; this is the short version of the song.",
+  "edu.i-follow-rivers.p1":"The beat stops and the voice climbs towards the chorus. 8 bars.",
+  "edu.i-follow-rivers.c1":"The chorus: the song's title, the hook. The beat comes back. 8 bars.",
+  "edu.i-follow-rivers.n1":"8 bars without the voice: the instrumental part, a pause before the second verse.",
+  "edu.i-follow-rivers.v2":"The second verse: new words on the same melody. 8 bars.",
+  "edu.i-follow-rivers.p2":"The pre-chorus, shorter this time: only 4 bars.",
+  "edu.i-follow-rivers.c2":"The chorus again: the same hook, the same 8 bars.",
+  "edu.i-follow-rivers.br":"The bridge: the beat stops, only an echo of the hook remains. Once in the song, unlike anything else.",
+  "edu.i-follow-rivers.c3":"The last chorus, twice: 16 bars. The song ends on its chorus, with no outro; for mixing, pick the extended version.",
+  "e.kick":"Only kick and bass.",
+  "e.hats":"The hi-hats come in.",
+  "e.stop":"The beat stops.",
+  "e.rise":"The tension rises.",
+  "e.bascut":"The bass is cut: the drop is coming.",
+  "e.drop":"Drop!",
+  "e.out":"The melody leaves: outro.",
+  "e.end":"The end.",
+  "e.voice":"The voice from the first bar.",
+  "e.stopv":"The beat stops, the voice stays.",
+  "e.hook":"The hook: the song's title.",
+  "e.novoice":"The voice leaves.",
+  "e.story":"A new verse, the story goes on.",
+  "e.echo":"An echo of the hook, no beat.",
+  "e.last":"The last chorus.",
+  "e.noout":"The end, no outro.",
   "g.e":"School · song structure",
   "g.h":"How a song is <em>built</em>",
   "g.l":"A DJ doesn't mix songs, a DJ mixes parts of songs. If you can hear where the intro starts, where the beat breaks and where it comes back, you know when to come in and when to leave. This guide shows it on my demo mix: every example is a real waveform, every part can be played.",
@@ -1028,7 +1157,7 @@ const DICT = {
   "g.m.h":"Mix points",
   "g.m.i":"In instrumental music almost everything can be mixed: intro over outro is the classic, main over main is safe, and a breakdown only if a drop follows it. Count phrases: the new song comes in on the first bar of a phrase, never in the middle.",
   "g.m.v":"In vocal music, watch the voice: mix in the intro, the outro and the chorus, never in the middle of a verse. When two songs overlap, only one of them may sing.",
-  "g.src":"Following the course Instrumental Structure and Vocal-Based Music; the examples are from my demo mix, the sections from the beat analysis (djay Pro, rekordbox) and the voice (Demucs).",
+  "g.src":"Following the course Instrumental Structure and Vocal-Based Music. The songs in the educational player are from my set; the beat from djay Pro's analysis, the sections from the kick, the frequency bands and the voice separated from the song (Demucs, Whisper).",
   "e.app":"DJ Mantra for Android","h.app":"My DJ deck <em>in a phone</em>",
   "b.app1":"I am coding my own DJ app for Android phones, on the open source Mixxx engine. It is made for the mobile DJ: the Hercules DJControl Mix Ultra controller over Bluetooth, the main output on a Bluetooth speaker and headphones on USB, any button on any function.",
   "b.app2":"The code is open and free (GPL). When it is ready, any DJ will be able to download it for their phone. I follow the progress here, step by step.",
@@ -1474,7 +1603,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const G = document.getElementById("guide"); if(!G) return;
   const deck = document.getElementById("deck");
   const COL = {INTRO:"--s-intro", BREAKDOWN:"--s-break", "BUILD-UP":"--s-build", DROP:"--s-drop", MAIN:"--s-main", OUTRO:"--s-outro",
-    AMBIENT:"--s-amb", VERSE:"--s-verse", "PRE-CHORUS":"--s-pre", CHORUS:"--s-chorus", BRIDGE:"--s-bridge", "NEXT TRACK":"--s-intro"};
+    AMBIENT:"--s-amb", VERSE:"--s-verse", "PRE-CHORUS":"--s-pre", CHORUS:"--s-chorus", BRIDGE:"--s-bridge", "NEXT TRACK":"--s-intro", INSTRUMENTAL:"--s-main"};
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
   const col = n => css(COL[n] || "--s-amb");
   // the tabs: instrumental | vocal-based
@@ -1547,6 +1676,111 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   let raf = 0;
   function loop(){ cancelAnimationFrame(raf); const f = () => { draw(); if(deck && deck.playing && deck.playing()) raf = requestAnimationFrame(f); else setTimeout(draw, 300); }; raf = requestAnimationFrame(f); }
   new ResizeObserver(draw).observe(G);
+})();
+
+// v34: THE EDUCATIONAL PLAYER (Marko, 18.10.2026: "take the songs from my set ... one instrumental song ... one vocal
+// song ... adjust the educational player so it functions as an educational player actually"). Two whole songs
+// (assets/edu/edu.json): the waveform with the sections under it, previous / next section, LOOP the section, the bar and
+// beat count inside the section, NOW and NEXT, what happens in this section of this song and what to listen for now.
+(() => {
+  const E = document.getElementById("edu"); if(!E) return;
+  const $ = id => document.getElementById(id);
+  const COL = {INTRO:"--s-intro", BREAKDOWN:"--s-break", "BUILD-UP":"--s-build", DROP:"--s-drop", MAIN:"--s-main", OUTRO:"--s-outro",
+    VERSE:"--s-verse", "PRE-CHORUS":"--s-pre", CHORUS:"--s-chorus", BRIDGE:"--s-bridge", INSTRUMENTAL:"--s-main"};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
+  const col = n => css(COL[n] || "--s-amb");
+  const mmss = t => Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2, "0");
+  const tx = k => { const el = document.querySelector('#eDict [data-i18n="' + k + '"]'); return el ? el.textContent : ""; };
+  const audio = new Audio(); audio.preload = "metadata";
+  let SONGS = [], S = null, W = null, BT = null, DN = null, loop = false, raf = 0;
+  const RATE = 25, wc = $("eWv");
+  const below = (a, t) => { let lo = 0, hi = a.length - 1, r = -1; while(lo <= hi){ const m = (lo + hi) >> 1; if(a[m] <= t){ r = m; lo = m + 1; } else hi = m - 1; } return r; };
+  fetch("assets/edu/edu.json").then(r => r.json()).then(j => { SONGS = j.songs; load(0); });
+  function load(i){
+    if(!SONGS[i] || S === SONGS[i]) return;
+    audio.pause(); S = SONGS[i]; W = null; loop = false; pend = null; $("eLoop").setAttribute("aria-pressed", "false");
+    audio.src = S.src;
+    BT = Float64Array.from(S.beats, b => b[0]); DN = Float64Array.from(S.beats.filter(b => b[1] === 1), b => b[0]);
+    S.secT = S.sections.map(x => x[0]);
+    $("eT").textContent = S.title; $("eA").textContent = S.artist; $("eC").textContent = S.code; $("eBpm").textContent = S.bpm;
+    $("eDu").textContent = mmss(S.dur);
+    const ch = $("eChips"); ch.innerHTML = "";
+    S.sections.forEach(([t, k], n) => { const b = document.createElement("button"); b.type = "button"; b.style.setProperty("--c", col(k));
+      b.textContent = k + " · " + mmss(t); b.addEventListener("click", () => go(n, true)); ch.appendChild(b); });
+    fetch(S.wave).then(r => r.arrayBuffer()).then(b => { W = new Uint8Array(b); paint(); });
+    paint();
+  }
+  const secAt = t => Math.max(0, below(S.secT, t + 1e-3));
+  const secEnd = n => n + 1 < S.sections.length ? S.sections[n+1][0] : S.dur;
+  async function play(){ try{ await audio.play(); }catch(e){} }
+  // a jump before the song is loaded waits for it (the browser drops a currentTime set too early)
+  let pend = null;
+  const seekTo = t => { if(audio.readyState > 0) audio.currentTime = t; else pend = t; };
+  audio.addEventListener("loadedmetadata", () => { if(pend != null){ audio.currentTime = pend; pend = null; } });
+  const now = () => pend != null ? pend : (audio.currentTime || 0);
+  function go(n, start){ n = Math.max(0, Math.min(S.sections.length - 1, n)); loopSec = n; seekTo(S.sections[n][0] + .02); if(start && audio.paused) play(); paint(); }
+  $("ePlay").addEventListener("click", () => audio.paused ? play() : audio.pause());
+  $("ePrev").addEventListener("click", () => { const n = secAt(now()); go(now() - S.sections[n][0] > 2 ? n : n - 1); });
+  $("eNext").addEventListener("click", () => go(secAt(now()) + 1));
+  // LOOP holds the section it was pressed in (or the one chosen while it is on), and only acts when playback has just
+  // crossed that section's end: a time read during a seek must not move it
+  let loopSec = 0;
+  $("eLoop").addEventListener("click", () => { loop = !loop; loopSec = secAt(now()); $("eLoop").setAttribute("aria-pressed", loop ? "true" : "false"); });
+  wc.addEventListener("click", e => { const r = wc.getBoundingClientRect(), t = (e.clientX - r.left)/r.width*S.dur; loopSec = secAt(t); seekTo(t); paint(); });
+  audio.addEventListener("play", () => { $("ePlay").textContent = "❚❚"; $("ePlay").setAttribute("aria-label", "Pause");
+    document.dispatchEvent(new CustomEvent("mantra-play", {detail:"edu"})); tick(); });
+  audio.addEventListener("pause", () => { $("ePlay").textContent = "▶"; $("ePlay").setAttribute("aria-label", "Play"); paint(); });
+  audio.addEventListener("seeked", paint);
+  document.addEventListener("mantra-play", e => { if(e.detail !== "edu" && !audio.paused) audio.pause(); });
+  // the tabs choose the song: instrumental, vocal
+  document.querySelectorAll(".guide .tabs button").forEach(b => b.addEventListener("click", () => load(b.dataset.part === "gV" ? 1 : 0)));
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(paint, 50)));
+  function tick(){ cancelAnimationFrame(raf); const f = () => {
+      if(loop && !audio.seeking){ const e = secEnd(loopSec), t = now(); if(t >= e - .03 && t < e + 1.5) seekTo(S.sections[loopSec][0] + .02); }
+      paint(); if(!audio.paused) raf = requestAnimationFrame(f); }; raf = requestAnimationFrame(f); }
+  function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
+    if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
+  let lastSec = -1;
+  function paint(){
+    if(!S) return;
+    const t = now(), n = secAt(t), [k, name] = [S.sections[n][3], S.sections[n][1]];
+    // the waveform, played part dimmed, the sections under it, the current one brighter
+    const [w, h, d] = fit(wc), g = wc.getContext("2d"), strip = 24*d, m = (h - strip)/2, at = x => x/S.dur*w;
+    g.clearRect(0, 0, w, h);
+    if(W){ const low = css("--d-low"), mid = css("--d-mid"), high = css("--d-high"), step = 2*d;
+      for(let x = 0; x < w; x += step){ const s = x/w*S.dur, i = Math.floor(s*RATE)*4; if(i + 2 >= W.length) break;
+        g.globalAlpha = s < t ? .55 : 1;
+        g.fillStyle = low;  let a = W[i]/255*m*.94;   g.fillRect(x, m - a, step - d*.5, a*2);
+        g.fillStyle = mid;  a = W[i+1]/255*m*.94*.75; g.fillRect(x, m - a, step - d*.5, a*2);
+        g.fillStyle = high; a = W[i+2]/255*m*.94*.5;  g.fillRect(x, m - a, step - d*.5, a*2); }
+      g.globalAlpha = 1; }
+    // bar lines every 8 bars, faint
+    g.fillStyle = "rgba(238,240,255,.10)"; for(let q = 0; q < DN.length; q += 8){ g.fillRect(at(DN[q]), 0, d, h - strip); }
+    g.font = "500 " + (11*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
+    S.sections.forEach(([s, nm], q) => { const x0 = at(s), x1 = at(secEnd(q));
+      g.fillStyle = col(nm); g.globalAlpha = q === n ? 1 : .55; g.fillRect(x0, h - strip, Math.max(1, x1 - x0 - 2*d), strip);
+      g.globalAlpha = .6; g.fillRect(x0, 0, 1.5*d, h - strip); g.globalAlpha = 1;
+      if(x1 - x0 > g.measureText(nm).width + 10*d){ g.fillStyle = "#14121c"; g.fillText(nm, x0 + 5*d, h - strip/2); } });
+    g.fillStyle = "#fff"; g.fillRect(at(t) - d, 0, 2*d, h);
+    // NOW, the count, NEXT
+    E.querySelector(".cur").style.setProperty("--c", col(name)); E.querySelector(".teach").style.setProperty("--c", col(name));
+    $("eNow").textContent = name;
+    const total = S.sections[n][2], bi = below(DN, t + 1e-3), b0 = below(DN, S.sections[n][0] + 1e-3), barIn = Math.max(1, bi - b0 + 1);
+    $("eBar").textContent = "BAR " + Math.min(barIn, total) + " / " + total;
+    const k2 = below(BT, t + 1e-3), beat = k2 >= 0 ? S.beats[k2][1] - 1 : -1;
+    [...$("eBeats").children].forEach((e, q) => { e.classList.toggle("on", q === beat); e.classList.toggle("one", q === 0 && beat === 0); });
+    const ph = (barIn - 1) % 8; [...$("ePhr").children].forEach((e, q) => { e.classList.toggle("on", q === ph); e.classList.toggle("done", q < ph); });
+    E.querySelector(".nxt").style.setProperty("--c", n + 1 < S.sections.length ? col(S.sections[n+1][1]) : "#9AA3C7");
+    if(n + 1 < S.sections.length){ const nt = S.sections[n+1][0], bars = below(DN, nt - .05) - bi;
+      $("eNx").textContent = loop ? "LOOP" : S.sections[n+1][1]; $("eNt").textContent = loop ? mmss(secEnd(n) - t) : (bars > 0 ? bars + (bars === 1 ? " bar" : " bars") + " · " : "") + mmss(nt - t); }
+    else { $("eNx").textContent = "END"; $("eNt").textContent = mmss(S.dur - t); }
+    $("eEl").textContent = mmss(t);
+    // the teaching: this section of this song, and the last thing that happened
+    $("eTxt").textContent = tx("edu." + S.id + "." + k);
+    const ev = S.events.filter(x => x[0] <= t + .05).pop(); $("eEv").textContent = ev ? tx(ev[1]) : "—";
+    if(n !== lastSec){ lastSec = n; [...$("eChips").children].forEach((c, q) => c.classList.toggle("on", q === n)); }
+  }
+  new ResizeObserver(paint).observe(E);
 })();
 </script>
 </body>
