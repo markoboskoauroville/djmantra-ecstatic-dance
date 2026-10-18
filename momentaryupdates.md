@@ -329,3 +329,15 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > The easiest test is when the beat stops and then comes back. Between these two points, there is one section that needs to be fixed if it is missed.
 
 (Done in 51: that is how the sections are cut now.)
+
+## v33 — requested 18.10.2026
+
+> https://drive.google.com/drive/folders/1MKFOMCwo_9rL3cLzkOyfqMCFediXTzTD?usp=sharing
+> https://drive.google.com/drive/folders/1uL-VABKSV9at1zEB7bNnjo6soVZvozCz?usp=sharing
+
+> Based on this data on my DJ Mantra site, add an educational section that explains the sections of a song. Include examples with waveforms and create a comprehensive guide for two sections on my DJ Mantra website.
+
+52. A guide to the sections of a song, in two parts as the course in those two folders (Instrumental Structure: intro,
+    breakdown / build-up, main, outro, short codes, mix points; Vocal-Based Music: intro, verse, chorus, bridge, outro),
+    with waveform examples from the demo mix.
+    **Status:** in progress (the Mac session).
