@@ -311,3 +311,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
     dictionary in both languages (applyLang), the counter's words (BAR, BEAT, NEXT SECTION, FREE TIME, beats, END) and the
     section names are English, the HTML defaults inside the players are English; the rest of the page still switches.
     Checked in Chrome in HR mode: the heading "Poslušaj set" Croatian, the whole player English.
+
+## v32 — requested 18.10.2026
+
+> Please give your best efforts to name the sections inside the website. So intro, breakdown, etc. All the standard names for this kind of music.
+
+51. The sections of the demo mix named the way DJs and producers name them (intro, build-up, drop, breakdown, outro …)
+    instead of rekordbox's mood labels (UP / DOWN / CHORUS).
+    **Status:** in progress (the Mac session).
