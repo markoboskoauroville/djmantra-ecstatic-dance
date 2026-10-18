@@ -2,7 +2,8 @@
 
 Marko: *"take the songs from my set to give an example. One instrumental song, only one, the best section you can
 assess. One vocal song ... publish them in the educational player."* From his library (Tidal M4A), re-encoded AAC
-192 kbps into `assets/edu/`, with a 3-band waveform (25 fps, the layout of the mix's wave.bin) and `edu.json`.
+192 kbps and streamed as HLS (`assets/edu/<id>/index.m3u8`, 10 s segments: Cloudflare Pages answers no byte
+ranges, so a single file could not be jumped in; measured 18.10.2026), with a 3-band waveform (25 fps, the layout of the mix's wave.bin) and `edu.json`.
 
 - **Secret ID** (Moojo, Da Capo), the instrumental: djay Pro's beats (120 BPM, 204 bars). Read per bar from the kick
   (<150 Hz onsets), bass, mids and highs: bars 1–16 kick and bass only, 17–48 hi-hats in (+13 dB highs) but the mids

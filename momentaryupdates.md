@@ -365,7 +365,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
     whole waveform with sections, ◀◀ ▶ ▶▶, LOOP the section, NOW (bar n / m), beat and 8-bar phrase lights, NEXT in
     bars and time, what happens in this section of this song and what to LISTEN for at this bar, section chips. The two
     mix examples of the songs went; the Reframing → Miss You mix point stays. Tested in Chrome (muted): jump, count,
-    LOOP, the vocal tab; the phone width not seen. tools/edu/README.md.
+    LOOP, the vocal tab; the phone width not seen. tools/edu/README.md. The songs stream as HLS: the live
+    site answered every byte-range request with the whole file (200), so jumps would have failed; tested again
+    with a server without ranges.
 
 > For local stamp separation you need to run Ableton Live. You can even make a swift application called stamp separation that will automatically load the song into Ableton Live and you'll separate stamps, export stems and analyze them. It's just one shot action to do with the file picker.
 

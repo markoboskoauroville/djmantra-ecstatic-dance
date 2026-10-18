@@ -1699,7 +1699,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   function load(i){
     if(!SONGS[i] || S === SONGS[i]) return;
     audio.pause(); S = SONGS[i]; W = null; loop = false; pend = null; $("eLoop").setAttribute("aria-pressed", "false");
-    audio.src = S.src;
+    attach(S.src);
     BT = Float64Array.from(S.beats, b => b[0]); DN = Float64Array.from(S.beats.filter(b => b[1] === 1), b => b[0]);
     S.secT = S.sections.map(x => x[0]);
     $("eT").textContent = S.title; $("eA").textContent = S.artist; $("eC").textContent = S.code; $("eBpm").textContent = S.bpm;
@@ -1718,6 +1718,16 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const seekTo = t => { if(audio.readyState > 0) audio.currentTime = t; else pend = t; };
   audio.addEventListener("loadedmetadata", () => { if(pend != null){ audio.currentTime = pend; pend = null; } });
   const now = () => pend != null ? pend : (audio.currentTime || 0);
+  // HLS as the mix (10 s segments): Cloudflare Pages answers no byte ranges, so a single file could not be jumped in.
+  // hls.js where the browser needs it (the mix player's copy, loaded once), Safari's own HLS otherwise.
+  let hls = null;
+  function attach(src){
+    if(hls){ hls.destroy(); hls = null; }
+    if(audio.canPlayType("application/vnd.apple.mpegurl")){ audio.src = src; return; }
+    const go2 = () => { if(window.Hls && Hls.isSupported()){ hls = new Hls({maxBufferLength:30}); hls.loadSource(src); hls.attachMedia(audio); } else audio.src = src; };
+    if(window.Hls) go2();
+    else { const sc = document.createElement("script"); sc.src = "https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.6.16/hls.min.js"; sc.onload = go2; sc.onerror = () => { audio.src = src; }; document.head.appendChild(sc); }
+  }
   function go(n, start){ n = Math.max(0, Math.min(S.sections.length - 1, n)); loopSec = n; seekTo(S.sections[n][0] + .02); if(start && audio.paused) play(); paint(); }
   $("ePlay").addEventListener("click", () => audio.paused ? play() : audio.pause());
   $("ePrev").addEventListener("click", () => { const n = secAt(now()); go(now() - S.sections[n][0] > 2 ? n : n - 1); });

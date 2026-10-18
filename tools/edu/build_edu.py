@@ -43,9 +43,12 @@ for song, key in zip(SONGS, ('secret', 'rivers')):
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f, '-vn', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart',
                     os.path.join(OUT, song['id'] + '.m4a')], check=True)
     wave(f).tofile(os.path.join(OUT, song['id'] + '.wave.bin'))
-    song['src'] = 'assets/edu/' + song['id'] + '.m4a'; song['wave'] = 'assets/edu/' + song['id'] + '.wave.bin'
+    song['src'] = 'assets/edu/' + song['id'] + '/index.m3u8'   # HLS: the site answers no byte ranges; song['wave'] = 'assets/edu/' + song['id'] + '.wave.bin'
     song['dur'] = round(F[key]['dur'], 2)
     B = BARS[key]; song['beats'] = [[round(t, 3), ((i - B['fd']) % 4) + 1] for i, t in enumerate(B['beats'])]
 json.dump({'note': 'v34 educational player; beats: djay Pro; sections read from the kick, the bands and the voice (Demucs + Whisper)',
            'songs': SONGS}, open(os.path.join(OUT, 'edu.json'), 'w'), separators=(',', ':'), ensure_ascii=False)
 for s in SONGS: print(s['title'], s['dur'], [(x[1], x[0]) for x in s['sections']])
+# then, per song (Cloudflare Pages answers no byte ranges, so the player streams HLS as the mix does):
+#   ffmpeg -i <id>.m4a -c copy -f hls -hls_time 10 -hls_playlist_type vod -hls_segment_type fmp4 \
+#          -hls_fmp4_init_filename init.mp4 -hls_segment_filename "<id>/s%03d.m4s" <id>/index.m3u8   (the .m4a is not kept)
