@@ -59,3 +59,7 @@ marko.bosko@auroville.community
   the grid fitted to the kick (below 150 Hz), the downbeat and phrase where the bands change most, the sections where the
   16 beats after a phrase line differ most from the 16 before (wave.bin bands). Approximate: it is for listening, the
   app is for DJing.
+* **`assets/mix/grid.json` (when present) replaces it**: the exact grid from rekordbox (dynamic tempo + phrase analysis,
+  checked in djay Pro) made on Marko's Mac: `beats` [[t, beat 1-4]] for the whole mix, `sections` [[t, INTRO / UP /
+  DOWN / CHORUS / VERSE / BRIDGE / OUTRO, bars]], `free` [[t0, t1]] without a steady beat. The player reads it first and
+  falls back to beats.json.

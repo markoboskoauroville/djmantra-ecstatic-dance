@@ -1021,10 +1021,14 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
 
   // v28: the beat grid and the sections of every track (assets/mix/beats.json: bpm, a downbeat, an 8-bar phrase
   // start, [time, label] sections; bpm 0 = no steady beat), found by analysing the mix as the app analyses a song
-  let BT = [];
+  // assets/mix/grid.json, when present, wins: every beat of the mix from rekordbox (dynamic analysis, checked in djay
+  // Pro) as [time, beat 1-4], its phrases [time, kind, bars] and the free-time stretches [t0, t1]
+  let BT = [], GJ = null, GB = null, GD = null;
   Promise.all([fetch("assets/mix/wave.bin").then(r => r.arrayBuffer()), fetch("assets/mix/tracks.json").then(r => r.json()),
-               fetch("assets/mix/beats.json").then(r => r.json()).catch(() => [])]).then(([b, t, g]) => {
+               fetch("assets/mix/beats.json").then(r => r.json()).catch(() => []),
+               fetch("assets/mix/grid.json").then(r => r.ok ? r.json() : null).catch(() => null)]).then(([b, t, g, j]) => {
     W = new Uint8Array(b); N = W.length/4; DUR = N/RATE; TR = t; BT = g;
+    if(j && j.beats && j.beats.length){ GJ = j; GB = Float64Array.from(j.beats, x => x[0]); GD = Float64Array.from(j.beats.filter(x => x[1] === 1), x => x[0]); GJ.sections = GJ.sections || []; GJ.free = GJ.free || []; GJ.secT = Float64Array.from(GJ.sections, x => x[0]); }
     tl.innerHTML = TR.map((x, i) => '<li data-i="' + i + '"><span class="no">' + String(i+1).padStart(2,"0") + '</span><span class="sw" style="background:' + hue(i) + '"></span><span class="at">' + fmt(x[0]).replace(/^00:/, "") + '</span><span class="nm"></span></li>').join("");
     [...tl.children].forEach((li, i) => { const nm = li.querySelector(".nm"); nm.textContent = TR[i][1]; const a = document.createElement("span"); a.textContent = TR[i][2]; nm.appendChild(a); li.addEventListener("click", () => { seek(TR[i][0] + .05); if(audio.paused) toggle(); }); });
     ovImg = null; paint(true);
@@ -1051,7 +1055,18 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.fillStyle = "rgba(255,255,255,.16)";
     for(let s = Math.ceil(p0); s <= p0 + PAGE; s++){ const x = at(s), tall = s % 10 === 0; g.fillRect(x, 0, d, tall ? 8*d : 3*d); }
     // the beat grid as in the app: a thin line every beat, a brighter one every bar, a yellow one every 8-bar phrase
-    for(let k = 0; k < TR.length; k++){
+    if(GJ){
+      for(let k = Math.max(0, below(GB, p0)); k < GB.length && GB[k] <= p0 + PAGE; k++){
+        if(GB[k] < p0) continue; const x = at(GB[k]), one = GJ.beats[k][1] === 1;
+        g.fillStyle = one ? "rgba(238,240,255,.32)" : "rgba(238,240,255,.1)"; g.fillRect(x, 0, d, h - strip);
+      }
+      g.font = "600 " + (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "top";
+      for(const [ts, lab] of GJ.sections){ if(ts < p0 || ts > p0 + PAGE) continue; const x = at(ts);
+        g.fillStyle = "#FFD54A"; g.fillRect(x, 0, 2*d, h - strip); const tw = g.measureText(lab).width + 8*d;
+        g.fillRect(x, 0, tw, 14*d); g.fillStyle = "#1A1A1A"; g.fillText(lab, x + 4*d, 2*d); }
+      g.textBaseline = "middle";
+    }
+    for(let k = 0; !GJ && k < TR.length; k++){
       const gr = BT[k], a = TR[k][0], b = TR[k+1] ? TR[k+1][0] : DUR; if(!gr || !gr.bpm || b < p0 || a > p0 + PAGE) continue;
       const per = 60/gr.bpm; let n = Math.ceil((Math.max(a, p0) - gr.down)/per);
       for(let tb = gr.down + n*per; tb < Math.min(b, p0 + PAGE); tb += per, n++){
@@ -1103,21 +1118,44 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     [...tl.children].forEach((li, j) => li.classList.toggle("cur", j === i));
     const li = tl.children[i]; if(li && !audio.paused) tl.scrollTo({top: li.offsetTop - tl.offsetTop - 60, behavior:"smooth"});
   }
+  // the index of the last value <= t in a sorted array (-1 when none)
+  const below = (a, t) => { let lo = 0, hi = a.length - 1, r = -1; while(lo <= hi){ const m = (lo + hi) >> 1; if(a[m] <= t){ r = m; lo = m + 1; } else hi = m - 1; } return r; };
+  const isFree = t => GJ.free.some(([a, b]) => t >= a && t < b);
+  // grid.json at time t: BPM from the last beats, the beat in the bar, the bar in the track and in its phrase, the next phrase
+  function fromGrid(t, i){
+    const k = below(GB, t + 1e-4), sec = GJ.sections, s = below(GJ.secT, t + 1e-4);
+    const out = {per: 0, bpm: 0, beat: 0, barNo: 0, bar: 0, nt: null, nl: null};
+    for(let m = s + 1; m < sec.length; m++){ if(sec[m][0] > t + .05){ out.nt = sec[m][0]; out.nl = sec[m][1]; break; } }
+    if(k < 1 || isFree(t)) return out;
+    const k0 = Math.max(0, k - 4); out.per = (GB[k] - GB[k0])/(k - k0); out.bpm = 60/out.per;
+    out.beat = GJ.beats[k][1] - 1;
+    out.barNo = below(GD, t + 1e-4) - below(GD, TR[i][0] - 1e-4);
+    out.bar = s >= 0 ? Math.max(0, below(GD, t + 1e-4) - below(GD, sec[s][0] - 1e-4) - 1) % 8 : 0;
+    if(out.barNo < 1) out.barNo = 1;
+    return out;
+  }
   // v28: the counter (the app's Phrasing view): BPM, bar and beat, the 8 bars of the phrase, the next section
   const cnt = $("dCnt"), bpmEl = $("dBpm"), bbEl = $("dBB"), beatEls = [...$("dBeats").children], barEls = [...$("dBars").children], nxEl = $("dNx"), ntEl = $("dNt");
   const en = () => document.documentElement.lang === "en";
-  const NAMES = {DROP:["DROP","DROP"], BREAKDOWN:["BREAKDOWN","BREAKDOWN"], BUILD:["RAST","BUILD-UP"], CHANGE:["PROMJENA","CHANGE"], NEXT:["SLJEDEĆA PJESMA","NEXT SONG"]};
+  const NAMES = {DROP:["DROP","DROP"], BREAKDOWN:["BREAKDOWN","BREAKDOWN"], BUILD:["RAST","BUILD-UP"], CHANGE:["PROMJENA","CHANGE"], NEXT:["SLJEDEĆA PJESMA","NEXT SONG"],
+    INTRO:["INTRO","INTRO"], UP:["UP","UP"], DOWN:["DOWN","DOWN"], CHORUS:["CHORUS","CHORUS"], VERSE:["VERSE","VERSE"], BRIDGE:["BRIDGE","BRIDGE"], OUTRO:["OUTRO","OUTRO"]};
   const mmss = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2, "0"); };
   function counter(t){
-    if(!TR.length) return; const i = at(t), gr = BT[i] || {bpm:0, sections:[]}, L = en() ? 1 : 0;
-    let nt = TR[i+1] ? TR[i+1][0] : DUR, nl = TR[i+1] ? "NEXT" : null;
-    for(const [ts, lab] of gr.sections){ if(ts > t + .05){ if(ts < nt){ nt = ts; nl = lab; } break; } }
-    const per = gr.bpm ? 60/gr.bpm : 0;
+    if(!TR.length) return; const i = at(t), L = en() ? 1 : 0;
+    let nt = TR[i+1] ? TR[i+1][0] : DUR, nl = TR[i+1] ? "NEXT" : null, per, beat, bar, barNo, bpm;
+    if(GJ){
+      const q = fromGrid(t, i); per = q.per; bpm = q.bpm; beat = q.beat; bar = q.bar; barNo = q.barNo;
+      if(q.nt != null && q.nt < nt){ nt = q.nt; nl = q.nl; }
+    } else {
+      const gr = BT[i] || {bpm:0, sections:[]};
+      for(const [ts, lab] of gr.sections){ if(ts > t + .05){ if(ts < nt){ nt = ts; nl = lab; } break; } }
+      per = gr.bpm ? 60/gr.bpm : 0; bpm = gr.bpm;
+      if(per){ const n = Math.floor((t - gr.down)/per + 1e-6), nb = Math.floor((t - gr.phrase)/per + 1e-6);
+        beat = ((n % 4) + 4) % 4; bar = Math.floor((((nb % 32) + 32) % 32)/4); barNo = Math.floor(n/4) + 1; }
+    }
     cnt.classList.toggle("free", !per);
     if(per){
-      const n = Math.floor((t - gr.down)/per + 1e-6), beat = ((n % 4) + 4) % 4, nb = Math.floor((t - gr.phrase)/per + 1e-6), bar = Math.floor((((nb % 32) + 32) % 32)/4);
-      const barNo = Math.floor(n/4) + 1;
-      bpmEl.textContent = gr.bpm.toFixed(1);
+      bpmEl.textContent = bpm.toFixed(1);
       bbEl.textContent = (en() ? "BAR " : "TAKT ") + barNo + " · " + (en() ? "BEAT " : "UDARAC ") + (beat + 1);
       beatEls.forEach((e, k) => { e.classList.toggle("on", k === beat); e.classList.toggle("one", k === 0 && beat === 0); });
       barEls.forEach((e, k) => { e.classList.toggle("on", k === bar); e.classList.toggle("done", k < bar); });
@@ -1125,7 +1163,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       bpmEl.textContent = "—"; bbEl.textContent = en() ? "FREE TIME" : "SLOBODAN TEMPO";
       beatEls.forEach(e => e.classList.remove("on", "one")); barEls.forEach(e => e.classList.remove("on", "done"));
     }
-    nxEl.textContent = nl ? NAMES[nl][L] : (en() ? "END" : "KRAJ");
+    nxEl.textContent = nl ? (NAMES[nl] ? NAMES[nl][L] : nl) : (en() ? "END" : "KRAJ");
     const left = nt - t, beats = per ? Math.ceil(left/per - 1e-6) : 0;
     ntEl.textContent = (per ? beats + (en() ? (beats === 1 ? " beat" : " beats") : (beats === 1 ? " udarac" : " udaraca")) + " · " : "") + mmss(left);
     ntEl.classList.toggle("soon", per ? beats <= 8 : left <= 5);
