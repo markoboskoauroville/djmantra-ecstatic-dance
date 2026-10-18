@@ -301,3 +301,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > We use the Bitgrid from DJ Pro to get the right BPM as the mix progresses because it's changing.
 
 (Done in 49: the beats and BPM are djay Pro's; rekordbox gives only the bar count and the phrases.)
+
+## v31 — requested 18.10.2026
+
+> Please keep the language English inside the player for both languages, English and Croatian. So inside the player, all the players for sound on the website, you don't translate terms from English to Croatian.
+
+50. Every player on the page speaks English in both languages (HR and EN): no term inside a player is translated.
+    **Status:** in progress (the Mac session).
