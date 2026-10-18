@@ -36,8 +36,8 @@ under 4 bars is a fill, a beat run under 2 bars inside silence a stray hit. Then
 | BREAKDOWN | the beat stops inside a track |
 | BUILD-UP | the end of a breakdown where the energy climbs bar by bar, 4+ bars and 3+ dB |
 | DROP | the beat comes back after a breakdown or build-up, its first 16 bars |
-| GROOVE | the beat running: after the drop, at a new track over a beat that never stopped |
+| MAIN | the beat running: after the drop, at a new track over a beat that never stopped |
 | OUTRO | the beat stops in the last 30 s before the next track |
 | AMBIENT | free time, no beat at all |
 
-110 sections: 37 GROOVE, 31 BREAKDOWN, 31 DROP, 3 BUILD-UP, 3 INTRO, 3 OUTRO, 2 AMBIENT.
+110 sections: 37 MAIN, 31 BREAKDOWN, 31 DROP, 3 BUILD-UP, 3 INTRO, 3 OUTRO, 2 AMBIENT.

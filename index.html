@@ -386,6 +386,44 @@ footer a:hover{color:var(--amber)}
   .rv{opacity:1; transform:none}
   html{scroll-behavior:auto}
 }
+
+/* ---------- v33: the song-sections guide ---------- */
+:root{--d-low:#FF6B5E; --d-mid:#6CCB72; --d-high:#5AA2F0; --s-intro:#4fc3c7; --s-break:#9f7ae0; --s-build:#e9c84a; --s-drop:#ff3d7a; --s-main:#ff8a2b; --s-outro:#38b6ec; --s-amb:#6b6478;
+  --s-verse:#6CCB72; --s-chorus:#ff3d7a; --s-bridge:#9f7ae0; --s-pre:#e9c84a}
+.guide .tabs{display:flex; gap:8px; flex-wrap:wrap; margin:26px 0 22px}
+.guide .tabs button{font:500 12px/1 "IBM Plex Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink2);
+  background:transparent; border:1px solid var(--line); border-radius:40px; padding:11px 18px; cursor:pointer}
+.guide .tabs button[aria-selected="true"]{background:var(--amber); color:#1a1206; border-color:var(--amber)}
+.guide .part[hidden]{display:none}
+.guide .units{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:8px 0 30px}
+.guide .unit{border:1px solid var(--line2); border-radius:12px; padding:14px 16px; background:rgba(255,255,255,.02)}
+.guide .unit b{display:block; font:500 12px/1.3 "IBM Plex Mono",monospace; letter-spacing:.12em; color:var(--amber); text-transform:uppercase; margin-bottom:6px}
+.guide .unit p{margin:0; font-size:14.5px; color:var(--ink2); line-height:1.55}
+.guide .cells{display:flex; gap:2px; margin:10px 0 0; flex-wrap:wrap}
+.guide .cells i{width:9px; height:14px; border-radius:2px; background:rgba(255,255,255,.12)}
+.guide .cells i.one{background:var(--amber)}
+.guide .cells i.gap{margin-right:6px}
+.guide .secs{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; margin:6px 0 30px}
+.guide .sc{border-radius:12px; padding:16px 18px 14px; background:rgba(255,255,255,.025); border:1px solid var(--line2); border-top:3px solid var(--c)}
+.guide .sc h3{font-family:"IBM Plex Mono",monospace; font-size:15px; font-weight:500; letter-spacing:.12em; color:var(--c); margin:0 0 8px}
+.guide .sc h3 small{font-size:11px; color:var(--ink3); letter-spacing:.1em; margin-left:8px}
+.guide .sc p{font-size:14.5px; line-height:1.6; color:var(--ink2); margin:0 0 8px}
+.guide .sc p.dj{color:var(--ink); border-top:1px solid var(--line2); padding-top:8px; margin:6px 0 0}
+.guide .sc p.dj::before{content:"DJ  "; font:500 10.5px "IBM Plex Mono",monospace; letter-spacing:.14em; color:var(--amber)}
+.guide .ex{margin:10px 0 34px; border:1px solid var(--line); border-radius:14px; padding:14px; background:rgba(11,10,18,.6)}
+.guide .ex .hd{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 2px 10px}
+.guide .ex .hd b{font:500 12px "IBM Plex Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--amber)}
+.guide .ex .hd span{font-size:14px; color:var(--ink2)}
+.guide .ex .hd code{margin-left:auto; font:500 12.5px "IBM Plex Mono",monospace; color:var(--ink); background:rgba(255,255,255,.06); border-radius:6px; padding:4px 8px}
+.guide .ex canvas{display:block; width:100%; height:150px; cursor:pointer; touch-action:manipulation}
+.guide .ex .lg{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+.guide .ex .lg button{font:500 11px/1 "IBM Plex Mono",monospace; letter-spacing:.1em; color:#14121c; background:var(--c); border:0; border-radius:20px; padding:7px 11px; cursor:pointer}
+.guide .ex .lg button::before{content:"▶ "}
+.guide .ex p.note{font-size:13.5px; color:var(--ink3); margin:10px 2px 0}
+.guide .codes{font:500 14px/2 "IBM Plex Mono",monospace; color:var(--ink); margin:6px 0 26px; overflow-x:auto}
+.guide .codes div{white-space:nowrap}
+.guide .codes span{color:var(--ink3)}
+@media (max-width:760px){ .guide .units{grid-template-columns:1fr 1fr} .guide .ex canvas{height:120px} .guide .ex .hd code{margin-left:0} }
 </style>
 </head>
 <body>
@@ -446,6 +484,66 @@ footer a:hover{color:var(--amber)}
       </div>
       <ol class="tl" id="dTl" aria-label="Playlist"></ol>
     </div>
+  </div>
+</section>
+
+<section id="guide" class="guide" style="padding-top:30px">
+  <div class="wrap">
+    <div class="rv" style="max-width:44em">
+      <div class="eyebrow" data-i18n="g.e">Škola · struktura pjesme</div>
+      <h2 class="sec" data-i18n="g.h">Kako je pjesma <em>građena</em></h2>
+      <p class="lede" style="max-width:none" data-i18n="g.l">DJ ne miksa pjesme, miksa dijelove pjesama. Tko čuje gdje počinje intro, gdje se ritam lomi i gdje se vraća, zna kada ući i kada izaći. Ovaj vodič to pokazuje na mom demo miksu: svaki primjer je pravi valni oblik, svaki dio se može poslušati.</p>
+    </div>
+    <div class="units rv">
+      <div class="unit"><b>Beat</b><p data-i18n="g.u.beat">Jedan udarac. U house glazbi to je bas bubanj: 120 do 125 udaraca u minuti.</p></div>
+      <div class="unit"><b>Bar · 4 beats</b><p data-i18n="g.u.bar">Četiri udarca. Prvi je najjači i na njemu počinje sve što je važno.</p></div>
+      <div class="unit"><b>Phrase · 8 bars</b><p data-i18n="g.u.phr">Osam taktova, 32 udarca. Producenti mijenjaju pjesmu na granicama fraza: svakih 8, 16 ili 32 takta nešto dođe ili ode.</p><div class="cells" aria-hidden="true"><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i><i class="one"></i><i class=""></i><i class=""></i><i class=" gap"></i></div></div>
+      <div class="unit"><b>Section · 8 / 16 / 32</b><p data-i18n="g.u.sec">Jedna ili više fraza istog karaktera: intro, breakdown, refren. Dio traje 8, 16 ili 32 takta, rijetko nešto između.</p></div>
+    </div>
+    <p class="body rv" style="max-width:44em" data-i18n-html="g.wave">Čitanje valnog oblika: <b style="color:var(--d-low)">crveno</b> je bas i bubanj, <b style="color:var(--d-mid)">zeleno</b> sredina, <b style="color:var(--d-high)">plavo</b> visoki tonovi. Kad crvenog nestane, ritam je stao; kad se vrati u punoj širini, to je drop.</p>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-part="gI" data-i18n="g.t1">Instrumentalna glazba</button>
+      <button type="button" role="tab" aria-selected="false" data-part="gV" data-i18n="g.t2">Vokalna glazba</button>
+    </div>
+    <div class="part" id="gI">
+      <p class="body" style="max-width:44em" data-i18n="g.i.l">House, organic house, techno, trance, drum and bass: glazba građena oko instrumenata, ne oko pjevača. Pravljena je za DJ-e, pa su joj počeci i krajevi jednostavni i lako se miksaju. Ako se pojavi glas, obično je to kratki uzorak koji služi kao instrument. Redoslijed je gotovo uvijek isti: intro, breakdown i build-up, main, opet breakdown i build-up, main, outro.</p>
+      <div class="secs">
+        <div class="sc" data-s="INTRO"><h3>INTRO<small>16 / 32</small></h3><p data-i18n="g.i.intro">Početak pjesme, napravljen za miksanje. Često samo bas bubanj i udaraljke, pa instrument po instrument svakih 8 taktova. Traje 16 ili 32 takta.</p><p data-i18n="g.i.intro.w">Valni oblik je uzak i ujednačen, crveni udarci u pravilnom redu.</p><p class="dj" data-i18n="g.i.intro.dj">Ovdje ulaziš: intro nove pjesme ide preko outra one koja svira.</p></div>
+        <div class="sc" data-s="BREAKDOWN"><h3>BREAKDOWN<small>8 / 16 / 32</small></h3><p data-i18n="g.i.break">Ritam staje. Bas bubanj i bas linija nestaju, ostaju pad, zvukovi, ponekad glas. Prostor da plesači udahnu.</p><p data-i18n="g.i.break.w">Valni oblik se naglo suzi i crvena boja nestaje.</p><p class="dj" data-i18n="g.i.break.dj">Ne izlazi iz pjesme usred breakdowna: plesači čekaju drop koji dolazi.</p></div>
+        <div class="sc" data-s="BUILD-UP"><h3>BUILD-UP<small>4 / 8</small></h3><p data-i18n="g.i.build">Kraj breakdowna koji raste: bubanj u šesnaestinkama, šum koji se diže, filter koji se otvara. Napetost prije povratka.</p><p data-i18n="g.i.build.w">Valni oblik raste prema desno, takt po takt.</p><p class="dj" data-i18n="g.i.build.dj">Ne miješaj ništa novo ovdje: pusti da napetost dođe do vrha.</p></div>
+        <div class="sc" data-s="DROP"><h3>DROP<small>1</small></h3><p data-i18n="g.i.drop">Trenutak kad se sve vrati: bas bubanj, bas linija, glavna melodija. Prvi takt maina, ono što plesni podij čeka.</p><p data-i18n="g.i.drop.w">Puna širina i crvena boja se vraćaju u jednom taktu.</p><p class="dj" data-i18n="g.i.drop.dj">Drop na drop: kad pustiš drugu pjesmu točno na njezin drop, sobu digneš dvaput.</p></div>
+        <div class="sc" data-s="MAIN"><h3>MAIN<small>16 / 32 / 64</small></h3><p data-i18n="g.i.main">Meso pjesme: sve je unutra, fraza za frazom, svakih 16 taktova nešto novo. Zove se i drop, groove.</p><p data-i18n="g.i.main.w">Široko, gusto, sve tri boje.</p><p class="dj" data-i18n="g.i.main.dj">Najsigurnije mjesto za miks: nema glasa koji bi se sudario s drugim glasom.</p></div>
+        <div class="sc" data-s="OUTRO"><h3>OUTRO<small>16 / 32</small></h3><p data-i18n="g.i.outro">Kraj pjesme, intro unatrag: instrumenti odlaze jedan po jedan dok ne ostane samo bubanj i jeka.</p><p data-i18n="g.i.outro.w">Valni oblik se stanjuje, boje blijede.</p><p class="dj" data-i18n="g.i.outro.dj">Ovdje izlaziš: outro i intro sljedeće pjesme sviraju zajedno, 16 ili 32 takta.</p></div>
+      </div>
+      <div class="ex" data-t0="3044.4" data-t1="3420"><div class="hd"><b data-i18n="g.x1.h">Primjer 1 · Secret ID</b><span data-i18n="g.x1.s">Main, breakdown, build-up, drop, dvaput. Klikni dio da ga čuješ u playeru.</span><code>M48 · B37 · M49 · B23 · M40</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x1.n">U miksu je intro ove pjesme bio ispod outra prethodne, pa primjer počinje mainom. Brojevi taktova su izmjereni iz analize ritma.</p></div>
+      <div class="ex" data-t0="1800" data-t1="1960"><div class="hd"><b data-i18n="g.x2.h">Primjer 2 · točka miksa</b><span data-i18n="g.x2.s">Reframing završava, Miss You dolazi: outro preko introa.</span><code>… M · O19 → I16 · M …</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x2.n">Ritam Reframinga staje u outru; bubanj koji se vraća je intro pjesme Miss You. Sljedeći main je već nova pjesma.</p></div>
+    </div>
+    <div class="part" id="gV" hidden>
+      <p class="body" style="max-width:44em" data-i18n="g.v.l">Pop, vokalni house, soul, mantre i kirtan: glazba građena oko pjevača i priče. Dijelovi se prepoznaju po glasu: refren se ponavlja, strofa priča. Ovdje vrijede druga pravila miksa, jer se dva glasa ne smiju sudariti.</p>
+      <div class="secs">
+        <div class="sc" data-s="INTRO"><h3>INTRO<small>8 / 16 / 32</small></h3><p data-i18n="g.v.intro">Početak, prije prvog glasa ili s kratkim uvodom. U radijskim verzijama kratak, u DJ verzijama 16 ili 32 takta samo ritma.</p><p class="dj" data-i18n="g.v.intro.dj">Biraj DJ verzije (extended mix): radijski intro od dva takta ne može se miksati.</p></div>
+        <div class="sc" data-s="VERSE"><h3>VERSE<small>8 / 16</small></h3><p data-i18n="g.v.verse">Strofa: pjevač priča priču. Riječi se ne ponavljaju, ali svaka strofa ima isti broj taktova kao prethodna.</p><p class="dj" data-i18n="g.v.verse.dj">Ne prekidaj strofu: rečenica prekinuta na pola zvuči kao greška.</p></div>
+        <div class="sc" data-s="PRE-CHORUS"><h3>PRE-CHORUS<small>4 / 8</small></h3><p data-i18n="g.v.pre">Kratki dio koji se penje iz strofe u refren: energija se skupi, melodija se diže. Najčešće 4 ili 8 taktova.</p><p class="dj" data-i18n="g.v.pre.dj">Znak da refren dolazi za nekoliko taktova.</p></div>
+        <div class="sc" data-s="CHORUS"><h3>CHORUS<small>8 / 16</small></h3><p data-i18n="g.v.chorus">Refren, hook: dio koji pamtiš i pjevaš. Gotovo uvijek nosi ime pjesme i ponavlja se, svaki put isti broj taktova.</p><p class="dj" data-i18n="g.v.chorus.dj">Najlakše mjesto za miks u vokalnoj glazbi; refren nove pjesme dobro sjeda na kraj refrena stare.</p></div>
+        <div class="sc" data-s="BRIDGE"><h3>BRIDGE<small>4 / 8</small></h3><p data-i18n="g.v.bridge">Most: jednom u pjesmi, drugačiji od svega ostalog. Spaja refren s nečim drugim i daje predah prije zadnjeg refrena.</p><p class="dj" data-i18n="g.v.bridge.dj">Ako ne zvuči ni kao strofa, ni kao refren, ni kao kraj, to je most.</p></div>
+        <div class="sc" data-s="OUTRO"><h3>OUTRO<small>8 / 16 / 32</small></h3><p data-i18n="g.v.outro">Kraj: često ponovljeni refren koji se gasi, ili ritam bez glasa za DJ-a.</p><p class="dj" data-i18n="g.v.outro.dj">Izlazi kad glas završi: dva pjevača u isto vrijeme zbunjuju podij.</p></div>
+      </div>
+      <div class="ex" data-t0="6188" data-t1="6330" data-secs='[[6192.485, "INTRO"], [6208.277, "CHORUS"], [6246.792, "BRIDGE"], [6262.152, "VERSE"], [6277.517, "PRE-CHORUS"], [6285.211, "CHORUS"], [6315.915, "NEXT TRACK"]]'><div class="hd"><b data-i18n="g.x3.h">Primjer 3 · I Follow Rivers</b><span data-i18n="g.x3.s">Glas izdvojen iz miksa (Demucs) pokazuje gdje je koji dio.</span><code>I8 · C20vo · B8 · V12vo · C16vo</code></div><canvas aria-hidden="true"></canvas><div class="lg"></div><p class="note" data-i18n="g.x3.n">Remiks otvara refrenom: naslov pjesme ponovljen sam, preko breakdowna. Zatim 8 taktova bez glasa (most), strofa, pre-chorus i pun refren od 16 taktova. Ispod zadnjeg refrena već dolazi ritam sljedeće pjesme: ovdje sam izašao iz pjesme, prije njezinog mosta i outra.</p></div>
+    </div>
+    <div class="split rv" style="margin-top:10px">
+      <div>
+        <h3 class="sec" style="font-size:30px;margin-bottom:12px" data-i18n="g.c.h">Kratki kodovi</h3>
+        <p class="body" data-i18n="g.c.i">Cijela pjesma u jednom retku: slovo za dio, broj za taktove. Napišeš ga na omot ploče ili u komentar u DJ programu i znaš strukturu bez slušanja.</p>
+        <div class="codes"><div><span>Instrumental ·</span> <b data-i18n="g.c.ki">I intro · B breakdown i build-up · M main (drop) · O outro</b></div><div><span>Vocal ·</span> <b data-i18n="g.c.kv">I intro · V strofa · C refren · B most · O outro</b></div></div>
+        <p class="body" data-i18n-html="g.c.ex"><b>vo</b> uz dio znači da u njemu ima glasa, <b>bt</b> pojedine udarce koji nisu cijeli takt.</p>
+      </div>
+      <div>
+        <h3 class="sec" style="font-size:30px;margin-bottom:12px" data-i18n="g.m.h">Točke miksa</h3>
+        <p class="body" data-i18n="g.m.i">Kod instrumentalne glazbe gotovo sve se može miksati: intro preko outra je klasika, main preko maina sigurno, a breakdown samo ako nakon njega dolazi drop. Broji fraze: nova pjesma ulazi na prvi takt fraze, nikad usred.</p>
+        <p class="body" data-i18n="g.m.v">Kod vokalne glazbe pazi na glas: miksaj u introu, outru i refrenu, nikad usred strofe. Kad se preklapaju dvije pjesme, glas smije imati samo jedna.</p>
+      </div>
+    </div>
+    <p class="body" style="max-width:none;font-size:13px;color:var(--ink3);margin-top:18px" data-i18n="g.src">Po tečaju Instrumental Structure i Vocal-Based Music; primjeri su iz mog demo miksa, sekcije iz analize ritma (djay Pro, rekordbox) i glasa (Demucs).</p>
   </div>
 </section>
 
@@ -741,13 +839,74 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v32</p>
+    <p class="ver">v33</p>
   </div>
 </footer>
 
 <script>
 const DICT = {
  hr:{
+  "g.e":"Škola · struktura pjesme",
+  "g.h":"Kako je pjesma <em>građena</em>",
+  "g.l":"DJ ne miksa pjesme, miksa dijelove pjesama. Tko čuje gdje počinje intro, gdje se ritam lomi i gdje se vraća, zna kada ući i kada izaći. Ovaj vodič to pokazuje na mom demo miksu: svaki primjer je pravi valni oblik, svaki dio se može poslušati.",
+  "g.u.h":"Prvo brojanje",
+  "g.u.beat":"Jedan udarac. U house glazbi to je bas bubanj: 120 do 125 udaraca u minuti.",
+  "g.u.bar":"Četiri udarca. Prvi je najjači i na njemu počinje sve što je važno.",
+  "g.u.phr":"Osam taktova, 32 udarca. Producenti mijenjaju pjesmu na granicama fraza: svakih 8, 16 ili 32 takta nešto dođe ili ode.",
+  "g.u.sec":"Jedna ili više fraza istog karaktera: intro, breakdown, refren. Dio traje 8, 16 ili 32 takta, rijetko nešto između.",
+  "g.wave":"Čitanje valnog oblika: <b style=\"color:var(--d-low)\">crveno</b> je bas i bubanj, <b style=\"color:var(--d-mid)\">zeleno</b> sredina, <b style=\"color:var(--d-high)\">plavo</b> visoki tonovi. Kad crvenog nestane, ritam je stao; kad se vrati u punoj širini, to je drop.",
+  "g.t1":"Instrumentalna glazba",
+  "g.t2":"Vokalna glazba",
+  "g.i.l":"House, organic house, techno, trance, drum and bass: glazba građena oko instrumenata, ne oko pjevača. Pravljena je za DJ-e, pa su joj počeci i krajevi jednostavni i lako se miksaju. Ako se pojavi glas, obično je to kratki uzorak koji služi kao instrument. Redoslijed je gotovo uvijek isti: intro, breakdown i build-up, main, opet breakdown i build-up, main, outro.",
+  "g.i.intro":"Početak pjesme, napravljen za miksanje. Često samo bas bubanj i udaraljke, pa instrument po instrument svakih 8 taktova. Traje 16 ili 32 takta.",
+  "g.i.intro.w":"Valni oblik je uzak i ujednačen, crveni udarci u pravilnom redu.",
+  "g.i.intro.dj":"Ovdje ulaziš: intro nove pjesme ide preko outra one koja svira.",
+  "g.i.break":"Ritam staje. Bas bubanj i bas linija nestaju, ostaju pad, zvukovi, ponekad glas. Prostor da plesači udahnu.",
+  "g.i.break.w":"Valni oblik se naglo suzi i crvena boja nestaje.",
+  "g.i.break.dj":"Ne izlazi iz pjesme usred breakdowna: plesači čekaju drop koji dolazi.",
+  "g.i.build":"Kraj breakdowna koji raste: bubanj u šesnaestinkama, šum koji se diže, filter koji se otvara. Napetost prije povratka.",
+  "g.i.build.w":"Valni oblik raste prema desno, takt po takt.",
+  "g.i.build.dj":"Ne miješaj ništa novo ovdje: pusti da napetost dođe do vrha.",
+  "g.i.drop":"Trenutak kad se sve vrati: bas bubanj, bas linija, glavna melodija. Prvi takt maina, ono što plesni podij čeka.",
+  "g.i.drop.w":"Puna širina i crvena boja se vraćaju u jednom taktu.",
+  "g.i.drop.dj":"Drop na drop: kad pustiš drugu pjesmu točno na njezin drop, sobu digneš dvaput.",
+  "g.i.main":"Meso pjesme: sve je unutra, fraza za frazom, svakih 16 taktova nešto novo. Zove se i drop, groove.",
+  "g.i.main.w":"Široko, gusto, sve tri boje.",
+  "g.i.main.dj":"Najsigurnije mjesto za miks: nema glasa koji bi se sudario s drugim glasom.",
+  "g.i.outro":"Kraj pjesme, intro unatrag: instrumenti odlaze jedan po jedan dok ne ostane samo bubanj i jeka.",
+  "g.i.outro.w":"Valni oblik se stanjuje, boje blijede.",
+  "g.i.outro.dj":"Ovdje izlaziš: outro i intro sljedeće pjesme sviraju zajedno, 16 ili 32 takta.",
+  "g.x1.h":"Primjer 1 · Secret ID",
+  "g.x1.s":"Main, breakdown, build-up, drop, dvaput. Klikni dio da ga čuješ u playeru.",
+  "g.x1.n":"U miksu je intro ove pjesme bio ispod outra prethodne, pa primjer počinje mainom. Brojevi taktova su izmjereni iz analize ritma.",
+  "g.x2.h":"Primjer 2 · točka miksa",
+  "g.x2.s":"Reframing završava, Miss You dolazi: outro preko introa.",
+  "g.x2.n":"Ritam Reframinga staje u outru; bubanj koji se vraća je intro pjesme Miss You. Sljedeći main je već nova pjesma.",
+  "g.v.l":"Pop, vokalni house, soul, mantre i kirtan: glazba građena oko pjevača i priče. Dijelovi se prepoznaju po glasu: refren se ponavlja, strofa priča. Ovdje vrijede druga pravila miksa, jer se dva glasa ne smiju sudariti.",
+  "g.v.intro":"Početak, prije prvog glasa ili s kratkim uvodom. U radijskim verzijama kratak, u DJ verzijama 16 ili 32 takta samo ritma.",
+  "g.v.intro.dj":"Biraj DJ verzije (extended mix): radijski intro od dva takta ne može se miksati.",
+  "g.v.verse":"Strofa: pjevač priča priču. Riječi se ne ponavljaju, ali svaka strofa ima isti broj taktova kao prethodna.",
+  "g.v.verse.dj":"Ne prekidaj strofu: rečenica prekinuta na pola zvuči kao greška.",
+  "g.v.pre":"Kratki dio koji se penje iz strofe u refren: energija se skupi, melodija se diže. Najčešće 4 ili 8 taktova.",
+  "g.v.pre.dj":"Znak da refren dolazi za nekoliko taktova.",
+  "g.v.chorus":"Refren, hook: dio koji pamtiš i pjevaš. Gotovo uvijek nosi ime pjesme i ponavlja se, svaki put isti broj taktova.",
+  "g.v.chorus.dj":"Najlakše mjesto za miks u vokalnoj glazbi; refren nove pjesme dobro sjeda na kraj refrena stare.",
+  "g.v.bridge":"Most: jednom u pjesmi, drugačiji od svega ostalog. Spaja refren s nečim drugim i daje predah prije zadnjeg refrena.",
+  "g.v.bridge.dj":"Ako ne zvuči ni kao strofa, ni kao refren, ni kao kraj, to je most.",
+  "g.v.outro":"Kraj: često ponovljeni refren koji se gasi, ili ritam bez glasa za DJ-a.",
+  "g.v.outro.dj":"Izlazi kad glas završi: dva pjevača u isto vrijeme zbunjuju podij.",
+  "g.x3.h":"Primjer 3 · I Follow Rivers",
+  "g.x3.s":"Glas izdvojen iz miksa (Demucs) pokazuje gdje je koji dio.",
+  "g.x3.n":"Remiks otvara refrenom: naslov pjesme ponovljen sam, preko breakdowna. Zatim 8 taktova bez glasa (most), strofa, pre-chorus i pun refren od 16 taktova. Ispod zadnjeg refrena već dolazi ritam sljedeće pjesme: ovdje sam izašao iz pjesme, prije njezinog mosta i outra.",
+  "g.c.h":"Kratki kodovi",
+  "g.c.i":"Cijela pjesma u jednom retku: slovo za dio, broj za taktove. Napišeš ga na omot ploče ili u komentar u DJ programu i znaš strukturu bez slušanja.",
+  "g.c.ki":"I intro · B breakdown i build-up · M main (drop) · O outro",
+  "g.c.kv":"I intro · V strofa · C refren · B most · O outro",
+  "g.c.ex":"<b>vo</b> uz dio znači da u njemu ima glasa, <b>bt</b> pojedine udarce koji nisu cijeli takt.",
+  "g.m.h":"Točke miksa",
+  "g.m.i":"Kod instrumentalne glazbe gotovo sve se može miksati: intro preko outra je klasika, main preko maina sigurno, a breakdown samo ako nakon njega dolazi drop. Broji fraze: nova pjesma ulazi na prvi takt fraze, nikad usred.",
+  "g.m.v":"Kod vokalne glazbe pazi na glas: miksaj u introu, outru i refrenu, nikad usred strofe. Kad se preklapaju dvije pjesme, glas smije imati samo jedna.",
+  "g.src":"Po tečaju Instrumental Structure i Vocal-Based Music; primjeri su iz mog demo miksa, sekcije iz analize ritma (djay Pro, rekordbox) i glasa (Demucs).",
   "who":"Marko Boško · Zagreb · Auroville",
   "tag":"Od Gangesa do Amazone. Set je putovanje, ne popis pjesama.",
   "e.who":"Tko vodi","h.who":"Ritam prije <em>riječi</em>",
@@ -809,6 +968,67 @@ const DICT = {
   "ft":"DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community"
  },
  en:{
+  "g.e":"School · song structure",
+  "g.h":"How a song is <em>built</em>",
+  "g.l":"A DJ doesn't mix songs, a DJ mixes parts of songs. If you can hear where the intro starts, where the beat breaks and where it comes back, you know when to come in and when to leave. This guide shows it on my demo mix: every example is a real waveform, every part can be played.",
+  "g.u.h":"First, the counting",
+  "g.u.beat":"One beat. In house music it's the kick drum: 120 to 125 beats a minute.",
+  "g.u.bar":"Four beats. The first is the strongest, and everything important starts on it.",
+  "g.u.phr":"Eight bars, 32 beats. Producers change the song on phrase lines: every 8, 16 or 32 bars something comes in or leaves.",
+  "g.u.sec":"One or more phrases of the same character: intro, breakdown, chorus. A section lasts 8, 16 or 32 bars, rarely anything in between.",
+  "g.wave":"Reading the waveform: <b style=\"color:var(--d-low)\">red</b> is bass and kick, <b style=\"color:var(--d-mid)\">green</b> the mids, <b style=\"color:var(--d-high)\">blue</b> the highs. When the red disappears, the beat has stopped; when it comes back at full width, that's the drop.",
+  "g.t1":"Instrumental music",
+  "g.t2":"Vocal-based music",
+  "g.i.l":"House, organic house, techno, trance, drum and bass: music built around the instruments, not around a singer. It's made for DJs, so its beginnings and endings are simple and easy to mix. If a voice appears, it's usually a short sample used as an instrument. The order is almost always the same: intro, breakdown and build-up, main, breakdown and build-up again, main, outro.",
+  "g.i.intro":"The start of the song, made for mixing. Often just kick and percussion, then one instrument after another every 8 bars. It lasts 16 or 32 bars.",
+  "g.i.intro.w":"The waveform is narrow and even, red kicks in a steady row.",
+  "g.i.intro.dj":"This is where you come in: the new song's intro goes over the outro of the one that's playing.",
+  "g.i.break":"The beat stops. Kick and bassline drop out; pads, textures, sometimes a voice remain. Room for the dancers to breathe.",
+  "g.i.break.w":"The waveform narrows suddenly and the red disappears.",
+  "g.i.break.dj":"Don't leave the song in the middle of a breakdown: the floor is waiting for the drop that comes after it.",
+  "g.i.build":"The end of the breakdown that rises: snare rolls, a rising noise sweep, a filter opening. Tension before the return.",
+  "g.i.build.w":"The waveform grows to the right, bar by bar.",
+  "g.i.build.dj":"Don't bring anything new in here: let the tension reach its peak.",
+  "g.i.drop":"The moment everything comes back: kick, bassline, the main melody. The first bar of the main part, the moment the dance floor waits for.",
+  "g.i.drop.w":"Full width and the red come back in a single bar.",
+  "g.i.drop.dj":"Drop on the drop: bring the other song in exactly on its drop and you lift the room twice.",
+  "g.i.main":"The meat of the song: everything is in, phrase after phrase, something new every 16 bars. Also called the drop or the groove.",
+  "g.i.main.w":"Wide, dense, all three colours.",
+  "g.i.main.dj":"The safest place to mix: there's no voice to clash with another voice.",
+  "g.i.outro":"The end of the song, the intro in reverse: instruments leave one by one until only the kick and an echo remain.",
+  "g.i.outro.w":"The waveform thins, the colours fade.",
+  "g.i.outro.dj":"This is where you leave: the outro and the next song's intro play together for 16 or 32 bars.",
+  "g.x1.h":"Example 1 · Secret ID",
+  "g.x1.s":"Main, breakdown, build-up, drop, twice. Click a part to hear it in the player.",
+  "g.x1.n":"In the mix this song's intro ran under the previous song's outro, so the example starts in the main part. The bar counts are measured from the beat analysis.",
+  "g.x2.h":"Example 2 · a mix point",
+  "g.x2.s":"Reframing ends, Miss You arrives: outro over intro.",
+  "g.x2.n":"Reframing's beat stops in its outro; the kick that comes back is the intro of Miss You. The next main part is already the new song.",
+  "g.v.l":"Pop, vocal house, soul, mantras and kirtan: music built around a singer and a story. You recognise the parts by the voice: the chorus repeats, the verse tells. Different mixing rules apply here, because two voices must never collide.",
+  "g.v.intro":"The start, before the first voice or with a short lead-in. Short in radio edits, 16 or 32 bars of beat in DJ versions.",
+  "g.v.intro.dj":"Pick the DJ versions (extended mix): a two-bar radio intro can't be mixed.",
+  "g.v.verse":"The verse: the singer tells the story. The words don't repeat, but each verse has the same number of bars as the one before.",
+  "g.v.verse.dj":"Don't cut a verse: a sentence stopped halfway sounds like a mistake.",
+  "g.v.pre":"A short climb from the verse into the chorus: the energy gathers, the melody rises. Usually 4 or 8 bars.",
+  "g.v.pre.dj":"The sign that the chorus is a few bars away.",
+  "g.v.chorus":"The chorus, the hook: the part you remember and sing along to. It almost always carries the song's title and repeats, the same number of bars every time.",
+  "g.v.chorus.dj":"The easiest place to mix in vocal music; the new song's chorus sits well on the end of the old song's chorus.",
+  "g.v.bridge":"The bridge: once in a song, different from everything else. It connects the chorus to something else and gives a pause before the last chorus.",
+  "g.v.bridge.dj":"If it sounds like neither a verse, nor a chorus, nor the end, it's the bridge.",
+  "g.v.outro":"The end: often a repeated chorus fading away, or a beat without the voice, left for the DJ.",
+  "g.v.outro.dj":"Leave when the voice is done: two singers at the same time confuse the floor.",
+  "g.x3.h":"Example 3 · I Follow Rivers",
+  "g.x3.s":"The voice separated from the mix (Demucs) shows where each part is.",
+  "g.x3.n":"The remix opens with the chorus: the song's title repeated on its own, over a breakdown. Then 8 bars without the voice (a bridge), the verse, the pre-chorus and the full 16-bar chorus. Under the last chorus the next song's beat is already coming in: this is where I left the song, before its bridge and outro.",
+  "g.c.h":"Short codes",
+  "g.c.i":"A whole song on one line: a letter for the part, a number for the bars. Write it on the record sleeve or into the comment field of your DJ software and you know the structure without listening.",
+  "g.c.ki":"I intro · B breakdown and build-up · M main (drop) · O outro",
+  "g.c.kv":"I intro · V verse · C chorus · B bridge · O outro",
+  "g.c.ex":"<b>vo</b> next to a part means there's a voice in it, <b>bt</b> single beats that aren't a full bar.",
+  "g.m.h":"Mix points",
+  "g.m.i":"In instrumental music almost everything can be mixed: intro over outro is the classic, main over main is safe, and a breakdown only if a drop follows it. Count phrases: the new song comes in on the first bar of a phrase, never in the middle.",
+  "g.m.v":"In vocal music, watch the voice: mix in the intro, the outro and the chorus, never in the middle of a verse. When two songs overlap, only one of them may sing.",
+  "g.src":"Following the course Instrumental Structure and Vocal-Based Music; the examples are from my demo mix, the sections from the beat analysis (djay Pro, rekordbox) and the voice (Demucs).",
   "e.app":"DJ Mantra for Android","h.app":"My DJ deck <em>in a phone</em>",
   "b.app1":"I am coding my own DJ app for Android phones, on the open source Mixxx engine. It is made for the mobile DJ: the Hercules DJControl Mix Ultra controller over Bluetooth, the main output on a Bluetooth speaker and headphones on USB, any button on any function.",
   "b.app2":"The code is open and free (GPL). When it is ready, any DJ will be able to download it for their phone. I follow the progress here, step by step.",
@@ -1141,7 +1361,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const cnt = $("dCnt"), bpmEl = $("dBpm"), bbEl = $("dBB"), beatEls = [...$("dBeats").children], barEls = [...$("dBars").children], nxEl = $("dNx"), ntEl = $("dNt");
   const en = () => true;                      // v31: the player speaks English in both languages
   const NAMES = {DROP:["DROP","DROP"], BREAKDOWN:["BREAKDOWN","BREAKDOWN"], BUILD:["RAST","BUILD-UP"], CHANGE:["PROMJENA","CHANGE"], NEXT:["SLJEDEĆA PJESMA","NEXT SONG"],
-    INTRO:["INTRO","INTRO"], "BUILD-UP":["BUILD-UP","BUILD-UP"], GROOVE:["GROOVE","GROOVE"], AMBIENT:["AMBIENT","AMBIENT"], UP:["UP","UP"], DOWN:["DOWN","DOWN"], CHORUS:["CHORUS","CHORUS"], VERSE:["VERSE","VERSE"], BRIDGE:["BRIDGE","BRIDGE"], OUTRO:["OUTRO","OUTRO"]};
+    INTRO:["INTRO","INTRO"], "BUILD-UP":["BUILD-UP","BUILD-UP"], GROOVE:["MAIN","MAIN"], MAIN:["MAIN","MAIN"], AMBIENT:["AMBIENT","AMBIENT"], UP:["UP","UP"], DOWN:["DOWN","DOWN"], CHORUS:["CHORUS","CHORUS"], VERSE:["VERSE","VERSE"], BRIDGE:["BRIDGE","BRIDGE"], OUTRO:["OUTRO","OUTRO"]};
   const mmss = s => { s = Math.max(0, Math.ceil(s)); return Math.floor(s/60) + ":" + String(s%60).padStart(2, "0"); };
   function counter(t){
     if(!TR.length) return; const i = at(t), L = en() ? 1 : 0;
@@ -1208,6 +1428,13 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   audio.addEventListener("seeked", () => paint(true));
 
   playB.addEventListener("click", toggle);
+  // v33: the song-sections guide plays its examples here: from t, and (when given) it stops at until
+  let stopAt = null;
+  deck.playAt = async (t, until) => { stopAt = until || null; seek(t); if(audio.paused) await toggle(); };
+  deck.now = () => pos();
+  deck.playing = () => !audio.paused;
+  audio.addEventListener("timeupdate", () => { if(stopAt != null && audio.currentTime >= stopAt){ stopAt = null; audio.pause(); } });
+  audio.addEventListener("pause", () => { stopAt = null; });
   $("dBack").addEventListener("click", () => seek(pos() - 30));
   $("dFwd").addEventListener("click", () => seek(pos() + 30));
   const pos = () => pending != null ? pending : now();
@@ -1238,6 +1465,88 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   audio.addEventListener("play", () => document.dispatchEvent(new CustomEvent("mantra-play", {detail:"mix"})));
   new ResizeObserver(() => { ovImg = null; paint(true); }).observe(deck);
   paint(true);
+})();
+
+// v33: THE SONG-SECTIONS GUIDE (Marko, 18.10.2026: "add an educational section that explains the sections of a song.
+// Include examples with waveforms"). Each example is a stretch of the demo mix: its waveform from wave.bin, its sections
+// from grid.json (or the example's own data-secs), coloured blocks under it; a click plays that spot in the mix player.
+(() => {
+  const G = document.getElementById("guide"); if(!G) return;
+  const deck = document.getElementById("deck");
+  const COL = {INTRO:"--s-intro", BREAKDOWN:"--s-break", "BUILD-UP":"--s-build", DROP:"--s-drop", MAIN:"--s-main", OUTRO:"--s-outro",
+    AMBIENT:"--s-amb", VERSE:"--s-verse", "PRE-CHORUS":"--s-pre", CHORUS:"--s-chorus", BRIDGE:"--s-bridge", "NEXT TRACK":"--s-intro"};
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
+  const col = n => css(COL[n] || "--s-amb");
+  // the tabs: instrumental | vocal-based
+  const tabs = [...G.querySelectorAll(".tabs button")];
+  tabs.forEach(b => b.addEventListener("click", () => {
+    tabs.forEach(x => x.setAttribute("aria-selected", x === b ? "true" : "false"));
+    G.querySelectorAll(".part").forEach(p => p.hidden = p.id !== b.dataset.part);
+    draw();
+  }));
+  G.querySelectorAll(".sc").forEach(c => c.style.setProperty("--c", col(c.dataset.s)));
+  const mmss = t => Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2, "0");
+  let W = null, SEC = [];
+  const RATE = 25;
+  Promise.all([fetch("assets/mix/wave.bin").then(r => r.arrayBuffer()), fetch("assets/mix/grid.json").then(r => r.json())])
+    .then(([b, g]) => { W = new Uint8Array(b); SEC = g.sections || []; setup(); });
+  const EX = [...G.querySelectorAll(".ex")];
+  function secsOf(ex){
+    const t0 = +ex.dataset.t0, t1 = +ex.dataset.t1;
+    if(ex.dataset.secs) return JSON.parse(ex.dataset.secs);
+    const out = []; let last = null;
+    // the part already running at t0 is shown only when the next section starts more than 2 s later
+    for(const [t, k] of SEC){ if(t <= t0) last = [t0, k]; else if(t < t1) { if(last && t - t0 > 2) out.push(last); last = null; out.push([t, k]); } }
+    if(last) out.push(last); if(!out.length || out[0][0] > t0 + 2) out.unshift([t0, last ? last[1] : "MAIN"]);
+    return out;
+  }
+  function setup(){
+    EX.forEach(ex => {
+      ex.secs = secsOf(ex); const t1 = +ex.dataset.t1;
+      const lg = ex.querySelector(".lg"); lg.innerHTML = "";
+      ex.secs.forEach(([t, k], i) => {
+        const e = i + 1 < ex.secs.length ? ex.secs[i+1][0] : t1, b = document.createElement("button");
+        b.type = "button"; b.style.setProperty("--c", col(k)); b.textContent = k + " · " + mmss(t);
+        b.addEventListener("click", () => play(t, e)); lg.appendChild(b);
+      });
+      const c = ex.querySelector("canvas");
+      c.addEventListener("click", e => { const r = c.getBoundingClientRect(), t0 = +ex.dataset.t0;
+        const t = t0 + (e.clientX - r.left)/r.width*(t1 - t0); const s = ex.secs.filter(x => x[0] <= t).pop();
+        play(s ? s[0] : t0, t1); });
+    });
+    draw();
+  }
+  function play(t, until){ if(deck && deck.playAt){ deck.playAt(t + .05, until); loop(); } }
+  function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
+    if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
+  function draw(){
+    if(!W) return;
+    const now = deck && deck.now ? deck.now() : -1, dc = v => getComputedStyle(deck || document.documentElement).getPropertyValue(v).trim() || "#888",
+      low = dc("--d-low"), mid = dc("--d-mid"), high = dc("--d-high");
+    EX.forEach(ex => {
+      const c = ex.querySelector("canvas"); if(!c.offsetParent) return;
+      const [w, h, d] = fit(c), g = c.getContext("2d"), t0 = +ex.dataset.t0, t1 = +ex.dataset.t1, strip = 22*d, m = (h - strip)/2;
+      g.clearRect(0, 0, w, h);
+      const at = t => (t - t0)/(t1 - t0)*w, step = 2*d;
+      for(let x = 0; x < w; x += step){
+        const t = t0 + x/w*(t1 - t0), i = Math.floor(t*RATE)*4; if(i + 2 >= W.length) break;
+        g.fillStyle = low;  let a = W[i]/255*m*.94;     g.fillRect(x, m - a, step - d*.5, a*2);
+        g.fillStyle = mid;  a = W[i+1]/255*m*.94*.78;   g.fillRect(x, m - a, step - d*.5, a*2);
+        g.fillStyle = high; a = W[i+2]/255*m*.94*.5;    g.fillRect(x, m - a, step - d*.5, a*2);
+      }
+      g.font = "500 " + (10.5*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
+      ex.secs.forEach(([t, k], i) => {
+        const e = i + 1 < ex.secs.length ? ex.secs[i+1][0] : t1, x0 = Math.max(0, at(t)), x1 = at(e);
+        g.fillStyle = col(k); g.globalAlpha = .9; g.fillRect(x0, h - strip, Math.max(1, x1 - x0 - 2*d), strip); g.globalAlpha = .55;
+        g.fillRect(x0, 0, 1.5*d, h - strip); g.globalAlpha = 1;
+        g.fillStyle = "#14121c"; if(x1 - x0 > g.measureText(k).width + 8*d) g.fillText(k, x0 + 5*d, h - strip/2);
+      });
+      if(now >= t0 && now <= t1){ g.fillStyle = "#fff"; g.fillRect(at(now) - d, 0, 2*d, h); }
+    });
+  }
+  let raf = 0;
+  function loop(){ cancelAnimationFrame(raf); const f = () => { draw(); if(deck && deck.playing && deck.playing()) raf = requestAnimationFrame(f); else setTimeout(draw, 300); }; raf = requestAnimationFrame(f); }
+  new ResizeObserver(draw).observe(G);
 })();
 </script>
 </body>

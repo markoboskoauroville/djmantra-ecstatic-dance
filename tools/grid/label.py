@@ -52,26 +52,26 @@ for n, (s, e, v) in enumerate(R):
         if prev == 'OUTRO':
             # the beat that comes back after an outro is the next track's: its intro, then its groove
             secs.append([t0, 'INTRO'])
-            if e - s > 24: secs.append([T0[s + 16], 'GROOVE'])
+            if e - s > 24: secs.append([T0[s + 16], 'MAIN'])
         elif prev in ('BREAK', 'BUILD'):
             # the beat comes back: the drop, 16 bars of it, then the groove
             secs.append([t0, 'DROP'])
-            if e - s > 24: secs.append([T0[s + 16], 'GROOVE'])
+            if e - s > 24: secs.append([T0[s + 16], 'MAIN'])
         else:
-            secs.append([t0, 'GROOVE'])
+            secs.append([t0, 'MAIN'])
         prev = 'BEAT'
 # a new track coming in on a beat that never stopped: its groove starts at the track's own start
 for x in st[1:-1]:
     if not any(abs(x - t) < 20 for t, _ in secs):
         j = np.searchsorted(T0, x)
-        if j < len(b) and beat[j] and not gap[j]: secs.append([T0[j], 'GROOVE'])
+        if j < len(b) and beat[j] and not gap[j]: secs.append([T0[j], 'MAIN'])
 # the free stretches have no beat at all
 for a, z in g['free']: secs.append([a - P, 'AMBIENT'])
 secs.sort()
 # merge equal neighbours
 out = []
 for t, nm in secs:
-    if out and out[-1][1] == nm and nm != 'GROOVE': continue
+    if out and out[-1][1] == nm and nm != 'MAIN': continue
     out.append([t, nm])
 # bars per section from the downbeats
 D = np.array([x[0] for x in g['beats'] if x[1] == 1]) - P

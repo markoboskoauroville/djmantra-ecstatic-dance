@@ -340,4 +340,16 @@ Every request is saved here word for word before any code, so a quota cut loses 
 52. A guide to the sections of a song, in two parts as the course in those two folders (Instrumental Structure: intro,
     breakdown / build-up, main, outro, short codes, mix points; Vocal-Based Music: intro, verse, chorus, bridge, outro),
     with waveform examples from the demo mix.
-    **Status:** in progress (the Mac session).
+    **Status:** done, v33: a "School · song structure" section after the mix (#guide), in Croatian and English, the
+    section names English. Beat / bar / phrase / section; how to read the waveform colours; two tabs: Instrumental
+    music (INTRO, BREAKDOWN, BUILD-UP, DROP, MAIN, OUTRO, each with what you hear, how it looks, the DJ's rule) and
+    Vocal-based music (INTRO, VERSE, PRE-CHORUS, CHORUS, BRIDGE, OUTRO); three waveform examples from the mix with the
+    sections drawn under them and ▶ per part (the player plays that part and stops at its end): Secret ID, the
+    Reframing → Miss You mix point, I Follow Rivers (vocal sections from the voice separated with Demucs and heard by
+    Whisper); the course's short codes (I B M O / I V C B O, vo, bt) with each example's code; mix points.
+    GROOVE renamed MAIN as in the course. The course: 19 lessons downloaded to ~/Movies/DJ Course (vocal 06-10 refused
+    by Drive's download limit, to retry), transcribed locally next to the videos.
+
+> Please download all the lessons and store them in my movies folder.
+
+(~/Movies/DJ Course/Instrumental Structure, 9 lessons; ~/Movies/DJ Course/Vocal-Based Music, 5 of 10 so far.)
