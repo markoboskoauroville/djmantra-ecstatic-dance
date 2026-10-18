@@ -374,3 +374,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
 54. A Swift app "Stem Separation": pick a song, it loads it into Ableton Live, separates the stems, exports them and
     analyses them, in one action. Its own project (repo of its own), after request 53.
     **Status:** waiting (logged 18.10.2026; for request 53 the voice was already separated with Demucs).
+
+## v35 — requested 18.10.2026
+
+> Please start building the track separation through Ableton Live and I don't care about copyrights so please use this song and give it credits. I think that will be enough full credits for the song. That's it.
+
+55. The two songs of the educational player stay, whole, with full credits (title, artists, remixers, label, year).
+    The Stem Separation app (request 54) starts now as its own project.
+    **Status:** in progress (the Mac session).
