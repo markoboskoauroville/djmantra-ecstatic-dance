@@ -295,4 +295,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 49. The exact beat grid and sections from djay Pro and rekordbox (dynamic analysis + phrases) on the Mac, by the local
     session, into assets/mix/grid.json; the player already reads it (v29) and falls back to beats.json until then.
-    **Status:** doing: the request is with the local Mac session; the data will be checked and merged to go live.
+    **Status:** done, v30: djay Pro's beats (13,341, its neural tracker, following the tempo) and rekordbox's bars and
+    286 phrases from the Mac session (tools/grid/), checked here against the kick and live.
+
+> We use the Bitgrid from DJ Pro to get the right BPM as the mix progresses because it's changing.
+
+(Done in 49: the beats and BPM are djay Pro's; rekordbox gives only the bar count and the phrases.)
