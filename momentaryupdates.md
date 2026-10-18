@@ -273,3 +273,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Another magic pitch is— another magic change of the button is a long press on the gain button, first one. It can— it will turn to the filter button, understand? To the filter button. And the filter algorithm was wrong last time. It didn't sound like Pioneer. Please find in manual anywhere on the internet the effects of a Pioneer DJM mixer, the most popular mixer among the crowd, and we need to emulate its effects in filter and other audio effects. So let's make, make it, because Pioneer is smart, they put most interesting effects. Take some classic old Pioneer, some of the first version which they have just few features. The most important ones. Later fancy features which are just for selling and people not using much, don't bother copying. DJM mixer, please, emulations.
 
 46. App: Pioneer DJM emulation: a DJM-style resonant FILTER on every deck (long press GAIN turns it into FILTER) and the DJM-600's beat effects (DELAY, ECHO, TRANS, PAN) in the FX menu. **Status:** built (app V41, CI green), to be tested on the Pixel 7, v27.
+
+## v28 — requested 18.10.2026
+
+> https://djmantra.pages.dev/ Please go to that page and update the user interface to reflect my DJ application. For listening to the demo mix or demo set, I need to add one more section in the player that will count beats and time to the section. The main interface of the DJ Mantra app is for DJing.
+
+47. The demo mix player in the DJ Mantra app's look (navy, one yellow accent, the app's deck, waveform and pads), plus a
+    new part of the player that counts the beats (beat, bar, 8-bar phrase, BPM) and the beats and time to the next
+    section, as the app's Phrasing view does. The page stays for listening; the app is for DJing. **Status:** doing, v28.
