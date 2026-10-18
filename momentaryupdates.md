@@ -307,4 +307,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Please keep the language English inside the player for both languages, English and Croatian. So inside the player, all the players for sound on the website, you don't translate terms from English to Croatian.
 
 50. Every player on the page speaks English in both languages (HR and EN): no term inside a player is translated.
-    **Status:** in progress (the Mac session).
+    **Status:** done, v31: inside the demo mix player and the Sounding Silence player every label comes from the English
+    dictionary in both languages (applyLang), the counter's words (BAR, BEAT, NEXT SECTION, FREE TIME, beats, END) and the
+    section names are English, the HTML defaults inside the players are English; the rest of the page still switches.
+    Checked in Chrome in HR mode: the heading "Poslušaj set" Croatian, the whole player English.
