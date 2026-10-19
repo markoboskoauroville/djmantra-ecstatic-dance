@@ -519,6 +519,16 @@ footer a:hover{color:var(--amber)}
 .az li{cursor:pointer}
 .az li.on{background:rgba(255,213,74,.12)}
 @media (max-width:560px){ .az .now{grid-template-columns:1fr 1fr} .az .now .cnt{grid-column:1 / -1; grid-row:2; flex-direction:row; justify-content:space-between; background:none; padding:0} .az .ctl .tm{margin-left:0; width:100%} }
+.az .now{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.az .algo{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:4px 0 8px}
+.az .algo .lbl{width:100%; margin-bottom:2px}
+.az .algo button{font:500 12px "IBM Plex Mono",monospace; letter-spacing:.04em; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:9px; height:36px; padding:0 12px; cursor:pointer}
+.az .algo button[aria-pressed="true"]{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A}
+.az .algo button:disabled{opacity:.35; cursor:default}
+.az .algo.lv button{min-width:38px; padding:0}
+.az .algo .note{font-size:12px; color:#9AA3C7; margin-left:6px}
+.az canvas.mx{height:auto; margin-top:10px; cursor:default; background:#04060e}
+.az .guess{margin:12px 2px 0; font-size:13px; color:#9AA3C7; line-height:1.5}
 .az .again{margin-top:14px; background:transparent; cursor:pointer}
 .az .tile.code b{font-size:17px; white-space:normal; line-height:1.3; padding-top:4px}
 @media (max-width:560px){ .az{padding:10px} .az .tiles{grid-template-columns:repeat(2,minmax(0,1fr))} .az .tile b{font-size:20px} .az canvas{height:120px} }
@@ -689,19 +699,34 @@ footer a:hover{color:var(--amber)}
           <div class="tile"><span>LENGTH</span><b id="azLen">—</b><i id="azBars"></i></div>
           <div class="tile code"><span>CODE</span><b id="azCode">—</b><i>I · B · M · O</i></div>
         </div>
+        <div class="algo" id="azAlgo" role="group" aria-label="Section algorithm">
+          <span class="lbl">SECTIONS</span>
+          <button type="button" data-a="energy" aria-pressed="true">ENERGY CHANGES</button>
+          <button type="button" data-a="phrases" aria-pressed="false">PHRASES</button>
+          <button type="button" data-a="energyOnly" aria-pressed="false">ENERGY ONLY</button>
+          <button type="button" data-a="classic" aria-pressed="false">CLASSIC 8-BAR</button>
+          <button type="button" data-a="rbxport" aria-pressed="false">RBXPORT</button>
+        </div>
+        <div class="algo lv" id="azLv" role="group" aria-label="Sensitivity">
+          <span class="lbl">SENSITIVITY</span>
+          <button type="button" data-l="1" aria-pressed="false">1</button><button type="button" data-l="2" aria-pressed="false">2</button><button type="button" data-l="3" aria-pressed="true">3</button><button type="button" data-l="4" aria-pressed="false">4</button><button type="button" data-l="5" aria-pressed="false">5</button>
+          <span class="note" id="azAlgoNote"></span>
+        </div>
         <canvas id="azWv" aria-label="Waveform and sections: click to jump"></canvas>
+        <canvas id="azMx" class="mx" aria-label="Dot-matrix display: time left, bar.beat in the section, bars to the next section, the beat of the phrase"></canvas>
         <div class="ctl">
           <button type="button" id="azPrev" aria-label="Previous section">◀◀</button>
           <button type="button" id="azPlay" class="play" aria-label="Play">▶</button>
           <button type="button" id="azNext" aria-label="Next section">▶▶</button>
           <button type="button" id="azLoop" class="loop" aria-pressed="false">LOOP</button>
+          <button type="button" id="azCells" aria-label="Beats in the display">8 BEATS</button>
           <span class="tm"><b id="azEl">0:00</b> / <span id="azDu">0:00</span></span>
         </div>
         <div class="now">
           <div class="cur"><span class="lbl">NOW</span><b id="azNow">—</b><span id="azBar">—</span></div>
-          <div class="cnt"><div class="beats" id="azBeats"><i></i><i></i><i></i><i></i></div><div class="phr" id="azPhr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
           <div class="nxt"><span class="lbl">NEXT</span><b id="azNx">—</b><span id="azNt">—</span></div>
         </div>
+        <p class="guess" data-i18n="az.guess">Imena dijelova su procjena: algoritam pogađa po energiji, bubnju i visokim tonovima. Probaj druge algoritme i osjetljivost i slušaj gdje se pjesma stvarno mijenja.</p>
         <ol id="azList"></ol>
         <button type="button" class="btn ghost again" id="azAgain" data-i18n="az.again">Analiziraj drugu pjesmu</button>
       </div>
@@ -1002,7 +1027,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v39</p>
+    <p class="ver">v40</p>
   </div>
 </footer>
 
@@ -1119,6 +1144,12 @@ const DICT = {
   "az.s.err":"Analiza nije uspjela: ",
   "az.conf":"sigurnost {c} %",
   "az.bars":"{n} taktova",
+  "az.guess":"Imena dijelova su procjena: algoritam pogađa po energiji, bubnju i visokim tonovima. Probaj druge algoritme i osjetljivost i slušaj gdje se pjesma stvarno mijenja.",
+  "az.a.energy":"Algoritam moje aplikacije (zadani): naučeni model, samo velike promjene energije.",
+  "az.a.phrases":"Svaka fraza koju model nađe, i manje promjene. Osjetljivost: koliko fraza.",
+  "az.a.energyOnly":"Bez modela: svaka 4 takta, ostaju samo velike promjene energije.",
+  "az.a.classic":"Stari algoritam: novost, bubanj koji staje i kreće, raster od 8 taktova.",
+  "az.a.rbxport":"Početci fraza iz rbxporta (promjena na prvom udarcu takta).",
   "az.left":"za {n}",
   "g.src":"Po tečaju Instrumental Structure i Vocal-Based Music. Pjesme u edukativnom playeru su iz mog seta; ritam iz djay Pro analize, dijelovi iz bubnja, frekvencija i glasa izdvojenog iz pjesme (Demucs, Whisper).",
   "who":"Marko Boško · Zagreb · Auroville",
@@ -1292,6 +1323,12 @@ const DICT = {
   "az.s.err":"The analysis failed: ",
   "az.conf":"confidence {c} %",
   "az.bars":"{n} bars",
+  "az.guess":"The section names are a guess: the algorithm guesses from the energy, the kick and the highs. Try the other algorithms and sensitivities and listen where the song really changes.",
+  "az.a.energy":"My app's algorithm (the default): a learned model, only big changes of energy.",
+  "az.a.phrases":"Every phrase the model finds, smaller changes too. Sensitivity: how many phrases.",
+  "az.a.energyOnly":"No model: every 4 bars, only the big changes of energy stay.",
+  "az.a.classic":"The older algorithm: novelty, the kick stopping and starting, an 8-bar grid.",
+  "az.a.rbxport":"rbxport's phrase starts (a change on the downbeat).",
   "az.left":"in {n}",
   "g.src":"Following the course Instrumental Structure and Vocal-Based Music. The songs in the educational player are from my set; the beat from djay Pro's analysis, the sections from the kick, the frequency bands and the voice separated from the song (Demucs, Whisper).",
   "e.app":"DJ Mantra for Android","h.app":"My DJ deck <em>in a phone</em>",
@@ -2026,6 +2063,8 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
 
   function show() {
     if(!last) return;
+    if(last.r.algos && !last.picked) { last.picked = true; pick(); }
+    if(last.r.algos) $("azAlgoNote").textContent = T("az.a." + algo);
     const r = last.r, secs = r.sections || [];
     $("azName").textContent = last.name;
     $("azBpm").textContent = r.bpm > 0 ? (Math.round(r.bpm * 10) / 10) : "—";
@@ -2114,17 +2153,94 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       $("azNt").textContent = (barSecs ? T("az.left", { n: barsText(Math.max(1, Math.ceil(left / barSecs - 0.01))) }) + " · " : "") + mmss(left);
       document.querySelectorAll("#azList li").forEach((li, k) => li.classList.toggle("on", k === i));
     }
-    const k = beatAt(t) - (last.r.firstDownbeat || 0), beats = $("azBeats").children, phr = $("azPhr").children;
-    if(k >= 0) {
-      const bar = Math.floor(k / 4), beat = k % 4;
-      $("azBar").textContent = "BAR " + (bar + 1) + "." + (beat + 1);
-      for(let j = 0; j < 4; j++) { beats[j].className = j === beat ? (j === 0 ? "on one" : "on") : ""; }
-      for(let j = 0; j < 8; j++) { phr[j].className = j < bar % 8 ? "done" : j === bar % 8 ? "on" : ""; }
-    } else {
-      $("azBar").textContent = "—";
-      for(const e of beats) e.className = ""; for(const e of phr) e.className = "";
+    const k = beatAt(t) - (last.r.firstDownbeat || 0);
+    $("azBar").textContent = k >= 0 ? "BAR " + (Math.floor(k / 4) + 1) + "." + (k % 4 + 1) : "—";
+    matrix(t, i);
+  }
+
+  // ------------------------------------------------------------------ the dot-matrix display (v40)
+  // Marko 19.10.2026: "transferred from my application ... this dot matrix display for showing the current beat".
+  // As the app's MatrixDisplay.qml (the OXI E16's display): dark glass, square dots, the 5x7 pixel font
+  // (PixelFont.qml), unlit dots faintly visible. Time left (red in the last 30 s) | bar.beat from the start of the
+  // section (1.1 at every section) | the countdown to the next section ("|": to the end); below, one cell per beat
+  // of the phrase (8 / 16 / 32), bars set apart, beat 1 white.
+  const FONT = {"0":[14,17,19,21,25,17,14],"1":[4,12,4,4,4,4,14],"2":[14,17,1,2,4,8,31],"3":[31,2,4,2,1,17,14],
+    "4":[2,6,10,18,31,2,2],"5":[31,16,30,1,1,17,14],"6":[6,8,16,30,17,17,14],"7":[31,1,2,4,8,8,8],"8":[14,17,17,14,17,17,14],
+    "9":[14,17,17,15,1,2,12]," ":[0,0,0,0,0,0,0],".":[0,0,0,0,0,12,12],"-":[0,0,0,31,0,0,0],":":[0,12,12,0,12,12,0],
+    "|":[4,4,4,4,4,4,4],"?":[14,17,1,2,4,0,4]};
+  const MX = { glass:"#04060e", unlit:"#121735", dimCell:"#252d5c", dimFirst:"#4a4326", accent:"#FFD54A", marked:"#FFFFFF", text:"#EEF0FF", red:"#FF6B5E", rows:14, cellRows:4 };
+  let cells = 8, mxBase = null, mxKey = "";
+  const floorDiv = (a, b) => Math.floor(a / b);
+  const barBeatText = n => { const bar = floorDiv(n, 4); return (bar + 1) + "." + (n - bar * 4 + 1); };
+  function mxLayout(columns) { // where the cells are: 1 dot between beats, 3 between bars
+    const bars = Math.ceil(cells / 4), gaps = (cells - bars) + (bars - 1) * 3;
+    const width = Math.max(1, Math.floor((columns - 2 - gaps) / cells));
+    let x = Math.floor((columns - (cells * width + gaps)) / 2); const starts = [];
+    for(let c = 0; c < cells; c++) { starts.push(x); x += width + ((c + 1) % 4 === 0 ? 3 : 1); }
+    return { starts, width };
+  }
+  function matrix(t, sec) {
+    const cv = $("azMx"); if(!cv || !last) return;
+    const dpr = window.devicePixelRatio || 1, W = cv.clientWidth; if(!W) return;
+    const pitch = Math.max(3, Math.min(6.5, W / 104)), columns = Math.floor(W / pitch), H = Math.round(MX.rows * pitch);
+    const dot = (g, x, y) => { const d = pitch * 0.78; g.fillRect(x * pitch + (pitch - d) / 2, y * pitch + (pitch - d) / 2, d, d); };
+    const lay = mxLayout(columns), cellTop = 1 + 7 + 1;
+    const key = W + "x" + dpr + "/" + cells;
+    if(key !== mxKey) { // the glass, every unlit dot and the dim cells: only when the size or the cells change
+      mxKey = key; cv.style.height = H + "px"; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      mxBase = document.createElement("canvas"); mxBase.width = cv.width; mxBase.height = cv.height;
+      const g = mxBase.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.fillStyle = MX.glass; g.fillRect(0, 0, W, H);
+      const dim = {};
+      for(let c = 0; c < cells; c++) for(let dx = 0; dx < lay.width; dx++) for(let dy = 0; dy < MX.cellRows; dy++)
+        dim[(lay.starts[c] + dx) + "," + (cellTop + dy)] = c === 0 ? MX.dimFirst : MX.dimCell;
+      for(let y = 0; y < MX.rows; y++) for(let x = 0; x < columns; x++) { g.fillStyle = dim[x + "," + y] || MX.unlit; dot(g, x, y); }
+    }
+    const g = cv.getContext("2d");
+    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.drawImage(mxBase, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const text = (str, column, color) => { g.fillStyle = color;
+      for(let i = 0; i < str.length; i++) { const gl = FONT[str[i]] || FONT["?"];
+        for(let gx = 0; gx < 5; gx++) { const x = column + i * 6 + gx; if(x < 0 || x >= columns) continue;
+          for(let gy = 0; gy < 7; gy++) if(gl[gy] & (16 >> gx)) dot(g, x, 1 + gy); } } };
+    const tw = str => str.length * 6 - 1;
+    const r = last.r, a = secsOf(), d = r.duration || 0, left = Math.max(0, d - t), ending = d > 30 && left <= 30;
+    const now = beatAt(t), fd = r.firstDownbeat || 0;
+    // bar.beat from the start of the section; the first section counts from the song's "1"
+    const from = sec > 0 && a[sec] ? beatAt(a[sec].secs) : fd;
+    const bb = now >= 0 ? barBeatText(now - from) : "-.-";
+    let cd = "-.-";
+    if(now >= 0) {
+      const nx = a[sec + 1], to = nx ? beatAt(nx.secs - 0.03) + 1 : (r.beats || []).length;
+      const n = Math.max(0, to - now - 1); cd = "-" + Math.floor(n / 4) + "." + (n % 4) + (nx ? "" : "|");
+    }
+    text("-" + mmss(left), 1, ending ? MX.red : MX.accent);
+    text(bb, Math.floor((columns - tw(bb)) / 2), MX.accent);
+    text(cd, columns - 1 - tw(cd), ending ? MX.red : MX.text);
+    const beat = now >= fd ? (now - fd) % cells : -1;
+    if(beat >= 0) {
+      g.fillStyle = beat === 0 ? MX.marked : MX.accent;
+      for(let dx = 0; dx < lay.width; dx++) for(let dy = 0; dy < MX.cellRows; dy++) dot(g, lay.starts[beat] + dx, cellTop + dy);
     }
   }
+  $("azCells").addEventListener("click", () => { cells = cells === 8 ? 16 : cells === 16 ? 32 : 8; $("azCells").textContent = cells + " BEATS"; frame(); });
+
+  // ------------------------------------------------------------------ the playground (v40)
+  // Marko 19.10.2026: "use algorithms which are inside my DJ android app ... each button for each algorithm on the
+  // website so user can experiment with their own songs". Every algorithm at every sensitivity came with the
+  // analysis (the song is gone by now), so a button only picks a ready answer.
+  let algo = "energy", level = 3;
+  function pick() {
+    if(!last || !last.r.algos) return;
+    const list = last.r.algos[algo] || [];
+    const graded = list.length > 1;
+    last.r.sections = list[graded ? level - 1 : 0] || [];
+    document.querySelectorAll("#azAlgo button").forEach(b => b.setAttribute("aria-pressed", b.dataset.a === algo ? "true" : "false"));
+    document.querySelectorAll("#azLv button").forEach(b => { b.disabled = !graded; b.setAttribute("aria-pressed", graded && +b.dataset.l === level ? "true" : "false"); });
+    $("azAlgoNote").textContent = T("az.a." + algo);
+    loop = null; $("azLoop").setAttribute("aria-pressed", "false");
+  }
+  $("azAlgo").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; algo = b.dataset.a; pick(); show(); });
+  $("azLv").addEventListener("click", e => { const b = e.target.closest("button"); if(!b || b.disabled) return; level = +b.dataset.l; pick(); show(); });
   function tick() {
     if(loop && audio.currentTime >= loop[1] - 0.02) audio.currentTime = loop[0];
     frame();

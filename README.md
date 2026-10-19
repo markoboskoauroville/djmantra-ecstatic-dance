@@ -77,3 +77,10 @@ marko.bosko@auroville.community
   waveform or a section to jump, NOW / NEXT with the bar.beat count, the beat and 8-bar phrase lights and the bars and
   time to the next section. It plays the visitor's own file through an object URL (nothing is uploaded or copied);
   the URL is released when another song is picked or the page is left.
+* v40: the section playground and the dot-matrix display. One button per section finder of the DJ Mantra app
+  (Settings -> SECTIONS: ENERGY CHANGES, the default, PHRASES, ENERGY ONLY, CLASSIC 8-BAR, RBXPORT) and SENSITIVITY 1-5,
+  ported from the app's `sectiondetector.cpp` to `tools/analyzer/src/algorithms.rs`. The analysis computes every
+  finder at every sensitivity at once (the song's audio is gone afterwards), so a button only picks a ready answer.
+  The names are labelled a guess. Under the waveform the app's dot-matrix display (`MatrixDisplay.qml`, the 5x7
+  `PixelFont.qml`): time left, bar.beat from the section start, the countdown to the next section and one cell per beat
+  of the phrase (8 / 16 / 32 BEATS).

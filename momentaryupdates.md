@@ -425,3 +425,21 @@ Every request is saved here word for word before any code, so a quota cut loses 
     with BAR bar.beat, the beat lights 1-4, the 8-bar phrase lights and "za N taktova · m:ss" to the next section. It
     plays the visitor's own file through a local object URL: the song stays on their device; the URL is released on
     a new song, "Analiziraj drugu pjesmu" or leaving the page. Pauses the other players on the page (mantra-play).
+
+## v40 — requested 19.10.2026
+
+> We're going to improve section detection.Please use algorithms which are Inside my DJ android app the different algorithms for section detection and that make playground each button for each algorithm on the website so user can experiment with their own songs to find section and you can also guess the section names and you can say that the guess
+
+60. A section playground: a button for each of the app's section algorithms, on the visitor's own song, with the
+    names guessed and said to be a guess.
+    **Status:** done, v40: SECTIONS buttons ENERGY CHANGES (the app's default), PHRASES, ENERGY ONLY, CLASSIC 8-BAR,
+    RBXPORT and SENSITIVITY 1-5 (for the first three, as in the app). The app's C++ finders are ported to Rust
+    (tools/analyzer/src/algorithms.rs) and run in the same WebAssembly analysis, all 17 answers at once, so the
+    buttons switch instantly. Each button says what it does; a line under the waveform says the names are a guess.
+
+> Also transferred from my Application under the application. This dot matrix display for showing the current bit.
+
+61. The app's dot-matrix display in the website's player, for the current beat.
+    **Status:** done, v40: the app's MatrixDisplay (OXI E16 glass, square dots, the app's 5x7 pixel font): time left
+    (red in the last 30 s), bar.beat from the section start, the countdown to the next section, one cell per beat
+    of the phrase with beat 1 white; 8 / 16 / 32 BEATS as the app's button. It replaces the four beat lights.

@@ -7,6 +7,8 @@
 //! - Section names: DJ Mantra's own rules (djmantra_app src/analyzer/sectionnames.cpp, ported here),
 //!   the names of the page's "Kako je pjesma građena": INTRO, BREAKDOWN, BUILD-UP, DROP, MAIN, OUTRO.
 
+pub mod algorithms;
+
 use rbl_analysis::downbeat;
 use rbl_analysis::{analyse_with, AnalysisPreset};
 
@@ -191,12 +193,43 @@ pub fn analyse_json(samples: &[f32], sample_rate: u32) -> String {
             overview.push(format!("[{},{},{},{}]", c[0], c[1], c[2], c[3]));
         }
     }
+    // the app's section finders (the page's playground), every one at every sensitivity: the song is gone
+    // after this call, so the page switches between ready answers
+    let cps = analysis.waveform.columns_per_sec.max(1.0);
+    let points: Vec<[f64; 3]> =
+        columns.iter().map(|c| [f64::from(c.low), f64::from(c.mid), f64::from(c.high)]).collect();
+    let beats_pts: Vec<f64> = beats.iter().map(|b| b * cps).collect();
+    let as_json = |list: Vec<(f64, &'static str, usize)>| {
+        let parts: Vec<String> = list
+            .into_iter()
+            .map(|(secs, name, bars)| format!("{{\"secs\":{secs:.3},\"name\":\"{name}\",\"bars\":{bars}}}"))
+            .collect();
+        format!("[{}]", parts.join(","))
+    };
+    let mut algos = Vec::new();
+    for (id, algorithm) in [
+        ("energy", algorithms::Algorithm::Energy),
+        ("phrases", algorithms::Algorithm::Phrases),
+        ("energyOnly", algorithms::Algorithm::EnergyOnly),
+    ] {
+        let levels: Vec<String> = (1..=5)
+            .map(|level| {
+                let found = algorithms::section_beats_v3(&points, &beats_pts, 4, algorithm, level);
+                as_json(algorithms::name_found(&points, &beats_pts, &beats, &found, 4))
+            })
+            .collect();
+        algos.push(format!("\"{id}\":[{}]", levels.join(",")));
+    }
+    let classic = algorithms::section_beats_v2(&points, &beats_pts, 4);
+    algos.push(format!("\"classic\":[{}]", as_json(algorithms::name_found(&points, &beats_pts, &beats, &classic, 4))));
+    algos.push(format!("\"rbxport\":[[{}]]", sections_json.join(",")));
+
     let key = analysis.key.as_ref().map_or("null".to_string(), |k| {
         format!("{{\"name\":\"{}\",\"camelot\":\"{}\",\"minor\":{}}}", k.name, k.camelot(), k.minor)
     });
     let beats_json: Vec<String> = beats.iter().map(|b| format!("{b:.3}")).collect();
     format!(
-        "{{\"bpm\":{:.2},\"confidence\":{:.3},\"duration\":{:.3},\"firstDownbeat\":{},\"beats\":[{}],\"key\":{},\"sections\":[{}],\"phraseStarts\":[{}],\"overview\":[{}],\"peak\":{:.4}}}",
+        "{{\"bpm\":{:.2},\"confidence\":{:.3},\"duration\":{:.3},\"firstDownbeat\":{},\"beats\":[{}],\"key\":{},\"sections\":[{}],\"phraseStarts\":[{}],\"overview\":[{}],\"peak\":{:.4},\"algos\":{{{}}}}}",
         tempo.bpm,
         tempo.confidence,
         duration,
@@ -206,7 +239,8 @@ pub fn analyse_json(samples: &[f32], sample_rate: u32) -> String {
         sections_json.join(","),
         analysis.phrase_starts.iter().map(|s| format!("{s:.3}")).collect::<Vec<_>>().join(","),
         overview.join(","),
-        analysis.peak
+        analysis.peak,
+        algos.join(",")
     )
 }
 
