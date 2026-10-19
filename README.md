@@ -63,3 +63,13 @@ marko.bosko@auroville.community
   checked in djay Pro) made on Marko's Mac: `beats` [[t, beat 1-4]] for the whole mix, `sections` [[t, INTRO / UP /
   DOWN / CHORUS / VERSE / BRIDGE / OUTRO, bars]], `free` [[t0, t1]] without a steady beat. The player reads it first and
   falls back to beats.json.
+
+## Analyse your song (v38, 19.10.2026)
+
+* `#analyse`, after the song-structure guide: pick or drop a song and get its BPM, key (with Camelot), length, the
+  sections (INTRO, BREAKDOWN, BUILD-UP, DROP, MAIN, OUTRO) with their bars, the guide's short code and a three band
+  waveform with the sections over it.
+* Nothing leaves the browser: `decodeAudioData` decodes, the mono samples are handed (transferred) to
+  `assets/analyzer/worker.js`, which runs `assets/analyzer/djmantra_analyzer.wasm` (rbxport's analysis plus DJ Mantra's
+  section names, source and build in `tools/analyzer/`), zeroes the samples; the page then ends the worker.
+* About 5 s for a 3-minute song in desktop Chromium; up to 20 minutes per song.

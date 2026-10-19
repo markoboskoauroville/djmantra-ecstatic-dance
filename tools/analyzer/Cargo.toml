@@ -1,0 +1,21 @@
+# DJ Mantra's song analysis for djmantra.pages.dev ("Analiziraj svoju pjesmu"): rbxport's beat grid
+# and key (vendor/rbl-analysis) and DJ Mantra's section names, built to WebAssembly so the song is
+# analysed in the visitor's browser and never uploaded. Build: ./build.sh
+[package]
+name = "djmantra-analyzer"
+version = "1.0.0"
+edition = "2021"
+license = "GPL-2.0-or-later"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+rbl-analysis = { path = "vendor/rbl-analysis" }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

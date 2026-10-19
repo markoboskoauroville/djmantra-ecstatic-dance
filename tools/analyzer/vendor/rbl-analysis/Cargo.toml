@@ -1,0 +1,14 @@
+# Vendored from rbxport 1.9.0 (https://github.com/chrisle/rbxport, crates/rbl-analysis, Chris Le,
+# GPL-2.0-or-later). DJ Mantra's changes: src/lib.rs runs the stages one after another (a browser's
+# WebAssembly has no threads) and returns the phrase starts and the band frames.
+[package]
+name = "rbl-analysis"
+version = "1.9.0"
+edition = "2021"
+license = "GPL-2.0-or-later"
+description = "Tempo, beat grid, key and waveform analysis."
+
+[dependencies]
+thiserror = "2"
+tracing = "0.1"
+realfft = "3"

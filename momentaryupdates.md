@@ -402,3 +402,15 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 57. A new progress step: the Pioneer USB export (DJ Mantra app V92).
     **Status:** done, v37: step added as "doing" (built and verified against rbxport; the phone test with a stick is next).
+
+## v38 — requested 19.10.2026
+
+> Please take a code from rb Export. And for my website, djmantra.pages.dev, add a section, analyze your song. And then user can upload its song and then the software will analyze it for BPMs and sections.And the key, of course. What is the key of the song?So we use temporary storage, analyze the media, and then delete immediately after analyzing.
+
+58. A section "Analiziraj svoju pjesmu / Analyse your song": the visitor's song is analysed for BPM, key and sections,
+    with rbxport's code, and deleted right after.
+    **Status:** done, v38: rbxport's analysis (vendored, tools/analyzer) compiled to WebAssembly and run in the visitor's
+    browser, so the song is never uploaded; the "temporary storage" is the browser's memory: the samples are zeroed
+    and the worker holding them is ended as soon as the result is in. Shows BPM (with confidence), key (and Camelot),
+    length, the sections with bars, the short code and a waveform with the sections. El Layali: 122 BPM, A♭ major
+    (4B), I24 M16 B16 M32 O9, 5.5 s in Chromium.
