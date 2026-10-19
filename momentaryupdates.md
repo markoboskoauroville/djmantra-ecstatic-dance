@@ -414,3 +414,14 @@ Every request is saved here word for word before any code, so a quota cut loses 
     and the worker holding them is ended as soon as the result is in. Shows BPM (with confidence), key (and Camelot),
     length, the sections with bars, the short code and a waveform with the sections. El Layali: 122 BPM, A♭ major
     (4B), I24 M16 B16 M32 O9, 5.5 s in Chromium.
+
+## v39 — requested 19.10.2026
+
+> Since we are working with the local file for analyzing the song, please also play it from the website. Build a player in the website. Please.
+
+59. The analysed song plays on the page.
+    **Status:** done, v39: a player under the analysis, in the edu player's look: play / pause, ◀◀ / ▶▶ by section,
+    LOOP of the current section (it moves with every jump), click the waveform or a section to jump, NOW and NEXT
+    with BAR bar.beat, the beat lights 1-4, the 8-bar phrase lights and "za N taktova · m:ss" to the next section. It
+    plays the visitor's own file through a local object URL: the song stays on their device; the URL is released on
+    a new song, "Analiziraj drugu pjesmu" or leaving the page. Pauses the other players on the page (mantra-play).

@@ -491,6 +491,34 @@ footer a:hover{color:var(--amber)}
 .az li code{color:#9AA3C7; font-variant-numeric:tabular-nums}
 .az li b{border-left:4px solid var(--c); padding-left:8px; letter-spacing:.06em}
 .az li span{color:#9AA3C7; font-size:13px}
+/* v39: the analysed song plays from the visitor's own file (the edu player's controls) */
+.az .lbl{display:block; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7}
+.az .now .in{display:block; margin-top:4px; font:500 10.5px "IBM Plex Mono",monospace; letter-spacing:.08em; color:#9AA3C7; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.az .now .in i{font-style:normal; color:var(--c)}
+.az .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
+.az .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
+.az .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
+.az .ctl button.loop[aria-pressed="true"]{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A}
+.az .ctl .tm{margin-left:auto; font:500 14px "IBM Plex Mono",monospace; color:#9AA3C7; font-variant-numeric:tabular-nums}
+.az .ctl .tm b{color:#EEF0FF; font-weight:500}
+.az .now{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:10px}
+.az .now > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
+.az .now b{display:block; font:500 19px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.az .now span:not(.lbl){font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; font-variant-numeric:tabular-nums}
+.az .now .nxt{text-align:right}
+.az .cnt{display:flex; flex-direction:column; justify-content:center; gap:6px}
+.az .beats,.az .phr{display:flex; gap:4px}
+.az .beats i{width:22px; height:22px; border-radius:5px; background:#1F2850}
+.az .beats i.on{background:#FFD54A; box-shadow:0 0 10px rgba(255,213,74,.5)}
+.az .beats i.on.one{background:#fff}
+.az .phr i{width:10px; height:10px; border-radius:3px; background:#1F2850}
+.az .phr i.done{background:#2C3870}
+.az .phr i.on{background:#FFD54A}
+.az .now .cur b{color:var(--c,#FFD54A)}
+.az canvas{cursor:pointer}
+.az li{cursor:pointer}
+.az li.on{background:rgba(255,213,74,.12)}
+@media (max-width:560px){ .az .now{grid-template-columns:1fr 1fr} .az .now .cnt{grid-column:1 / -1; grid-row:2; flex-direction:row; justify-content:space-between; background:none; padding:0} .az .ctl .tm{margin-left:0; width:100%} }
 .az .again{margin-top:14px; background:transparent; cursor:pointer}
 .az .tile.code b{font-size:17px; white-space:normal; line-height:1.3; padding-top:4px}
 @media (max-width:560px){ .az{padding:10px} .az .tiles{grid-template-columns:repeat(2,minmax(0,1fr))} .az .tile b{font-size:20px} .az canvas{height:120px} }
@@ -644,13 +672,13 @@ footer a:hover{color:var(--amber)}
     <div class="rv" style="max-width:44em">
       <div class="eyebrow" data-i18n="az.e">Alat · iz DJ Mantra aplikacije</div>
       <h2 class="sec" data-i18n="az.h">Analiziraj <em>svoju pjesmu</em></h2>
-      <p class="lede" style="max-width:none" data-i18n="az.l">Odaberi pjesmu i saznaj njezin tempo (BPM), tonalitet i kako je građena: intro, breakdown, build-up, drop, main i outro, s brojem taktova. Isti algoritam koristi moja DJ aplikacija.</p>
+      <p class="lede" style="max-width:none" data-i18n="az.l">Odaberi pjesmu i saznaj njezin tempo (BPM), tonalitet i kako je građena: intro, breakdown, build-up, drop, main i outro, s brojem taktova. Onda je slušaj ovdje i prati taktove i dijelove. Isti algoritam koristi moja DJ aplikacija.</p>
     </div>
     <div class="az rv" id="az">
       <label class="drop" id="azDrop">
         <input type="file" id="azFile" accept="audio/*,.mp3,.m4a,.aac,.wav,.flac,.ogg,.opus,.aif,.aiff">
         <b data-i18n="az.pick">ODABERI ILI POVUCI PJESMU OVDJE</b>
-        <small data-i18n="az.priv">Pjesma se ne šalje nikamo: dekodira se i analizira u tvom pregledniku, a čim analiza završi, briše se iz memorije. MP3, M4A, WAV, FLAC, OGG, do 20 minuta.</small>
+        <small data-i18n="az.priv">Pjesma se ne šalje nikamo: analizira se u tvom pregledniku i svira iz tvoje datoteke na tvom uređaju. Analizirani zvuk briše se iz memorije čim analiza završi. MP3, M4A, WAV, FLAC, OGG, do 20 minuta.</small>
       </label>
       <p class="st" id="azSt" role="status" aria-live="polite"></p>
       <div class="res" id="azRes" hidden>
@@ -661,7 +689,19 @@ footer a:hover{color:var(--amber)}
           <div class="tile"><span>LENGTH</span><b id="azLen">—</b><i id="azBars"></i></div>
           <div class="tile code"><span>CODE</span><b id="azCode">—</b><i>I · B · M · O</i></div>
         </div>
-        <canvas id="azWv" aria-label="Waveform and sections"></canvas>
+        <canvas id="azWv" aria-label="Waveform and sections: click to jump"></canvas>
+        <div class="ctl">
+          <button type="button" id="azPrev" aria-label="Previous section">◀◀</button>
+          <button type="button" id="azPlay" class="play" aria-label="Play">▶</button>
+          <button type="button" id="azNext" aria-label="Next section">▶▶</button>
+          <button type="button" id="azLoop" class="loop" aria-pressed="false">LOOP</button>
+          <span class="tm"><b id="azEl">0:00</b> / <span id="azDu">0:00</span></span>
+        </div>
+        <div class="now">
+          <div class="cur"><span class="lbl">NOW</span><b id="azNow">—</b><span id="azBar">—</span></div>
+          <div class="cnt"><div class="beats" id="azBeats"><i></i><i></i><i></i><i></i></div><div class="phr" id="azPhr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="nxt"><span class="lbl">NEXT</span><b id="azNx">—</b><span id="azNt">—</span></div>
+        </div>
         <ol id="azList"></ol>
         <button type="button" class="btn ghost again" id="azAgain" data-i18n="az.again">Analiziraj drugu pjesmu</button>
       </div>
@@ -962,7 +1002,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v38</p>
+    <p class="ver">v39</p>
   </div>
 </footer>
 
@@ -1065,20 +1105,21 @@ const DICT = {
   "g.m.v":"Kod vokalne glazbe pazi na glas: miksaj u introu, outru i refrenu, nikad usred strofe. Kad se preklapaju dvije pjesme, glas smije imati samo jedna.",
   "az.e":"Alat · iz DJ Mantra aplikacije",
   "az.h":"Analiziraj <em>svoju pjesmu</em>",
-  "az.l":"Odaberi pjesmu i saznaj njezin tempo (BPM), tonalitet i kako je građena: intro, breakdown, build-up, drop, main i outro, s brojem taktova. Isti algoritam koristi moja DJ aplikacija.",
+  "az.l":"Odaberi pjesmu i saznaj njezin tempo (BPM), tonalitet i kako je građena: intro, breakdown, build-up, drop, main i outro, s brojem taktova. Onda je slušaj ovdje i prati taktove i dijelove. Isti algoritam koristi moja DJ aplikacija.",
   "az.pick":"ODABERI ILI POVUCI PJESMU OVDJE",
-  "az.priv":"Pjesma se ne šalje nikamo: dekodira se i analizira u tvom pregledniku, a čim analiza završi, briše se iz memorije. MP3, M4A, WAV, FLAC, OGG, do 20 minuta.",
+  "az.priv":"Pjesma se ne šalje nikamo: analizira se u tvom pregledniku i svira iz tvoje datoteke na tvom uređaju. Analizirani zvuk briše se iz memorije čim analiza završi. MP3, M4A, WAV, FLAC, OGG, do 20 minuta.",
   "az.again":"Analiziraj drugu pjesmu",
   "az.src":"Tempo, ritam i tonalitet: <a href=\"https://github.com/chrisle/rbxport\" target=\"_blank\" rel=\"noopener\">rbxport</a> (Chris Le, GPL), otvorena zamjena za rekordbox, prevedena u WebAssembly. Imena dijelova: pravila moje aplikacije, izmjerena na 82 pjesme prema rekordboxu. Izvorni kod: <a href=\"https://github.com/markoboskoauroville/djmantra-ecstatic-dance/tree/main/tools/analyzer\" target=\"_blank\" rel=\"noopener\">tools/analyzer</a>.",
   "az.s.read":"Čitam datoteku ...",
   "az.s.dec":"Dekodiram zvuk ...",
   "az.s.an":"Analiziram: tempo, ritam, tonalitet, dijelovi ...",
-  "az.s.done":"Gotovo za {s} s. Pjesma je izbrisana iz memorije.",
+  "az.s.done":"Gotovo za {s} s. Analizirani zvuk je izbrisan iz memorije; pritisni ▶ za slušanje.",
   "az.s.long":"Pjesma je duža od 20 minuta. Odaberi kraću.",
   "az.s.bad":"Ovaj zvučni format preglednik ne zna dekodirati. Probaj MP3, M4A ili WAV.",
   "az.s.err":"Analiza nije uspjela: ",
   "az.conf":"sigurnost {c} %",
   "az.bars":"{n} taktova",
+  "az.left":"za {n}",
   "g.src":"Po tečaju Instrumental Structure i Vocal-Based Music. Pjesme u edukativnom playeru su iz mog seta; ritam iz djay Pro analize, dijelovi iz bubnja, frekvencija i glasa izdvojenog iz pjesme (Demucs, Whisper).",
   "who":"Marko Boško · Zagreb · Auroville",
   "tag":"Od Gangesa do Amazone. Set je putovanje, ne popis pjesama.",
@@ -1237,20 +1278,21 @@ const DICT = {
   "g.m.v":"In vocal music, watch the voice: mix in the intro, the outro and the chorus, never in the middle of a verse. When two songs overlap, only one of them may sing.",
   "az.e":"Tool · from the DJ Mantra app",
   "az.h":"Analyse <em>your song</em>",
-  "az.l":"Pick a song and find out its tempo (BPM), its key and how it is built: intro, breakdown, build-up, drop, main and outro, with their bars. My DJ app uses the same algorithm.",
+  "az.l":"Pick a song and find out its tempo (BPM), its key and how it is built: intro, breakdown, build-up, drop, main and outro, with their bars. Then listen to it here and follow the bars and the sections. My DJ app uses the same algorithm.",
   "az.pick":"PICK OR DROP A SONG HERE",
-  "az.priv":"The song is not sent anywhere: it is decoded and analysed in your browser, and as soon as the analysis ends it is wiped from memory. MP3, M4A, WAV, FLAC, OGG, up to 20 minutes.",
+  "az.priv":"The song is not sent anywhere: it is analysed in your browser and plays from your own file on your device. The analysed audio is wiped from memory as soon as the analysis ends. MP3, M4A, WAV, FLAC, OGG, up to 20 minutes.",
   "az.again":"Analyse another song",
   "az.src":"Tempo, beat grid and key: <a href=\"https://github.com/chrisle/rbxport\" target=\"_blank\" rel=\"noopener\">rbxport</a> (Chris Le, GPL), the open replacement for rekordbox, compiled to WebAssembly. Section names: my app's rules, measured on 82 songs against rekordbox. Source: <a href=\"https://github.com/markoboskoauroville/djmantra-ecstatic-dance/tree/main/tools/analyzer\" target=\"_blank\" rel=\"noopener\">tools/analyzer</a>.",
   "az.s.read":"Reading the file ...",
   "az.s.dec":"Decoding the audio ...",
   "az.s.an":"Analysing: tempo, beat grid, key, sections ...",
-  "az.s.done":"Done in {s} s. The song has been wiped from memory.",
+  "az.s.done":"Done in {s} s. The analysed audio has been wiped from memory; press ▶ to listen.",
   "az.s.long":"The song is longer than 20 minutes. Pick a shorter one.",
   "az.s.bad":"Your browser cannot decode this audio format. Try MP3, M4A or WAV.",
   "az.s.err":"The analysis failed: ",
   "az.conf":"confidence {c} %",
   "az.bars":"{n} bars",
+  "az.left":"in {n}",
   "g.src":"Following the course Instrumental Structure and Vocal-Based Music. The songs in the educational player are from my set; the beat from djay Pro's analysis, the sections from the kick, the frequency bands and the voice separated from the song (Demucs, Whisper).",
   "e.app":"DJ Mantra for Android","h.app":"My DJ deck <em>in a phone</em>",
   "b.app1":"I am coding my own DJ app for Android phones, on the open source Mixxx engine. It is made for the mobile DJ: the Hercules DJControl Mix Ultra controller over Bluetooth, the main output on a Bluetooth speaker and headphones on USB, any button on any function.",
@@ -1930,7 +1972,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
 
   async function analyse(file) {
     if(busy || !file) return;
-    busy = true; res.hidden = true;
+    busy = true; res.hidden = true; unload();
     const t0 = performance.now();
     let samples = null, worker = null;
     try {
@@ -1960,6 +2002,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       samples = null;
       if(!answer.ok) throw new Error(answer.error);
       last = { r: answer.result, name: file.name };
+      load(file);
       show();
       say("az.s.done", { s: ((performance.now() - t0) / 1000).toFixed(1) });
     } catch(e) {
@@ -1993,17 +2036,20 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     const bars = secs.reduce((a, s) => a + s.bars, 0);
     $("azBars").textContent = bars ? barsText(bars) : "";
     $("azCode").textContent = secs.length ? code(secs) : "—";
+    $("azDu").textContent = mmss(r.duration);
     $("azList").innerHTML = secs.map(s => '<li><code>' + mmss(s.secs) + '</code><b style="--c:' + css(COLORS[s.name] || "--s-amb") + '">' + s.name + '</b><span>' + barsText(s.bars) + '</span></li>').join("");
     res.hidden = false;
     draw();
   }
 
+  let base = null;
   function draw() {
     if(!last || res.hidden) return;
     const r = last.r, cv = $("azWv"), dpr = window.devicePixelRatio || 1;
     const W = cv.clientWidth, H = cv.clientHeight; if(!W) return;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+    base = document.createElement("canvas"); base.width = cv.width; base.height = cv.height;
+    const g = base.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
     const band = 22, top = band + 6, h = H - top - 4, mid = top + h / 2, d = r.duration || 1;
     // the sections, a coloured band with their names
     (r.sections || []).forEach((s, i, a) => {
@@ -2022,13 +2068,91 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       }
     });
     g.globalAlpha = 1;
+    frame();
   }
+
+  // ------------------------------------------------------------------ the player (v39)
+  // Marko 19.10.2026: "Since we are working with the local file for analyzing the song, please also play it
+  // from the website". The <audio> plays the visitor's own file through an object URL: the song stays on their
+  // device; the URL is released when another song is picked or the page is left.
+  const audio = new Audio(); audio.preload = "auto";
+  let url = null, loop = null, raf = 0;
+  function load(file) { unload(); url = URL.createObjectURL(file); audio.src = url; }
+  function unload() {
+    audio.pause(); audio.removeAttribute("src"); audio.load();
+    if(url) URL.revokeObjectURL(url); url = null; loop = null;
+    $("azLoop").setAttribute("aria-pressed", "false");
+  }
+  const secsOf = () => (last && last.r.sections) || [];
+  const sectionAt = t => { const a = secsOf(); let i = 0; while(i + 1 < a.length && a[i + 1].secs <= t) i++; return i; };
+  const sectionEnd = i => { const a = secsOf(); return i + 1 < a.length ? a[i + 1].secs : last.r.duration; };
+  function beatAt(t) { // the index of the last beat at or before t
+    const b = last.r.beats || []; let lo = 0, hi = b.length - 1, k = -1;
+    while(lo <= hi) { const m = (lo + hi) >> 1; if(b[m] <= t + 0.02) { k = m; lo = m + 1; } else hi = m - 1; }
+    return k;
+  }
+  function seek(t) {
+    audio.currentTime = Math.max(0, Math.min(t, (last && last.r.duration || 0) - 0.05));
+    if(loop) { const i = sectionAt(audio.currentTime); loop = [secsOf()[i].secs, sectionEnd(i)]; } // the loop moves along
+    frame();
+  }
+  function frame() {
+    if(!last || !base) return;
+    const cv = $("azWv"), g = cv.getContext("2d"), dpr = window.devicePixelRatio || 1;
+    const W = cv.width / dpr, H = cv.height / dpr, d = last.r.duration || 1, t = audio.currentTime || 0;
+    g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.drawImage(base, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if(loop) { g.fillStyle = "rgba(255,213,74,.16)"; g.fillRect(loop[0] / d * W, 0, (loop[1] - loop[0]) / d * W, H); }
+    const x = t / d * W; g.fillStyle = "#FFD54A"; g.fillRect(x - 1, 0, 2, H);
+    // now / next, the beat in the bar, the bar in the 8-bar phrase
+    const a = secsOf(), i = sectionAt(t), cur = a[i];
+    $("azEl").textContent = mmss(t);
+    if(cur) {
+      const nowB = $("azNow"); nowB.textContent = cur.name; nowB.parentElement.style.setProperty("--c", css(COLORS[cur.name] || "--s-amb"));
+      const nx = a[i + 1], nxB = $("azNx");
+      nxB.textContent = nx ? nx.name : "END"; nxB.style.setProperty("--c", nx ? css(COLORS[nx.name] || "--s-amb") : "#9AA3C7");
+      const left = sectionEnd(i) - t, barSecs = last.r.bpm > 0 ? 240 / last.r.bpm : 0;
+      $("azNt").textContent = (barSecs ? T("az.left", { n: barsText(Math.max(1, Math.ceil(left / barSecs - 0.01))) }) + " · " : "") + mmss(left);
+      document.querySelectorAll("#azList li").forEach((li, k) => li.classList.toggle("on", k === i));
+    }
+    const k = beatAt(t) - (last.r.firstDownbeat || 0), beats = $("azBeats").children, phr = $("azPhr").children;
+    if(k >= 0) {
+      const bar = Math.floor(k / 4), beat = k % 4;
+      $("azBar").textContent = "BAR " + (bar + 1) + "." + (beat + 1);
+      for(let j = 0; j < 4; j++) { beats[j].className = j === beat ? (j === 0 ? "on one" : "on") : ""; }
+      for(let j = 0; j < 8; j++) { phr[j].className = j < bar % 8 ? "done" : j === bar % 8 ? "on" : ""; }
+    } else {
+      $("azBar").textContent = "—";
+      for(const e of beats) e.className = ""; for(const e of phr) e.className = "";
+    }
+  }
+  function tick() {
+    if(loop && audio.currentTime >= loop[1] - 0.02) audio.currentTime = loop[0];
+    frame();
+    if(!audio.paused) raf = requestAnimationFrame(tick);
+  }
+  audio.addEventListener("play", () => { $("azPlay").textContent = "❚❚"; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"az"})); cancelAnimationFrame(raf); tick(); });
+  audio.addEventListener("pause", () => { $("azPlay").textContent = "▶"; frame(); });
+  audio.addEventListener("ended", () => { $("azPlay").textContent = "▶"; frame(); });
+  audio.addEventListener("loadedmetadata", () => { $("azDu").textContent = mmss(audio.duration || (last && last.r.duration) || 0); });
+  document.addEventListener("mantra-play", e => { if(e.detail !== "az" && !audio.paused) audio.pause(); });
+  $("azPlay").addEventListener("click", () => { if(!url) return; audio.paused ? audio.play() : audio.pause(); });
+  $("azPrev").addEventListener("click", () => { if(!last) return; const t = audio.currentTime, i = sectionAt(t);
+    seek(t - secsOf()[i].secs > 1.5 || i === 0 ? secsOf()[i].secs : secsOf()[i - 1].secs); });
+  $("azNext").addEventListener("click", () => { if(!last) return; const i = sectionAt(audio.currentTime); if(i + 1 < secsOf().length) seek(secsOf()[i + 1].secs); });
+  $("azLoop").addEventListener("click", () => { if(!last) return;
+    if(loop) loop = null; else { const i = sectionAt(audio.currentTime); loop = [secsOf()[i].secs, sectionEnd(i)]; }
+    $("azLoop").setAttribute("aria-pressed", loop ? "true" : "false"); frame(); });
+  $("azWv").addEventListener("click", e => { if(!last) return; const r = e.currentTarget.getBoundingClientRect();
+    seek((e.clientX - r.left) / r.width * last.r.duration); });
+  $("azList").addEventListener("click", e => { const li = e.target.closest("li"); if(!li || !last) return;
+    const k = [...li.parentNode.children].indexOf(li); seek(secsOf()[k].secs); if(audio.paused && url) audio.play(); });
+  window.addEventListener("pagehide", unload);
 
   input.addEventListener("change", () => analyse(input.files && input.files[0]));
   ["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
   ["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
   drop.addEventListener("drop", e => analyse(e.dataTransfer && e.dataTransfer.files[0]));
-  $("azAgain").addEventListener("click", () => { last = null; res.hidden = true; st.textContent = ""; input.click(); });
+  $("azAgain").addEventListener("click", () => { unload(); last = null; res.hidden = true; st.textContent = ""; input.click(); });
   window.addEventListener("resize", draw);
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();

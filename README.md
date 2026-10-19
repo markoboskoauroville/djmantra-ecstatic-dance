@@ -73,3 +73,7 @@ marko.bosko@auroville.community
   `assets/analyzer/worker.js`, which runs `assets/analyzer/djmantra_analyzer.wasm` (rbxport's analysis plus DJ Mantra's
   section names, source and build in `tools/analyzer/`), zeroes the samples; the page then ends the worker.
 * About 5 s for a 3-minute song in desktop Chromium; up to 20 minutes per song.
+* v39: the analysed song plays on the page: play / pause, previous / next section, LOOP the section, click the
+  waveform or a section to jump, NOW / NEXT with the bar.beat count, the beat and 8-bar phrase lights and the bars and
+  time to the next section. It plays the visitor's own file through an object URL (nothing is uploaded or copied);
+  the URL is released when another song is picked or the page is left.
