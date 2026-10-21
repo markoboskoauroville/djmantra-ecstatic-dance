@@ -581,3 +581,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
     writes the Suno prompts (style and the sung structure) for the whole track; the song is then cut into one piece
     per element and played on the music decks.
     **Status:** in progress (logged 21.10.2026).
+
+> you can mix my songs as an audio guide for Suno and then make a prompt. So give me the song you mixed. You need to crossfade between different songs for each element, and then we're going to do it with Suno
+
+> Suno, I have an account. I'm going to log in and you need to use my browser to get it done. Please
+
+76. A guide mix from the Centering songs, one song per element, crossfaded element to element, given to Marko; then
+    the Suno prompt written from it (and the mix as Suno's audio reference).
+77. Suno through Marko's Chrome: he logs in, Claude drives it.
+    **Status:** in progress (logged 21.10.2026). Measured, 21.10.2026: the eight songs are in C, E, C, G#, E, F, A#, F
+    major, all ambient; together they sit in C major (F major next); tuning within ±10 cents of A440.
