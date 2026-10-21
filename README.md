@@ -93,3 +93,9 @@ marko.bosko@auroville.community
   `assets/toning/orion.mp3`, its waveform and the chapters in `toning.json`. 10:31.
 * The BACKGROUND knob's LED ring crossfades its colour between elements with the decks' gains and breathes six times a
   minute (4 s in, 6 s out); with `prefers-reduced-motion` it only crossfades.
+* v49: the only background is Marko's own song "Toning A U I O DJ MANTRA WEB PAGE", cut per element by
+  `tools/toning/build_bg.py` (AAC 320 kbps, the default, MANTRA_MANIFEST modules/aac-320.md).
+
+## Two sessions build this page (21.10.2026)
+
+The Mac session and the cloud session work together and talk both ways; read `COLLABORATION.md` first.

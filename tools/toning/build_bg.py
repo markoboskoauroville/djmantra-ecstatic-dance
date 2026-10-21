@@ -5,7 +5,7 @@
   A, U, I, O, A-U-I-O, AUM, outro, at 0, 30, 75, 120, 165, 210, 270, 315 of 355 s (the guide mix's plan), so each song
   is cut in the same proportions; Suno keeps no exact section edges, so the cuts are a first cut to check by ear.
 - centering: one song per element from Marko's Centering collection (EXT_1TB).
-Each piece is looped with 3 s crossfades to PIECE s, levelled to -20 LUFS and written as AAC (M4A, 160 kbps stereo),
+Each piece is looped with 3 s crossfades to PIECE s, levelled to -20 LUFS and written as AAC (M4A, 320 kbps stereo, Marko 21.10.2026; 160 kbps in v47),
 with a 3-band waveform (25 fps). The list goes into assets/toning/toning.json under "bgs".
 
 v48 (Marko, 21.10.2026): "new sound background for that part ... replacing the original mix of sounds with this one
@@ -50,7 +50,7 @@ def piece(src, s, L, out):
         fc = fc[:-len(f'[x{n-1}];')] + '[x]'
     fc += f';[x]atrim=0:{PIECE},loudnorm=I=-20:TP=-2:LRA=11,afade=t=in:d=1,afade=t=out:st={PIECE-3}:d=3[out]'
     subprocess.run(['ffmpeg', '-v', 'error', '-y'] + sum([['-i', seg] for _ in range(n)], []) +
-                   ['-filter_complex', fc, '-map', '[out]', '-c:a', 'aac', '-b:a', '160k', '-movflags', '+faststart', out], check=True)
+                   ['-filter_complex', fc, '-map', '[out]', '-c:a', 'aac', '-b:a', '320k', '-movflags', '+faststart', out], check=True)
 
 J = json.load(open(f'{A}/toning.json'))
 J['bgs'] = []

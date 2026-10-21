@@ -656,3 +656,42 @@ Every request is saved here word for word before any code, so a quota cut loses 
     six times a minute, 4 s in and 6 s out (brightness 30 % → 100 % and the glow), while the knob is on screen; with
     reduced motion asked for, it only crossfades. Tested in Chromium: at the start of U the ring is halfway between gold
     and milky white.
+
+## v49 — requested 21.10.2026
+
+> INTHE LOCAL FILE SYSTEM THERE IS NEW SOUND BACKGROUND FOR THAT PART /Users/markobosko/Downloads/Toning A U I O DJ MANTRA WEB PAGE.wav PLASE ASK LOCAL SESION TO UPLOAD IT TO WEB SO IT CAN BECAME PART OF PAGE REPLACONG ORIGINAL MIX OF SOUNDS WITH THIS ONE ORIGINAL MANTRA SONG
+
+> This wave background needs to be compressed in AAC 320 kbps.
+
+82. Marko's own song "Toning A U I O DJ MANTRA WEB PAGE" (the WAV in ~/Downloads on the Mac) replaces every background
+    of the toning player (Choir, Cave I, Cave II, Centering): the Mac session sends it, the page plays it under Orion.
+    AAC 320 kbps.
+    **Status:** done, v49 (21.10.2026): the Mac encoded it from the WAV with Apple's encoder, AAC 320 kbps CBR, 264.68 s
+    (baadd18, tools/toning/suno/toning-auio-djmantra.m4a); build_bg.py cut it into the eight element pieces in the
+    proportions of the plan, looped to 100 s, -20 LUFS, AAC 320 kbps (323–336 kbps measured), assets/toning/bg/mantra.
+    The BACKGROUND chooser hides with one song; the credit reads "Toning A U I O, an original song by DJ Mantra". The
+    four v47 backgrounds are removed from assets (their sources stay in tools/toning). **Marko checks the cuts by ear.**
+
+> Please develop the communication to develop this website. / TWO WAY COMUNICATION Local and cloud session.
+
+> Please write in the manifest. When I say connect to local session or to cloud session, it always going to remote control. Don't try any other options first. First is remote control option because every session is shared with remote control, so you can talk with each other.
+
+> 320KBS IS OUR DEFAULT AAC QUALITY WRITE IN MANIFEST
+
+> Ask the local session to refresh the browser when it updates the page.
+
+83. The Mac session and the cloud session build the page together, talking both ways.
+    **Status:** done, 21.10.2026: COLLABORATION.md (who does what, how to talk, the message form, the inbox files in
+    COLLAB/, the job list); tested both ways (cloud → Mac by Remote Control send_message after Marko's approval on his
+    trusted device; Mac → cloud by SendMessage).
+84. "Connect to the local / cloud session" always goes through Remote Control first.
+    **Status:** done, MANTRA_MANIFEST modules/session-link.md §0 (branch claude/amazing-wozniak-1851tn of MANTRA_MANIFEST).
+85. AAC 320 kbps is the default.
+    **Status:** done, MANTRA_MANIFEST modules/aac-320.md (same branch); the toning pieces are 320 kbps.
+86. After every update of the page the Mac session refreshes it in Marko's browser.
+    **Status:** done, COLLABORATION.md *After every update of the page*; asked of the Mac with v49.
+
+> Please now update my webpage. In that part we are working on, which is called the voice, we are working on the channels.
+
+87. Put the toning work live on djmantra.pages.dev.
+    **Status:** done, v49 merged into main 21.10.2026 (v48 + v49: slow Orion only, the breathing knob, Marko's song).

@@ -53,218 +53,56 @@
  "bgLufs": -20,
  "bgs": [
   {
-   "id": "choir",
-   "name": "Choir",
+   "id": "mantra",
+   "name": "DJ Mantra",
    "pieces": {
     "intro": {
-     "src": "assets/toning/bg/choir/intro.m4a",
-     "wave": "assets/toning/bg/choir/intro.wave.bin",
+     "src": "assets/toning/bg/mantra/intro.m4a",
+     "wave": "assets/toning/bg/mantra/intro.wave.bin",
      "dur": 100,
      "song": null
     },
     "a": {
-     "src": "assets/toning/bg/choir/a.m4a",
-     "wave": "assets/toning/bg/choir/a.wave.bin",
+     "src": "assets/toning/bg/mantra/a.m4a",
+     "wave": "assets/toning/bg/mantra/a.wave.bin",
      "dur": 100,
      "song": null
     },
     "u": {
-     "src": "assets/toning/bg/choir/u.m4a",
-     "wave": "assets/toning/bg/choir/u.wave.bin",
+     "src": "assets/toning/bg/mantra/u.m4a",
+     "wave": "assets/toning/bg/mantra/u.wave.bin",
      "dur": 100,
      "song": null
     },
     "i": {
-     "src": "assets/toning/bg/choir/i.m4a",
-     "wave": "assets/toning/bg/choir/i.wave.bin",
+     "src": "assets/toning/bg/mantra/i.m4a",
+     "wave": "assets/toning/bg/mantra/i.wave.bin",
      "dur": 100,
      "song": null
     },
     "o": {
-     "src": "assets/toning/bg/choir/o.m4a",
-     "wave": "assets/toning/bg/choir/o.wave.bin",
+     "src": "assets/toning/bg/mantra/o.m4a",
+     "wave": "assets/toning/bg/mantra/o.wave.bin",
      "dur": 100,
      "song": null
     },
     "ov": {
-     "src": "assets/toning/bg/choir/ov.m4a",
-     "wave": "assets/toning/bg/choir/ov.wave.bin",
+     "src": "assets/toning/bg/mantra/ov.m4a",
+     "wave": "assets/toning/bg/mantra/ov.wave.bin",
      "dur": 100,
      "song": null
     },
     "om": {
-     "src": "assets/toning/bg/choir/om.m4a",
-     "wave": "assets/toning/bg/choir/om.wave.bin",
+     "src": "assets/toning/bg/mantra/om.m4a",
+     "wave": "assets/toning/bg/mantra/om.wave.bin",
      "dur": 100,
      "song": null
     },
     "si": {
-     "src": "assets/toning/bg/choir/si.m4a",
-     "wave": "assets/toning/bg/choir/si.wave.bin",
+     "src": "assets/toning/bg/mantra/si.m4a",
+     "wave": "assets/toning/bg/mantra/si.wave.bin",
      "dur": 100,
      "song": null
-    }
-   }
-  },
-  {
-   "id": "cave1",
-   "name": "Cave I",
-   "pieces": {
-    "intro": {
-     "src": "assets/toning/bg/cave1/intro.m4a",
-     "wave": "assets/toning/bg/cave1/intro.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "a": {
-     "src": "assets/toning/bg/cave1/a.m4a",
-     "wave": "assets/toning/bg/cave1/a.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "u": {
-     "src": "assets/toning/bg/cave1/u.m4a",
-     "wave": "assets/toning/bg/cave1/u.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "i": {
-     "src": "assets/toning/bg/cave1/i.m4a",
-     "wave": "assets/toning/bg/cave1/i.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "o": {
-     "src": "assets/toning/bg/cave1/o.m4a",
-     "wave": "assets/toning/bg/cave1/o.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "ov": {
-     "src": "assets/toning/bg/cave1/ov.m4a",
-     "wave": "assets/toning/bg/cave1/ov.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "om": {
-     "src": "assets/toning/bg/cave1/om.m4a",
-     "wave": "assets/toning/bg/cave1/om.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "si": {
-     "src": "assets/toning/bg/cave1/si.m4a",
-     "wave": "assets/toning/bg/cave1/si.wave.bin",
-     "dur": 100,
-     "song": null
-    }
-   }
-  },
-  {
-   "id": "cave2",
-   "name": "Cave II",
-   "pieces": {
-    "intro": {
-     "src": "assets/toning/bg/cave2/intro.m4a",
-     "wave": "assets/toning/bg/cave2/intro.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "a": {
-     "src": "assets/toning/bg/cave2/a.m4a",
-     "wave": "assets/toning/bg/cave2/a.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "u": {
-     "src": "assets/toning/bg/cave2/u.m4a",
-     "wave": "assets/toning/bg/cave2/u.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "i": {
-     "src": "assets/toning/bg/cave2/i.m4a",
-     "wave": "assets/toning/bg/cave2/i.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "o": {
-     "src": "assets/toning/bg/cave2/o.m4a",
-     "wave": "assets/toning/bg/cave2/o.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "ov": {
-     "src": "assets/toning/bg/cave2/ov.m4a",
-     "wave": "assets/toning/bg/cave2/ov.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "om": {
-     "src": "assets/toning/bg/cave2/om.m4a",
-     "wave": "assets/toning/bg/cave2/om.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "si": {
-     "src": "assets/toning/bg/cave2/si.m4a",
-     "wave": "assets/toning/bg/cave2/si.wave.bin",
-     "dur": 100,
-     "song": null
-    }
-   }
-  },
-  {
-   "id": "centering",
-   "name": "Centering",
-   "pieces": {
-    "intro": {
-     "src": "assets/toning/bg/centering/intro.m4a",
-     "wave": "assets/toning/bg/centering/intro.wave.bin",
-     "dur": 100,
-     "song": "Calm"
-    },
-    "a": {
-     "src": "assets/toning/bg/centering/a.m4a",
-     "wave": "assets/toning/bg/centering/a.wave.bin",
-     "dur": 100,
-     "song": "Breath of the Earth"
-    },
-    "u": {
-     "src": "assets/toning/bg/centering/u.m4a",
-     "wave": "assets/toning/bg/centering/u.wave.bin",
-     "dur": 100,
-     "song": "Riverbank"
-    },
-    "i": {
-     "src": "assets/toning/bg/centering/i.m4a",
-     "wave": "assets/toning/bg/centering/i.wave.bin",
-     "dur": 100,
-     "song": "Epilogue"
-    },
-    "o": {
-     "src": "assets/toning/bg/centering/o.m4a",
-     "wave": "assets/toning/bg/centering/o.wave.bin",
-     "dur": 100,
-     "song": "Closeness"
-    },
-    "ov": {
-     "src": "assets/toning/bg/centering/ov.m4a",
-     "wave": "assets/toning/bg/centering/ov.wave.bin",
-     "dur": 100,
-     "song": "Zense"
-    },
-    "om": {
-     "src": "assets/toning/bg/centering/om.m4a",
-     "wave": "assets/toning/bg/centering/om.wave.bin",
-     "dur": 100,
-     "song": "Cradle of Stars"
-    },
-    "si": {
-     "src": "assets/toning/bg/centering/si.m4a",
-     "wave": "assets/toning/bg/centering/si.wave.bin",
-     "dur": 100,
-     "song": "Aether Window"
     }
    }
   }
