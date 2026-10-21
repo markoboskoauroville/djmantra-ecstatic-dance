@@ -65,6 +65,20 @@ encoder (`-c:a aac_at -b:a 320k -aac_at_mode cbr`), measured with ffprobe.
   Marko's "merge".
 - Each side commits only its own part of a job: the Mac its source files, the cloud the built page.
 
+## Names and versions
+
+Marko, 21.10.2026: *"Please name it according to our project and always v1 v2 v3 so I understand where we are."*
+Every deliverable is named by its part of the project and a whole-number version; a report says what the page is made
+of, e.g. **"page v52 = toning song v1 + meditation voice v3"**.
+
+| Part | v1 | v2 | v3 |
+|---|---|---|---|
+| **Toning song** (the music under the voice) | Marko's "Toning A U I O DJ MANTRA WEB PAGE", `tools/toning/suno/toning-auio-djmantra.m4a` | the Suno cover with the Croatian vowel spellings (job 12), `toning-auio-djmantra-v2.m4a`: not made yet | |
+| **Meditation voice** (Hume, Female Meditation Guide) | the English letters (0479572), replaced | the Croatian vowel sounds (0a0fafe) | each vowel three times (9aa1b6a) |
+| **Meditation download** (voice + song in one file) | page v52's mix (job 11) | | |
+
+Before Hume the voice was Orion (Gemini), page v48–v51; it is not counted in these versions.
+
 ## The job list
 
 | # | Job | Who | Status |
