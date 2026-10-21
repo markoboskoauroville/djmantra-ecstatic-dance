@@ -702,3 +702,25 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** done, v50 (21.10.2026): the Mac session read both again (Gemini 2.5 flash TTS, Alnilam, plain text,
     finishReason STOP; Whisper heard every word), 9056ae4; the cloud slowed them with slow_toning.py: intro 13 → 42 s,
     O 24 → 69 s, the whole reading 10:31 → 11:45. **Marko listens** for a timbre difference against the other rungs.
+
+## v51 — requested 21.10.2026
+
+> Around voice is very much distorted, and you need to first start the music then the voice. That's the idea. Voice needs to be regenerated. Ask Claude locally which accounts are out of credits. I will add some money.
+
+> Don't time stretch anything. Just leave original pace, please. Or regenerate the audio itself, never stretch. Please put this in the manifest.
+
+> Don't use Kie. Use my account. For my private work, you don't use Elevate Media at all.
+
+> Please ask local Claude Code to open the Humeweb web page and get new demo API and find meditative voice in Hume.
+
+89. The 80 % stretch distorted Orion: no stretching ever (MANTRA_MANIFEST modules/never-time-stretch.md); the slow
+    pace comes from a new reading, slow at the source.
+    **Status:** v51 (21.10.2026, on the branch): slow_toning.py no longer touches the voice, only adds pauses (3.5 s
+    after a sentence, 1.5 s after a phrase); 12:01.
+90. The music starts first, then the voice.
+    **Status:** v51: 20 s of Marko's song alone before Orion's first word.
+91. Which TTS accounts are out of credit, Marko adds money.
+    **Status:** asked of the Mac (job 7). Its auto-mode check refused probing the keys; known: Gemini 2.5 pro TTS no
+    quota on any key, flash on one key, three keys out of prepaid credit, the rest over today's free quota.
+92. Kie and every Elevate Media account are never used for private work (MANTRA_MANIFEST modules/private-accounts.md).
+93. A new Hume API key and a meditative voice from Hume's library: asked of the Mac (job 8).

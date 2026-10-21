@@ -1,12 +1,15 @@
-"""The toning voices, slow and meditative (v48, 21.10.2026).
+"""The toning voice, meditative: Orion's own pace with long pauses, the music first (v51, 21.10.2026).
 
-Marko, 21.10.2026: "the voice opens the channels ... it's too fast. It needs to be very slow and meditative." Only
-Orion's reading (tools/toning/readings/<who>/, as the providers gave them in v47) are not generated again: each rung is
-stretched to TEMPO with rubberband (pitch and formants kept, so the voice stays deep), then its pauses are opened:
-the longest pauses of a rung, one per sentence of its text, become SENTENCE seconds of silence, the other phrase
-pauses PHRASE seconds, and the rung ends on TAIL seconds (the silence rung on a longer one, to sit in it). Then, as
-build_toning.py did, the rungs are joined, levelled to -16 LUFS, and the chapters and the 3-band waveform written into
-assets/toning/toning.json (only the voices; the backgrounds of build_bg.py stay as they are).
+Marko, 21.10.2026: "the voice opens the channels ... it's too fast. It needs to be very slow and meditative", then,
+after v48-v50 stretched the voice to 80 %: "the voice is very much distorted ... Don't time stretch anything. Just
+leave original pace, please. Or regenerate the audio itself, never stretch" (MANTRA_MANIFEST
+modules/never-time-stretch.md). So nothing here changes the voice: each rung of tools/toning/readings/<who>/ is cut at
+its pauses only; the longest pauses of a rung, one per sentence of its text, become SENTENCE seconds of silence, the
+other phrase pauses PHRASE seconds, and the rung ends on TAIL seconds (the silence rung on a longer one, to sit in
+it). Before the first word the music plays alone for MUSIC_FIRST seconds ("first start the music, then the voice").
+A slower reading comes from the TTS itself (its rate setting), put into tools/toning/readings/<who>/ and run again.
+Then the rungs are joined, levelled to -16 LUFS, and the chapters and the 3-band waveform written into
+assets/toning/toning.json (only the voices; the background of build_bg.py stays as it is).
 
 Run from anywhere: python3 tools/toning/slow_toning.py"""
 import json, os, re, subprocess, numpy as np
@@ -15,10 +18,10 @@ A = R + '/assets/toning'
 READ = R + '/tools/toning/readings'
 VOICES = ['orion']               # Marko, 21.10.2026: "use only Orion voice, that is all"
 SR = 48000
-TEMPO = 0.8                       # 80 % of the speed the voice was given
-SENTENCE, PHRASE = 3.0, 1.2       # seconds of silence after a sentence, after a phrase
+SENTENCE, PHRASE = 3.5, 1.5       # seconds of silence after a sentence, after a phrase
 TAIL, TAIL_SI = 6.0, 14.0         # after a rung; after Silence, the last one
 LEAD = 0.4                        # silence before the first word of a rung
+MUSIC_FIRST = 20.0                # v51, before the first word of all: "first start the music, then the voice"
 GATE_DB, MIN_PAUSE = -40, 0.12    # what counts as a pause
 FADE = 0.015
 
@@ -43,10 +46,10 @@ def pauses(x):
 def sentences(text):
     return len([s for s in re.split(r'[.:;?!]+', text) if s.strip()])
 
-def slow(f, text, tail):
-    x = dec(f, f'rubberband=tempo={TEMPO}:pitch=1:formant=preserved:transients=smooth:detector=soft:window=long')
+def slow(f, text, tail, lead=LEAD):
+    x = dec(f)                    # the voice as it was read: never stretched
     ps = pauses(x)
-    lead = ps.pop(0)[1] if ps and ps[0][0] == 0 else 0
+    lead_cut = ps.pop(0)[1] if ps and ps[0][0] == 0 else 0
     end = ps.pop()[0] if ps and ps[-1][1] >= len(x) else len(x)
     inner = sorted(range(len(ps)), key=lambda k: ps[k][1] - ps[k][0], reverse=True)
     long = set(inner[:max(0, sentences(text) - 1)])
@@ -56,7 +59,7 @@ def slow(f, text, tail):
         if len(s) > 2 * fd: s[:fd] *= ramp; s[-fd:] *= ramp[::-1]
         return s
     sil = lambda t: np.zeros(int(t * SR), np.float32)
-    out, at = [sil(LEAD)], lead
+    out, at = [sil(lead)], lead_cut
     for k, (a, b) in enumerate(ps):
         # keep the edges of the pause (breath, decay) and put the new silence in its middle
         keep = int(0.06 * SR)
@@ -73,7 +76,7 @@ for v in J['voices']:
     parts, ch, t = [], [], 0.0
     for m in meta:
         rid = m['id'].split('-', 1)[1]
-        y = slow(f'{READ}/{who}/{m["id"]}.mp3', m['text'], TAIL_SI if rid == 'si' else TAIL)
+        y = slow(f'{READ}/{who}/{m["id"]}.mp3', m['text'], TAIL_SI if rid == 'si' else TAIL, MUSIC_FIRST if not parts else LEAD)
         d = len(y) / SR; ch.append({'id': rid, 't': round(t, 3), 'dur': round(d, 3)}); t += d; parts.append(y)
     raw = f'{A}/{who}.f32'; np.concatenate(parts).tofile(raw)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'f32le', '-ar', str(SR), '-ac', '1', '-i', raw,
