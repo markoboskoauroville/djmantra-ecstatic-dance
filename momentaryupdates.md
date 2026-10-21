@@ -779,3 +779,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     -30 dB. tools/toning/build_v54.py copies both files byte for byte and adds the waveforms, the loudness and the
     chapters (from Whisper's word times on the Mac, voice-v4.chapters.json); render_meditation.py lays the two files
     together for the download.
+
+> Simply create a longer song and record it through black hole. ... yes, choose one and let it play after the voice until the end
+
+100. Toning song v3: longer than the voice, recorded through BlackHole, playing on after the voice to its own end.
+     **Status:** page v54 = toning song v3 + meditation voice v4 (on the branch): Suno's Extend stopped after 13 s, so
+     the Mac made a 6:00 Cover of song v2 HUSHED with the ladder twice; Claude chose take 1 (hushed, held vowels) on
+     Marko's "choose one"; recorded with sox (7bc35d1), 5:59.6, copied byte for byte. The voice ends at 5:17, the song
+     plays on to 5:59 (tested). Voice v4 (948db88): one whole Hume take, 5:17, byte for byte, its own 14.5 s silence
+     after "Silence. Spirit and connection." left as it is.
