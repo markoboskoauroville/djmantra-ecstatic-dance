@@ -465,3 +465,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
     A connects with the earth of every continent; U vibrates with lakes, rivers, seas and clouds, wherever water is.
     **Status:** done, v42 (21.10.2026): rung U's place and text and rung A's continents, EN and HR. The page says
     "the two pelvic bones that stick out" (Croatian "koščate izbočine zdjelice"), not the Latin term. Other elements wait for Marko's words.
+
+## v43 — requested 21.10.2026
+
+> and now we continue to i energy of fire. We focus on the belly button. The sound is projected outwards with fire. We move through life and reach what we set out to reach. We are manifesting our ambitions. We function in this 3D world, getting our goals done on time. It's a physical energy, burning fire. That's how you update the fire everything you need to restyle so it looks better. You restyle, but this is the raw material for adding to this section of the web page
+
+64. Rung I (Energy · Fire): the belly button stays; the text rewritten in good prose from his raw material: the sound
+    projected outwards, with fire we move through life and reach what we set out to reach, manifest our ambitions,
+    function in this 3D world and get our goals done on time; a physical energy, a burning fire. Plus the resonance
+    line request 63 asks for next to each element (fire's not given by Marko: the sun, volcanoes, the earth's core).
+    **Status:** in progress (logged 21.10.2026).
