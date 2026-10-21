@@ -77,7 +77,7 @@ encoder (`-c:a aac_at -b:a 320k -aac_at_mode cbr`), measured with ffprobe.
 | 6 | After merge: HANDOVER, SESSIONS, PROJECTS.md in the hub | MAC | waits on 5 |
 | 8 | Hume's Female Meditation Guide reads the 8 rungs in the playground, speed 1 | MAC | done, 0479572; built as the page's voice in v52 (10:36), but read from the letters: U came out "you", O "oh" |
 | 9 | Read the 8 rungs again in the same voice and settings from the **"say"** texts of `tools/toning/readings/say.json` (the vowels spelled as their Croatian sound: Aaah, Ooooh, Eeee, Oh, Aah-ooh-mmm), same folder and names, replacing 0479572's files; Whisper check that the vowels sound as written; push | MAC | open (about 3.5k of the 6.6k free Hume characters) |
-| 10 | Slow nothing: pauses only (`slow_toning.py`), test, push | CLOUD | waits on 9 |
+| 10 | Slow nothing: pauses only (`slow_toning.py`), test, push | CLOUD | done, 11:09; Hume's 8 s pause in 05-ov capped to 3.5 s like every pause |
 | 11 | The download: on the Mac, `python3 tools/toning/render_meditation.py --upload` (Apple's aac_at, a true 320 kbps; gh uploads it to the Release `toning-meditation`); before main goes live, or the DOWNLOAD button points at nothing | MAC | waits on 10 |
 | 12 | Marko's YES (21.10.2026): the Suno song again with the vowels spelled as sounds, his song as the reference (Cover): `tools/toning/suno/suno-prompt.md`, *v52*; in Marko's Chrome; two takes, he chooses; the WAV stays on the Mac, `toning-auio-djmantra-v2.m4a` (aac_at 320 CBR) pushed | MAC | open |
 | 13 | Cut the new song per element (`build_bg.py`), render the download again, test, push | CLOUD | waits on 12 |
