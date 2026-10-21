@@ -72,7 +72,7 @@ encoder (`-c:a aac_at -b:a 320k -aac_at_mode cbr`), measured with ffprobe.
 | 1 | Marko's song "Toning A U I O DJ MANTRA WEB PAGE" from ~/Downloads as `tools/toning/suno/toning-auio-djmantra.m4a` | MAC | done, baadd18, AAC 320 kbps CBR, 264.68 s |
 | 2 | Build it as the only background under Orion (`python3 tools/toning/build_bg.py`), test, push | CLOUD | done, v49 on the branch; live when it is merged into main |
 | 3 | Orion's intro and O rungs, cut short by Gemini in v47: generate `00-intro.mp3` and `04-o.mp3` again with Gemini TTS, voice Alnilam, plain text from `tools/toning/readings/orion/readings.json` (no "read slowly" instruction, Gemini refuses it), the plain readings into `tools/toning/readings/orion/`, push; check each one is whole (the last words heard) | MAC | done, 21.10.2026: gemini-2.5-flash-preview-tts, Alnilam, finish STOP; intro 16.1 s, O 29.7 s; Whisper heard every word; no pause over 1.5 s |
-| 4 | Slow the new rungs (`python3 tools/toning/slow_toning.py`), test, push | CLOUD | open (3 is done) |
+| 4 | Slow the new rungs (`python3 tools/toning/slow_toning.py`), test, push | CLOUD | done, v50 (0c4868a): intro 42 s, O 69 s, the reading 11:45 |
 | 5 | Marko listens on djmantra.pages.dev (slow Orion, the breathing knob, his song; the cuts per element by ear) | MARKO, asked by the MAC by voice | open |
 | 6 | After merge: HANDOVER, SESSIONS, PROJECTS.md in the hub | MAC | waits on 5 |
 
