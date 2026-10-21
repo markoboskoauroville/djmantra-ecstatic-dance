@@ -6,17 +6,23 @@
   is cut in the same proportions; Suno keeps no exact section edges, so the cuts are a first cut to check by ear.
 - centering: one song per element from Marko's Centering collection (EXT_1TB).
 Each piece is looped with 3 s crossfades to PIECE s, levelled to -20 LUFS and written as AAC (M4A, 160 kbps stereo),
-with a 3-band waveform (25 fps). The list goes into assets/toning/toning.json under "bgs"."""
+with a 3-band waveform (25 fps). The list goes into assets/toning/toning.json under "bgs".
+
+v48 (Marko, 21.10.2026): "new sound background for that part ... replacing the original mix of sounds with this one
+original mantra song": "Toning A U I O DJ MANTRA WEB PAGE" is the only background now. Its WAV stays on the Mac
+(~/Downloads); the Mac session sends it as AAC 256 kbps, tools/toning/suno/toning-auio-djmantra.m4a, and it is cut like
+the Suno songs. Run from anywhere: python3 tools/toning/build_bg.py"""
 import json, subprocess, numpy as np, os, tempfile
-R = os.path.expanduser('~/Developer/DJMANTRA_ECSTATIC_DANCE')
+R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 A = R + '/assets/toning'
 IDS = ['intro', 'a', 'u', 'i', 'o', 'ov', 'om', 'si']
 PLAN = [0, 30, 75, 120, 165, 210, 270, 315, 355]
 PIECE, XF = 100, 3
 SONGS = "/Volumes/EXT_1TB/MUSIC/MUSIC FOR EDITING/Centering [Marko]/"
 CENTERING = ['11. Calm', '24. Breath of the Earth', '4. Riverbank', '13. Epilogue', '12. Closeness', '22. Zense', '20. Cradle of Stars', '23. Aether Window']
-OPTIONS = [('choir', 'Choir', 'suno/takes/toning-auio-take2.wav'), ('cave1', 'Cave I', 'suno/takes/cura-prox-take1.wav'),
-           ('cave2', 'Cave II', 'suno/takes/cura-prox-take2.wav'), ('centering', 'Centering', None)]
+# v47: ('choir', 'Choir', 'suno/takes/toning-auio-take2.wav'), ('cave1', 'Cave I', 'suno/takes/cura-prox-take1.wav'),
+#      ('cave2', 'Cave II', 'suno/takes/cura-prox-take2.wav'), ('centering', 'Centering', None)
+OPTIONS = [('mantra', 'DJ Mantra', 'suno/toning-auio-djmantra.m4a')]
 
 def dur(f):
     return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f], capture_output=True, text=True).stdout)

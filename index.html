@@ -2383,6 +2383,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     j.bgs.forEach(b => { const e = document.createElement("button"); e.type = "button"; e.textContent = b.name.toUpperCase();
       e.dataset.b = b.id; e.setAttribute("aria-pressed", "false"); e.addEventListener("click", () => background(b.id)); $("tBgs").append(e); });
     if(j.voices.length < 2) $("tWho").style.display = "none";
+    if(j.bgs.length < 2) $("tBgs").style.display = "none";
     background(j.bgs[0].id); choose(j.voices[0].id, false);
   });
   function choose(id, go){
@@ -2404,7 +2405,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     O = J.bgs.find(b => b.id === id); decks.forEach(d => d.piece = -1);
     $("tBgs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.b === id)));
     const songs = [...new Set(Object.values(O.pieces).map(p => p.song).filter(Boolean))];
-    $("tCr").textContent = songs.length ? "Music under the voice: " + songs.join(" · ") : "Music under the voice: " + O.name + ", a choir made by DJ Mantra";
+    $("tCr").textContent = "Music under the voice: " + (songs.length ? songs.join(" · ") : O.id === "mantra" ? "Toning A U I O, an original song by DJ Mantra" : O.name + ", a choir made by DJ Mantra");
     Object.entries(O.pieces).forEach(([k, p]) => { const kk = O.id + "/" + k; if(!BW[kk]) fetch(p.wave).then(r => r.arrayBuffer()).then(a => { BW[kk] = new Uint8Array(a); paint(); }); });
     if(ctx) fetchBg(); mix(); paint();
   }
