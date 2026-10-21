@@ -573,3 +573,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
     A-U-I-O throat a rainbow (communication), AUM and the crown white. These are Marko's chakra colours, written in
     MANTRA_MANIFEST (modules/chakra-colors.md), the one system wherever colours and chakras are mentioned.
     **Status:** in progress (logged 21.10.2026).
+
+> Please let's use Suno for toning. So it must be one song you're going to cut in the pieces which are actually singing the vowels like a Tibetan choir. And the vowels are uh Croatian uh Pronunciation. So you need to research how it's it it is and we make one song you're going to guide Suno with prompt to sing and based on the Songs you choose we're going to recreate same similar vibe in Suno. So you need to guide the suno for the whole background track please.
+
+75. The background is made in Suno: one song, a Tibetan-style choir singing the vowels of the ladder with Croatian
+    pronunciation (A U I O, A-U-I-O, AUM, then silence), in the vibe of the Centering songs chosen per element; Claude
+    writes the Suno prompts (style and the sung structure) for the whole track; the song is then cut into one piece
+    per element and played on the music decks.
+    **Status:** in progress (logged 21.10.2026).
