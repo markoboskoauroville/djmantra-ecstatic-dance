@@ -486,3 +486,14 @@ Every request is saved here word for word before any code, so a quota cut loses 
     our family widening to the whole planet. Plus the resonance line (air's not given by Marko: the winds and the sky).
     **Status:** done, v44 (21.10.2026): rung O extended in EN and HR; the air resonance line (the winds and the sky)
     is Claude's proposal, waiting for Marko's word.
+
+## v45 — requested 21.10.2026
+
+> now we're going forward to infinity truth and compassion overtone singing. You need to replace infinity with all these letters before a u i o one after the other in one vertical line, and between will be a dash. So they understand they need to sing it all. Infinity is not a good symbol, so it's a throat area. It's our verbal expression and our vibration. Our voice is like a fingerprint of our whole body, our character, our energy level. Everything can be read from our vibration through our voice. It's about our truth and communication. We do overtone singing. We focus on the throat. We join all four vowels into one unbroken sound. Overtone is born from it by slowly transitioning between letters or vowels. It's a truth, honesty, what we actually have to say we say truthfully, but in a style of non-violent communication. You research non-violent communication and write basic principles of non-violent communication and a way to communicate in a way which expresses your emotions and also accepts other emotions from other people. Again similar as in all we are accepting things as they are and we express our truth. That's expansion for that element
+
+66. Rung OV (Truth and communication · Overtone singing): the ∞ replaced by A – U – I – O in one vertical column, so
+    they see they sing them all. The text: the throat, our verbal expression and vibration, the voice a fingerprint
+    of the whole body (character, energy level), the four vowels in one unbroken sound, overtones born from the slow
+    passage between vowels; truth and honesty said in the way of non-violent communication. Added: NVC's basic
+    principles (Marshall Rosenberg): expressing one's own feelings and receiving the other's, accepting as with the O.
+    **Status:** in progress (logged 21.10.2026).
