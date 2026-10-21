@@ -18,8 +18,10 @@ Run from anywhere: python3 tools/toning/build_v54.py [--voice <file>]"""
 import json, os, re, shutil, subprocess, sys, numpy as np
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 A = R + '/assets/toning'
-VOICE = sys.argv[sys.argv.index('--voice') + 1] if '--voice' in sys.argv else R + '/tools/toning/readings/voice-v4.m4a'
-CHAPTERS = R + '/tools/toning/readings/voice-v4.chapters.json'
+# the newest meditation voice there is: v5 (the cloned voice in DaVinci Resolve, plain English), else v4 (Hume)
+VN = next(v for v in ('v5', 'v4') if os.path.exists(R + f'/tools/toning/readings/voice-{v}.m4a'))
+VOICE = sys.argv[sys.argv.index('--voice') + 1] if '--voice' in sys.argv else R + f'/tools/toning/readings/voice-{VN}.m4a'
+CHAPTERS = R + f'/tools/toning/readings/voice-{VN}.chapters.json'
 # toning song v3 (v2 made longer in Suno, recorded through BlackHole; Marko: "Simply create a longer song and record it
 # through black hole") once it is there, else toning song v2
 # the newest toning song there is: v5 (from Marko's new vowel recording), v3, v2. Not v4: Marko, 21.10.2026, "My voice
@@ -63,10 +65,10 @@ def pauses_chapters(f):
 vd, sd = dur(VOICE), dur(SONG)
 ch = json.load(open(CHAPTERS)) if os.path.exists(CHAPTERS) else pauses_chapters(VOICE)
 ext = os.path.splitext(VOICE)[1]
-shutil.copyfile(VOICE, f'{A}/voice-v4{ext}'); shutil.copyfile(SONG, f'{A}/song-{SV}.m4a')
-wave(f'{A}/voice-v4{ext}', f'{A}/voice-v4.wave.bin'); wave(f'{A}/song-{SV}.m4a', f'{A}/song-{SV}.wave.bin')
+shutil.copyfile(VOICE, f'{A}/voice-{VN}{ext}'); shutil.copyfile(SONG, f'{A}/song-{SV}.m4a')
+wave(f'{A}/voice-{VN}{ext}', f'{A}/voice-{VN}.wave.bin'); wave(f'{A}/song-{SV}.m4a', f'{A}/song-{SV}.wave.bin')
 J = json.load(open(f'{A}/toning.json'))
-J = {'voice': {'name': 'Meditation guide', 'src': f'assets/toning/voice-v4{ext}', 'wave': 'assets/toning/voice-v4.wave.bin',
+J = {'voice': {'name': 'Meditation guide', 'src': f'assets/toning/voice-{VN}{ext}', 'wave': f'assets/toning/voice-{VN}.wave.bin',
                'dur': round(vd, 3), 'chapters': [{'id': k, 't': round(t, 3)} for k, t in ch]},
      'song': {'name': f'Toning song {SV}', 'credit': f'Toning A U I O, an original song by DJ Mantra ({SV})', 'src': f'assets/toning/song-{SV}.m4a',
               'wave': f'assets/toning/song-{SV}.wave.bin', 'dur': round(sd, 3)},

@@ -816,3 +816,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
      BlackHole.
      **Status:** page v55 = toning song v5 + meditation voice v4 (on the branch), both byte for byte, 5:59, tested;
      song v3 removed from assets. Next: the download rendered again (the Mac), then Marko's "push main".
+
+> Pronunciation of the vowels is still wrong, so you better just make it in English very short. And let's go on using clone voices in DaVinci Resolve, recreate the whole text again, and replace it with normal English language without mentioning Croatian at all.
+
+104. Meditation voice v5: the whole text again in plain English (no sound spellings, nothing about Croatian), read by
+     the cloned Hume guide voice in DaVinci Resolve; the page's pronunciation note one short line, no Croatian.
+     **Status:** tools/toning/readings/voice-v5.json (the plain English text, 3,384 characters); the note changed on
+     the branch (HR and EN); build_v54.py takes voice v5 when it is there. The reading itself: the Mac, in Resolve
+     (job 19).
