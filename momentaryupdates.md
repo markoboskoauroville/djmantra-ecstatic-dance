@@ -809,3 +809,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
      **discarded**, his recording was distorted. Page v55 reverted on the branch (5ab5604); build_v54.py skips song v4.
      Live stays page v54 (song v3 + voice v4). **Waiting for Marko's new recording**; then toning song v5 and the
      singing in the cloned voice (voice v5) are made again from it.
+
+> sono covers, please use take one
+
+103. Toning song v5: a Suno Cover of Marko's new, clean vowel recording (41 s, 61f9d35), take 1, recorded through
+     BlackHole.
+     **Status:** page v55 = toning song v5 + meditation voice v4 (on the branch), both byte for byte, 5:59, tested;
+     song v3 removed from assets. Next: the download rendered again (the Mac), then Marko's "push main".
