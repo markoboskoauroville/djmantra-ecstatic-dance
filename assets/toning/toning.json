@@ -40,13 +40,13 @@
   ]
  },
  "song": {
-  "name": "Toning song v3",
-  "credit": "Toning A U I O, an original song by DJ Mantra (v3)",
-  "src": "assets/toning/song-v3.m4a",
-  "wave": "assets/toning/song-v3.wave.bin",
-  "dur": 359.631
+  "name": "Toning song v4",
+  "credit": "Toning A U I O, an original song by DJ Mantra (v4)",
+  "src": "assets/toning/song-v4.m4a",
+  "wave": "assets/toning/song-v4.wave.bin",
+  "dur": 359.654
  },
- "songLufs": -15.9,
+ "songLufs": -16.3,
  "voiceLufs": -32.6,
  "voicePeak": 0.2572,
  "download": {

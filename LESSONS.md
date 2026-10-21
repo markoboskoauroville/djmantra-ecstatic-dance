@@ -36,7 +36,9 @@ Hume ends its TTS API on 13.11.2026.
 gave the longer song. Downloads run out on Pro: record through BlackHole with **sox**, not ffmpeg's avfoundation (a
 1 kHz tone came back at 2034 Hz on this Mac). On a phone the takes of one song share a title: rename them ("take 1
 FULL VOICE", "take 2 HUSHED") before asking him to choose. Suno refuses known recordings as references and false-flags
-"A-U-M" lyrics as copyrighted; AUM as one held word passes.
+"A-U-M" lyrics as copyrighted; AUM as one held word passes. Before every BlackHole recording read the output
+volume, and again after it: it falls back by itself (71 instead of 100 on 21.10.2026, a recording 19 dB too quiet).
+Marko's own sung vowels as the Cover reference (Audio Influence 74 %) carry his pronunciation into the song (v4).
 
 **AAC 320 kbps** [aac-320.md]: ffmpeg's own `aac` gives 270–290 kbps on this quiet material; Apple's `aac_at -aac_at_mode
 cbr` on the Mac gives a true 320 (mono tops out at 256). So the Mac encodes what is published; the cloud copies.
