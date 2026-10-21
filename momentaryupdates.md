@@ -628,3 +628,31 @@ Every request is saved here word for word before any code, so a quota cut loses 
   went on Toning take 2 and both cura prox takes, as WAV (kept on the Mac, .gitignore). On the page BACKGROUND offers
   CHOIR, CAVE I, CAVE II and CENTERING (Marko's songs), AAC 160 kbps. The Suno songs are cut in the proportions of the
   prompt's plan (Suno keeps no exact edges): **Marko checks the cuts by ear.** tools/toning/build_bg.py.
+
+## v48 — requested 21.10.2026
+
+> Dj_mantra pages toning text, it's called the speaking voice. In the part of page which says the voice opens the channels, it's too fast. It needs to be very slow and meditative. So it needs to regenerate audio in much much slower pace.
+
+> USE ONLY ORION VOICE THAT IS ALL
+
+80. The voice of "The voice opens the channels" much, much slower and meditative; only Orion, Julian and Oliver go.
+    **Status:** done, v48 (21.10.2026), in the cloud session (Marko's Mac session was not reachable, and the Gemini key
+    lives there): Orion's own reading is not generated again but slowed, tools/toning/slow_toning.py: rubberband to
+    80 % speed with pitch and formants kept, every sentence followed by 3 s of silence, every phrase by 1.2 s, 6 s after
+    each rung, 14 s after Silence. 7:24 → 10:31. The chooser ("Who would you like to read to you?") hides itself with
+    one voice; julian.* and oliver.* removed from assets (their sources stay in tools/toning/readings).
+    **Found, waiting for Marko:** Orion's v47 files are cut short by Gemini: the intro says only "Vowels and elements"
+    and then 35 s of silence; the O rung stops after ~10 s ("…We focus on the chest…") and then 23 s of silence. The
+    slowed reading drops that dead air, so the intro and O are short. To fix: on the Mac, generate 00-intro.mp3 and
+    04-o.mp3 again with Gemini Alnilam (as plain text), put them in tools/toning/readings/orion/ (the originals, not
+    slowed), and run `python3 tools/toning/slow_toning.py` once more. Marko checks the slow reading by ear.
+
+> BACKGROUND LEVEL CONTROL FOR SOUNDS IT LED BETWEEN ENERGIES SHUD SLOWLY AND MEDITATIVE CHANGE COLOR LIKE SOUND CROSS FADING AND SHOUD SLOWLY BREAD TO CALM THE NERVOUS SYSTEM
+
+81. The BACKGROUND knob's LED ring: between two elements its colour crossfades slowly, like the sound does; and it
+    breathes slowly, to calm the nervous system.
+    **Status:** done, v48 (21.10.2026): the ring's colour blends the two elements in the same proportion as the two
+    decks' gains (the 6 s crossfade on the voice's clock; the throat's rainbow blends LED by LED); the lit LEDs breathe
+    six times a minute, 4 s in and 6 s out (brightness 30 % → 100 % and the glow), while the knob is on screen; with
+    reduced motion asked for, it only crossfades. Tested in Chromium: at the start of U the ring is halfway between gold
+    and milky white.

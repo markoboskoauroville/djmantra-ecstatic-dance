@@ -84,3 +84,12 @@ marko.bosko@auroville.community
   The names are labelled a guess. Under the waveform the app's dot-matrix display (`MatrixDisplay.qml`, the 5x7
   `PixelFont.qml`): time left, bar.beat from the section start, the countdown to the next section and one cell per beat
   of the phrase (8 / 16 / 32 BEATS).
+
+## The toning voice, slow, and the breathing knob (v48, 21.10.2026)
+
+* One voice only, Orion (Marko: "use only Orion voice, that is all"), read much slower: `tools/toning/slow_toning.py`
+  stretches each rung of `tools/toning/readings/orion/` to 80 % speed (rubberband, pitch and formants kept), opens 3 s
+  after every sentence and 1.2 s after every phrase, 6 s after a rung, 14 s after Silence; then writes
+  `assets/toning/orion.mp3`, its waveform and the chapters in `toning.json`. 10:31.
+* The BACKGROUND knob's LED ring crossfades its colour between elements with the decks' gains and breathes six times a
+  minute (4 s in, 6 s out); with `prefers-reduced-motion` it only crossfades.
