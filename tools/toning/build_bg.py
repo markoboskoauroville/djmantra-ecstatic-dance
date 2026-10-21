@@ -22,7 +22,10 @@ SONGS = "/Volumes/EXT_1TB/MUSIC/MUSIC FOR EDITING/Centering [Marko]/"
 CENTERING = ['11. Calm', '24. Breath of the Earth', '4. Riverbank', '13. Epilogue', '12. Closeness', '22. Zense', '20. Cradle of Stars', '23. Aether Window']
 # v47: ('choir', 'Choir', 'suno/takes/toning-auio-take2.wav'), ('cave1', 'Cave I', 'suno/takes/cura-prox-take1.wav'),
 #      ('cave2', 'Cave II', 'suno/takes/cura-prox-take2.wav'), ('centering', 'Centering', None)
-OPTIONS = [('mantra', 'DJ Mantra', 'suno/toning-auio-djmantra.m4a')]
+# toning song v2 (the Suno cover with the Croatian vowel spellings, recorded through BlackHole) once it is in the
+# repository, else toning song v1 (Marko's "Toning A U I O DJ MANTRA WEB PAGE")
+SONG = next(f for f in ('suno/toning-auio-djmantra-v2.m4a', 'suno/toning-auio-djmantra.m4a') if os.path.exists(f'{R}/tools/toning/{f}'))
+OPTIONS = [('mantra', 'DJ Mantra', SONG)]
 
 def dur(f):
     return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f], capture_output=True, text=True).stdout)
