@@ -22,8 +22,9 @@ VOICE = sys.argv[sys.argv.index('--voice') + 1] if '--voice' in sys.argv else R 
 CHAPTERS = R + '/tools/toning/readings/voice-v4.chapters.json'
 # toning song v3 (v2 made longer in Suno, recorded through BlackHole; Marko: "Simply create a longer song and record it
 # through black hole") once it is there, else toning song v2
-# the newest toning song there is: v4 (Suno Cover of Marko's own sung vowels, "toning.wav"), v3, v2
-SONG = next(f for f in (R + f'/tools/toning/suno/toning-auio-djmantra-{v}.m4a' for v in ('v4', 'v3', 'v2')) if os.path.exists(f))
+# the newest toning song there is: v5 (from Marko's new vowel recording), v3, v2. Not v4: Marko, 21.10.2026, "My voice
+# is totally distorted. The mic sample of vocals is something to be discarded" (song v4 was a Cover of that sample)
+SONG = next(f for f in (R + f'/tools/toning/suno/toning-auio-djmantra-{v}.m4a' for v in ('v5', 'v3', 'v2')) if os.path.exists(f))
 SV = SONG.rsplit('-', 1)[1][:-4]
 IDS = ['intro', 'a', 'u', 'i', 'o', 'ov', 'om', 'si']
 

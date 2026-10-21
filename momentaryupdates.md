@@ -802,3 +802,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
      "DJ Mantra toning v5" is open, its custom voice to be made in Resolve's own window; voice conversion for the sung
      vowels (Resolve VoiceConvert or Seed-VC) next. Page v54 stays live until voice v5 exists; the cloud then builds it
      as v55 with build_v54.py (two whole files). Lessons: LESSONS.md (new), MANTRA_MANIFEST modules/one-take-audio.md.
+
+> You need to create now Suno song with my voice as template. ... I found a big issue. My voice is totally distorted. The mic sample of vocals is something to be discarded. I need to record it again. Stop everything and I'm going to give you a new sample of my voice and then you need to redo everything.
+
+102. Toning song v4 (a Suno Cover of Marko's sung vowels, fb1b4ea) and page v55 (song v4 + voice v4, a0d9e80):
+     **discarded**, his recording was distorted. Page v55 reverted on the branch (5ab5604); build_v54.py skips song v4.
+     Live stays page v54 (song v3 + voice v4). **Waiting for Marko's new recording**; then toning song v5 and the
+     singing in the cloned voice (voice v5) are made again from it.
