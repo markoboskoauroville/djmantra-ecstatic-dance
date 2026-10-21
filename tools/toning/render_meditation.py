@@ -1,10 +1,10 @@
-"""The toning meditation as one file to download (v52, 21.10.2026).
+"""The toning meditation as one file to download (v52, 21.10.2026; v54: the two whole files).
 
-Marko, 21.10.2026: "in the website give option to download the audio for this vocal meditation." The page mixes it
-live (the voice, deck A and deck B); this renders the same mix offline: each element's background piece in its window
-on the voice's clock (in 3 s before its rung, out 3 s after the next begins, a 6 s crossfade, looped when the rung is
-longer than its piece), at the page's default BACKGROUND level of -30 dB, under the voice. Nothing is stretched
-(MANTRA_MANIFEST modules/never-time-stretch.md). AAC 320 kbps stereo (modules/aac-320.md), over the 25 MiB a Pages
+Marko, 21.10.2026: "in the website give option to download the audio for this vocal meditation." Since page v54 the
+page plays two whole files together ("You don't edit anything"), so this lays them together as the page does: the
+voice as it is, the song from the same first moment at the page's default BACKGROUND level of -30 dB, playing once,
+with the page's two volumes;
+nothing cut, joined, looped or stretched (MANTRA_MANIFEST modules/never-time-stretch.md). AAC 320 kbps stereo (modules/aac-320.md), over the 25 MiB a Pages
 file may be, so it goes up as a GitHub Release asset (tag toning-meditation) and toning.json points the page's
 DOWNLOAD button at it.
 On the Mac it encodes with Apple's aac_at, CBR, a true 320 kbps; ffmpeg's own aac reaches only ~285 kbps on this quiet
@@ -15,7 +15,7 @@ Run from anywhere: python3 tools/toning/render_meditation.py [--upload]   (--upl
 import json, os, shutil, subprocess, sys, numpy as np
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 A = R + '/assets/toning'
-SR, XF, DB = 48000, 6, -30
+SR, DB = 48000, -30
 OUT = R + '/tools/toning/dj-mantra-toning-meditation.m4a'
 REPO, TAG = 'markoboskoauroville/djmantra-ecstatic-dance', 'toning-meditation'
 
@@ -23,19 +23,12 @@ def dec(f, ch):
     return np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', f, '-ac', str(ch), '-ar', str(SR), '-f', 'f32le', '-'],
                                         capture_output=True, check=True).stdout, np.float32).reshape(-1, ch)
 
-J = json.load(open(A + '/toning.json')); V = J['voices'][0]; O = J['bgs'][0]; C = V['chapters']
-voice = dec(R + '/' + V['src'], 1)[:, 0]
-n = len(voice); mix = np.zeros((n, 2), np.float32); mix += voice[:, None]
-g = 10 ** ((DB - J['bgLufs']) / 20)
-for i, c in enumerate(C):
-    nx = C[i + 1] if i + 1 < len(C) else None
-    s = c['t'] - XF / 2 if i else 0.0; e = nx['t'] + XF / 2 if nx else V['dur']
-    a, b = int(s * SR), min(n, int(e * SR))
-    piece = dec(R + '/' + O['pieces'][c['id']]['src'], 2)
-    idx = np.arange(b - a) % len(piece)                       # looped from the window's start, as the page does
-    t = np.arange(a, b) / SR
-    env = np.minimum.reduce([np.ones_like(t), (t - s) / XF if i else np.ones_like(t), (e - t) / XF if nx else np.ones_like(t)])
-    mix[a:b] += piece[idx] * (env * g)[:, None]
+J = json.load(open(A + '/toning.json')); V = J['voice']; S = J['song']
+voice = dec(R + '/' + V['src'], 2); song = dec(R + '/' + S['src'], 2)
+n = max(len(voice), len(song)); mix = np.zeros((n, 2), np.float32)
+vdb = min(-16 - J['voiceLufs'], 20 * np.log10(.95 / J['voicePeak']))       # the page's volumes (index.html, level())
+mix[:len(voice)] += voice * 10 ** (vdb / 20)
+mix[:len(song)] += song * 10 ** ((J['voiceLufs'] + vdb - 14 + (DB + 30) - J['songLufs']) / 20)
 pk = np.abs(mix).max()
 if pk > .98: mix *= .98 / pk
 ENC = (['-c:a', 'aac_at', '-b:a', '320k', '-aac_at_mode', 'cbr'] if 'aac_at' in subprocess.run(['ffmpeg', '-hide_banner', '-encoders'],

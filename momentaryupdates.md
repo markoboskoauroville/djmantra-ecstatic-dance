@@ -762,3 +762,20 @@ Every request is saved here word for word before any code, so a quota cut loses 
     could tell them apart on his phone; he chose take 2 HUSHED.
     **Status:** page v53 = toning song v2 + meditation voice v3 (on the branch): build_bg.py cut it into the 8 element
     pieces, AAC 320 (322–332 kbps); the credit line says (v2); 11:23. The download is rendered again on the Mac (job 11).
+
+## v54 — requested 21.10.2026
+
+> I see many issues. Your audio editing is very bad. It cuts, it drops. Also, the whole player is slow. When I press play, I need to wait 5-10 seconds so it starts. When it starts, somehow I think like music starts, then audio starts, then everything stops, then starts. It looks like for browsers there's too much work. And vowels are in introduction are very well said. And when individual elements are announced, they are not well said. They are inserted, I feel, by editing. And then there is some bad cuts. So I want you to fix this this way. Go to Cube AI [Hume] and generate one whole block with only one prompt, one audio file. ... You download that, only one piece. And the background music should be also only one piece. So we have 2 pieces. You don't edit anything. You just play both files at the same time in the web interface. And let's see if that will work.
+
+99. Two whole files, played together, nothing edited: meditation voice v4 (the whole say.json in one Hume generation,
+    the Mac) and toning song v2 (whole, 4:14).
+    **Status:** page v54 prepared on the branch, waiting for voice v4: the player is rewritten: one audio element per
+    file, streaming from the first byte (it started in 0.5 s in the test; v47-v53 fetched every file whole first, the
+    5-10 s), both start on the same press and stay together (a file waiting for data holds the other; 0.04 s apart in
+    the test); each plays once, the song ends at 4:14 and the voice goes on alone (**Marko decides**: so, or the song
+    looping, or a longer song); a jump loads both files whole once (the site answers no byte ranges), then both jump
+    together. No decks, no pieces, no pauses added. Volumes only (the files untouched): Hume reads at about -32 LUFS,
+    so the voice is raised towards -16 LUFS as far as its peak allows, and the song sits 14 dB under it at the knob's
+    -30 dB. tools/toning/build_v54.py copies both files byte for byte and adds the waveforms, the loudness and the
+    chapters (from Whisper's word times on the Mac, voice-v4.chapters.json); render_meditation.py lays the two files
+    together for the download.

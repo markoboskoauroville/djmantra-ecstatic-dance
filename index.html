@@ -967,11 +967,8 @@ footer a:hover{color:var(--amber)}
     </div>
     <div class="ton rv" id="ton" aria-label="Toning reading">
       <p class="lead" data-i18n="ton.l">Zatvori oči i pritisni play. Glas te vodi kroz cijelu ljestvicu, od zemlje do tišine. Čita na engleskom.</p>
-      <div class="who" id="tWho"><span class="q">Who would you like to read to you?</span></div>
-      <div class="who bgs" id="tBgs"><span class="lbl">BACKGROUND</span></div>
       <div class="lane"><canvas id="tVo" class="ln" aria-label="The voice: click to jump"></canvas><span class="lbl" id="tVl">VOICE</span></div>
-      <div class="lane"><canvas id="tDa" class="ln dk" aria-label="Deck A"></canvas><span class="lbl" id="tAl">DECK A</span></div>
-      <div class="lane"><canvas id="tDb" class="ln dk" aria-label="Deck B"></canvas><span class="lbl" id="tBl">DECK B</span></div>
+      <div class="lane"><canvas id="tMu" class="ln dk" aria-label="The music"></canvas><span class="lbl" id="tMl">MUSIC</span></div>
       <div class="ctl">
         <button type="button" id="tPrev" aria-label="Previous element">◀◀</button>
         <button type="button" id="tPlay" class="play" aria-label="Play">▶</button>
@@ -1107,7 +1104,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v53</p>
+    <p class="ver">v54</p>
   </div>
 </footer>
 
@@ -2357,18 +2354,16 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();
 (() => {
-  // v47: the toning player, three decks running by themselves (Marko, 21.10.2026: "two mixing decks to mix the songs
-  // and third one so it's a three deck setup running automatically"). The voice is the clock; deck A and deck B take
-  // the elements in turns, each song entering 3 s before its rung and crossing over 6 s. The visitor chooses who
-  // reads ("Ask user who wants it to read to you, and then give three names") and sets the background with the knob
-  // (-30 dB by default, the LED ring of the OXI E16). Colours: MANTRA_MANIFEST modules/chakra-colors.md.
-  // v48 (Marko, 21.10.2026): "use only Orion voice, that is all", read slowly (tools/toning/slow_toning.py); the chooser
-  // shows only when there is more than one voice. The LED ring "between energies should slowly and meditatively change
-  // colour like sound crossfading, and should slowly breathe to calm the nervous system": its colour follows the decks'
-  // crossfade on the voice's clock, and it breathes six times a minute, 4 s in and 6 s out.
-  // v51: no stretching ("the voice is very much distorted"): Orion at his own pace with long pauses, the music alone
-  // for 20 s before the first word ("first start the music, then the voice").
-  // v49: Marko's own song "Toning A U I O DJ MANTRA WEB PAGE" is the only background (tools/toning/build_bg.py).
+  // v54: the toning player, two whole files played together (Marko, 21.10.2026: "Your audio editing is very bad. It
+  // cuts, it drops. Also, the whole player is slow ... generate one whole block with only one prompt, one audio file
+  // ... And the background music should be also only one piece. So we have 2 pieces. You don't edit anything. You
+  // just play both files at the same time in the web interface."). The voice (one Hume reading) and the song (toning
+  // song v2) start on the same press, each plays once, untouched; the BACKGROUND knob is only the song's gain.
+  // They stream from the first byte, so play starts at once; the site answers no byte ranges (v34), so a jump (a rung,
+  // the waveform, ◀◀ ▶▶) first loads both files whole, then both jump together.
+  // The chapters (the rungs' start times in the voice) only light the ladder, the NOW / NEXT and the knob's colour.
+  // The LED ring keeps v48: the element's colour blending into the next over 6 s, breathing six times a minute.
+  // Colours: MANTRA_MANIFEST modules/chakra-colors.md.
   const T = document.getElementById("ton"); if(!T) return;
   const $ = id => document.getElementById(id);
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
@@ -2379,89 +2374,75 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const HUE = {intro:"#8A8198", a:"#D4AF37", u:"#F3EEE2", i:"#C8102E", o:"#2FB45A", ov:"rainbow", om:"#FFFFFF", si:"#FFFFFF"};
   const fillFor = (g, id, x0, x1) => { if(HUE[id] !== "rainbow") return HUE[id];
     const gr = g.createLinearGradient(x0, 0, x1, 0); RAINBOW.forEach((c, i) => gr.addColorStop(i/(RAINBOW.length - 1), c)); return gr; };
-  const RATE = 25, XF = 6, vc = $("tVo"), dc = [$("tDa"), $("tDb")], kc = $("tKnob"), rungs = [...document.querySelectorAll(".ladder .rung")];
-  const audio = new Audio(); audio.preload = "none";
-  let J = null, V = null, W = null, O = null, raf = 0, cur = -1, ctx = null, master = null, db = -30, led = null, br = 1;
-  const decks = [0, 1].map(() => ({el: new Audio(), gain: null, piece: -1}));
-  const BW = {}, BU = {};                                    // the pieces' waveforms and their audio, fetched whole, by "option/element"
-  const pc = id => O && O.pieces[id], key = id => O.id + "/" + id;
-  const voiceUrl = {};
+  const RATE = 25, XF = 6, vc = $("tVo"), mc = $("tMu"), kc = $("tKnob"), rungs = [...document.querySelectorAll(".ladder .rung")];
+  const voice = new Audio(), song = new Audio(); voice.preload = song.preload = "auto";
+  let J = null, V = null, S = null, W = null, SW = null, raf = 0, cur = -1, ctx = null, gain = null, vgain = null, db = -30, led = null, br = 1;
+  let want = false, whole = null;                            // the visitor pressed play; the files loaded whole, for jumps
+  const span = () => V ? Math.max(V.dur, S ? S.dur : 0) : 1;  // both lanes share one timeline
+  const now = () => Math.max(voice.currentTime || 0, song.currentTime || 0);
   fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
-    J = j;
-    j.voices.forEach(v => { const b = document.createElement("button"); b.type = "button"; b.textContent = v.name.toUpperCase();
-      b.dataset.v = v.id; b.setAttribute("aria-pressed", "false"); b.addEventListener("click", () => choose(v.id, true)); $("tWho").append(b); });
-    j.bgs.forEach(b => { const e = document.createElement("button"); e.type = "button"; e.textContent = b.name.toUpperCase();
-      e.dataset.b = b.id; e.setAttribute("aria-pressed", "false"); e.addEventListener("click", () => background(b.id)); $("tBgs").append(e); });
-    if(j.voices.length < 2) $("tWho").style.display = "none";
-    if(j.bgs.length < 2) $("tBgs").style.display = "none";
-    // v52: the whole meditation, the voice and the music mixed as on the page, as one file (Marko: "give option to
-    // download the audio for this vocal meditation"); a GitHub Release asset, over the 25 MiB a Pages file may be
+    J = j; V = j.voice; S = j.song;
+    voice.src = V.src; song.src = S.src;
+    $("tVl").textContent = "VOICE · " + V.name.toUpperCase(); $("tMl").textContent = "MUSIC · " + S.name.toUpperCase();
+    $("tDu").textContent = mmss(span()); $("tCr").textContent = "Music under the voice: " + S.credit;
+    fetch(V.wave).then(r => r.arrayBuffer()).then(a => { W = new Uint8Array(a); paint(); });
+    fetch(S.wave).then(r => r.arrayBuffer()).then(a => { SW = new Uint8Array(a); paint(); });
+    // the whole meditation, the voice and the music mixed as heard, as one file (Marko: "give option to download the
+    // audio for this vocal meditation"); a GitHub Release asset, over the 25 MiB a Pages file may be
     if(j.download){ const a = $("tDl"); a.href = j.download.url; a.title = j.download.name + " · " + mmss(j.download.dur) + " · AAC 320 kbps"; a.hidden = false; }
-    background(j.bgs[0].id); choose(j.voices[0].id, false);
+    level(); paint();
   });
-  function choose(id, go){
-    const v = J.voices.find(x => x.id === id); if(!v || v === V) { if(go && audio.paused) start(); return; }
-    // keep the place: the same rung, the same distance into it
-    let keep = null; if(V && audio.currentTime > 0){ const k = chAt(audio.currentTime); keep = [k, audio.currentTime - V.chapters[k].t]; }
-    const was = !audio.paused; audio.pause(); V = v; W = null; cur = -1;
-    $("tWho").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === id)));
-    $("tVl").textContent = "VOICE · " + v.name.toUpperCase(); $("tDu").textContent = mmss(v.dur);
-    fetch(v.wave).then(r => r.arrayBuffer()).then(a => { if(V === v){ W = new Uint8Array(a); paint(); } });
-    const at = keep ? v.chapters[Math.min(keep[0], v.chapters.length - 1)].t + Math.min(keep[1], v.chapters[keep[0]].dur - .5) : 0;
-    // the site answers no byte ranges (v34): every file is fetched whole and played from memory, so jumps land
-    const load = voiceUrl[id] ? Promise.resolve(voiceUrl[id]) : fetch(v.src).then(r => r.blob()).then(b => voiceUrl[id] = URL.createObjectURL(b));
-    load.then(u => { if(V !== v) return; audio.src = u; audio.currentTime = at; if(was || go) start(); else paint(); });
-    paint();
-  }
-  function background(id){
-    // the background the visitor chooses: Marko's Suno choirs or the Centering songs; the decks change at once
-    O = J.bgs.find(b => b.id === id); decks.forEach(d => d.piece = -1);
-    $("tBgs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.b === id)));
-    const songs = [...new Set(Object.values(O.pieces).map(p => p.song).filter(Boolean))];
-    $("tCr").textContent = "Music under the voice: " + (songs.length ? songs.join(" · ") : O.id === "mantra" ? "Toning A U I O, an original song by DJ Mantra (v2)" : O.name + ", a choir made by DJ Mantra");
-    Object.entries(O.pieces).forEach(([k, p]) => { const kk = O.id + "/" + k; if(!BW[kk]) fetch(p.wave).then(r => r.arrayBuffer()).then(a => { BW[kk] = new Uint8Array(a); paint(); }); });
-    if(ctx) fetchBg(); mix(); paint();
-  }
-  function fetchBg(){ const o = O; Object.entries(o.pieces).forEach(([k, p]) => { const kk = o.id + "/" + k; if(BU[kk] !== undefined) return; BU[kk] = null;
-    fetch(p.src).then(r => r.blob()).then(x => { BU[kk] = URL.createObjectURL(x); mix(); }); }); }
   function start(){
-    if(!audio.src){ $("tWho").classList.remove("ask"); void $("tWho").offsetWidth; $("tWho").classList.add("ask"); return; }
-    if(!ctx){                                                 // the mixer, made on the first press (browsers ask for a gesture)
-      ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.connect(ctx.destination); level();
-      decks.forEach(d => { d.gain = ctx.createGain(); d.gain.gain.value = 0; ctx.createMediaElementSource(d.el).connect(d.gain); d.gain.connect(master); });
-      fetchBg();
+    if(!J) return;
+    if(!ctx){                                                 // the two volumes, made on the first press (browsers ask for a gesture)
+      ctx = new (window.AudioContext || window.webkitAudioContext)(); gain = ctx.createGain(); vgain = ctx.createGain();
+      ctx.createMediaElementSource(song).connect(gain); gain.connect(ctx.destination);
+      ctx.createMediaElementSource(voice).connect(vgain); vgain.connect(ctx.destination); level();
     }
     if(ctx.state === "suspended") ctx.resume();
-    audio.play();
+    want = true; $("tPlay").textContent = "❚❚"; sync();          // both from the same place, on the same press
+  }
+  function stop(){ want = false; voice.pause(); song.pause(); $("tPlay").textContent = "▶"; cur = -1; paint(); }
+  // together: while one file waits for data the other holds, and both go on when both can; a file that has ended
+  // (the song is shorter than the voice) no longer counts
+  const done = a => a.ended || a.currentTime >= (a === voice ? V.dur : S.dur) - .05;
+  function sync(){
+    if(!want || !J) return;
+    const ready = [voice, song].every(a => done(a) || a.readyState >= 3);
+    [voice, song].forEach(a => { if(done(a)) return; if(ready && a.paused) a.play().catch(() => {}); else if(!ready && !a.paused) a.pause(); });
+  }
+  [voice, song].forEach(a => ["waiting", "canplay", "canplaythrough", "seeked", "stalled"].forEach(ev => a.addEventListener(ev, sync)));
+  function jump(t){
+    // the site answers no byte ranges: load both files whole once, then both go to t together
+    if(!J) return; t = Math.max(0, Math.min(span() - .5, t)); const was = want || !voice.paused;
+    const go = () => { voice.currentTime = Math.min(t, V.dur); song.currentTime = Math.min(t, S.dur); cur = -1;
+      if(was) start(); else paint(); };
+    if(whole) return go();
+    $("tEl").textContent = "…"; stop();
+    whole = Promise.all([V.src, S.src].map(u => fetch(u).then(r => r.blob()).then(b => URL.createObjectURL(b))))
+      .then(([v, s]) => { voice.src = v; song.src = s;
+        return Promise.all([voice, song].map(a => new Promise(ok => a.readyState >= 1 ? ok() : a.addEventListener("loadedmetadata", ok, {once:true})))); });
+    whole.then(() => { whole = true; go(); });
   }
   const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
-  // a piece's window on the voice's clock: in 3 s before its rung, out 3 s after the next one begins
-  const win = i => { const c = V.chapters[i], n = V.chapters[i + 1]; return [i ? c.t - XF/2 : 0, n ? n.t + XF/2 : V.dur]; };
-  const env = (i, t) => { const [s, e] = win(i); if(t < s || t >= e) return 0;
-    return Math.min(1, i ? (t - s)/XF : 1, V.chapters[i + 1] ? (e - t)/XF : 1); };
-  function mix(){
-    if(!V || !ctx) return; const t = audio.currentTime, on = !audio.paused;
-    decks.forEach((d, n) => {
-      let i = -1; V.chapters.forEach((c, k) => { if(k % 2 === n){ const [s, e] = win(k); if(t >= s && t < e) i = k; } });
-      const id = i >= 0 ? V.chapters[i].id : null, u = id && O && BU[key(id)], P = id && pc(id), tag = id && key(id);
-      if(!u || !on){ d.gain.gain.setTargetAtTime(0, ctx.currentTime, .05); if(!d.el.paused && (!on || !u)) d.el.pause(); return; }
-      const want = (t - win(i)[0]) % P.dur;                  // a rung longer than its piece goes round the piece again
-      if(d.piece !== tag + i){ d.piece = tag + i; d.el.src = u; d.el.loop = true; d.el.currentTime = want; d.el.play(); }
-      else { const off = Math.abs(d.el.currentTime - want); if(off > .4 && off < P.dur - .4) d.el.currentTime = want; if(d.el.paused) d.el.play(); }
-      d.gain.gain.setTargetAtTime(env(i, t), ctx.currentTime, .08);
-    });
-  }
-  const level = () => { if(master) master.gain.setTargetAtTime(Math.pow(10, (db - J.bgLufs)/20), ctx.currentTime, .05);
+  // an element's colour on the clock: in 3 s before its rung, out 3 s after the next begins (the LED ring's blend)
+  const env = (i, t) => { const c = V.chapters[i], n = V.chapters[i + 1], s = i ? c.t - XF/2 : 0, e = n ? n.t + XF/2 : span();
+    if(t < s || t >= e) return 0; return Math.min(1, i ? (t - s)/XF : 1, n ? (e - t)/XF : 1); };
+  // the files are untouched; only their volumes: Hume reads quietly (about -32 LUFS), so the voice is raised towards
+  // -16 LUFS as far as its peak allows without clipping, and the song sits 14 dB under the voice at the knob's -30 dB
+  const vdb = () => Math.min(-16 - J.voiceLufs, 20*Math.log10(.95/J.voicePeak));
+  const level = () => { if(gain && J){ vgain.gain.value = Math.pow(10, vdb()/20);
+      gain.gain.setTargetAtTime(Math.pow(10, (J.voiceLufs + vdb() - 14 + (db + 30) - J.songLufs)/20), ctx.currentTime, .05); }
     $("tDbv").textContent = "−" + Math.abs(Math.round(db)) + " dB"; kc.setAttribute("aria-valuenow", String(Math.round(db))); knob(); };
   const rgb = h => [1, 3, 5].map(k => parseInt(h.slice(k, k + 2), 16));
   const ledOf = (id, i, N) => HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id];
   function knob(){
     // the filter knob of the DJ Mantra app with the OXI E16's ring: LEDs on a 270° arc, lit up to the value, in the
-    // element's colour (the throat runs the rainbow round the ring) or the colour picked. Between two elements the
-    // colours blend in the same proportion as the two decks' gains, so the light crossfades with the sound.
+    // element's colour (the throat runs the rainbow round the ring) or the colour picked; between two elements the
+    // colours blend over 6 s
     const [w, h, d] = fit(kc), g = kc.getContext("2d"), cx = w/2, cy = h/2, R = Math.min(w, h)/2 - 5*d, N = 21, p = (db + 60)/50;
     g.clearRect(0, 0, w, h);
-    const t = audio.currentTime || 0;
+    const t = now();
     let mixw = V ? V.chapters.map((c, k) => [c.id, env(k, t)]).filter(m => m[1] > 0) : [];
     if(!mixw.length) mixw = [[V ? V.chapters[Math.max(0, cur)].id : "a", 1]];
     const sum = mixw.reduce((s, m) => s + m[1], 0);
@@ -2479,68 +2460,65 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   }
   function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
     if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
-  function bands(g, x, step, d, mid, a, lo, mi, hi, k){
-    g.fillStyle = css("--d-low");  let v = lo/255*a*k;     g.fillRect(x, mid - v, step - d*.5, v*2);
-    g.fillStyle = css("--d-mid");  v = mi/255*a*.78*k;     g.fillRect(x, mid - v, step - d*.5, v*2);
-    g.fillStyle = css("--d-high"); v = hi/255*a*.5*k;      g.fillRect(x, mid - v, step - d*.5, v*2);
+  function bands(g, x, step, d, mid, a, lo, mi, hi){
+    g.fillStyle = css("--d-low");  let v = lo/255*a;     g.fillRect(x, mid - v, step - d*.5, v*2);
+    g.fillStyle = css("--d-mid");  v = mi/255*a*.78;     g.fillRect(x, mid - v, step - d*.5, v*2);
+    g.fillStyle = css("--d-high"); v = hi/255*a*.5;      g.fillRect(x, mid - v, step - d*.5, v*2);
+  }
+  function wave(g, B, dur, pps, w, step, d, mid, a, t){
+    if(!B) return; const n = B.length/4;
+    for(let x = 0; x < Math.min(w, dur*pps); x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
+      let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, B[k*4]); mi = Math.max(mi, B[k*4+1]); hi = Math.max(hi, B[k*4+2]); }
+      g.globalAlpha = x/pps < t ? .45 : 1; bands(g, x, step, d, mid, a, lo, mi, hi); }
+    g.globalAlpha = 1;
   }
   function paint(){
-    const t = audio.currentTime || 0;
+    const t = now();
     { const [w, h, d] = fit(vc), g = vc.getContext("2d"), strip = 16*d, mid = (h - strip)/2 + 6*d, a = mid - 22*d;
       g.clearRect(0, 0, w, h);
-      if(V){ const pps = w/V.dur, step = 2*d;
-        V.chapters.forEach(c => { const x0 = c.t*pps, x1 = (c.t + c.dur)*pps, f = fillFor(g, c.id, x0, x1);
+      if(V){ const pps = w/span(), step = 2*d;
+        V.chapters.forEach((c, i) => { const n = V.chapters[i + 1], x0 = c.t*pps, x1 = (n ? n.t : V.dur)*pps, f = fillFor(g, c.id, x0, x1);
           g.fillStyle = f; g.globalAlpha = .07; g.fillRect(x0, 0, x1 - x0, h - strip);
           g.globalAlpha = .95; g.fillRect(x0, h - strip, x1 - x0 - 2*d, strip); g.globalAlpha = .6; g.fillRect(x0, 0, d, h - strip);
           g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
           const lab = NAME[c.id].split(" · ")[0]; if(x1 - x0 > g.measureText(lab).width + 8*d) g.fillText(lab, x0 + 4*d, h - strip/2); });
-        if(W){ const n = W.length/4;
-          for(let x = 0; x < w; x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
-            let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, W[k*4]); mi = Math.max(mi, W[k*4+1]); hi = Math.max(hi, W[k*4+2]); }
-            g.globalAlpha = x/pps < t ? .45 : 1; bands(g, x, step, d, mid, a, lo, mi, hi, 1); }
-          g.globalAlpha = 1; }
+        wave(g, W, V.dur, pps, w, step, d, mid, a, t);
         g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
-    // the two music decks: each song where it plays, its waveform shaped by the crossfade, in its element's colour
-    dc.forEach((c, n) => { const [w, h, d] = fit(c), g = c.getContext("2d"), mid = h/2 + 5*d, a = mid - 14*d, step = 2*d; g.clearRect(0, 0, w, h);
-      if(!V) return; const pps = w/V.dur;
-      V.chapters.forEach((ch, i) => { if(i % 2 !== n) return; const [s, e] = win(i), x0 = s*pps, x1 = e*pps, B = O && BW[key(ch.id)], L = B ? B.length/4 : 1;
-        g.fillStyle = fillFor(g, ch.id, x0, x1); g.globalAlpha = .1; g.fillRect(x0, 0, x1 - x0, h); g.globalAlpha = 1;
-        if(B) for(let x = Math.ceil(x0); x < x1; x += step){ const tt = x/pps, f = (Math.floor((tt - s)*RATE) % L)*4;
-          g.globalAlpha = tt < t ? .45 : 1; bands(g, x, step, d, mid, a, B[f], B[f+1], B[f+2], env(i, tt)); }
-        g.globalAlpha = 1; });
-      g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h);
-      let i = -1; V.chapters.forEach((ch, k) => { if(k % 2 === n){ const [s, e] = win(k); if(t >= s && t < e) i = k; } });
-      const P = i >= 0 && pc(V.chapters[i].id);
-      $(n ? "tBl" : "tAl").textContent = (n ? "DECK B" : "DECK A") + (P ? " · " + (P.song || O.name + " · " + (NAME[V.chapters[i].id].split(" · ")[1] || NAME[V.chapters[i].id])).toUpperCase() : ""); });
-    $("tEl").textContent = mmss(t);
+    { const [w, h, d] = fit(mc), g = mc.getContext("2d"), mid = h/2 + 5*d, a = mid - 14*d;
+      g.clearRect(0, 0, w, h);
+      if(S){ const pps = w/span(); wave(g, SW, S.dur, pps, w, 2*d, d, mid, a, t); g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
+    if(whole === null || whole === true) $("tEl").textContent = mmss(t);
     const k = chAt(t);
     if(k !== cur){ cur = k; const c = V && V.chapters[k], nx = V && V.chapters[k + 1];
       const col = id => HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id];
       $("tNow").textContent = c ? NAME[c.id] : "—"; $("tNow").style.setProperty("--c", c ? col(c.id) : "#FFD54A");
       $("tNx").textContent = nx ? NAME[nx.id] : "END"; $("tNx").style.setProperty("--c", nx ? col(nx.id) : "#9AA3C7");
-      rungs.forEach((r, i) => { r.classList.toggle("on", !audio.paused && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); });
+      rungs.forEach((r, i) => { r.classList.toggle("on", want && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); });
       knob(); }
   }
-  function tick(){ mix(); paint(); if(still) knob(); if(!audio.paused) raf = requestAnimationFrame(tick); }
+  function tick(){ paint(); if(still) knob(); if(want) raf = requestAnimationFrame(tick); }
   // the ring breathes while it is on screen: six breaths a minute, 4 s in and 6 s out, the pace that calms the
   // nervous system; with reduced motion asked for, it stays lit and only crossfades
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches; let seen = false, bRaf = 0;
   function breathe(now){ const s = now/1000 % 10;
     br = s < 4 ? (1 - Math.cos(Math.PI*s/4))/2 : (1 + Math.cos(Math.PI*(s - 4)/6))/2; knob(); bRaf = seen ? requestAnimationFrame(breathe) : 0; }
   if(!still) new IntersectionObserver(es => { seen = es[0].isIntersecting; if(seen && !bRaf) bRaf = requestAnimationFrame(breathe); }).observe(kc);
-  const go = k => { if(!V || !audio.src) return; k = Math.max(0, Math.min(V.chapters.length - 1, k)); audio.currentTime = V.chapters[k].t; cur = -1; if(audio.paused) start(); else { mix(); paint(); } };
-  $("tPlay").addEventListener("click", () => { if(audio.paused) start(); else audio.pause(); });
-  $("tPrev").addEventListener("click", () => { const k = chAt(audio.currentTime); go(audio.currentTime - V.chapters[k].t > 3 ? k : k - 1); });
-  $("tNext").addEventListener("click", () => go(chAt(audio.currentTime) + 1));
-  vc.addEventListener("click", e => { if(!V || !audio.src) return; const r = vc.getBoundingClientRect(); audio.currentTime = (e.clientX - r.left)/r.width*V.dur; cur = -1; mix(); paint(); });
+  const go = k => { if(!V) return; k = Math.max(0, Math.min(V.chapters.length - 1, k)); want = true; jump(V.chapters[k].t); };
+  $("tPlay").addEventListener("click", () => { if(want) stop(); else start(); });
+  $("tPrev").addEventListener("click", () => { const k = chAt(now()); go(now() - V.chapters[k].t > 3 ? k : k - 1); });
+  $("tNext").addEventListener("click", () => go(chAt(now()) + 1));
+  vc.addEventListener("click", e => { if(!V) return; const r = vc.getBoundingClientRect(); jump((e.clientX - r.left)/r.width*span()); });
   rungs.forEach(r => { const v = r.querySelector(".v[data-ch]"); if(v) v.addEventListener("click", () => go(+v.dataset.ch)); });
-  audio.addEventListener("play", () => { $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); });
-  audio.addEventListener("pause", () => { $("tPlay").textContent = "▶"; cur = -1; mix(); paint(); });
-  audio.addEventListener("ended", () => { audio.currentTime = 0; cur = -1; mix(); paint(); });
-  audio.addEventListener("timeupdate", () => { if(document.hidden) mix(); });     // the mix goes on when the screen is away
-  document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && !audio.paused) audio.pause(); });
+  [voice, song].forEach(a => a.addEventListener("play", () => {
+    $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); }));
+  const idle = () => { if((voice.paused || voice.ended) && (song.paused || song.ended)){
+    if(voice.ended && (song.ended || song.currentTime >= S.dur - .1)){ want = false; voice.currentTime = song.currentTime = 0; }
+    if(!want){ $("tPlay").textContent = "▶"; cur = -1; paint(); } } };
+  // the song ends before the voice: the voice goes on alone
+  [voice, song].forEach(a => { a.addEventListener("pause", idle); a.addEventListener("ended", idle); });
+  document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && want) stop(); });
   // the knob: drag up or down, the wheel, the arrow keys; a double click goes back to -30 dB
-  let drag = null; const setDb = v => { db = Math.max(-60, Math.min(-10, v)); if(J) level(); else knob(); };
+  let drag = null; const setDb = v => { db = Math.max(-60, Math.min(-10, v)); level(); };
   kc.addEventListener("pointerdown", e => { drag = [e.clientY, db]; kc.setPointerCapture(e.pointerId); });
   kc.addEventListener("pointermove", e => { if(drag) setDb(drag[1] + (drag[0] - e.clientY)/3); });
   kc.addEventListener("pointerup", () => drag = null);
