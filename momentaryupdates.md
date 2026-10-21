@@ -788,3 +788,17 @@ Every request is saved here word for word before any code, so a quota cut loses 
      Marko's "choose one"; recorded with sox (7bc35d1), 5:59.6, copied byte for byte. The voice ends at 5:17, the song
      plays on to 5:59 (tested). Voice v4 (948db88): one whole Hume take, 5:17, byte for byte, its own 14.5 s silence
      after "Silence. Spirit and connection." left as it is.
+
+## v55 — requested 21.10.2026 (meditation voice v5, the Mac)
+
+> This is not correct. You need to redo the whole sound. Look, I am sending you the right pronunciation here, and what you need to do, you need to clone the voice of this Hume person. So we don't go to Hume anymore. We have local engines which can clone the voice. So please clone that voice, and then I'm sending the right pronunciation and singing of vowels and you need to sing them with my own pronunciation but with cloned voice. ... don't edit. ... generate everything in one take because you're editing. I can hear your cuts. If you know how to edit, then you need to use my application Ableton Live ... your edits are bad with command line tools. ... also this voice can be in arsenal of my voices to read anything on my computer.
+
+> DaVinci Resolve is a good editor ... Try to clone voice with DaVinci Resolve so we can see also compare results of my engine and DaVinci Resolve engine. / Inside DaVinci Resolve. / Everything learned, you need to write in the learnings and manifest everywhere.
+
+101. Meditation voice v5: the Hume guide's voice cloned locally (MANTRA_VOICE) and in DaVinci Resolve, compared; the
+     vowels sung with Marko's own pronunciation (his 57 s recording) in that voice; generated in one take; any join
+     made inside Resolve, never by command line; the clone also joins his arsenal of voices.
+     **Status:** the Mac (COLLABORATION job 16): the clone "meditation-guide" is in MANTRA_VOICE; Resolve's project
+     "DJ Mantra toning v5" is open, its custom voice to be made in Resolve's own window; voice conversion for the sung
+     vowels (Resolve VoiceConvert or Seed-VC) next. Page v54 stays live until voice v5 exists; the cloud then builds it
+     as v55 with build_v54.py (two whole files). Lessons: LESSONS.md (new), MANTRA_MANIFEST modules/one-take-audio.md.
