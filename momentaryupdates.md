@@ -600,3 +600,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
     recording ... If you own the rights, please contact support@suno.com"), so the Centering songs are known recordings;
     then refused the first lyrics ("Your lyrics contain copyrighted material", a false match on the A-U-M lines). The
     second lyrics, AUM as one held word, were accepted: "Toning A U I O", v6, 5:55, Male, two takes.
+
+> there are songs which are for meditation I created on my account. You need to find it. Just give me a second, I give you the name cura prox is name of sonf use it as guide and change its wovels as second option build all options in website itself
+
+79. Marko's own Suno meditation song "Cura Prox" is the guide for a second Suno version: the same song with the
+    vowels of the ladder (Croatian A U I O, A-U-I-O, AUM). Every option (the Centering songs, the Suno takes, the
+    Cura Prox version) is built into the website for the visitor to choose.
+    **Status:** in progress (logged 21.10.2026). Orion's AUM and Silence rungs: Gemini refused them with the "read
+    slowly" instruction (finishReason OTHER); accepted as plain text.
