@@ -564,3 +564,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     read to you?" and three names.
     **Status:** in progress (logged 21.10.2026). The myNoise email (request 71) is a Gmail draft to
     stephane@mynoise.net, waiting for Marko's word to send.
+
+> Uh the the background music should be minus 30 dB, but If the user wants to louder or softer there will be uh controls so you make my users DJs or sound engineers they can control the background uh Uh The background level with the knob, which looks like the same knob in my DJ app filtering knob, which has a ring of LEDs around it, same as my device. O ex aí i sixti. And just add a small addition color picker to pick the LED colors and give for each element one color which should be representing the element. Now I tell you the colors. The color of the first element is gold. Then we have milky white, then we have crimson red, strong red. Then we have green, and then we have a rainbow of colors. This is for communication. Then we have white for the last two chakras. Please and write this in a manifest. My colors of the chakras. So everywhere we mention colors and chakras, we use this system. Mantra manifest needs to be updated.
+
+74. The background music sits at -30 dB; a BACKGROUND knob like the filter knob of the DJ Mantra app, with the ring of
+    LEDs of the OXI E16, lets the visitor set it louder or softer. A small colour picker for the LED colour; by default
+    each element has its own colour: A earth gold, U water milky white, I fire crimson (strong red), O air green,
+    A-U-I-O throat a rainbow (communication), AUM and the crown white. These are Marko's chakra colours, written in
+    MANTRA_MANIFEST (modules/chakra-colors.md), the one system wherever colours and chakras are mentioned.
+    **Status:** in progress (logged 21.10.2026).
