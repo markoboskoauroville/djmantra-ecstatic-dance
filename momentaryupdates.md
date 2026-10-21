@@ -476,3 +476,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     line request 63 asks for next to each element (fire's not given by Marko: the sun, volcanoes, the earth's core).
     **Status:** done, v43 (21.10.2026): rung I rewritten in EN and HR; the fire resonance line (sun, volcanoes, the
     glowing core) is Claude's proposal, waiting for Marko's word.
+
+## v44 — requested 21.10.2026
+
+> next is Oh Love and Compassion. We focus on the chest, the heart area. A circle, no beginning and no end. We are all one. The sound widens in this chest and out in the room. It's also expansion of our capacity to love and accept everybody as they are. Expanding our family to the whole planet. That's for the O
+
+65. Rung O (Love and compassion · Air): chest and heart area, the circle, we are all one, the sound widening in the
+    chest and out into the room stay; added: the expansion of our capacity to love and accept everybody as they are,
+    our family widening to the whole planet. Plus the resonance line (air's not given by Marko: the winds and the sky).
+    **Status:** in progress (logged 21.10.2026).
