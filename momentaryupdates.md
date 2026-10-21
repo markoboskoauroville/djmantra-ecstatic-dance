@@ -802,11 +802,3 @@ Every request is saved here word for word before any code, so a quota cut loses 
      "DJ Mantra toning v5" is open, its custom voice to be made in Resolve's own window; voice conversion for the sung
      vowels (Resolve VoiceConvert or Seed-VC) next. Page v54 stays live until voice v5 exists; the cloud then builds it
      as v55 with build_v54.py (two whole files). Lessons: LESSONS.md (new), MANTRA_MANIFEST modules/one-take-audio.md.
-
-> You need to create now Suno song with my voice as template. Please use it there. Now you have my voice. I was singing vowels there, so let's create the Suno song out of this, please.
-
-102. Toning song v4: a Suno Cover of Marko's own sung vowels ("toning.wav", 0:57), his pronunciation kept (Audio
-     Influence 74 %), 6:00; Marko chose take 2 ("this song which is playing right now"); recorded through BlackHole
-     (fb1b4ea; the first recording was 19 dB low, BlackHole's volume had fallen back to 71).
-     **Status:** page v55 = toning song v4 + meditation voice v4, built on the branch to compare with the live v54
-     (song v3); song v3 stays in assets until Marko chooses. If v55 goes live, the download is rendered again first.
