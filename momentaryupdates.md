@@ -497,3 +497,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     passage between vowels; truth and honesty said in the way of non-violent communication. Added: NVC's basic
     principles (Marshall Rosenberg): expressing one's own feelings and receiving the other's, accepting as with the O.
     **Status:** in progress (logged 21.10.2026).
+
+> Om you write aum and in parentheses om it's about center for intuition in the middle of the head is the center our gland which gland is it panera gland or some other you need to see what yogis say for the third eye which gland is it we focus in the middle of the head the seat of the third eye and now you add the gland the right one the the sound that contains all previous ones no the sound of creation of the universe as the yogis see it which is eternal ever present sound vibrating as the base of creation attention climbs behind the eyes and settles settles attention is coming to one point and focusing point is the gland then it expands like in big explosion to the whole universe and the last one is you just don't put dot write silence as the main sound and then remove it from the description silence and add spirit and connection as the main subtitle
+
+67. Rung OM: the letters AUM with (OM) under them. The place: the middle of the head, the seat of the third eye, the
+    pineal gland (the yogis' gland of ājñā). The text: not "the sound that contains all previous ones" but the sound of
+    the creation of the universe as the yogis see it, eternal, ever present, vibrating as the base of creation;
+    attention climbs behind the eyes and settles, comes to one point, the gland, then expands like the big bang to the
+    whole universe. Rung ·: the word "Silence" in place of the dot; the heading becomes "Spirit and connection".
+    **Status:** in progress (logged 21.10.2026, in v45 with request 66).
