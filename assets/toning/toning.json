@@ -1,112 +1,54 @@
 {
- "voices": [
-  {
-   "id": "female-meditation-guide",
-   "name": "Meditation guide",
-   "src": "assets/toning/female-meditation-guide.mp3",
-   "wave": "assets/toning/female-meditation-guide.wave.bin",
-   "dur": 683.698,
-   "chapters": [
-    {
-     "id": "intro",
-     "t": 0.0,
-     "dur": 76.701
-    },
-    {
-     "id": "a",
-     "t": 76.701,
-     "dur": 66.107
-    },
-    {
-     "id": "u",
-     "t": 142.808,
-     "dur": 97.257
-    },
-    {
-     "id": "i",
-     "t": 240.065,
-     "dur": 68.999
-    },
-    {
-     "id": "o",
-     "t": 309.065,
-     "dur": 72.793
-    },
-    {
-     "id": "ov",
-     "t": 381.858,
-     "dur": 179.899
-    },
-    {
-     "id": "om",
-     "t": 561.757,
-     "dur": 73.455
-    },
-    {
-     "id": "si",
-     "t": 635.211,
-     "dur": 48.487
-    }
-   ]
-  }
- ],
- "bgLufs": -20,
- "bgs": [
-  {
-   "id": "mantra",
-   "name": "DJ Mantra",
-   "pieces": {
-    "intro": {
-     "src": "assets/toning/bg/mantra/intro.m4a",
-     "wave": "assets/toning/bg/mantra/intro.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "a": {
-     "src": "assets/toning/bg/mantra/a.m4a",
-     "wave": "assets/toning/bg/mantra/a.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "u": {
-     "src": "assets/toning/bg/mantra/u.m4a",
-     "wave": "assets/toning/bg/mantra/u.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "i": {
-     "src": "assets/toning/bg/mantra/i.m4a",
-     "wave": "assets/toning/bg/mantra/i.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "o": {
-     "src": "assets/toning/bg/mantra/o.m4a",
-     "wave": "assets/toning/bg/mantra/o.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "ov": {
-     "src": "assets/toning/bg/mantra/ov.m4a",
-     "wave": "assets/toning/bg/mantra/ov.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "om": {
-     "src": "assets/toning/bg/mantra/om.m4a",
-     "wave": "assets/toning/bg/mantra/om.wave.bin",
-     "dur": 100,
-     "song": null
-    },
-    "si": {
-     "src": "assets/toning/bg/mantra/si.m4a",
-     "wave": "assets/toning/bg/mantra/si.wave.bin",
-     "dur": 100,
-     "song": null
-    }
+ "voice": {
+  "name": "Meditation guide",
+  "src": "assets/toning/voice-v4.m4a",
+  "wave": "assets/toning/voice-v4.wave.bin",
+  "dur": 317.013,
+  "chapters": [
+   {
+    "id": "intro",
+    "t": 0.0
+   },
+   {
+    "id": "a",
+    "t": 28.49
+   },
+   {
+    "id": "u",
+    "t": 56.51
+   },
+   {
+    "id": "i",
+    "t": 99.58
+   },
+   {
+    "id": "o",
+    "t": 132.11
+   },
+   {
+    "id": "ov",
+    "t": 164.04
+   },
+   {
+    "id": "om",
+    "t": 248.36
+   },
+   {
+    "id": "si",
+    "t": 284.83
    }
-  }
- ],
+  ]
+ },
+ "song": {
+  "name": "Toning song v2",
+  "credit": "Toning A U I O, an original song by DJ Mantra (v2)",
+  "src": "assets/toning/song-v2.m4a",
+  "wave": "assets/toning/song-v2.wave.bin",
+  "dur": 254.421
+ },
+ "songLufs": -15.9,
+ "voiceLufs": -32.6,
+ "voicePeak": 0.2572,
  "download": {
   "url": "https://github.com/markoboskoauroville/djmantra-ecstatic-dance/releases/download/toning-meditation/dj-mantra-toning-meditation.m4a",
   "name": "DJ Mantra \u00b7 Toning meditation",
