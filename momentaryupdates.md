@@ -450,4 +450,6 @@ Every request is saved here word for word before any code, so a quota cut loses 
 62. The toning ladder, rung A (Grounding · Earth): heading and "We focus on the pelvis" stay; the text gets the roots:
     imagine roots growing from your feet, connecting you strongly to the earth, receiving its support and nutrients.
     Both languages.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v41 (21.10.2026): EN "Imagine roots growing from your feet, connecting you strongly to the earth,
+    receiving its support and nutrients." HR "Zamislite korijenje koje raste iz vaših stopala i snažno vas povezuje sa
+    zemljom, od koje primate podršku i hranjive tvari." Added after "weight dropping into the feet"; the rest of rung A unchanged.
