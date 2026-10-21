@@ -73,7 +73,7 @@ of, e.g. **"page v52 = toning song v1 + meditation voice v3"**.
 
 | Part | v1 | v2 | v3 |
 |---|---|---|---|
-| **Toning song** (the music under the voice) | Marko's "Toning A U I O DJ MANTRA WEB PAGE", `tools/toning/suno/toning-auio-djmantra.m4a` | the Suno cover with the Croatian vowel spellings (job 12), `toning-auio-djmantra-v2.m4a`: not made yet | |
+| **Toning song** (the music under the voice) | Marko's "Toning A U I O DJ MANTRA WEB PAGE", `tools/toning/suno/toning-auio-djmantra.m4a` | the Suno cover with the Croatian vowel spellings, take 2 HUSHED (Marko: "Hushed is best"), recorded through BlackHole, `toning-auio-djmantra-v2.m4a` (a307a88); on page v53 | |
 | **Meditation voice** (Hume, Female Meditation Guide) | the English letters (0479572), replaced | the Croatian vowel sounds (0a0fafe) | each vowel three times (9aa1b6a) |
 | **Meditation download** (voice + song in one file) | page v52's mix (job 11) | | |
 

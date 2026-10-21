@@ -1107,7 +1107,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v52</p>
+    <p class="ver">v53</p>
   </div>
 </footer>
 
@@ -2418,7 +2418,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     O = J.bgs.find(b => b.id === id); decks.forEach(d => d.piece = -1);
     $("tBgs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.b === id)));
     const songs = [...new Set(Object.values(O.pieces).map(p => p.song).filter(Boolean))];
-    $("tCr").textContent = "Music under the voice: " + (songs.length ? songs.join(" · ") : O.id === "mantra" ? "Toning A U I O, an original song by DJ Mantra" : O.name + ", a choir made by DJ Mantra");
+    $("tCr").textContent = "Music under the voice: " + (songs.length ? songs.join(" · ") : O.id === "mantra" ? "Toning A U I O, an original song by DJ Mantra (v2)" : O.name + ", a choir made by DJ Mantra");
     Object.entries(O.pieces).forEach(([k, p]) => { const kk = O.id + "/" + k; if(!BW[kk]) fetch(p.wave).then(r => r.arrayBuffer()).then(a => { BW[kk] = new Uint8Array(a); paint(); }); });
     if(ctx) fetchBg(); mix(); paint();
   }

@@ -752,3 +752,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** the Mac read each vowel three times in Hume (9aa1b6a, separate takes joined at the first pause, no
     stretching); built 11:23. Publish: waits for the download file (job 11, the Mac) and Marko's "push main" in the
     cloud session.
+
+## v53 — 21.10.2026
+
+> Yes, redo Suno song with the same spelling. ... Hushed is best
+
+98. Toning song v2: the Suno cover of toning song v1 with the vowels spelled as sounds (tools/toning/suno/suno-prompt.md,
+    v52), two takes, recorded through BlackHole on the Mac (Suno's downloads were used up), renamed in Suno so Marko
+    could tell them apart on his phone; he chose take 2 HUSHED.
+    **Status:** page v53 = toning song v2 + meditation voice v3 (on the branch): build_bg.py cut it into the 8 element
+    pieces, AAC 320 (322–332 kbps); the credit line says (v2); 11:23. The download is rendered again on the Mac (job 11).
