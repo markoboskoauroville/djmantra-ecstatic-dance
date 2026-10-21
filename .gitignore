@@ -5,3 +5,6 @@ node_modules/
 
 # v47: Suno WAV masters stay on the Mac (over the 25 MiB Pages limit); the page uses the AAC pieces
 tools/toning/suno/takes/*.wav
+
+# v52: the meditation to download goes up as a GitHub Release asset, not through Pages (over 25 MiB with longer readings)
+tools/toning/dj-mantra-toning-meditation.m4a

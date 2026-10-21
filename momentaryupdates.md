@@ -724,3 +724,24 @@ Every request is saved here word for word before any code, so a quota cut loses 
     quota on any key, flash on one key, three keys out of prepaid credit, the rest over today's free quota.
 92. Kie and every Elevate Media account are never used for private work (MANTRA_MANIFEST modules/private-accounts.md).
 93. A new Hume API key and a meditative voice from Hume's library: asked of the Mac (job 8).
+
+## v52 — requested 21.10.2026
+
+> in the website give option to download the audio for this vocal meditation. You need to explain the pronunciation. English pronunciation is not okay. It should be like Croatian one. Actual vocal singing doesn't fit what people sing and how people spell the letter. So how to go around this? Can this voice be regenerated so it actually gives the right sound for the right letter, not the spelling sound
+
+(Hume, in the Mac session: Marko chose Hume's playground and "Meditation guide is already in slow speed. Keep it at one".)
+
+94. A DOWNLOAD button for the whole meditation, the voice and the music as heard on the page, AAC 320 kbps.
+    **Status:** v52 (on the branch): tools/toning/render_meditation.py mixes it offline like the page (the decks'
+    windows and 6 s crossfades, the background at -30 dB); over 25 MiB with long readings, so it is a GitHub Release
+    asset (tag toning-meditation), made on the Mac with Apple's encoder (ffmpeg's aac gives ~285 kbps here) and
+    uploaded with gh before main goes live (COLLABORATION job 11).
+95. The pronunciation explained on the page: the vowels as in Croatian.
+    **Status:** v52: under "Toning is not singing", HR and EN: A as in mama (ah), U as in ruka (oo), I as in mir (ee),
+    O as in more (oh), never the English letter names (ay, you, eye, oh); AUM a – u – m, the M hummed (the Croatian
+    examples from the session "DJ Mantra page toning text").
+96. The voice says the sound, not the letter: the TTS reads the vowels spelled as their sound.
+    **Status:** tools/toning/readings/say.json ("say": Aaah, Ooooh, Eeee, Oh, Aah-ooh-mmm; the intro adds "We sing
+    them as they sound in Croatian ... Never as the names of English letters"); the Mac reads it again in Hume
+    (job 9). v52 already has the Hume Female Meditation Guide (0479572, speed 1, no stretching) as the only voice,
+    10:36 with the pauses and the music first; Orion removed from assets.

@@ -16,7 +16,9 @@ import json, os, re, subprocess, numpy as np
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 A = R + '/assets/toning'
 READ = R + '/tools/toning/readings'
-VOICES = ['orion']               # Marko, 21.10.2026: "use only Orion voice, that is all"
+# the page's one voice: (folder in tools/toning/readings, the name the page shows). v48-v51: Orion (Gemini, Alnilam);
+# v52: Hume's Female Meditation Guide, read in Hume's playground at speed 1 (Marko: "already in slow speed")
+VOICES = [('female-meditation-guide', 'Meditation guide')]
 SR = 48000
 SENTENCE, PHRASE = 3.5, 1.5       # seconds of silence after a sentence, after a phrase
 TAIL, TAIL_SI = 6.0, 14.0         # after a rung; after Silence, the last one
@@ -69,14 +71,15 @@ def slow(f, text, tail, lead=LEAD):
     return np.concatenate(out)
 
 J = json.load(open(A + '/toning.json'))
-J['voices'] = [v for v in J['voices'] if v['id'] in VOICES]
+J['voices'] = [{'id': who, 'name': name, 'src': f'assets/toning/{who}.mp3', 'wave': f'assets/toning/{who}.wave.bin'} for who, name in VOICES]
 for v in J['voices']:
     who = v['id']
     meta = json.load(open(f'{READ}/{who}/readings.json'))
     parts, ch, t = [], [], 0.0
     for m in meta:
         rid = m['id'].split('-', 1)[1]
-        y = slow(f'{READ}/{who}/{m["id"]}.mp3', m['text'], TAIL_SI if rid == 'si' else TAIL, MUSIC_FIRST if not parts else LEAD)
+        f = next(f'{READ}/{who}/{m["id"]}{x}' for x in ('.m4a', '.mp3', '.wav') if os.path.exists(f'{READ}/{who}/{m["id"]}{x}'))
+        y = slow(f, m['text'], TAIL_SI if rid == 'si' else TAIL, MUSIC_FIRST if not parts else LEAD)
         d = len(y) / SR; ch.append({'id': rid, 't': round(t, 3), 'dur': round(d, 3)}); t += d; parts.append(y)
     raw = f'{A}/{who}.f32'; np.concatenate(parts).tofile(raw)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'f32le', '-ar', str(SR), '-ac', '1', '-i', raw,
@@ -92,6 +95,6 @@ for v in J['voices']:
         pk = np.abs(b[:n * hop]).reshape(n, hop).max(1)
         o.append(np.clip(pk / (np.percentile(pk, 99.5) + 1e-9) * 255, 0, 255))
     np.stack(o, 1).astype(np.uint8).tofile(f'{A}/{who}.wave.bin')
-    print(f'{v["name"]}: {v["dur"]:.0f} s -> {t:.0f} s')
+    print(f'{v["name"]}: {t:.0f} s')
     v['dur'] = round(t, 3); v['chapters'] = ch
 json.dump(J, open(A + '/toning.json', 'w'), indent=1)

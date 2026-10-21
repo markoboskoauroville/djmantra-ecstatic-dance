@@ -1,51 +1,51 @@
 {
  "voices": [
   {
-   "id": "orion",
-   "name": "Orion",
-   "src": "assets/toning/orion.mp3",
-   "wave": "assets/toning/orion.wave.bin",
-   "dur": 721.268,
+   "id": "female-meditation-guide",
+   "name": "Meditation guide",
+   "src": "assets/toning/female-meditation-guide.mp3",
+   "wave": "assets/toning/female-meditation-guide.wave.bin",
+   "dur": 636.653,
    "chapters": [
     {
      "id": "intro",
      "t": 0.0,
-     "dur": 61.511
+     "dur": 54.224
     },
     {
      "id": "a",
-     "t": 61.511,
-     "dur": 72.761
+     "t": 54.224,
+     "dur": 60.926
     },
     {
      "id": "u",
-     "t": 134.272,
-     "dur": 107.811
+     "t": 115.15,
+     "dur": 90.419
     },
     {
      "id": "i",
-     "t": 242.083,
-     "dur": 82.071
+     "t": 205.569,
+     "dur": 68.211
     },
     {
      "id": "o",
-     "t": 324.154,
-     "dur": 69.691
+     "t": 273.781,
+     "dur": 65.949
     },
     {
      "id": "ov",
-     "t": 393.845,
-     "dur": 189.961
+     "t": 339.729,
+     "dur": 172.933
     },
     {
      "id": "om",
-     "t": 583.806,
-     "dur": 71.861
+     "t": 512.663,
+     "dur": 75.504
     },
     {
      "id": "si",
-     "t": 655.667,
-     "dur": 65.601
+     "t": 588.167,
+     "dur": 48.487
     }
    ]
   }
@@ -106,5 +106,10 @@
     }
    }
   }
- ]
+ ],
+ "download": {
+  "url": "https://github.com/markoboskoauroville/djmantra-ecstatic-dance/releases/download/toning-meditation/dj-mantra-toning-meditation.m4a",
+  "name": "DJ Mantra \u00b7 Toning meditation",
+  "dur": 636.7
+ }
 }
