@@ -5,7 +5,7 @@
    "name": "Meditation guide",
    "src": "assets/toning/female-meditation-guide.mp3",
    "wave": "assets/toning/female-meditation-guide.wave.bin",
-   "dur": 668.576,
+   "dur": 683.698,
    "chapters": [
     {
      "id": "intro",
@@ -15,36 +15,36 @@
     {
      "id": "a",
      "t": 76.701,
-     "dur": 62.452
+     "dur": 66.107
     },
     {
      "id": "u",
-     "t": 139.153,
-     "dur": 94.707
+     "t": 142.808,
+     "dur": 97.257
     },
     {
      "id": "i",
-     "t": 233.86,
-     "dur": 67.133
+     "t": 240.065,
+     "dur": 68.999
     },
     {
      "id": "o",
-     "t": 300.993,
-     "dur": 67.443
+     "t": 309.065,
+     "dur": 72.793
     },
     {
      "id": "ov",
-     "t": 368.437,
+     "t": 381.858,
      "dur": 179.899
     },
     {
      "id": "om",
-     "t": 548.335,
-     "dur": 71.754
+     "t": 561.757,
+     "dur": 73.455
     },
     {
      "id": "si",
-     "t": 620.089,
+     "t": 635.211,
      "dur": 48.487
     }
    ]

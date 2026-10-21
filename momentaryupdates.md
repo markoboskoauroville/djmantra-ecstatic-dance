@@ -745,3 +745,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
     them as they sound in Croatian ... Never as the names of English letters"); the Mac reads it again in Hume
     (job 9). v52 already has the Hume Female Meditation Guide (0479572, speed 1, no stretching) as the only voice,
     10:36 with the pauses and the music first; Orion removed from assets.
+
+> pronunciation is good and just extend it three times for the vowels. Publish
+
+97. Each vowel said three times at the start of its rung; then publish.
+    **Status:** the Mac read each vowel three times in Hume (9aa1b6a, separate takes joined at the first pause, no
+    stretching); built 11:23. Publish: waits for the download file (job 11, the Mac) and Marko's "push main" in the
+    cloud session.
