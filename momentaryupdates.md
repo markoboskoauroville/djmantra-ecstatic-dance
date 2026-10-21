@@ -443,3 +443,11 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** done, v40: the app's MatrixDisplay (OXI E16 glass, square dots, the app's 5x7 pixel font): time left
     (red in the last 30 s), bar.beat from the section start, the countdown to the next section, one cell per beat
     of the phrase with beat 1 white; 8 / 16 / 32 BEATS as the app's button. It replaces the four beat lights.
+## v41 — requested 21.10.2026
+
+> we need to update my DJ Mantra page on Cloudflare. The part with toning the text is a bit wrong. Grounding earth, a sound we focus on, pelvis, that's correct. The beginning, the ground we stand on, open sound, open mouth, weight drop on the feet. You need to add imagine the roots are growing from your feet, connecting you strongly to the earth, receiving the support and nutrients
+
+62. The toning ladder, rung A (Grounding · Earth): heading and "We focus on the pelvis" stay; the text gets the roots:
+    imagine roots growing from your feet, connecting you strongly to the earth, receiving its support and nutrients.
+    Both languages.
+    **Status:** in progress (logged 21.10.2026).
