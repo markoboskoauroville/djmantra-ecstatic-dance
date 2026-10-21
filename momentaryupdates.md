@@ -591,3 +591,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
 77. Suno through Marko's Chrome: he logs in, Claude drives it.
     **Status:** in progress (logged 21.10.2026). Measured, 21.10.2026: the eight songs are in C, E, C, G#, E, F, A#, F
     major, all ambient; together they sit in C major (F major next); tuning within ±10 cents of A440.
+
+> some generation is happening from Suno. You need to download the highest quality AAC songs and build it in the website
+
+78. The Suno toning songs, downloaded in the highest quality, built into the toning player (as AAC on the page), cut
+    per element for the music decks.
+    **Status:** in progress (logged 21.10.2026). Suno refused the guide mix as reference ("This audio matches an existing
+    recording ... If you own the rights, please contact support@suno.com"), so the Centering songs are known recordings;
+    then refused the first lyrics ("Your lyrics contain copyrighted material", a false match on the A-U-M lines). The
+    second lyrics, AUM as one held word, were accepted: "Toning A U I O", v6, 5:55, Male, two takes.
