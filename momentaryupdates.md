@@ -509,3 +509,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** done, v45 (21.10.2026): AUM over (OM), the pineal gland, the sound of creation, one point then the big
     bang; "Silence" / "Tišina" in the letter column, heading "Spirit and connection". Marko 21.10.2026: the silence
     text is correct, "this is the end of an improvement of this part".
+
+## v46 — requested 21.10.2026
+
+> please find the voices from Hume Ai. There is an API, and you need to put the audio player to hear in audio my part with vocals and elements voices opening the channels. If there is no Croatian language, then we need to put English on board without translation, so find meditative voice from Hume Ai
+
+68. The toning section ("Vowels and elements", the voice opens the channels) gets an audio player: the ladder read
+    aloud by a meditative voice from Hume AI's API (TTS). Croatian if Hume speaks it; if not, the English reading
+    plays in both languages, untranslated.
+    **Status:** in progress (logged 21.10.2026).
