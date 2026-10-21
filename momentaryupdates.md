@@ -695,3 +695,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 87. Put the toning work live on djmantra.pages.dev.
     **Status:** waiting: v49 is on the branch; the push to main (the deploy) needs Marko's permission in this session.
+
+## v50 — 21.10.2026
+
+88. Orion's intro and O rungs, cut short by Gemini in v47 (found in request 80), read again whole.
+    **Status:** done, v50 (21.10.2026): the Mac session read both again (Gemini 2.5 flash TTS, Alnilam, plain text,
+    finishReason STOP; Whisper heard every word), 9056ae4; the cloud slowed them with slow_toning.py: intro 13 → 42 s,
+    O 24 → 69 s, the whole reading 10:31 → 11:45. **Marko listens** for a timbre difference against the other rungs.
