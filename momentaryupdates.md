@@ -555,3 +555,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
     folder per element; listened to and chosen per element; played as a DJ: two lanes (decks), each element's sound
     triggered by script at its point in the reading, crossfading one into the next.
     **Status:** in progress (logged 21.10.2026).
+
+> these songs don't have copyright. Please include them as a two mixing decks to mix the songs and third one so it's a three deck setup running automatically. And change the voice for the meditation. I want deep male voice like my voice. If you can, check compare voices with Speechify. I have Speechify API. I also have Hume API which we did. We also have Google APIs and find the best deep male actor voice. I always look at the actors with deep voices for meditation, and then build all three players and all three voices for user to choose. Give them just names, don't say the sources. Give them who. Ask user who wants it to read to you, and then give three names
+
+73. Three decks running by themselves: the voice, and two music decks crossfading the Centering songs element to
+    element. The reading in a deep male voice, like Marko's: the best deep male actor voice from Hume, Speechify and
+    Google, compared; all three built, the visitor chooses. Only first names, no providers: "Who would you like to
+    read to you?" and three names.
+    **Status:** in progress (logged 21.10.2026). The myNoise email (request 71) is a Gmail draft to
+    stephane@mynoise.net, waiting for Marko's word to send.
