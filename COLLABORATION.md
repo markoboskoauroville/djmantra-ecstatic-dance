@@ -70,7 +70,7 @@ encoder (`-c:a aac_at -b:a 320k -aac_at_mode cbr`), measured with ffprobe.
 | # | Job | Who | Status |
 |---|---|---|---|
 | 1 | Marko's song "Toning A U I O DJ MANTRA WEB PAGE" from ~/Downloads as `tools/toning/suno/toning-auio-djmantra.m4a` | MAC | done, baadd18, AAC 320 kbps CBR, 264.68 s |
-| 2 | Build it as the only background under Orion (`python3 tools/toning/build_bg.py`), test, push | CLOUD | done, v49, live on Marko's "update my webpage" |
+| 2 | Build it as the only background under Orion (`python3 tools/toning/build_bg.py`), test, push | CLOUD | done, v49 on the branch; live when it is merged into main |
 | 3 | Orion's intro and O rungs, cut short by Gemini in v47: generate `00-intro.mp3` and `04-o.mp3` again with Gemini TTS, voice Alnilam, plain text from `tools/toning/readings/orion/readings.json` (no "read slowly" instruction, Gemini refuses it), the plain readings into `tools/toning/readings/orion/`, push; check each one is whole (the last words heard) | MAC | open |
 | 4 | Slow the new rungs (`python3 tools/toning/slow_toning.py`), test, push | CLOUD | waits on 3 |
 | 5 | Marko listens on djmantra.pages.dev (slow Orion, the breathing knob, his song; the cuts per element by ear) | MARKO, asked by the MAC by voice | open |

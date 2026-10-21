@@ -694,4 +694,4 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > Please now update my webpage. In that part we are working on, which is called the voice, we are working on the channels.
 
 87. Put the toning work live on djmantra.pages.dev.
-    **Status:** done, v49 merged into main 21.10.2026 (v48 + v49: slow Orion only, the breathing knob, Marko's song).
+    **Status:** waiting: v49 is on the branch; the push to main (the deploy) needs Marko's permission in this session.
