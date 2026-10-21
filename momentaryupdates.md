@@ -541,3 +541,17 @@ Every request is saved here word for word before any code, so a quota cut loses 
     licensing page forbids recording: "resampling the generators' audio output are strictly forbidden", "myNoise sounds
     are not traded for a credit". Marko answered "record through BlackHole and credit myNoise"; not done, because credit
     does not license it. Options put to him: an embedded licence from myNoise (make an offer), his own recordings, CC0.
+
+## v47 — requested 21.10.2026
+
+> please open my email on our community. You have the Claude plugin and write an email to this my noise to give me permission to promote them over this page and take these few generators outputs, record them or even if they can allow me to embed will be better. But any user can see their page embedded here, and this will be for promotions for them. I'm not making money with these sites, so if that can be for free, try to open their heart with nonviolent communication and we make it possible for this part of my website. Write an email, ask permission and everything needed to build it as I imagine it. And if you are building backgrounds from other free sources, please make it as a DJ so it will be two lanes and we're going to trigger it by scripts one after the other at the right point. I also have songs we can use. You listen to them. They are in these folders for each element
+>
+> as a temporary solution before we get permission from my noise Centering [Marko] This folder with music exists in the external 1TB drive under music for editing. You take this temporary music there for each element we're going to ask for permission. Please, I want to promote my noise. It's a great site.
+
+71. An email from marko.bosko@auroville.community to myNoise (Stéphane Pigeon), in the spirit of non-violent
+    communication: permission to embed a few generators on djmantra.pages.dev (best), or to record their output, free,
+    as promotion for myNoise on a non-commercial page; everything needed to build it as Marko imagines it.
+72. Until myNoise answers: the background from Marko's own music on the external 1TB drive, "music for editing", a
+    folder per element; listened to and chosen per element; played as a DJ: two lanes (decks), each element's sound
+    triggered by script at its point in the reading, crossfading one into the next.
+    **Status:** in progress (logged 21.10.2026).
