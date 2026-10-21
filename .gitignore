@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 .claude/
 .wrangler/
+
+# v47: Suno WAV masters stay on the Mac (over the 25 MiB Pages limit); the page uses the AAC pieces
+tools/toning/suno/takes/*.wav

@@ -554,7 +554,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
 72. Until myNoise answers: the background from Marko's own music on the external 1TB drive, "music for editing", a
     folder per element; listened to and chosen per element; played as a DJ: two lanes (decks), each element's sound
     triggered by script at its point in the reading, crossfading one into the next.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026.
 
 > these songs don't have copyright. Please include them as a two mixing decks to mix the songs and third one so it's a three deck setup running automatically. And change the voice for the meditation. I want deep male voice like my voice. If you can, check compare voices with Speechify. I have Speechify API. I also have Hume API which we did. We also have Google APIs and find the best deep male actor voice. I always look at the actors with deep voices for meditation, and then build all three players and all three voices for user to choose. Give them just names, don't say the sources. Give them who. Ask user who wants it to read to you, and then give three names
 
@@ -562,7 +562,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
     element. The reading in a deep male voice, like Marko's: the best deep male actor voice from Hume, Speechify and
     Google, compared; all three built, the visitor chooses. Only first names, no providers: "Who would you like to
     read to you?" and three names.
-    **Status:** in progress (logged 21.10.2026). The myNoise email (request 71) is a Gmail draft to
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026. The myNoise email (request 71) is a Gmail draft to
     stephane@mynoise.net, waiting for Marko's word to send.
 
 > Uh the the background music should be minus 30 dB, but If the user wants to louder or softer there will be uh controls so you make my users DJs or sound engineers they can control the background uh Uh The background level with the knob, which looks like the same knob in my DJ app filtering knob, which has a ring of LEDs around it, same as my device. O ex aí i sixti. And just add a small addition color picker to pick the LED colors and give for each element one color which should be representing the element. Now I tell you the colors. The color of the first element is gold. Then we have milky white, then we have crimson red, strong red. Then we have green, and then we have a rainbow of colors. This is for communication. Then we have white for the last two chakras. Please and write this in a manifest. My colors of the chakras. So everywhere we mention colors and chakras, we use this system. Mantra manifest needs to be updated.
@@ -572,7 +572,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
     each element has its own colour: A earth gold, U water milky white, I fire crimson (strong red), O air green,
     A-U-I-O throat a rainbow (communication), AUM and the crown white. These are Marko's chakra colours, written in
     MANTRA_MANIFEST (modules/chakra-colors.md), the one system wherever colours and chakras are mentioned.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026.
 
 > Please let's use Suno for toning. So it must be one song you're going to cut in the pieces which are actually singing the vowels like a Tibetan choir. And the vowels are uh Croatian uh Pronunciation. So you need to research how it's it it is and we make one song you're going to guide Suno with prompt to sing and based on the Songs you choose we're going to recreate same similar vibe in Suno. So you need to guide the suno for the whole background track please.
 
@@ -580,7 +580,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
     pronunciation (A U I O, A-U-I-O, AUM, then silence), in the vibe of the Centering songs chosen per element; Claude
     writes the Suno prompts (style and the sung structure) for the whole track; the song is then cut into one piece
     per element and played on the music decks.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026.
 
 > you can mix my songs as an audio guide for Suno and then make a prompt. So give me the song you mixed. You need to crossfade between different songs for each element, and then we're going to do it with Suno
 
@@ -589,14 +589,14 @@ Every request is saved here word for word before any code, so a quota cut loses 
 76. A guide mix from the Centering songs, one song per element, crossfaded element to element, given to Marko; then
     the Suno prompt written from it (and the mix as Suno's audio reference).
 77. Suno through Marko's Chrome: he logs in, Claude drives it.
-    **Status:** in progress (logged 21.10.2026). Measured, 21.10.2026: the eight songs are in C, E, C, G#, E, F, A#, F
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026. Measured, 21.10.2026: the eight songs are in C, E, C, G#, E, F, A#, F
     major, all ambient; together they sit in C major (F major next); tuning within ±10 cents of A440.
 
 > some generation is happening from Suno. You need to download the highest quality AAC songs and build it in the website
 
 78. The Suno toning songs, downloaded in the highest quality, built into the toning player (as AAC on the page), cut
     per element for the music decks.
-    **Status:** in progress (logged 21.10.2026). Suno refused the guide mix as reference ("This audio matches an existing
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026. Suno refused the guide mix as reference ("This audio matches an existing
     recording ... If you own the rights, please contact support@suno.com"), so the Centering songs are known recordings;
     then refused the first lyrics ("Your lyrics contain copyrighted material", a false match on the A-U-M lines). The
     second lyrics, AUM as one held word, were accepted: "Toning A U I O", v6, 5:55, Male, two takes.
@@ -606,5 +606,25 @@ Every request is saved here word for word before any code, so a quota cut loses 
 79. Marko's own Suno meditation song "Cura Prox" is the guide for a second Suno version: the same song with the
     vowels of the ladder (Croatian A U I O, A-U-I-O, AUM). Every option (the Centering songs, the Suno takes, the
     Cura Prox version) is built into the website for the visitor to choose.
-    **Status:** in progress (logged 21.10.2026). Orion's AUM and Silence rungs: Gemini refused them with the "read
+    **Status:** done in v47 (21.10.2026), see *v47 as built* below; logged 21.10.2026. Orion's AUM and Silence rungs: Gemini refused them with the "read
     slowly" instruction (finishReason OTHER); accepted as plain text.
+
+## v47 as built (21.10.2026)
+
+- **71, the myNoise email:** a draft in the auroville.community Gmail to stephane@mynoise.net (non-violent
+  communication: embedding first, short recordings second, asked without a fee). **Waiting for Marko's "send".**
+- **72, 73, three decks:** the voice is the clock; deck A and deck B take the elements in turns, each piece entering 3 s
+  before its rung and crossing over 6 s, looped when a rung is longer than its piece. "Who would you like to read to
+  you?" JULIAN (Hume, Classical Film Actor, ~84 Hz), OLIVER (Speechify oliver, ~84 Hz), ORION (Gemini Alnilam, ~98 Hz),
+  chosen among 28 deep male voices by pitch (pYIN and YIN) and a Whisper check. Gemini refused Orion's AUM and Silence
+  with a "read slowly" instruction (finishReason OTHER) and read them as plain text; Orion leaves long pauses (7:24).
+- **74, the knob:** BACKGROUND, -60 to -10 dB, -30 by default (pieces at -20 LUFS, the knob sets the gain), drag, wheel,
+  arrow keys, double click back to -30; 21 LEDs on 270° in the element's chakra colour (the throat a rainbow round the
+  ring), an LED colour picker and ELEMENTS to go back. MANTRA_MANIFEST modules/chakra-colors.md.
+- **75–79, Suno:** the guide mix (tools/toning/suno/toning-guide-mix.mp3) was refused as a reference ("matches an
+  existing recording"), the first lyrics too ("copyrighted material", a false match on the A-U-M lines); AUM as one held
+  word passed. "Toning A U I O" (v6, 5:55, Male) and, from Marko's own "cura prox" (the 2:37 take, monks on one Om
+  pitch), two v6 Covers with the vowel lyrics at Audio Influence 59%. Suno Pro's three downloads (until 15.11.2026)
+  went on Toning take 2 and both cura prox takes, as WAV (kept on the Mac, .gitignore). On the page BACKGROUND offers
+  CHOIR, CAVE I, CAVE II and CENTERING (Marko's songs), AAC 160 kbps. The Suno songs are cut in the proportions of the
+  prompt's plan (Suno keeps no exact edges): **Marko checks the cuts by ear.** tools/toning/build_bg.py.

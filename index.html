@@ -474,29 +474,47 @@ footer a:hover{color:var(--amber)}
 .edu .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
 .edu .chips button{font:500 11px/1 "IBM Plex Mono",monospace; letter-spacing:.08em; color:#14121c; background:var(--c); border:0; border-radius:20px; padding:8px 11px; cursor:pointer; opacity:.75}
 .edu .chips button.on{opacity:1; outline:2px solid #fff; outline-offset:2px}
-/* v46: the toning reading, Hume AI's meditation voice over the ladder; the voice lane and the background lane */
+/* v47: the toning player, three decks: the voice and two music decks crossfading element to element; the visitor
+   chooses who reads; the BACKGROUND knob with the LED ring of the OXI E16 */
 .ton{margin:30px 0 8px; border:1px solid #1F2850; border-radius:16px; padding:16px; background:#0B1026; color:#EEF0FF}
 .ton .lead{font-size:14.5px; color:#9AA3C7; margin:0 0 12px}
-.ton .top{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px}
-.ton .top b{font-family:"Spectral",Georgia,serif; font-size:26px; font-weight:400}
-.ton .top span{font:500 11.5px "IBM Plex Mono",monospace; color:#9AA3C7; letter-spacing:.04em}
+.ton .lbl{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7}
+.ton .who{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:14px}
+.ton .who .q{font-family:"Spectral",Georgia,serif; font-size:21px; margin-right:6px}
+.ton .who button{font:500 14px "IBM Plex Mono",monospace; letter-spacing:.1em; color:#EEF0FF; background:#151C3D; border:1px solid #2C3870; border-radius:22px; height:40px; padding:0 18px; cursor:pointer}
+.ton .who button[aria-pressed="true"]{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A}
+.ton .who.ask button{animation:tAsk 1s ease 2}
+.ton .who.bgs{margin-top:-6px}
+.ton .who.bgs .lbl{margin-right:4px}
+.ton .who.bgs button{height:32px; font-size:12px; padding:0 14px}
+@keyframes tAsk{50%{border-color:#FFD54A; box-shadow:0 0 12px rgba(255,213,74,.5)}}
 .ton .lane{position:relative}
-.ton .lane .lbl{position:absolute; left:10px; top:8px; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7; pointer-events:none}
-.ton canvas{display:block; width:100%; height:150px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
-.ton canvas.bg{height:64px; margin-top:6px; cursor:default}
+.ton .lane .lbl{position:absolute; left:10px; top:7px; pointer-events:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 20px)}
+.ton canvas.ln{display:block; width:100%; height:132px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
+.ton canvas.dk{height:58px; margin-top:6px}
 .ton .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
 .ton .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
 .ton .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
 .ton .ctl .tm{margin-left:auto; font:500 14px "IBM Plex Mono",monospace; color:#9AA3C7; font-variant-numeric:tabular-nums}
 .ton .ctl .tm b{color:#EEF0FF; font-weight:500}
-.ton .now{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px}
-.ton .now > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
-.ton .now .lbl{display:block; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7}
-.ton .now b{display:block; font:500 17px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.ton .now .nxt{text-align:right}
+.ton .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; gap:10px; align-items:stretch}
+.ton .row > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
+.ton .row b{display:block; font:500 17px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ton .row .nxt{text-align:right}
+.ton .knob{display:flex; align-items:center; gap:10px}
+.ton .knob canvas{width:84px; height:84px; cursor:ns-resize; touch-action:none; flex:none}
+.ton .knob .kv b{font-size:15px; color:#EEF0FF}
+.ton .knob .kv label{display:flex; align-items:center; gap:6px; margin-top:6px; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.14em; color:#9AA3C7; cursor:pointer}
+.ton .knob input[type=color]{width:22px; height:22px; padding:0; border:1px solid #2C3870; border-radius:50%; background:none; cursor:pointer}
+.ton .knob input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+.ton .knob input[type=color]::-webkit-color-swatch{border:0; border-radius:50%}
+.ton .knob .auto{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.12em; color:#9AA3C7; background:none; border:1px solid #2C3870; border-radius:10px; padding:3px 7px; cursor:pointer; margin-top:6px}
+.ton .knob .auto[aria-pressed="true"]{color:#1A1A1A; background:#FFD54A; border-color:#FFD54A}
+.ton .cr{font:500 11px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:12px 0 0; letter-spacing:.02em}
+@media (max-width:640px){ .ton .row{grid-template-columns:1fr 1fr} .ton .row .knob{grid-column:1 / -1; justify-content:center} }
 .rung{transition:background .6s}
-.rung.on{background:linear-gradient(90deg, rgba(224,162,87,.10), transparent 70%)}
-.rung.on .v{text-shadow:0 0 18px rgba(224,162,87,.6)}
+.rung.on{background:linear-gradient(90deg, color-mix(in srgb, var(--rc, #e0a257) 14%, transparent), transparent 70%)}
+.rung.on .v{text-shadow:0 0 18px var(--rc, rgba(224,162,87,.6))}
 .rung .v[data-ch]{cursor:pointer}
 @media (max-width:760px){
   .edu{padding:10px} .edu canvas{height:130px} .edu .top code{margin-left:0}
@@ -945,16 +963,26 @@ footer a:hover{color:var(--amber)}
     </div>
     <div class="ton rv" id="ton" aria-label="Toning reading">
       <p class="lead" data-i18n="ton.l">Zatvori oči i pritisni play. Glas te vodi kroz cijelu ljestvicu, od zemlje do tišine. Čita na engleskom.</p>
-      <div class="top"><b>Toning</b><span>VOICE · HUME AI · FEMALE MEDITATION GUIDE</span></div>
-      <div class="lane"><canvas id="tVo" aria-label="The voice: click to jump"></canvas><span class="lbl">VOICE</span></div>
-      <div class="lane"><canvas id="tBg" class="bg" aria-label="The background sound"></canvas><span class="lbl">BACKGROUND</span></div>
+      <div class="who" id="tWho"><span class="q">Who would you like to read to you?</span></div>
+      <div class="who bgs" id="tBgs"><span class="lbl">BACKGROUND</span></div>
+      <div class="lane"><canvas id="tVo" class="ln" aria-label="The voice: click to jump"></canvas><span class="lbl" id="tVl">VOICE</span></div>
+      <div class="lane"><canvas id="tDa" class="ln dk" aria-label="Deck A"></canvas><span class="lbl" id="tAl">DECK A</span></div>
+      <div class="lane"><canvas id="tDb" class="ln dk" aria-label="Deck B"></canvas><span class="lbl" id="tBl">DECK B</span></div>
       <div class="ctl">
         <button type="button" id="tPrev" aria-label="Previous element">◀◀</button>
         <button type="button" id="tPlay" class="play" aria-label="Play">▶</button>
         <button type="button" id="tNext" aria-label="Next element">▶▶</button>
         <span class="tm"><b id="tEl">0:00</b> / <span id="tDu">0:00</span></span>
       </div>
-      <div class="now"><div class="cur"><span class="lbl">NOW</span><b id="tNow">—</b></div><div class="nxt"><span class="lbl">NEXT</span><b id="tNx">—</b></div></div>
+      <div class="row">
+        <div class="cur"><span class="lbl">NOW</span><b id="tNow">—</b></div>
+        <div class="nxt"><span class="lbl">NEXT</span><b id="tNx">—</b></div>
+        <div class="knob"><canvas id="tKnob" tabindex="0" role="slider" aria-label="Background level" aria-valuemin="-60" aria-valuemax="-10"></canvas>
+          <div class="kv"><span class="lbl">BACKGROUND</span><b id="tDbv">−30 dB</b>
+            <label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
+            <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
+      </div>
+      <p class="cr" id="tCr"></p>
     </div>
     <div class="ladder rv">
       <div class="rung"><span data-ch="1" class="v">A</span><div><h3 data-i18n="t.a.h">Uzemljenje · Zemlja</h3><p class="place" data-i18n="t.a.b">Usmjeravamo pažnju na zdjelicu.</p><p data-i18n="t.a.p">Početak, tlo na kojem stojimo. Otvoren zvuk, otvorena usta, težina koja pada u stopala. Zamislite korijenje koje raste iz vaših stopala i snažno vas povezuje sa zemljom, od koje primate podršku i hranjive tvari. Povezujete se sa zemljom svih kontinenata.</p></div></div>
@@ -1074,7 +1102,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v46</p>
+    <p class="ver">v47</p>
   </div>
 </footer>
 
@@ -2322,72 +2350,174 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();
 (() => {
-  // v46: the toning reading (Marko, 21.10.2026: "just for you users to close their eyes and press play. The player is
-  // similar to the rest of the page, my DJ player, same waveform visualization"). Hume AI reads the ladder; the
-  // background lane waits for the sounds under each element (request 70).
+  // v47: the toning player, three decks running by themselves (Marko, 21.10.2026: "two mixing decks to mix the songs
+  // and third one so it's a three deck setup running automatically"). The voice is the clock; deck A and deck B take
+  // the elements in turns, each song entering 3 s before its rung and crossing over 6 s. The visitor chooses who
+  // reads ("Ask user who wants it to read to you, and then give three names") and sets the background with the knob
+  // (-30 dB by default, the LED ring of the OXI E16). Colours: MANTRA_MANIFEST modules/chakra-colors.md.
   const T = document.getElementById("ton"); if(!T) return;
   const $ = id => document.getElementById(id);
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
   const mmss = t => Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2, "0");
   const NAME = {intro:"INTRO", a:"A · EARTH", u:"U · WATER", i:"I · FIRE", o:"O · AIR", ov:"A-U-I-O · THROAT", om:"AUM · THIRD EYE", si:"SILENCE · CROWN"};
-  const HUE = {intro:"#6b6478", a:"#b07a4a", u:"#38b6ec", i:"#ff8a2b", o:"#6CCB72", ov:"#5AA2F0", om:"#9f7ae0", si:"#EEF0FF"};
-  const RATE = 25, vc = $("tVo"), bc = $("tBg"), rungs = [...document.querySelectorAll(".ladder .rung")];
-  const audio = new Audio(); audio.preload = "metadata";
-  let J = null, W = null, raf = 0, cur = -1;
-  // the site answers no byte ranges (see v34), so the reading (3.5 MB) is fetched whole and played from memory:
-  // then every jump to an element lands at once
-  fetch("assets/toning/toning.json").then(r => r.json()).then(j => { J = j; $("tDu").textContent = mmss(j.dur); paint();
-    fetch(j.src).then(r => r.blob()).then(b => { const t = audio.currentTime, go = !audio.paused; audio.src = URL.createObjectURL(b); audio.currentTime = t; if(go) audio.play(); });
-    return fetch(j.wave); }).then(r => r.arrayBuffer()).then(b => { W = new Uint8Array(b); paint(); });
+  // Marko's chakra colours: gold, milky white, crimson, green, the rainbow, white, white
+  const RAINBOW = ["#C8102E", "#FF8A2B", "#E9C84A", "#2FB45A", "#38B6EC", "#5AA2F0", "#9F7AE0"];
+  const HUE = {intro:"#8A8198", a:"#D4AF37", u:"#F3EEE2", i:"#C8102E", o:"#2FB45A", ov:"rainbow", om:"#FFFFFF", si:"#FFFFFF"};
+  const fillFor = (g, id, x0, x1) => { if(HUE[id] !== "rainbow") return HUE[id];
+    const gr = g.createLinearGradient(x0, 0, x1, 0); RAINBOW.forEach((c, i) => gr.addColorStop(i/(RAINBOW.length - 1), c)); return gr; };
+  const RATE = 25, XF = 6, vc = $("tVo"), dc = [$("tDa"), $("tDb")], kc = $("tKnob"), rungs = [...document.querySelectorAll(".ladder .rung")];
+  const audio = new Audio(); audio.preload = "none";
+  let J = null, V = null, W = null, O = null, raf = 0, cur = -1, ctx = null, master = null, db = -30, led = null;
+  const decks = [0, 1].map(() => ({el: new Audio(), gain: null, piece: -1}));
+  const BW = {}, BU = {};                                    // the pieces' waveforms and their audio, fetched whole, by "option/element"
+  const pc = id => O && O.pieces[id], key = id => O.id + "/" + id;
+  const voiceUrl = {};
+  fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
+    J = j;
+    j.voices.forEach(v => { const b = document.createElement("button"); b.type = "button"; b.textContent = v.name.toUpperCase();
+      b.dataset.v = v.id; b.setAttribute("aria-pressed", "false"); b.addEventListener("click", () => choose(v.id, true)); $("tWho").append(b); });
+    j.bgs.forEach(b => { const e = document.createElement("button"); e.type = "button"; e.textContent = b.name.toUpperCase();
+      e.dataset.b = b.id; e.setAttribute("aria-pressed", "false"); e.addEventListener("click", () => background(b.id)); $("tBgs").append(e); });
+    background(j.bgs[0].id); choose(j.voices[0].id, false);
+  });
+  function choose(id, go){
+    const v = J.voices.find(x => x.id === id); if(!v || v === V) { if(go && audio.paused) start(); return; }
+    // keep the place: the same rung, the same distance into it
+    let keep = null; if(V && audio.currentTime > 0){ const k = chAt(audio.currentTime); keep = [k, audio.currentTime - V.chapters[k].t]; }
+    const was = !audio.paused; audio.pause(); V = v; W = null; cur = -1;
+    $("tWho").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === id)));
+    $("tVl").textContent = "VOICE · " + v.name.toUpperCase(); $("tDu").textContent = mmss(v.dur);
+    fetch(v.wave).then(r => r.arrayBuffer()).then(a => { if(V === v){ W = new Uint8Array(a); paint(); } });
+    const at = keep ? v.chapters[Math.min(keep[0], v.chapters.length - 1)].t + Math.min(keep[1], v.chapters[keep[0]].dur - .5) : 0;
+    // the site answers no byte ranges (v34): every file is fetched whole and played from memory, so jumps land
+    const load = voiceUrl[id] ? Promise.resolve(voiceUrl[id]) : fetch(v.src).then(r => r.blob()).then(b => voiceUrl[id] = URL.createObjectURL(b));
+    load.then(u => { if(V !== v) return; audio.src = u; audio.currentTime = at; if(was || go) start(); else paint(); });
+    paint();
+  }
+  function background(id){
+    // the background the visitor chooses: Marko's Suno choirs or the Centering songs; the decks change at once
+    O = J.bgs.find(b => b.id === id); decks.forEach(d => d.piece = -1);
+    $("tBgs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.b === id)));
+    const songs = [...new Set(Object.values(O.pieces).map(p => p.song).filter(Boolean))];
+    $("tCr").textContent = songs.length ? "Music under the voice: " + songs.join(" · ") : "Music under the voice: " + O.name + ", a choir made by DJ Mantra";
+    Object.entries(O.pieces).forEach(([k, p]) => { const kk = O.id + "/" + k; if(!BW[kk]) fetch(p.wave).then(r => r.arrayBuffer()).then(a => { BW[kk] = new Uint8Array(a); paint(); }); });
+    if(ctx) fetchBg(); mix(); paint();
+  }
+  function fetchBg(){ const o = O; Object.entries(o.pieces).forEach(([k, p]) => { const kk = o.id + "/" + k; if(BU[kk] !== undefined) return; BU[kk] = null;
+    fetch(p.src).then(r => r.blob()).then(x => { BU[kk] = URL.createObjectURL(x); mix(); }); }); }
+  function start(){
+    if(!audio.src){ $("tWho").classList.remove("ask"); void $("tWho").offsetWidth; $("tWho").classList.add("ask"); return; }
+    if(!ctx){                                                 // the mixer, made on the first press (browsers ask for a gesture)
+      ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.connect(ctx.destination); level();
+      decks.forEach(d => { d.gain = ctx.createGain(); d.gain.gain.value = 0; ctx.createMediaElementSource(d.el).connect(d.gain); d.gain.connect(master); });
+      fetchBg();
+    }
+    if(ctx.state === "suspended") ctx.resume();
+    audio.play();
+  }
+  const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
+  // a piece's window on the voice's clock: in 3 s before its rung, out 3 s after the next one begins
+  const win = i => { const c = V.chapters[i], n = V.chapters[i + 1]; return [i ? c.t - XF/2 : 0, n ? n.t + XF/2 : V.dur]; };
+  const env = (i, t) => { const [s, e] = win(i); if(t < s || t >= e) return 0;
+    return Math.min(1, i ? (t - s)/XF : 1, V.chapters[i + 1] ? (e - t)/XF : 1); };
+  function mix(){
+    if(!V || !ctx) return; const t = audio.currentTime, on = !audio.paused;
+    decks.forEach((d, n) => {
+      let i = -1; V.chapters.forEach((c, k) => { if(k % 2 === n){ const [s, e] = win(k); if(t >= s && t < e) i = k; } });
+      const id = i >= 0 ? V.chapters[i].id : null, u = id && O && BU[key(id)], P = id && pc(id), tag = id && key(id);
+      if(!u || !on){ d.gain.gain.setTargetAtTime(0, ctx.currentTime, .05); if(!d.el.paused && (!on || !u)) d.el.pause(); return; }
+      const want = (t - win(i)[0]) % P.dur;                  // a rung longer than its piece goes round the piece again
+      if(d.piece !== tag + i){ d.piece = tag + i; d.el.src = u; d.el.loop = true; d.el.currentTime = want; d.el.play(); }
+      else { const off = Math.abs(d.el.currentTime - want); if(off > .4 && off < P.dur - .4) d.el.currentTime = want; if(d.el.paused) d.el.play(); }
+      d.gain.gain.setTargetAtTime(env(i, t), ctx.currentTime, .08);
+    });
+  }
+  const level = () => { if(master) master.gain.setTargetAtTime(Math.pow(10, (db - J.bgLufs)/20), ctx.currentTime, .05);
+    $("tDbv").textContent = "−" + Math.abs(Math.round(db)) + " dB"; kc.setAttribute("aria-valuenow", String(Math.round(db))); knob(); };
+  function knob(){
+    // the filter knob of the DJ Mantra app with the OXI E16's ring: LEDs on a 270° arc, lit up to the value, in the
+    // element's colour (the throat runs the rainbow round the ring) or the colour picked
+    const [w, h, d] = fit(kc), g = kc.getContext("2d"), cx = w/2, cy = h/2, R = Math.min(w, h)/2 - 5*d, N = 21, p = (db + 60)/50;
+    g.clearRect(0, 0, w, h);
+    const id = V ? V.chapters[Math.max(0, cur)].id : "a";
+    for(let i = 0; i < N; i++){
+      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R, lit = i/(N - 1) <= p + 1e-6;
+      const c = led || (HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id]);
+      g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.fillStyle = lit ? c : "#1F2850"; g.shadowColor = c; g.shadowBlur = lit ? 8*d : 0; g.fill();
+    }
+    g.shadowBlur = 0; const r = R - 11*d;
+    const body = g.createRadialGradient(cx - r*.3, cy - r*.3, r*.1, cx, cy, r); body.addColorStop(0, "#3a4270"); body.addColorStop(1, "#151C3D");
+    g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fillStyle = body; g.fill(); g.lineWidth = d; g.strokeStyle = "#2C3870"; g.stroke();
+    const a = (135 + 270*p)*Math.PI/180; g.beginPath(); g.moveTo(cx + Math.cos(a)*r*.25, cy + Math.sin(a)*r*.25);
+    g.lineTo(cx + Math.cos(a)*r*.85, cy + Math.sin(a)*r*.85); g.lineWidth = 3*d; g.lineCap = "round"; g.strokeStyle = "#EEF0FF"; g.stroke();
+  }
   function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
     if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
-  const chAt = t => { if(!J) return -1; let k = 0; J.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
+  function bands(g, x, step, d, mid, a, lo, mi, hi, k){
+    g.fillStyle = css("--d-low");  let v = lo/255*a*k;     g.fillRect(x, mid - v, step - d*.5, v*2);
+    g.fillStyle = css("--d-mid");  v = mi/255*a*.78*k;     g.fillRect(x, mid - v, step - d*.5, v*2);
+    g.fillStyle = css("--d-high"); v = hi/255*a*.5*k;      g.fillRect(x, mid - v, step - d*.5, v*2);
+  }
   function paint(){
     const t = audio.currentTime || 0;
-    // the voice: the whole reading on one page, coloured by element, played part dimmed, the playhead walking across
     { const [w, h, d] = fit(vc), g = vc.getContext("2d"), strip = 16*d, mid = (h - strip)/2 + 6*d, a = mid - 22*d;
       g.clearRect(0, 0, w, h);
-      if(J){ const pps = w/J.dur, LOW = css("--d-low"), MID = css("--d-mid"), HIGH = css("--d-high"), step = 2*d;
-        J.chapters.forEach((c, i) => { const x0 = c.t*pps, x1 = (c.t + c.dur)*pps;
-          g.fillStyle = HUE[c.id]; g.globalAlpha = .07; g.fillRect(x0, 0, x1 - x0, h - strip);
+      if(V){ const pps = w/V.dur, step = 2*d;
+        V.chapters.forEach(c => { const x0 = c.t*pps, x1 = (c.t + c.dur)*pps, f = fillFor(g, c.id, x0, x1);
+          g.fillStyle = f; g.globalAlpha = .07; g.fillRect(x0, 0, x1 - x0, h - strip);
           g.globalAlpha = .95; g.fillRect(x0, h - strip, x1 - x0 - 2*d, strip); g.globalAlpha = .6; g.fillRect(x0, 0, d, h - strip);
           g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
           const lab = NAME[c.id].split(" · ")[0]; if(x1 - x0 > g.measureText(lab).width + 8*d) g.fillText(lab, x0 + 4*d, h - strip/2); });
         if(W){ const n = W.length/4;
           for(let x = 0; x < w; x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
             let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, W[k*4]); mi = Math.max(mi, W[k*4+1]); hi = Math.max(hi, W[k*4+2]); }
-            g.globalAlpha = x/pps < t ? .45 : 1;
-            g.fillStyle = LOW;  let v = lo/255*a;     g.fillRect(x, mid - v, step - d*.5, v*2);
-            g.fillStyle = MID;  v = mi/255*a*.78;     g.fillRect(x, mid - v, step - d*.5, v*2);
-            g.fillStyle = HIGH; v = hi/255*a*.5;      g.fillRect(x, mid - v, step - d*.5, v*2); }
+            g.globalAlpha = x/pps < t ? .45 : 1; bands(g, x, step, d, mid, a, lo, mi, hi, 1); }
           g.globalAlpha = 1; }
         g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
-    // the background: one lane under the voice, empty until the sounds for the elements are chosen
-    { const [w, h, d] = fit(bc), g = bc.getContext("2d"); g.clearRect(0, 0, w, h);
-      if(J){ const pps = w/J.dur;
-        J.chapters.forEach(c => { g.fillStyle = HUE[c.id]; g.globalAlpha = .12; g.fillRect(c.t*pps, 0, c.dur*pps - 2*d, h); });
-        g.globalAlpha = 1; g.fillStyle = "#9AA3C7"; g.font = (11*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle"; g.textAlign = "center";
-        g.fillText("THE SOUNDS UNDER EACH ELEMENT ARE COMING", w/2, h/2 + 4*d); g.textAlign = "left";
-        g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
+    // the two music decks: each song where it plays, its waveform shaped by the crossfade, in its element's colour
+    dc.forEach((c, n) => { const [w, h, d] = fit(c), g = c.getContext("2d"), mid = h/2 + 5*d, a = mid - 14*d, step = 2*d; g.clearRect(0, 0, w, h);
+      if(!V) return; const pps = w/V.dur;
+      V.chapters.forEach((ch, i) => { if(i % 2 !== n) return; const [s, e] = win(i), x0 = s*pps, x1 = e*pps, B = O && BW[key(ch.id)], L = B ? B.length/4 : 1;
+        g.fillStyle = fillFor(g, ch.id, x0, x1); g.globalAlpha = .1; g.fillRect(x0, 0, x1 - x0, h); g.globalAlpha = 1;
+        if(B) for(let x = Math.ceil(x0); x < x1; x += step){ const tt = x/pps, f = (Math.floor((tt - s)*RATE) % L)*4;
+          g.globalAlpha = tt < t ? .45 : 1; bands(g, x, step, d, mid, a, B[f], B[f+1], B[f+2], env(i, tt)); }
+        g.globalAlpha = 1; });
+      g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h);
+      let i = -1; V.chapters.forEach((ch, k) => { if(k % 2 === n){ const [s, e] = win(k); if(t >= s && t < e) i = k; } });
+      const P = i >= 0 && pc(V.chapters[i].id);
+      $(n ? "tBl" : "tAl").textContent = (n ? "DECK B" : "DECK A") + (P ? " · " + (P.song || O.name + " · " + (NAME[V.chapters[i].id].split(" · ")[1] || NAME[V.chapters[i].id])).toUpperCase() : ""); });
     $("tEl").textContent = mmss(t);
     const k = chAt(t);
-    if(k !== cur){ cur = k; const c = J && J.chapters[k], nx = J && J.chapters[k + 1];
-      $("tNow").textContent = c ? NAME[c.id] : "—"; $("tNow").style.setProperty("--c", c ? HUE[c.id] : "#FFD54A");
-      $("tNx").textContent = nx ? NAME[nx.id] : "END"; $("tNx").style.setProperty("--c", nx ? HUE[nx.id] : "#9AA3C7");
-      rungs.forEach((r, i) => r.classList.toggle("on", !audio.paused && k === i + 1)); }
+    if(k !== cur){ cur = k; const c = V && V.chapters[k], nx = V && V.chapters[k + 1];
+      const col = id => HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id];
+      $("tNow").textContent = c ? NAME[c.id] : "—"; $("tNow").style.setProperty("--c", c ? col(c.id) : "#FFD54A");
+      $("tNx").textContent = nx ? NAME[nx.id] : "END"; $("tNx").style.setProperty("--c", nx ? col(nx.id) : "#9AA3C7");
+      rungs.forEach((r, i) => { r.classList.toggle("on", !audio.paused && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); });
+      knob(); }
   }
-  function tick(){ paint(); if(!audio.paused) raf = requestAnimationFrame(tick); }
-  const go = k => { if(!J || !audio.src) return; k = Math.max(0, Math.min(J.chapters.length - 1, k)); audio.currentTime = J.chapters[k].t; cur = -1; if(audio.paused) audio.play(); else paint(); };
-  $("tPlay").addEventListener("click", () => { if(!audio.src) return; if(audio.paused) audio.play(); else audio.pause(); });
-  $("tPrev").addEventListener("click", () => { const k = chAt(audio.currentTime); go(audio.currentTime - J.chapters[k].t > 3 ? k : k - 1); });
+  function tick(){ mix(); paint(); if(!audio.paused) raf = requestAnimationFrame(tick); }
+  const go = k => { if(!V || !audio.src) return; k = Math.max(0, Math.min(V.chapters.length - 1, k)); audio.currentTime = V.chapters[k].t; cur = -1; if(audio.paused) start(); else { mix(); paint(); } };
+  $("tPlay").addEventListener("click", () => { if(audio.paused) start(); else audio.pause(); });
+  $("tPrev").addEventListener("click", () => { const k = chAt(audio.currentTime); go(audio.currentTime - V.chapters[k].t > 3 ? k : k - 1); });
   $("tNext").addEventListener("click", () => go(chAt(audio.currentTime) + 1));
-  vc.addEventListener("click", e => { if(!J) return; const r = vc.getBoundingClientRect(); audio.currentTime = (e.clientX - r.left)/r.width*J.dur; cur = -1; paint(); });
+  vc.addEventListener("click", e => { if(!V || !audio.src) return; const r = vc.getBoundingClientRect(); audio.currentTime = (e.clientX - r.left)/r.width*V.dur; cur = -1; mix(); paint(); });
   rungs.forEach(r => { const v = r.querySelector(".v[data-ch]"); if(v) v.addEventListener("click", () => go(+v.dataset.ch)); });
   audio.addEventListener("play", () => { $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); });
-  audio.addEventListener("pause", () => { $("tPlay").textContent = "▶"; cur = -1; paint(); });
-  audio.addEventListener("ended", () => { audio.currentTime = 0; cur = -1; paint(); });
+  audio.addEventListener("pause", () => { $("tPlay").textContent = "▶"; cur = -1; mix(); paint(); });
+  audio.addEventListener("ended", () => { audio.currentTime = 0; cur = -1; mix(); paint(); });
+  audio.addEventListener("timeupdate", () => { if(document.hidden) mix(); });     // the mix goes on when the screen is away
   document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && !audio.paused) audio.pause(); });
-  addEventListener("resize", paint);
+  // the knob: drag up or down, the wheel, the arrow keys; a double click goes back to -30 dB
+  let drag = null; const setDb = v => { db = Math.max(-60, Math.min(-10, v)); if(J) level(); else knob(); };
+  kc.addEventListener("pointerdown", e => { drag = [e.clientY, db]; kc.setPointerCapture(e.pointerId); });
+  kc.addEventListener("pointermove", e => { if(drag) setDb(drag[1] + (drag[0] - e.clientY)/3); });
+  kc.addEventListener("pointerup", () => drag = null);
+  kc.addEventListener("wheel", e => { e.preventDefault(); setDb(db + (e.deltaY < 0 ? 1 : -1)); }, {passive:false});
+  kc.addEventListener("keydown", e => { const k = {ArrowUp:1, ArrowRight:1, ArrowDown:-1, ArrowLeft:-1}[e.key]; if(k){ e.preventDefault(); setDb(db + k); } });
+  kc.addEventListener("dblclick", () => setDb(-30));
+  $("tLed").addEventListener("input", e => { led = e.target.value; $("tAuto").setAttribute("aria-pressed", "false"); knob(); });
+  $("tAuto").addEventListener("click", () => { led = null; $("tAuto").setAttribute("aria-pressed", "true"); knob(); });
+  addEventListener("resize", paint); knob();
 })();
 </script>
 <script src="https://speechifykeys.pages.dev/speechify-keys.js" defer></script>
