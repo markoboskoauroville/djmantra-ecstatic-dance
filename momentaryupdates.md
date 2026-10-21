@@ -828,3 +828,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
      cloned voice, plain English, 4:24, 15 generations placed on one Resolve timeline and exported by Resolve; both
      files byte for byte; tested. The song plays on alone after the voice, 4:24 → 5:59. Waits for Marko's listening
      (his temporary page), the download, and his "push main".
+     **Live:** page v56 on main 21.10.2026 (7497fbe, pushed by the Mac session on Marko's "yes, push main" there;
+     deploy green, checked from the cloud: label v56, voice v5 and song v5 served); download v5 on the Release.
