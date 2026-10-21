@@ -824,3 +824,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
      **Status:** tools/toning/readings/voice-v5.json (the plain English text, 3,384 characters); the note changed on
      the branch (HR and EN); build_v54.py takes voice v5 when it is there. The reading itself: the Mac, in Resolve
      (job 19).
+     **Built:** page v56 = toning song v5 + meditation voice v5 (on the branch): voice v5 (c1d8cd4) is Resolve's
+     cloned voice, plain English, 4:24, 15 generations placed on one Resolve timeline and exported by Resolve; both
+     files byte for byte; tested. The song plays on alone after the voice, 4:24 → 5:59. Waits for Marko's listening
+     (his temporary page), the download, and his "push main".

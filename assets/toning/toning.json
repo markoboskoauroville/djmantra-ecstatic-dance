@@ -1,9 +1,9 @@
 {
  "voice": {
   "name": "Meditation guide",
-  "src": "assets/toning/voice-v4.m4a",
-  "wave": "assets/toning/voice-v4.wave.bin",
-  "dur": 317.013,
+  "src": "assets/toning/voice-v5.m4a",
+  "wave": "assets/toning/voice-v5.wave.bin",
+  "dur": 263.765,
   "chapters": [
    {
     "id": "intro",
@@ -11,31 +11,31 @@
    },
    {
     "id": "a",
-    "t": 28.49
+    "t": 16.92
    },
    {
     "id": "u",
-    "t": 56.51
+    "t": 41.92
    },
    {
     "id": "i",
-    "t": 99.58
+    "t": 81.88
    },
    {
     "id": "o",
-    "t": 132.11
+    "t": 111.28
    },
    {
     "id": "ov",
-    "t": 164.04
+    "t": 140.76
    },
    {
     "id": "om",
-    "t": 248.36
+    "t": 217.36
    },
    {
     "id": "si",
-    "t": 284.83
+    "t": 247.8
    }
   ]
  },
@@ -47,8 +47,8 @@
   "dur": 359.631
  },
  "songLufs": -16.6,
- "voiceLufs": -32.6,
- "voicePeak": 0.2572,
+ "voiceLufs": -30.0,
+ "voicePeak": 0.3481,
  "download": {
   "url": "https://github.com/markoboskoauroville/djmantra-ecstatic-dance/releases/download/toning-meditation/dj-mantra-toning-meditation.m4a",
   "name": "DJ Mantra \u00b7 Toning meditation",
