@@ -463,4 +463,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
     middle point just below the belly. The text adds: water makes everything alive, on the earth everything grows,
     from grounding to creativity, creating life and everything. Each element resonates with that element in the earth:
     A connects with the earth of every continent; U vibrates with lakes, rivers, seas and clouds, wherever water is.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v42 (21.10.2026): rung U's place and text and rung A's continents, EN and HR. The page says
+    "the two pelvic bones that stick out" (Croatian "koščate izbočine zdjelice"), not the Latin term. Other elements wait for Marko's words.
