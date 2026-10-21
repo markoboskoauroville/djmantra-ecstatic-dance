@@ -453,3 +453,14 @@ Every request is saved here word for word before any code, so a quota cut loses 
     **Status:** done, v41 (21.10.2026): EN "Imagine roots growing from your feet, connecting you strongly to the earth,
     receiving its support and nutrients." HR "Zamislite korijenje koje raste iz vaših stopala i snažno vas povezuje sa
     zemljom, od koje primate podršku i hranjive tvari." Added after "weight dropping into the feet"; the rest of rung A unchanged.
+
+## v42 — requested 21.10.2026
+
+> now we're going to the second part: you creativity water. We focus in the middle of the pelvis? That's wrong. We don't focus in the middle of the pelvis. We are finding our pelvis bones. You need to let me know what is that the things which stick. What is the term which sticks? Just there is a belly button, and then left and right a little bit down. They are pelvis bones which stick. And then there is a middle point just below the belly where we focus for water creativity. U is the shape of the cup that holds the water. Correct. And water is what creates. Correct. You can add also to this description: water makes everything alive. When you put water on the earth, everything starts to grow. So from grounding to creativity, creating the life and creating everything. Next to each element we need to add also that we are resonating with elements in the earth itself. So for a grounding we add you get connected with the earth from every continent. For water you need to say we are vibrating in resonance with lakes, rivers, seas, and clouds, everywhere where water is
+
+63. Rung U (Creativity · Water): not "the middle of the pelvis"; we find the two pelvic bones that stick out left and
+    right a little below the belly button (the term: anterior superior iliac spine, the hip points) and focus on the
+    middle point just below the belly. The text adds: water makes everything alive, on the earth everything grows,
+    from grounding to creativity, creating life and everything. Each element resonates with that element in the earth:
+    A connects with the earth of every continent; U vibrates with lakes, rivers, seas and clouds, wherever water is.
+    **Status:** in progress (logged 21.10.2026).
