@@ -1,0 +1,48 @@
+{
+ "voice": "Hume AI \u00b7 Female Meditation Guide (Octave 1)",
+ "src": "assets/toning/toning.mp3",
+ "wave": "assets/toning/toning.wave.bin",
+ "dur": 292.68,
+ "chapters": [
+  {
+   "id": "intro",
+   "t": 0.0,
+   "dur": 16.152
+  },
+  {
+   "id": "a",
+   "t": 16.152,
+   "dur": 25.44
+  },
+  {
+   "id": "u",
+   "t": 41.592,
+   "dur": 43.032
+  },
+  {
+   "id": "i",
+   "t": 84.624,
+   "dur": 31.08
+  },
+  {
+   "id": "o",
+   "t": 115.704,
+   "dur": 29.16
+  },
+  {
+   "id": "ov",
+   "t": 144.864,
+   "dur": 92.784
+  },
+  {
+   "id": "om",
+   "t": 237.648,
+   "dur": 36.696
+  },
+  {
+   "id": "si",
+   "t": 274.344,
+   "dur": 18.336
+  }
+ ]
+}

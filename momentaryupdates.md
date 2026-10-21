@@ -517,13 +517,19 @@ Every request is saved here word for word before any code, so a quota cut loses 
 68. The toning section ("Vowels and elements", the voice opens the channels) gets an audio player: the ladder read
     aloud by a meditative voice from Hume AI's API (TTS). Croatian if Hume speaks it; if not, the English reading
     plays in both languages, untranslated.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v46 (21.10.2026): Hume has no Croatian (Octave 2: 11 languages, none South Slavic), so the English
+    reading plays in both languages. Voice: Female Meditation Guide (b270ea4b…), Octave 1 (Octave 2 refuses the acting
+    description), speed 0.9, 2 s after each rung, 21.10.2026; 8 readings, 4:52, Whisper heard them as written.
+    Hume ends its TTS API on 13.11.2026: the files live on the page, nothing calls Hume at play time.
+    tools/toning/build_toning.py, the sources in tools/toning/readings.
 
 > to play in audio, it's just for you users to close their eyes and press play. The player is similar to the rest of the page, my DJ player, same waveform visualization
 
 69. The toning reading is for closing the eyes and pressing play: one player in the style of the page's DJ player,
     with the same waveform visualisation.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v46: the Toning player in the DJ player's look: VOICE lane (the whole reading, 3-band waveform,
+    coloured by element, click to jump), BACKGROUND lane under it, ◀◀ ▶ ▶▶, NOW / NEXT; the rung being read lights up
+    and a rung's letter starts the reading there. The MP3 is fetched whole (no byte ranges on the site) so jumps land.
 
 > please go to the my noise page, and for each element you need to trigger embedded player to play also this as background sound for each of these elements, giving them a background sound. So there will be two players running simultaneously in synchronization, and there will be crossfade between sounds. So basically we are creating DJ session with my noise, but by having two my noise embedded sounds which are going to crossfade, and this Hume AI is playing constantly. And Automatic DJ is mixing the sound from my noises, of course Tibetan bowls you have there and other. So the Tibetan bowls should be for me and crystal balls if available for crown chakra and for grounding. Our drums for creativity, some kind of percussions from Middle East for energy, some percussions from Africa, and find suitable sounds and mix them automatically like Invisible DJ
 
@@ -531,4 +537,7 @@ Every request is saved here word for word before any code, so a quota cut loses 
     an automatic DJ crossfading between them as the reading moves from element to element. Tibetan bowls and crystal
     bowls (if there) for the crown and for grounding; drums for creativity; Middle Eastern percussion for energy
     (fire); African percussion; the other elements matched to suitable myNoise generators.
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** waiting for Marko. myNoise cannot be embedded (X-Frame-Options: SAMEORIGIN on every generator), and its
+    licensing page forbids recording: "resampling the generators' audio output are strictly forbidden", "myNoise sounds
+    are not traded for a credit". Marko answered "record through BlackHole and credit myNoise"; not done, because credit
+    does not license it. Options put to him: an embedded licence from myNoise (make an offer), his own recordings, CC0.
