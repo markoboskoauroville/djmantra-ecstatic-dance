@@ -484,4 +484,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
 65. Rung O (Love and compassion · Air): chest and heart area, the circle, we are all one, the sound widening in the
     chest and out into the room stay; added: the expansion of our capacity to love and accept everybody as they are,
     our family widening to the whole planet. Plus the resonance line (air's not given by Marko: the winds and the sky).
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v44 (21.10.2026): rung O extended in EN and HR; the air resonance line (the winds and the sky)
+    is Claude's proposal, waiting for Marko's word.
