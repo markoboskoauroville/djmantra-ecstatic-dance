@@ -474,4 +474,5 @@ Every request is saved here word for word before any code, so a quota cut loses 
     projected outwards, with fire we move through life and reach what we set out to reach, manifest our ambitions,
     function in this 3D world and get our goals done on time; a physical energy, a burning fire. Plus the resonance
     line request 63 asks for next to each element (fire's not given by Marko: the sun, volcanoes, the earth's core).
-    **Status:** in progress (logged 21.10.2026).
+    **Status:** done, v43 (21.10.2026): rung I rewritten in EN and HR; the fire resonance line (sun, volcanoes, the
+    glowing core) is Claude's proposal, waiting for Marko's word.
