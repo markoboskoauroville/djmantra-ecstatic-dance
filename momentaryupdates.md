@@ -878,4 +878,30 @@ Every request is saved here word for word before any code, so a quota cut loses 
 109. Marko's own six cuts (~/Desktop AAA, UUU, III, OOO, A-U-I-O, AUM .wav, 48 kHz 24-bit stereo; copied to
      tools/toning/suno/takes/stages-v8-marko on the Mac) replace the Mac's cuts. Each: its own Suno Cover (no lyrics
      written, Audio Influence 100 %), recorded through BlackHole his way, aligned to meditation voice v5 at the place it
-     has in his template, and published on the page (his word: fully automatic, publish). **Status:** in progress.
+     has in his template, and published on the page (his word: fully automatic, publish).
+
+> resolve is open now
+
+> So we are now back to the 3-channel player. But you need to understand one thing. We have 3 channels. So, but all 3 players working only on the transitions. Please save on power and processing power of the computer by running only 2 channels most of the time.
+
+> I am using DaVinci Resolve. Before recording, you need to stop DaVinci Resolve playing and then start recording because it will record also DaVinci Resolve.
+
+> There is a sequence where I, I was marking all the cuts, and these are the timing points. I was adding edit to the continuous recording. It's called Audio 2.
+
+> I am going to stop the DaVinci myself. You need to tell me I'm starting recording. When I say done, you start recording. I confirm I stopped DaVinci.
+
+> Please make sure the audio is not cut in, in and out. It needs to be fading in and fading out very slowly. You can make also slow loops if there are not enough material, but everything needs to be meditation and slow as, as the breathing of these LED lights. Everything breathes, everything is slow.
+
+> Please add the knobs also for mixing the background track so they slowly turn in and out. They don't need to actually modulate the sound, they just need to follow the sound envelope just to have some kind of visuals. And make them round, same as this knob which already exists. LED coming in and LEDs coming out as we mix, as we fade.
+
+     **Built: page v57 = toning song v8 + meditation voice v5.** His six cuts (timing points from his Resolve timeline
+     "Audio 2_001"), each a Suno Cover (only the vowel as lyrics; Audio Influence 100 %, Weirdness 0, Style 70 %, a quiet
+     Tibetan background choir under his voice, reverb and echo), two takes each, all twelve recorded whole through
+     BlackHole after his "done" (Resolve stopped): silence first, play, silence after. The take kept per stage follows
+     his cut more closely (align.json): A take 2, U 1, I 1, O 1, A-U-I-O 1, AUM 2; placed on the voice where his cut
+     sits. The player: the voice and two song decks taking turns, a stage fetched 6 s before it begins and let go when
+     played, so two files play most of the time and three only at a hand-over. Each stage swells in over 8 s from its
+     first sound and fades out over 8 s to its last (a breath curve, volume only); the stages overlap, so each hand-over
+     is a slow crossfade. No loops were needed: the only empty stretches are his own silences. Two round DECK dials
+     under BACKGROUND show each deck's fade with its element's LEDs. The download is the same mix (render_meditation.py).
+     Tested in Chrome (audio to BlackHole): decks in step with the voice within 0.15 s, U→I crossfade, deck released.

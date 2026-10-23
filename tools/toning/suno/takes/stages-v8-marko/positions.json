@@ -1,0 +1,38 @@
+[
+ {
+  "stage": "1-AAA",
+  "start_in_template": 18.894,
+  "length": 26.151,
+  "match": 1.0
+ },
+ {
+  "stage": "2-UUU",
+  "start_in_template": 45.045,
+  "length": 40.582,
+  "match": 1.0
+ },
+ {
+  "stage": "3-III",
+  "start_in_template": 85.627,
+  "length": 28.82,
+  "match": 0.991
+ },
+ {
+  "stage": "4-OOO",
+  "start_in_template": 114.448,
+  "length": 29.154,
+  "match": 0.995
+ },
+ {
+  "stage": "5-A-U-I-O",
+  "start_in_template": 143.602,
+  "length": 71.029,
+  "match": 0.991
+ },
+ {
+  "stage": "6-AUM",
+  "start_in_template": 224.349,
+  "length": 28.529,
+  "match": 1.0
+ }
+]

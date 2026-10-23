@@ -40,18 +40,79 @@
   ]
  },
  "song": {
-  "name": "Toning song v5",
-  "credit": "Toning A U I O, an original song by DJ Mantra (v5)",
-  "src": "assets/toning/song-v5.m4a",
-  "wave": "assets/toning/song-v5.wave.bin",
-  "dur": 359.631
+  "name": "Toning song v8",
+  "credit": "Toning A U I O by DJ Mantra (v8): his own voice in six stages, each with a quiet choir behind it",
+  "wave": "assets/toning/song-v8.wave.bin",
+  "dur": 257.28
  },
- "songLufs": -16.6,
+ "songLufs": -15.2,
  "voiceLufs": -30.0,
  "voicePeak": 0.3481,
  "download": {
   "url": "https://github.com/markoboskoauroville/djmantra-ecstatic-dance/releases/download/toning-meditation/dj-mantra-toning-meditation.m4a",
   "name": "DJ Mantra \u00b7 Toning meditation",
-  "dur": 359.6
- }
+  "dur": 263.8
+ },
+ "songs": [
+  {
+   "id": "a",
+   "name": "A \u00b7 take2",
+   "src": "assets/toning/song-v8-a.m4a",
+   "at": 11.705,
+   "dur": 34.017,
+   "in": 4.45,
+   "out": 31.45,
+   "r": 0.607
+  },
+  {
+   "id": "u",
+   "name": "U \u00b7 take1",
+   "src": "assets/toning/song-v8-u.m4a",
+   "at": 42.236,
+   "dur": 50.016,
+   "in": 3.25,
+   "out": 44.25,
+   "r": 0.408
+  },
+  {
+   "id": "i",
+   "name": "I \u00b7 take1",
+   "src": "assets/toning/song-v8-i.m4a",
+   "at": 81.228,
+   "dur": 38.011,
+   "in": 3.55,
+   "out": 32.75,
+   "r": 0.664
+  },
+  {
+   "id": "o",
+   "name": "O \u00b7 take1",
+   "src": "assets/toning/song-v8-o.m4a",
+   "at": 110.418,
+   "dur": 38.011,
+   "in": 3.5,
+   "out": 32.05,
+   "r": 0.633
+  },
+  {
+   "id": "ov",
+   "name": "A-U-I-O \u00b7 take1",
+   "src": "assets/toning/song-v8-ov.m4a",
+   "at": 140.323,
+   "dur": 77.021,
+   "in": 3.65,
+   "out": 71.0,
+   "r": 0.557
+  },
+  {
+   "id": "om",
+   "name": "AUM \u00b7 take2",
+   "src": "assets/toning/song-v8-om.m4a",
+   "at": 218.27,
+   "dur": 39.01,
+   "in": 3.3,
+   "out": 33.35,
+   "r": 0.787
+  }
+ ]
 }

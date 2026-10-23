@@ -8,3 +8,7 @@ tools/toning/suno/takes/*.wav
 
 # v52: the meditation to download goes up as a GitHub Release asset, not through Pages (over 25 MiB with longer readings)
 tools/toning/dj-mantra-toning-meditation.m4a
+
+# v57: every take and cut stays on the Mac (wav and the upload copies); their JSON (positions, alignment) is kept
+tools/toning/suno/takes/**/*.wav
+tools/toning/suno/takes/*.mp3

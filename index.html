@@ -513,6 +513,11 @@ footer a:hover{color:var(--amber)}
 .ton .knob input[type=color]::-webkit-color-swatch{border:0; border-radius:50%}
 .ton .knob .auto{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.12em; color:#9AA3C7; background:none; border:1px solid #2C3870; border-radius:10px; padding:3px 7px; cursor:pointer; margin-top:6px}
 .ton .knob .auto[aria-pressed="true"]{color:#1A1A1A; background:#FFD54A; border-color:#FFD54A}
+.ton .mix{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px}
+.ton .mix .knob{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
+.ton .mix .knob canvas{cursor:default}
+.ton .mix .kv b{font:500 15px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#EEF0FF); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ton .mix .kv small{font:500 11px "IBM Plex Mono",monospace; color:#9AA3C7}
 .ton .cr{font:500 11px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:12px 0 0; letter-spacing:.02em}
 @media (max-width:640px){ .ton .row{grid-template-columns:1fr 1fr} .ton .row .knob{grid-column:1 / -1; justify-content:center} }
 .rung{transition:background .6s}
@@ -984,6 +989,10 @@ footer a:hover{color:var(--amber)}
             <label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
             <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
       </div>
+      <div class="mix" aria-label="The two decks of the background, as they fade in and out">
+        <div class="knob"><canvas id="tD0" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 1</span><b id="tD0n">—</b><small id="tD0v">0 %</small></div></div>
+        <div class="knob"><canvas id="tD1" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 2</span><b id="tD1n">—</b><small id="tD1v">0 %</small></div></div>
+      </div>
       <p class="cr" id="tCr"></p>
     </div>
     <div class="ladder rv">
@@ -1104,7 +1113,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v56</p>
+    <p class="ver">v57</p>
   </div>
 </footer>
 
@@ -2354,6 +2363,13 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();
 (() => {
+  // v57: toning song v8 is six stage songs, each Marko's own voice for one stage with a quiet choir behind it (a
+  // Suno Cover of his cut, recorded whole), placed on the voice where his cut sits. Marko, 23.10.2026: "We have 3
+  // channels ... all 3 players working only on the transitions. Please save on power and processing power of the
+  // computer by running only 2 channels most of the time." So: the voice, and two song decks taking turns; a deck
+  // fetches its stage (1.4-3 MB) only a few seconds before the stage begins and lets it go when it has played, so
+  // most of the time two files play (the voice and one stage) and three only where one stage hands over to the next.
+  // The stage files are fetched whole (blobs), so a jump inside a stage needs no byte ranges.
   // v54: the toning player, two whole files played together (Marko, 21.10.2026: "Your audio editing is very bad. It
   // cuts, it drops. Also, the whole player is slow ... generate one whole block with only one prompt, one audio file
   // ... And the background music should be also only one piece. So we have 2 pieces. You don't edit anything. You
@@ -2375,14 +2391,22 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   const fillFor = (g, id, x0, x1) => { if(HUE[id] !== "rainbow") return HUE[id];
     const gr = g.createLinearGradient(x0, 0, x1, 0); RAINBOW.forEach((c, i) => gr.addColorStop(i/(RAINBOW.length - 1), c)); return gr; };
   const RATE = 25, XF = 6, vc = $("tVo"), mc = $("tMu"), kc = $("tKnob"), rungs = [...document.querySelectorAll(".ladder .rung")];
-  const voice = new Audio(), song = new Audio(); voice.preload = song.preload = "auto";
+  const voice = new Audio(); voice.preload = "auto";
+  const decks = [new Audio(), new Audio()], PRE = 6;          // two song decks; a stage is fetched PRE s before it begins
+  let SONGS = [], blobs = {}, deckOf = [null, null];          // deckOf[d] = the index of the stage deck d holds
+  // Marko, 23.10.2026: "It needs to be fading in and fading out very slowly ... slow as the breathing of these LED
+  // lights." Each stage swells in over FADE s from its first sound and fades out over FADE s to its last, on a
+  // raised-cosine curve like the ring's breath; only the deck's volume moves, the file stays as it is
+  const FADE = 8, dg = [null, null];
+  const breath = x => x <= 0 ? 0 : x >= 1 ? 1 : (1 - Math.cos(Math.PI*x))/2;
+  const envAt = (s, o) => Math.min(breath((o - s.in)/FADE), breath((s.out - o)/FADE));
   let J = null, V = null, S = null, W = null, SW = null, raf = 0, cur = -1, ctx = null, gain = null, vgain = null, db = -30, led = null, br = 1;
   let want = false, whole = null;                            // the visitor pressed play; the files loaded whole, for jumps
   const span = () => V ? Math.max(V.dur, S ? S.dur : 0) : 1;  // both lanes share one timeline
-  const now = () => Math.max(voice.currentTime || 0, song.currentTime || 0);
+  const now = () => voice.currentTime || 0;                   // the voice is the clock; the stages follow it
   fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
     J = j; V = j.voice; S = j.song;
-    voice.src = V.src; song.src = S.src;
+    voice.src = V.src; SONGS = j.songs || [];
     $("tVl").textContent = "VOICE · " + V.name.toUpperCase(); $("tMl").textContent = "MUSIC · " + S.name.toUpperCase();
     $("tDu").textContent = mmss(span()); $("tCr").textContent = "Music under the voice: " + S.credit;
     fetch(V.wave).then(r => r.arrayBuffer()).then(a => { W = new Uint8Array(a); paint(); });
@@ -2396,32 +2420,56 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     if(!J) return;
     if(!ctx){                                                 // the two volumes, made on the first press (browsers ask for a gesture)
       ctx = new (window.AudioContext || window.webkitAudioContext)(); gain = ctx.createGain(); vgain = ctx.createGain();
-      ctx.createMediaElementSource(song).connect(gain); gain.connect(ctx.destination);
+      decks.forEach((d, k) => { dg[k] = ctx.createGain(); dg[k].gain.value = 0; ctx.createMediaElementSource(d).connect(dg[k]); dg[k].connect(gain); });
+      gain.connect(ctx.destination);
       ctx.createMediaElementSource(voice).connect(vgain); vgain.connect(ctx.destination); level();
     }
     if(ctx.state === "suspended") ctx.resume();
-    want = true; $("tPlay").textContent = "❚❚"; sync();          // both from the same place, on the same press
+    want = true; $("tPlay").textContent = "❚❚"; sync(); place();  // the voice, and the stage of this moment
   }
-  function stop(){ want = false; voice.pause(); song.pause(); $("tPlay").textContent = "▶"; cur = -1; paint(); }
+  function stop(){ want = false; voice.pause(); decks.forEach(d => d.pause()); $("tPlay").textContent = "▶"; cur = -1; paint(); }
   // together: while one file waits for data the other holds, and both go on when both can; a file that has ended
   // (the song is shorter than the voice) no longer counts
-  const done = a => a.ended || a.currentTime >= (a === voice ? V.dur : S.dur) - .05;
+  const done = a => a.ended || a.currentTime >= V.dur - .05;
   function sync(){
-    if(!want || !J) return;
-    const ready = [voice, song].every(a => done(a) || a.readyState >= 3);
-    [voice, song].forEach(a => { if(done(a)) return; if(ready && a.paused) a.play().catch(() => {}); else if(!ready && !a.paused) a.pause(); });
+    if(!want || !J || done(voice)) return;
+    if(voice.readyState >= 3 && voice.paused) voice.play().catch(() => {}); else if(voice.readyState < 3 && !voice.paused) voice.pause();
   }
-  [voice, song].forEach(a => ["waiting", "canplay", "canplaythrough", "seeked", "stalled"].forEach(ev => a.addEventListener(ev, sync)));
+  ["waiting", "canplay", "canplaythrough", "seeked", "stalled"].forEach(ev => voice.addEventListener(ev, sync));
+  // the stages: which ones are due at t (from PRE s before their start to their end), each on its own deck
+  const blob = i => blobs[i] || (blobs[i] = fetch(SONGS[i].src).then(r => r.blob()).then(b => URL.createObjectURL(b)));
+  function place(){
+    if(!J || !SONGS.length) return;
+    const t = now(), live = voice.paused ? false : want;
+    const due = SONGS.map((s, i) => t >= s.at - PRE && t < s.at + s.dur ? i : -1).filter(i => i >= 0);
+    decks.forEach((d, k) => { const i = deckOf[k];                // a deck whose stage has played lets it go
+      if(i !== null && !due.includes(i)){ d.pause(); d.removeAttribute("src"); d.load(); deckOf[k] = null;
+        if(blobs[i]) blobs[i].then(u => URL.revokeObjectURL(u)); delete blobs[i]; } });
+    due.forEach(i => {
+      let k = deckOf.indexOf(i);
+      if(k < 0){ k = deckOf.indexOf(null); if(k < 0) return; deckOf[k] = i; const d = decks[k];
+        blob(i).then(u => { if(deckOf[k] !== i) return; d.src = u; d.addEventListener("loadedmetadata", place, {once:true}); }); return; }
+      const d = decks[k], s = SONGS[i], off = t - s.at;
+      if(!d.src || d.readyState < 1) return;
+      if(off < 0 || !live){ if(!d.paused) d.pause(); if(off < 0 && d.currentTime > .01) d.currentTime = 0; else if(off >= 0 && Math.abs(d.currentTime - off) > .25) d.currentTime = Math.min(off, s.dur); return; }
+      if(Math.abs(d.currentTime - off) > .25) d.currentTime = Math.min(off, s.dur);
+      if(dg[k]){ const g = dg[k].gain, c = ctx.currentTime; g.cancelScheduledValues(c); g.setValueAtTime(g.value, c);
+        g.linearRampToValueAtTime(envAt(s, off + .3), c + .3); }   // the breath, a step ahead of the clock
+      if(d.paused && off < s.dur - .05) d.play().catch(() => {});
+    });
+  }
+  T.player = {voice, decks, held: () => deckOf.slice(), gains: () => dg.map(g => g ? +g.gain.value.toFixed(3) : null), jump};   // for tests
+  voice.addEventListener("pause", () => decks.forEach(d => d.pause()));
+  voice.addEventListener("playing", place); voice.addEventListener("seeked", place);
   function jump(t){
-    // the site answers no byte ranges: load both files whole once, then both go to t together
-    if(!J) return; t = Math.max(0, Math.min(span() - .5, t)); const was = want || !voice.paused;
-    const go = () => { voice.currentTime = Math.min(t, V.dur); song.currentTime = Math.min(t, S.dur); cur = -1;
+    // the site answers no byte ranges: load the voice whole once, then it goes to t and the stages follow it
+    if(!J) return; t = Math.max(0, Math.min(V.dur - .5, t)); const was = want || !voice.paused;
+    const go = () => { voice.currentTime = t; cur = -1; place();
       if(was) start(); else paint(); };
     if(whole) return go();
     $("tEl").textContent = "…"; stop();
-    whole = Promise.all([V.src, S.src].map(u => fetch(u).then(r => r.blob()).then(b => URL.createObjectURL(b))))
-      .then(([v, s]) => { voice.src = v; song.src = s;
-        return Promise.all([voice, song].map(a => new Promise(ok => a.readyState >= 1 ? ok() : a.addEventListener("loadedmetadata", ok, {once:true})))); });
+    whole = fetch(V.src).then(r => r.blob()).then(b => { voice.src = URL.createObjectURL(b);
+        return new Promise(ok => voice.readyState >= 1 ? ok() : voice.addEventListener("loadedmetadata", ok, {once:true})); });
     whole.then(() => { whole = true; go(); });
   }
   const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
@@ -2436,19 +2484,14 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     $("tDbv").textContent = "−" + Math.abs(Math.round(db)) + " dB"; kc.setAttribute("aria-valuenow", String(Math.round(db))); knob(); };
   const rgb = h => [1, 3, 5].map(k => parseInt(h.slice(k, k + 2), 16));
   const ledOf = (id, i, N) => HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id];
-  function knob(){
-    // the filter knob of the DJ Mantra app with the OXI E16's ring: LEDs on a 270° arc, lit up to the value, in the
-    // element's colour (the throat runs the rainbow round the ring) or the colour picked; between two elements the
-    // colours blend over 6 s
-    const [w, h, d] = fit(kc), g = kc.getContext("2d"), cx = w/2, cy = h/2, R = Math.min(w, h)/2 - 5*d, N = 21, p = (db + 60)/50;
+  // the ring and the knob body, drawn the same for the BACKGROUND knob and the two deck dials: N LEDs on a 270° arc,
+  // lit up to p (0..1) in colAt(i, N), breathing with the ring
+  function dial(cv, p, colAt){
+    const [w, h, d] = fit(cv), g = cv.getContext("2d"), cx = w/2, cy = h/2, R = Math.min(w, h)/2 - 5*d, N = 21;
     g.clearRect(0, 0, w, h);
-    const t = now();
-    let mixw = V ? V.chapters.map((c, k) => [c.id, env(k, t)]).filter(m => m[1] > 0) : [];
-    if(!mixw.length) mixw = [[V ? V.chapters[Math.max(0, cur)].id : "a", 1]];
-    const sum = mixw.reduce((s, m) => s + m[1], 0);
     for(let i = 0; i < N; i++){
-      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R, lit = i/(N - 1) <= p + 1e-6;
-      const c = led || "rgb(" + mixw.reduce((o, [id, wt]) => rgb(ledOf(id, i, N)).map((v, k) => o[k] + v*wt/sum), [0, 0, 0]).map(Math.round).join(",") + ")";
+      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R, lit = i/(N - 1) <= p + 1e-6 && p > .001;
+      const c = colAt(i, N);
       g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.globalAlpha = lit ? .3 + .7*br : 1;
       g.fillStyle = lit ? c : "#1F2850"; g.shadowColor = c; g.shadowBlur = lit ? (2 + 10*br)*d : 0; g.fill();
     }
@@ -2457,6 +2500,28 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fillStyle = body; g.fill(); g.lineWidth = d; g.strokeStyle = "#2C3870"; g.stroke();
     const a = (135 + 270*p)*Math.PI/180; g.beginPath(); g.moveTo(cx + Math.cos(a)*r*.25, cy + Math.sin(a)*r*.25);
     g.lineTo(cx + Math.cos(a)*r*.85, cy + Math.sin(a)*r*.85); g.lineWidth = 3*d; g.lineCap = "round"; g.strokeStyle = "#EEF0FF"; g.stroke();
+  }
+  // Marko, 23.10.2026: "add the knobs also for mixing the background track so they slowly turn in and out. They don't
+  // need to actually modulate the sound, they just need to follow the sound envelope ... LED coming in and LEDs coming
+  // out as we mix, as we fade." Each deck's dial shows its stage's breath (the volume it plays at), in its colour
+  const dd = [$("tD0"), $("tD1")];
+  function decksDial(){
+    dd.forEach((cv, k) => { const i = deckOf[k], s = i !== null ? SONGS[i] : null;
+      const p = s && dg[k] ? Math.max(0, Math.min(1, dg[k].gain.value)) : 0, id = s ? s.id : null;
+      dial(cv, p, (n, N) => id ? ledOf(id, n, N) : "#1F2850");
+      const nm = $("tD" + k + "n"); nm.textContent = id ? NAME[id] : "—"; nm.style.setProperty("--c", id ? (HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id]) : "#9AA3C7");
+      $("tD" + k + "v").textContent = Math.round(p*100) + " %"; });
+  }
+  function knob(){
+    // the filter knob of the DJ Mantra app with the OXI E16's ring: LEDs on a 270° arc, lit up to the value, in the
+    // element's colour (the throat runs the rainbow round the ring) or the colour picked; between two elements the
+    // colours blend over 6 s
+    const p = (db + 60)/50, t = now();
+    let mixw = V ? V.chapters.map((c, k) => [c.id, env(k, t)]).filter(m => m[1] > 0) : [];
+    if(!mixw.length) mixw = [[V ? V.chapters[Math.max(0, cur)].id : "a", 1]];
+    const sum = mixw.reduce((s, m) => s + m[1], 0);
+    dial(kc, p, (i, N) => led || "rgb(" + mixw.reduce((o, [id, wt]) => rgb(ledOf(id, i, N)).map((v, k) => o[k] + v*wt/sum), [0, 0, 0]).map(Math.round).join(",") + ")");
+    decksDial();
   }
   function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
     if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
@@ -2496,7 +2561,8 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
       rungs.forEach((r, i) => { r.classList.toggle("on", want && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); });
       knob(); }
   }
-  function tick(){ paint(); if(still) knob(); if(want) raf = requestAnimationFrame(tick); }
+  let lastPlace = 0;
+  function tick(n){ paint(); if(still) knob(); if(!n || n - lastPlace > 250){ lastPlace = n || 0; place(); } if(want) raf = requestAnimationFrame(tick); }
   // the ring breathes while it is on screen: six breaths a minute, 4 s in and 6 s out, the pace that calms the
   // nervous system; with reduced motion asked for, it stays lit and only crossfades
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches; let seen = false, bRaf = 0;
@@ -2509,13 +2575,13 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   $("tNext").addEventListener("click", () => go(chAt(now()) + 1));
   vc.addEventListener("click", e => { if(!V) return; const r = vc.getBoundingClientRect(); jump((e.clientX - r.left)/r.width*span()); });
   rungs.forEach(r => { const v = r.querySelector(".v[data-ch]"); if(v) v.addEventListener("click", () => go(+v.dataset.ch)); });
-  [voice, song].forEach(a => a.addEventListener("play", () => {
-    $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); }));
-  const idle = () => { if((voice.paused || voice.ended) && (song.paused || song.ended)){
-    if(voice.ended && (song.ended || song.currentTime >= S.dur - .1)){ want = false; voice.currentTime = song.currentTime = 0; }
+  voice.addEventListener("play", () => {
+    $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); });
+  const idle = () => { if(voice.paused || voice.ended){
+    if(voice.ended){ want = false; voice.currentTime = 0; place(); }
     if(!want){ $("tPlay").textContent = "▶"; cur = -1; paint(); } } };
-  // the song ends before the voice: the voice goes on alone
-  [voice, song].forEach(a => { a.addEventListener("pause", idle); a.addEventListener("ended", idle); });
+  // the last stage (AUM) ends before the voice: the voice goes on alone to its end
+  voice.addEventListener("pause", idle); voice.addEventListener("ended", idle);
   document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && want) stop(); });
   // the knob: drag up or down, the wheel, the arrow keys; a double click goes back to -30 dB
   let drag = null; const setDb = v => { db = Math.max(-60, Math.min(-10, v)); level(); };

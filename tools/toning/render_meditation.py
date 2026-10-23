@@ -24,7 +24,19 @@ def dec(f, ch):
                                         capture_output=True, check=True).stdout, np.float32).reshape(-1, ch)
 
 J = json.load(open(A + '/toning.json')); V = J['voice']; S = J['song']
-voice = dec(R + '/' + V['src'], 2); song = dec(R + '/' + S['src'], 2)
+voice = dec(R + '/' + V['src'], 2)
+if 'songs' in J:
+    # v57: the six stage songs, each whole, each at its second on the voice as the page plays them
+    song = np.zeros((int(round(S['dur'] * SR)) + SR, 2), np.float32)
+    for st in J['songs']:
+        x = dec(R + '/' + st['src'], 2); s0 = int(round(st['at'] * SR))
+        # the page's breath: in over 8 s from the first sound, out over 8 s to the last (index.html, envAt)
+        o = np.arange(len(x)) / SR; br = lambda v: (1 - np.cos(np.pi * np.clip(v, 0, 1))) / 2
+        x = x * np.minimum(br((o - st['in']) / 8), br((st['out'] - o) / 8))[:, None]
+        if s0 + len(x) > len(song): song = np.vstack([song, np.zeros((s0 + len(x) - len(song), 2), np.float32)])
+        song[s0:s0 + len(x)] += x
+else:
+    song = dec(R + '/' + S['src'], 2)
 n = max(len(voice), len(song)); mix = np.zeros((n, 2), np.float32)
 vdb = min(-16 - J['voiceLufs'], 20 * np.log10(.95 / J['voicePeak']))       # the page's volumes (index.html, level())
 mix[:len(voice)] += voice * 10 ** (vdb / 20)
