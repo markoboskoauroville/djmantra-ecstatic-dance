@@ -840,3 +840,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
      Tibetan male choir only, a cappella, strong voices, church reverb; the timing and the pronunciation of the template
      kept; recorded through BlackHole with sox.
      **Status:** in progress (the Mac).
+
+> very important to have good timings, but you don't adjust timings. You need to give Suno a prompt to have silence between vowels and sounds. There should be silence so I can edit manually inside my application
+
+> if audio fits with voiceover, publish it on a website
+
+> if it doesn't fit, let me edit it manually and don't publish anything until i give you background
