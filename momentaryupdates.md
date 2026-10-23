@@ -864,3 +864,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
 107. Toning song v7 stopped and discarded (the recording of one take stopped midway, set aside in takes/discarded-v7 on
      the Mac). Nothing published; the Resolve timeline "Yoga For Healers (Thai Massage) V2" is there with his template
      still on A2, waiting. **Waiting for Marko.**
+
+> Please cut my voice to different stages of the meditation. So each vowel has its own file and it has its own audio from the Suno. So every stage we have, first stage, A, then U, then I, then O, then combination of these. and Om for the end, each needs to be separate file and separate Suno song. And don't write any lyrics inside, just let it follow the audio 100%, add reverb, echo, and the quiet following Tibetan voices in the background singing. That's all, like a background choir, but I must be loudest one.
+
+108. Toning song v8: the template cut at its silences into six stage files (A, U, I, O, A-U-I-O, AUM), each its own
+     Suno Cover with no lyrics written, Audio Influence 100 %, a quiet Tibetan background choir under his voice (his
+     the loudest), reverb and echo; each recorded through BlackHole his way. **Status:** in progress (the Mac).
