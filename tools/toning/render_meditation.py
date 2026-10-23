@@ -11,7 +11,13 @@ On the Mac it encodes with Apple's aac_at, CBR, a true 320 kbps; ffmpeg's own aa
 mix (measured 21.10.2026), so the file to publish is made on the Mac. The file stays out of git (.gitignore): the
 deploy publishes the whole repository, and a Pages file may be 25 MiB at most.
 
-Run from anywhere: python3 tools/toning/render_meditation.py [--upload]   (--upload needs gh, logged in)"""
+v58 (Marko, 23.10.2026: "premix the audio with background ... everything is only one file, stereo file, one file
+optimized for streaming ... so it can work on slow connection and not on weak computers and phones"): --stream also
+writes the same mix as the page's one file, assets/toning/meditation-mix.m4a, AAC 128 kbps stereo with faststart
+(about 4 MB; plays on a slow connection, 16 KB/s; the 320 kbps download stays the Release asset), and points
+toning.json's "mix" at it. --no-download skips the 320 kbps file (the cloud makes only the stream).
+
+Run from anywhere: python3 tools/toning/render_meditation.py [--upload] [--stream] [--no-download]"""
 import json, os, shutil, subprocess, sys, numpy as np
 R = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 A = R + '/assets/toning'
@@ -43,6 +49,16 @@ mix[:len(voice)] += voice * 10 ** (vdb / 20)
 mix[:len(song)] += song * 10 ** ((J['voiceLufs'] + vdb - 14 + (DB + 30) - J['songLufs']) / 20)
 pk = np.abs(mix).max()
 if pk > .98: mix *= .98 / pk
+if '--stream' in sys.argv:
+    MIX = A + '/meditation-mix.m4a'; raw = MIX + '.f32'; mix.astype(np.float32).tofile(raw)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-f', 'f32le', '-ar', str(SR), '-ac', '2', '-i', raw,
+                    '-metadata', 'title=Toning · The voice opens the channels', '-metadata', 'artist=DJ Mantra',
+                    '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-movflags', '+faststart', MIX], check=True)
+    os.remove(raw)
+    J['mix'] = {'src': 'assets/toning/meditation-mix.m4a', 'dur': round(n / SR, 3), 'kbps': 128}
+    json.dump(J, open(A + '/toning.json', 'w'), indent=1)
+    print(f'{MIX}: {n/SR:.1f} s, {os.path.getsize(MIX)/2**20:.1f} MiB')
+    if '--no-download' in sys.argv: sys.exit(0)
 ENC = (['-c:a', 'aac_at', '-b:a', '320k', '-aac_at_mode', 'cbr'] if 'aac_at' in subprocess.run(['ffmpeg', '-hide_banner', '-encoders'],
        capture_output=True, text=True).stdout else ['-c:a', 'aac', '-b:a', '320k'])
 raw = OUT + '.f32'; mix.astype(np.float32).tofile(raw)

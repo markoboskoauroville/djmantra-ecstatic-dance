@@ -114,5 +114,10 @@
    "out": 33.35,
    "r": 0.787
   }
- ]
+ ],
+ "mix": {
+  "src": "assets/toning/meditation-mix.m4a",
+  "dur": 263.785,
+  "kbps": 128
+ }
 }

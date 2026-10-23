@@ -917,3 +917,18 @@ Every request is saved here word for word before any code, so a quota cut loses 
      does not report during a ramp), do not breathe (the master still does), and light the next LED gradually, so the
      ring grows and shrinks smoothly; the decks' volume follows the curve with setTargetAtTime. Tested: 0 → 47 % in
      3.4 s in steps of 1–4 %. **Live (v57).**
+
+## v58 — requested 23.10.2026
+
+> Please update this. My LEDs are cut out. See, the glowing has lines because its image is not fully transparent or some issue. Also, premix the audio with background. Remove background leveling. And moving of the knobs is only for decoration. They don't do anything to sound actually. Sound is premixed and numbers are following premixed sound. to save on the processing power, internet power, and other bugs happening with this complex kind of playing in the browser. So you need to animate one picture over the other, which is always fixed picture. Line is following the voice, but the voice is premixed. So please optimize everything so it can work on slow connection and not on weak computers and phones. Only 2 knobs. which are kind of virtually mixing the background, but everything is only one file, stereo file, one file optimized for streaming.
+
+112. Page v58: one premixed stereo file, pictures that do not redraw, two decorative knobs, the LEDs' glow whole.
+     **Status:** built (the cloud): assets/toning/meditation-mix.m4a = the voice and the six stage songs mixed exactly
+     as v57 played them and as the download is (render_meditation.py --stream), AAC 128 kbps stereo with faststart, 4.0
+     MB, 4:23: it streams on a 16 KB/s connection (the 320 kbps download stays). One `<audio>`, nothing fetched before
+     play (only the data and the two waveform pictures, 50 KB), no Web Audio, no decks, no volumes; a jump loads the
+     4 MB once. Each waveform is drawn once (again only on a resize); playing moves only the playhead and the shade
+     over what has played (CSS transforms). DECK 1 / DECK 2 show each stage's breath curve at the file's time (15 fps,
+     nothing drawn when nothing changes); MASTER and its leveling removed; the LED colour picker stays. The LEDs' glow
+     was clipped by the edge of its canvas (the ring 5 px from the edge, the glow up to 12 px): the ring now sits
+     inside by the glow's width. Tested (desktop and a 390 px phone, 2x): play, jump to U (deck 2 at 100 %), pause.

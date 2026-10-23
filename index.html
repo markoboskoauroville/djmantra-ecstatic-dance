@@ -491,7 +491,7 @@ footer a:hover{color:var(--amber)}
 .ton .lane{position:relative}
 .ton .lane .lbl{position:absolute; left:10px; top:7px; pointer-events:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 20px)}
 .ton canvas.ln{display:block; width:100%; height:132px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
-.ton canvas.dk{height:58px; margin-top:6px}
+.ton canvas.dk{height:58px}
 .ton .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
 .ton .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
 .ton .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
@@ -505,7 +505,13 @@ footer a:hover{color:var(--amber)}
 .ton .row b{display:block; font:500 17px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .ton .row .nxt{text-align:right}
 .ton .knob{display:flex; align-items:center; gap:10px}
-.ton .knob canvas{width:84px; height:84px; cursor:ns-resize; touch-action:none; flex:none}
+.ton .knob canvas{width:100px; height:100px; flex:none}
+/* v58: over each fixed waveform picture only two thin layers move, the shade over what has played and the playhead */
+.ton .lane{overflow:hidden; border-radius:10px}
+.ton .lane + .lane{margin-top:6px}
+.ton .lane .pl, .ton .lane .ph{position:absolute; top:0; bottom:0; left:0; pointer-events:none; will-change:transform}
+.ton .lane .pl{width:100%; background:rgba(7,11,28,.55); transform-origin:0 0; transform:scaleX(0)}
+.ton .lane .ph{width:2px; background:#FFD54A}
 .ton .knob .kv b{font-size:15px; color:#EEF0FF}
 .ton .knob .kv label{display:flex; align-items:center; gap:6px; margin-top:6px; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.14em; color:#9AA3C7; cursor:pointer}
 .ton .knob input[type=color]{width:22px; height:22px; padding:0; border:1px solid #2C3870; border-radius:50%; background:none; cursor:pointer}
@@ -515,14 +521,14 @@ footer a:hover{color:var(--amber)}
 .ton .knob .auto[aria-pressed="true"]{color:#1A1A1A; background:#FFD54A; border-color:#FFD54A}
 .ton .mix{display:flex; justify-content:center; align-items:flex-start; gap:36px; margin-top:10px; background:#151C3D; border-radius:12px; padding:16px 12px 14px}
 .ton .mix .knob{flex-direction:column; gap:8px; width:128px; text-align:center}
-.ton .mix .knob canvas{width:96px; height:96px; cursor:default}
-.ton .mix .knob.master canvas{cursor:ns-resize}
+.ton .mix .knob canvas{width:112px; height:112px; cursor:default}
+.ton .mix .knob.leds{width:auto; align-self:center}
+.ton .mix .knob.leds label{margin-top:0}
 .ton .mix .kv{display:flex; flex-direction:column; align-items:center}
 .ton .mix .kv b{font:500 13px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#EEF0FF); display:block; max-width:128px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.ton .mix .knob.master .kv b{color:#EEF0FF}
 .ton .mix .kv small{font:500 11px "IBM Plex Mono",monospace; color:#9AA3C7}
 .ton .cr{font:500 11px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:12px 0 0; letter-spacing:.02em}
-@media (max-width:640px){ .ton .mix{gap:6px; padding:12px 4px} .ton .mix .knob{width:31%} .ton .mix .knob canvas{width:76px; height:76px} .ton .mix .kv b{font-size:11px; max-width:100%} }
+@media (max-width:640px){ .ton .mix{gap:6px; padding:12px 4px} .ton .mix .knob{width:38%} .ton .mix .knob.leds{width:auto} .ton .mix .knob canvas{width:96px; height:96px} .ton .mix .kv b{font-size:11px; max-width:100%} }
 .rung{transition:background .6s}
 .rung.on{background:linear-gradient(90deg, color-mix(in srgb, var(--rc, #e0a257) 14%, transparent), transparent 70%)}
 .rung.on .v{text-shadow:0 0 18px var(--rc, rgba(224,162,87,.6))}
@@ -975,8 +981,8 @@ footer a:hover{color:var(--amber)}
     </div>
     <div class="ton rv" id="ton" aria-label="Toning reading">
       <p class="lead" data-i18n="ton.l">Zatvori oči i pritisni play. Glas te vodi kroz cijelu ljestvicu, od zemlje do tišine. Čita na engleskom.</p>
-      <div class="lane"><canvas id="tVo" class="ln" aria-label="The voice: click to jump"></canvas><span class="lbl" id="tVl">VOICE</span></div>
-      <div class="lane"><canvas id="tMu" class="ln dk" aria-label="The music"></canvas><span class="lbl" id="tMl">MUSIC</span></div>
+      <div class="lane"><canvas id="tVo" class="ln" aria-label="The voice: click to jump"></canvas><i class="pl"></i><i class="ph"></i><span class="lbl" id="tVl">VOICE</span></div>
+      <div class="lane"><canvas id="tMu" class="ln dk" aria-label="The music"></canvas><i class="pl"></i><i class="ph"></i><span class="lbl" id="tMl">MUSIC</span></div>
       <div class="ctl">
         <button type="button" id="tPrev" aria-label="Previous element">◀◀</button>
         <button type="button" id="tPlay" class="play" aria-label="Play">▶</button>
@@ -990,13 +996,13 @@ footer a:hover{color:var(--amber)}
       </div>
       <!-- Marko, 23.10.2026: "Deck 1, Deck 2, and the master. Please put all these knobs next to each other ... align it
            to the middle ... imagine DJ mixer with round knobs." -->
-      <div class="mix" aria-label="The mixer: the two decks of the background as they fade, and the master level">
+      <!-- v58 (Marko, 23.10.2026): "Only 2 knobs. which are kind of virtually mixing the background, but everything is
+           only one file": the dials show the mix, they do not change the sound. -->
+      <div class="mix" aria-label="The two decks of the background as they were mixed">
         <div class="knob"><canvas id="tD0" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 1</span><b id="tD0n">—</b><small id="tD0v">0 %</small></div></div>
         <div class="knob"><canvas id="tD1" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 2</span><b id="tD1n">—</b><small id="tD1v">0 %</small></div></div>
-        <div class="knob master"><canvas id="tKnob" tabindex="0" role="slider" aria-label="Background level" title="The ring breathes six times a minute: breathe with it" aria-valuemin="-60" aria-valuemax="-10"></canvas>
-          <div class="kv"><span class="lbl">MASTER</span><b id="tDbv">−30 dB</b>
-            <label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
-            <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
+        <div class="knob leds"><div class="kv"><label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
+          <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
       </div>
       <p class="cr" id="tCr"></p>
     </div>
@@ -1118,7 +1124,7 @@ footer a:hover{color:var(--amber)}
 <footer>
   <div class="wrap">
     <p data-i18n-html="ft">DJ Mantra · Mantreshwar · Marko Boško · Zagreb i Auroville<br>marko.bosko@auroville.community</p>
-    <p class="ver">v57</p>
+    <p class="ver">v58</p>
   </div>
 </footer>
 
@@ -2368,22 +2374,19 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();
 (() => {
-  // v57: toning song v8 is six stage songs, each Marko's own voice for one stage with a quiet choir behind it (a
-  // Suno Cover of his cut, recorded whole), placed on the voice where his cut sits. Marko, 23.10.2026: "We have 3
-  // channels ... all 3 players working only on the transitions. Please save on power and processing power of the
-  // computer by running only 2 channels most of the time." So: the voice, and two song decks taking turns; a deck
-  // fetches its stage (1.4-3 MB) only a few seconds before the stage begins and lets it go when it has played, so
-  // most of the time two files play (the voice and one stage) and three only where one stage hands over to the next.
-  // The stage files are fetched whole (blobs), so a jump inside a stage needs no byte ranges.
-  // v54: the toning player, two whole files played together (Marko, 21.10.2026: "Your audio editing is very bad. It
-  // cuts, it drops. Also, the whole player is slow ... generate one whole block with only one prompt, one audio file
-  // ... And the background music should be also only one piece. So we have 2 pieces. You don't edit anything. You
-  // just play both files at the same time in the web interface."). The voice (one Hume reading) and the song (toning
-  // song v2) start on the same press, each plays once, untouched; the BACKGROUND knob is only the song's gain.
-  // They stream from the first byte, so play starts at once; the site answers no byte ranges (v34), so a jump (a rung,
-  // the waveform, ◀◀ ▶▶) first loads both files whole, then both jump together.
-  // The chapters (the rungs' start times in the voice) only light the ladder, the NOW / NEXT and the knob's colour.
-  // The LED ring keeps v48: the element's colour blending into the next over 6 s, breathing six times a minute.
+  // v58: the toning player plays ONE file (Marko, 23.10.2026: "premix the audio with background. Remove background
+  // leveling. And moving of the knobs is only for decoration ... Sound is premixed and numbers are following premixed
+  // sound. to save on the processing power, internet power, and other bugs happening with this complex kind of playing
+  // in the browser. So you need to animate one picture over the other, which is always fixed picture. Line is
+  // following the voice, but the voice is premixed. ... Only 2 knobs ... everything is only one file, stereo file, one
+  // file optimized for streaming.")
+  // - The sound: assets/toning/meditation-mix.m4a, the voice and the six stage songs already mixed (the same mix as the
+  //   download, tools/toning/render_meditation.py --stream), AAC 128 kbps, streamed from the first byte; no Web Audio,
+  //   no decks, no volumes in the browser. The site answers no byte ranges, so a jump loads the file whole once (4 MB).
+  // - The pictures: each lane's waveform is drawn once (and again only when the page is resized); while it plays only
+  //   two thin layers move over it, the playhead and the shade over what has played (CSS transforms, no redrawing).
+  // - The two DECK dials only show the fade of the stage each deck "holds" (stages taking turns, as mixed), read from
+  //   the same breath curve the mix was made with, at the file's time; redrawn 15 times a second while playing.
   // Colours: MANTRA_MANIFEST modules/chakra-colors.md.
   const T = document.getElementById("ton"); if(!T) return;
   const $ = id => document.getElementById(id);
@@ -2393,146 +2396,28 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   // Marko's chakra colours: gold, milky white, crimson, green, the rainbow, white, white
   const RAINBOW = ["#C8102E", "#FF8A2B", "#E9C84A", "#2FB45A", "#38B6EC", "#5AA2F0", "#9F7AE0"];
   const HUE = {intro:"#8A8198", a:"#D4AF37", u:"#F3EEE2", i:"#C8102E", o:"#2FB45A", ov:"rainbow", om:"#FFFFFF", si:"#FFFFFF"};
+  const col = id => HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id];
   const fillFor = (g, id, x0, x1) => { if(HUE[id] !== "rainbow") return HUE[id];
     const gr = g.createLinearGradient(x0, 0, x1, 0); RAINBOW.forEach((c, i) => gr.addColorStop(i/(RAINBOW.length - 1), c)); return gr; };
-  const RATE = 25, XF = 6, vc = $("tVo"), mc = $("tMu"), kc = $("tKnob"), rungs = [...document.querySelectorAll(".ladder .rung")];
-  const voice = new Audio(); voice.preload = "auto";
-  const decks = [new Audio(), new Audio()], PRE = 6;          // two song decks; a stage is fetched PRE s before it begins
-  let SONGS = [], blobs = {}, deckOf = [null, null];          // deckOf[d] = the index of the stage deck d holds
-  // Marko, 23.10.2026: "It needs to be fading in and fading out very slowly ... slow as the breathing of these LED
-  // lights." Each stage swells in over FADE s from its first sound and fades out over FADE s to its last, on a
-  // raised-cosine curve like the ring's breath; only the deck's volume moves, the file stays as it is
-  const FADE = 8, dg = [null, null];
-  const breath = x => x <= 0 ? 0 : x >= 1 ? 1 : (1 - Math.cos(Math.PI*x))/2;
+  const RATE = 25, vc = $("tVo"), mc = $("tMu"), rungs = [...document.querySelectorAll(".ladder .rung")];
+  const lanes = [...T.querySelectorAll(".lane")], heads = lanes.map(l => l.querySelector(".ph")), shades = lanes.map(l => l.querySelector(".pl"));
+  const audio = new Audio(); audio.preload = "none";         // nothing is fetched before play is pressed
+  // the breath each stage was mixed with: in over FADE s from its first sound, out over FADE s to its last
+  const FADE = 8, breath = x => x <= 0 ? 0 : x >= 1 ? 1 : (1 - Math.cos(Math.PI*x))/2;
   const envAt = (s, o) => Math.min(breath((o - s.in)/FADE), breath((s.out - o)/FADE));
-  let J = null, V = null, S = null, W = null, SW = null, raf = 0, cur = -1, ctx = null, gain = null, vgain = null, db = -30, led = null, br = 1;
-  let want = false, whole = null;                            // the visitor pressed play; the files loaded whole, for jumps
-  const span = () => V ? Math.max(V.dur, S ? S.dur : 0) : 1;  // both lanes share one timeline
-  const now = () => voice.currentTime || 0;                   // the voice is the clock; the stages follow it
+  let J = null, V = null, S = null, M = null, W = null, SW = null, SONGS = [], cur = -1, led = null, raf = 0, whole = null, want = false;
+  const span = () => M ? M.dur : 1, now = () => audio.currentTime || 0;
   fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
-    J = j; V = j.voice; S = j.song;
-    voice.src = V.src; SONGS = j.songs || [];
+    J = j; V = j.voice; S = j.song; M = j.mix; SONGS = j.songs || [];
+    audio.src = M.src;
     $("tVl").textContent = "VOICE · " + V.name.toUpperCase(); $("tMl").textContent = "MUSIC · " + S.name.toUpperCase();
     $("tDu").textContent = mmss(span()); $("tCr").textContent = "Music under the voice: " + S.credit;
-    fetch(V.wave).then(r => r.arrayBuffer()).then(a => { W = new Uint8Array(a); paint(); });
-    fetch(S.wave).then(r => r.arrayBuffer()).then(a => { SW = new Uint8Array(a); paint(); });
-    // the whole meditation, the voice and the music mixed as heard, as one file (Marko: "give option to download the
-    // audio for this vocal meditation"); a GitHub Release asset, over the 25 MiB a Pages file may be
+    fetch(V.wave).then(r => r.arrayBuffer()).then(a => { W = new Uint8Array(a); draw(); });
+    fetch(S.wave).then(r => r.arrayBuffer()).then(a => { SW = new Uint8Array(a); draw(); });
+    // the whole meditation as one file to keep (AAC 320 kbps, a GitHub Release asset)
     if(j.download){ const a = $("tDl"); a.href = j.download.url; a.title = j.download.name + " · " + mmss(j.download.dur) + " · AAC 320 kbps"; a.hidden = false; }
-    level(); paint();
+    draw(); frame();
   });
-  function start(){
-    if(!J) return;
-    if(!ctx){                                                 // the two volumes, made on the first press (browsers ask for a gesture)
-      ctx = new (window.AudioContext || window.webkitAudioContext)(); gain = ctx.createGain(); vgain = ctx.createGain();
-      decks.forEach((d, k) => { dg[k] = ctx.createGain(); dg[k].gain.value = 0; ctx.createMediaElementSource(d).connect(dg[k]); dg[k].connect(gain); });
-      gain.connect(ctx.destination);
-      ctx.createMediaElementSource(voice).connect(vgain); vgain.connect(ctx.destination); level();
-    }
-    if(ctx.state === "suspended") ctx.resume();
-    want = true; $("tPlay").textContent = "❚❚"; sync(); place();  // the voice, and the stage of this moment
-  }
-  function stop(){ want = false; voice.pause(); decks.forEach(d => d.pause()); $("tPlay").textContent = "▶"; cur = -1; paint(); }
-  // together: while one file waits for data the other holds, and both go on when both can; a file that has ended
-  // (the song is shorter than the voice) no longer counts
-  const done = a => a.ended || a.currentTime >= V.dur - .05;
-  function sync(){
-    if(!want || !J || done(voice)) return;
-    if(voice.readyState >= 3 && voice.paused) voice.play().catch(() => {}); else if(voice.readyState < 3 && !voice.paused) voice.pause();
-  }
-  ["waiting", "canplay", "canplaythrough", "seeked", "stalled"].forEach(ev => voice.addEventListener(ev, sync));
-  // the stages: which ones are due at t (from PRE s before their start to their end), each on its own deck
-  const blob = i => blobs[i] || (blobs[i] = fetch(SONGS[i].src).then(r => r.blob()).then(b => URL.createObjectURL(b)));
-  function place(){
-    if(!J || !SONGS.length) return;
-    const t = now(), live = voice.paused ? false : want;
-    const due = SONGS.map((s, i) => t >= s.at - PRE && t < s.at + s.dur ? i : -1).filter(i => i >= 0);
-    decks.forEach((d, k) => { const i = deckOf[k];                // a deck whose stage has played lets it go
-      if(i !== null && !due.includes(i)){ d.pause(); d.removeAttribute("src"); d.load(); deckOf[k] = null;
-        if(blobs[i]) blobs[i].then(u => URL.revokeObjectURL(u)); delete blobs[i]; } });
-    due.forEach(i => {
-      let k = deckOf.indexOf(i);
-      if(k < 0){ k = deckOf.indexOf(null); if(k < 0) return; deckOf[k] = i; const d = decks[k];
-        blob(i).then(u => { if(deckOf[k] !== i) return; d.src = u; d.addEventListener("loadedmetadata", place, {once:true}); }); return; }
-      const d = decks[k], s = SONGS[i], off = t - s.at;
-      if(!d.src || d.readyState < 1) return;
-      if(off < 0 || !live){ if(!d.paused) d.pause(); if(off < 0 && d.currentTime > .01) d.currentTime = 0; else if(off >= 0 && Math.abs(d.currentTime - off) > .25) d.currentTime = Math.min(off, s.dur); return; }
-      if(Math.abs(d.currentTime - off) > .25) d.currentTime = Math.min(off, s.dur);
-      if(dg[k]) dg[k].gain.setTargetAtTime(envAt(s, off), ctx.currentTime, .12);   // the breath, followed smoothly
-      if(d.paused && off < s.dur - .05) d.play().catch(() => {});
-    });
-  }
-  T.player = {voice, decks, held: () => deckOf.slice(), gains: () => dg.map(g => g ? +g.gain.value.toFixed(3) : null), jump};   // for tests
-  voice.addEventListener("pause", () => decks.forEach(d => d.pause()));
-  voice.addEventListener("playing", place); voice.addEventListener("seeked", place);
-  function jump(t){
-    // the site answers no byte ranges: load the voice whole once, then it goes to t and the stages follow it
-    if(!J) return; t = Math.max(0, Math.min(V.dur - .5, t)); const was = want || !voice.paused;
-    const go = () => { voice.currentTime = t; cur = -1; place();
-      if(was) start(); else paint(); };
-    if(whole) return go();
-    $("tEl").textContent = "…"; stop();
-    whole = fetch(V.src).then(r => r.blob()).then(b => { voice.src = URL.createObjectURL(b);
-        return new Promise(ok => voice.readyState >= 1 ? ok() : voice.addEventListener("loadedmetadata", ok, {once:true})); });
-    whole.then(() => { whole = true; go(); });
-  }
-  const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
-  // an element's colour on the clock: in 3 s before its rung, out 3 s after the next begins (the LED ring's blend)
-  const env = (i, t) => { const c = V.chapters[i], n = V.chapters[i + 1], s = i ? c.t - XF/2 : 0, e = n ? n.t + XF/2 : span();
-    if(t < s || t >= e) return 0; return Math.min(1, i ? (t - s)/XF : 1, n ? (e - t)/XF : 1); };
-  // the files are untouched; only their volumes: Hume reads quietly (about -32 LUFS), so the voice is raised towards
-  // -16 LUFS as far as its peak allows without clipping, and the song sits 14 dB under the voice at the knob's -30 dB
-  const vdb = () => Math.min(-16 - J.voiceLufs, 20*Math.log10(.95/J.voicePeak));
-  const level = () => { if(gain && J){ vgain.gain.value = Math.pow(10, vdb()/20);
-      gain.gain.setTargetAtTime(Math.pow(10, (J.voiceLufs + vdb() - 14 + (db + 30) - J.songLufs)/20), ctx.currentTime, .05); }
-    $("tDbv").textContent = "−" + Math.abs(Math.round(db)) + " dB"; kc.setAttribute("aria-valuenow", String(Math.round(db))); knob(); };
-  const rgb = h => [1, 3, 5].map(k => parseInt(h.slice(k, k + 2), 16));
-  const ledOf = (id, i, N) => HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id];
-  // the ring and the knob body, drawn the same for the BACKGROUND knob and the two deck dials: N LEDs on a 270° arc,
-  // lit up to p (0..1) in colAt(i, N), breathing with the ring
-  function dial(cv, p, colAt, breathes = true){
-    const [w, h, d] = fit(cv), g = cv.getContext("2d"), cx = w/2, cy = h/2, R = Math.min(w, h)/2 - 5*d, N = 21;
-    g.clearRect(0, 0, w, h);
-    for(let i = 0; i < N; i++){
-      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R, lit = i/(N - 1) <= p + 1e-6 && p > .001;
-      const c = colAt(i, N);
-      // the master breathes; a deck dial does not: its LEDs only follow the fade, the next LED lighting up
-      // gradually (part lit), so the ring grows and shrinks smoothly instead of LED by LED
-      const part = breathes ? (lit ? 1 : 0) : Math.max(0, Math.min(1, p*(N - 1) - i + 1));
-      g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.fillStyle = "#1F2850"; g.globalAlpha = 1; g.shadowBlur = 0; g.fill();
-      if(part > 0){ g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.globalAlpha = breathes ? .3 + .7*br : part;
-        g.fillStyle = c; g.shadowColor = c; g.shadowBlur = breathes ? (2 + 10*br)*d : 8*d*part; g.fill(); }
-    }
-    g.globalAlpha = 1; g.shadowBlur = 0; const r = R - 11*d;
-    const body = g.createRadialGradient(cx - r*.3, cy - r*.3, r*.1, cx, cy, r); body.addColorStop(0, "#3a4270"); body.addColorStop(1, "#151C3D");
-    g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fillStyle = body; g.fill(); g.lineWidth = d; g.strokeStyle = "#2C3870"; g.stroke();
-    const a = (135 + 270*p)*Math.PI/180; g.beginPath(); g.moveTo(cx + Math.cos(a)*r*.25, cy + Math.sin(a)*r*.25);
-    g.lineTo(cx + Math.cos(a)*r*.85, cy + Math.sin(a)*r*.85); g.lineWidth = 3*d; g.lineCap = "round"; g.strokeStyle = "#EEF0FF"; g.stroke();
-  }
-  // Marko, 23.10.2026: "add the knobs also for mixing the background track so they slowly turn in and out. They don't
-  // need to actually modulate the sound, they just need to follow the sound envelope ... LED coming in and LEDs coming
-  // out as we mix, as we fade." Each deck's dial shows its stage's breath (the volume it plays at), in its colour
-  const dd = [$("tD0"), $("tD1")];
-  function decksDial(){
-    dd.forEach((cv, k) => { const i = deckOf[k], s = i !== null ? SONGS[i] : null;
-      // the level from the fade curve itself, at the voice's time (an AudioParam's value is not readable during a ramp in
-      // every browser; Safari answers the last value set, so the dial jumped)
-      const p = s ? envAt(s, now() - s.at) : 0, id = s ? s.id : null;
-      dial(cv, p, (n, N) => id ? ledOf(id, n, N) : "#1F2850", false);
-      const nm = $("tD" + k + "n"); nm.textContent = id ? NAME[id] : "—"; nm.style.setProperty("--c", id ? (HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id]) : "#9AA3C7");
-      $("tD" + k + "v").textContent = Math.round(p*100) + " %"; });
-  }
-  function knob(){
-    // the filter knob of the DJ Mantra app with the OXI E16's ring: LEDs on a 270° arc, lit up to the value, in the
-    // element's colour (the throat runs the rainbow round the ring) or the colour picked; between two elements the
-    // colours blend over 6 s
-    const p = (db + 60)/50, t = now();
-    let mixw = V ? V.chapters.map((c, k) => [c.id, env(k, t)]).filter(m => m[1] > 0) : [];
-    if(!mixw.length) mixw = [[V ? V.chapters[Math.max(0, cur)].id : "a", 1]];
-    const sum = mixw.reduce((s, m) => s + m[1], 0);
-    dial(kc, p, (i, N) => led || "rgb(" + mixw.reduce((o, [id, wt]) => rgb(ledOf(id, i, N)).map((v, k) => o[k] + v*wt/sum), [0, 0, 0]).map(Math.round).join(",") + ")");
-    decksDial();
-  }
   function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
     if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
   function bands(g, x, step, d, mid, a, lo, mi, hi){
@@ -2540,70 +2425,101 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
     g.fillStyle = css("--d-mid");  v = mi/255*a*.78;     g.fillRect(x, mid - v, step - d*.5, v*2);
     g.fillStyle = css("--d-high"); v = hi/255*a*.5;      g.fillRect(x, mid - v, step - d*.5, v*2);
   }
-  function wave(g, B, dur, pps, w, step, d, mid, a, t){
+  function wave(g, B, dur, pps, w, step, d, mid, a){
     if(!B) return; const n = B.length/4;
     for(let x = 0; x < Math.min(w, dur*pps); x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
       let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, B[k*4]); mi = Math.max(mi, B[k*4+1]); hi = Math.max(hi, B[k*4+2]); }
-      g.globalAlpha = x/pps < t ? .45 : 1; bands(g, x, step, d, mid, a, lo, mi, hi); }
-    g.globalAlpha = 1;
+      bands(g, x, step, d, mid, a, lo, mi, hi); }
   }
-  function paint(){
-    const t = now();
+  // the fixed pictures: drawn once, and again only on a resize
+  function draw(){
     { const [w, h, d] = fit(vc), g = vc.getContext("2d"), strip = 16*d, mid = (h - strip)/2 + 6*d, a = mid - 22*d;
       g.clearRect(0, 0, w, h);
-      if(V){ const pps = w/span(), step = 2*d;
+      if(V){ const pps = w/span();
         V.chapters.forEach((c, i) => { const n = V.chapters[i + 1], x0 = c.t*pps, x1 = (n ? n.t : V.dur)*pps, f = fillFor(g, c.id, x0, x1);
           g.fillStyle = f; g.globalAlpha = .07; g.fillRect(x0, 0, x1 - x0, h - strip);
           g.globalAlpha = .95; g.fillRect(x0, h - strip, x1 - x0 - 2*d, strip); g.globalAlpha = .6; g.fillRect(x0, 0, d, h - strip);
           g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
           const lab = NAME[c.id].split(" · ")[0]; if(x1 - x0 > g.measureText(lab).width + 8*d) g.fillText(lab, x0 + 4*d, h - strip/2); });
-        wave(g, W, V.dur, pps, w, step, d, mid, a, t);
-        g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
+        wave(g, W, V.dur, pps, w, 2*d, d, mid, a); } }
     { const [w, h, d] = fit(mc), g = mc.getContext("2d"), mid = h/2 + 5*d, a = mid - 14*d;
       g.clearRect(0, 0, w, h);
-      if(S){ const pps = w/span(); wave(g, SW, S.dur, pps, w, 2*d, d, mid, a, t); g.fillStyle = "#FFD54A"; g.fillRect(t*pps - d, 0, 2*d, h); } }
-    if(whole === null || whole === true) $("tEl").textContent = mmss(t);
+      if(S) wave(g, SW, S.dur, w/span(), w, 2*d, d, mid, a); }
+    widths = lanes.map(l => l.clientWidth); last = -1; frame();
+  }
+  let widths = [], last = -1, lastSec = -1, lastDial = 0;
+  // the moving layers over the fixed pictures: transforms only
+  function frame(n){
+    const t = now(), p = Math.min(1, t/span());
+    if(p !== last){ last = p;
+      heads.forEach((e, k) => { if(e) e.style.transform = "translateX(" + (p*widths[k] - 1).toFixed(1) + "px)"; });
+      shades.forEach(e => { if(e) e.style.transform = "scaleX(" + p.toFixed(4) + ")"; }); }
+    const sec = Math.floor(t); if(sec !== lastSec && (whole === null || whole === true)){ lastSec = sec; $("tEl").textContent = mmss(t); }
     const k = chAt(t);
     if(k !== cur){ cur = k; const c = V && V.chapters[k], nx = V && V.chapters[k + 1];
-      const col = id => HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id];
       $("tNow").textContent = c ? NAME[c.id] : "—"; $("tNow").style.setProperty("--c", c ? col(c.id) : "#FFD54A");
       $("tNx").textContent = nx ? NAME[nx.id] : "END"; $("tNx").style.setProperty("--c", nx ? col(nx.id) : "#9AA3C7");
-      rungs.forEach((r, i) => { r.classList.toggle("on", want && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); });
-      knob(); }
+      rungs.forEach((r, i) => { r.classList.toggle("on", want && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); }); }
+    if(!n || n - lastDial > 66){ lastDial = n || 0; dials(t); }
+    if(want) raf = requestAnimationFrame(frame);
   }
-  let lastPlace = 0;
-  function tick(n){ paint(); if(still) knob(); if(!n || n - lastPlace > 250){ lastPlace = n || 0; place(); } if(want) raf = requestAnimationFrame(tick); }
-  // the ring breathes while it is on screen: six breaths a minute, 4 s in and 6 s out, the pace that calms the
-  // nervous system; with reduced motion asked for, it stays lit and only crossfades
-  const still = matchMedia("(prefers-reduced-motion: reduce)").matches; let seen = false, bRaf = 0;
-  function breathe(now){ const s = now/1000 % 10;
-    br = s < 4 ? (1 - Math.cos(Math.PI*s/4))/2 : (1 + Math.cos(Math.PI*(s - 4)/6))/2; knob(); bRaf = seen ? requestAnimationFrame(breathe) : 0; }
-  if(!still) new IntersectionObserver(es => { seen = es[0].isIntersecting; if(seen && !bRaf) bRaf = requestAnimationFrame(breathe); }).observe(kc);
+  const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
+  const ledOf = (id, i, N) => HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id];
+  // a round knob with the OXI E16's ring: N LEDs on a 270° arc, lit up to p (0..1), the next LED lighting gradually;
+  // the ring sits far enough inside its canvas that each LED's glow is drawn whole (v57 clipped it at the edges)
+  function dial(cv, p, colAt){
+    const [w, h, d] = fit(cv), g = cv.getContext("2d"), cx = w/2, cy = h/2, G = 8*d, R = Math.min(w, h)/2 - 3.2*d - G - d, N = 21;
+    g.clearRect(0, 0, w, h);
+    for(let i = 0; i < N; i++){
+      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R;
+      const part = p > .001 ? Math.max(0, Math.min(1, p*(N - 1) - i + 1)) : 0, c = colAt(i, N);
+      g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.fillStyle = "#1F2850"; g.globalAlpha = 1; g.shadowBlur = 0; g.fill();
+      if(part > 0){ g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.globalAlpha = part; g.fillStyle = c; g.shadowColor = c; g.shadowBlur = G*part; g.fill(); }
+    }
+    g.globalAlpha = 1; g.shadowBlur = 0; const r = R - 11*d;
+    const body = g.createRadialGradient(cx - r*.3, cy - r*.3, r*.1, cx, cy, r); body.addColorStop(0, "#3a4270"); body.addColorStop(1, "#151C3D");
+    g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fillStyle = body; g.fill(); g.lineWidth = d; g.strokeStyle = "#2C3870"; g.stroke();
+    const a = (135 + 270*p)*Math.PI/180; g.beginPath(); g.moveTo(cx + Math.cos(a)*r*.25, cy + Math.sin(a)*r*.25);
+    g.lineTo(cx + Math.cos(a)*r*.85, cy + Math.sin(a)*r*.85); g.lineWidth = 3*d; g.lineCap = "round"; g.strokeStyle = "#EEF0FF"; g.stroke();
+  }
+  // DECK 1 holds the 1st, 3rd and 5th stage, DECK 2 the 2nd, 4th and 6th, as they take turns in the mix
+  const dd = [$("tD0"), $("tD1")], shown = ["", ""];
+  function dials(t){
+    dd.forEach((cv, k) => {
+      const s = SONGS.find((x, i) => i % 2 === k && t >= x.at && t < x.at + x.dur) || null;
+      const p = s ? envAt(s, t - s.at) : 0, id = s ? s.id : null, key = (id || "") + Math.round(p*400) + (led || "");
+      if(key === shown[k]) return; shown[k] = key;           // nothing changed: nothing drawn
+      dial(cv, p, (n, N) => id ? (led || ledOf(id, n, N)) : "#1F2850");
+      const nm = $("tD" + k + "n"); nm.textContent = id ? NAME[id] : "—"; nm.style.setProperty("--c", id ? col(id) : "#9AA3C7");
+      $("tD" + k + "v").textContent = Math.round(p*100) + " %"; });
+  }
+  function start(){ if(!J) return; want = true; $("tPlay").textContent = "❚❚"; audio.play().catch(() => {}); }
+  function stop(){ want = false; audio.pause(); $("tPlay").textContent = "▶"; cur = -1; frame(); }
+  function jump(t){
+    // the site answers no byte ranges: the file is loaded whole once (4 MB), then every jump lands at once
+    if(!J) return; t = Math.max(0, Math.min(span() - .5, t)); const was = want;
+    const go = () => { audio.currentTime = t; cur = -1; if(was) start(); else frame(); };
+    if(whole === true) return go(); if(whole) return;
+    $("tEl").textContent = "…"; audio.pause();
+    whole = fetch(M.src).then(r => r.blob()).then(b => { audio.src = URL.createObjectURL(b);
+      return new Promise(ok => audio.readyState >= 1 ? ok() : audio.addEventListener("loadedmetadata", ok, {once:true})); });
+    whole.then(() => { whole = true; lastSec = -1; go(); });
+  }
+  T.player = {audio, jump};                                   // for tests
   const go = k => { if(!V) return; k = Math.max(0, Math.min(V.chapters.length - 1, k)); want = true; jump(V.chapters[k].t); };
   $("tPlay").addEventListener("click", () => { if(want) stop(); else start(); });
   $("tPrev").addEventListener("click", () => { const k = chAt(now()); go(now() - V.chapters[k].t > 3 ? k : k - 1); });
   $("tNext").addEventListener("click", () => go(chAt(now()) + 1));
   vc.addEventListener("click", e => { if(!V) return; const r = vc.getBoundingClientRect(); jump((e.clientX - r.left)/r.width*span()); });
   rungs.forEach(r => { const v = r.querySelector(".v[data-ch]"); if(v) v.addEventListener("click", () => go(+v.dataset.ch)); });
-  voice.addEventListener("play", () => {
-    $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"})); cancelAnimationFrame(raf); tick(); });
-  const idle = () => { if(voice.paused || voice.ended){
-    if(voice.ended){ want = false; voice.currentTime = 0; place(); }
-    if(!want){ $("tPlay").textContent = "▶"; cur = -1; paint(); } } };
-  // the last stage (AUM) ends before the voice: the voice goes on alone to its end
-  voice.addEventListener("pause", idle); voice.addEventListener("ended", idle);
+  audio.addEventListener("play", () => { $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"}));
+    cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); });
+  audio.addEventListener("ended", () => { want = false; audio.currentTime = 0; $("tPlay").textContent = "▶"; cur = -1; frame(); });
   document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && want) stop(); });
-  // the knob: drag up or down, the wheel, the arrow keys; a double click goes back to -30 dB
-  let drag = null; const setDb = v => { db = Math.max(-60, Math.min(-10, v)); level(); };
-  kc.addEventListener("pointerdown", e => { drag = [e.clientY, db]; kc.setPointerCapture(e.pointerId); });
-  kc.addEventListener("pointermove", e => { if(drag) setDb(drag[1] + (drag[0] - e.clientY)/3); });
-  kc.addEventListener("pointerup", () => drag = null);
-  kc.addEventListener("wheel", e => { e.preventDefault(); setDb(db + (e.deltaY < 0 ? 1 : -1)); }, {passive:false});
-  kc.addEventListener("keydown", e => { const k = {ArrowUp:1, ArrowRight:1, ArrowDown:-1, ArrowLeft:-1}[e.key]; if(k){ e.preventDefault(); setDb(db + k); } });
-  kc.addEventListener("dblclick", () => setDb(-30));
-  $("tLed").addEventListener("input", e => { led = e.target.value; $("tAuto").setAttribute("aria-pressed", "false"); knob(); });
-  $("tAuto").addEventListener("click", () => { led = null; $("tAuto").setAttribute("aria-pressed", "true"); knob(); });
-  addEventListener("resize", paint); knob();
+  $("tLed").addEventListener("input", e => { led = e.target.value; $("tAuto").setAttribute("aria-pressed", "false"); dials(now()); });
+  $("tAuto").addEventListener("click", () => { led = null; $("tAuto").setAttribute("aria-pressed", "true"); dials(now()); });
+  let rs = 0; addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(draw, 150); });
+  dials(0);
 })();
 </script>
 <script src="https://speechifykeys.pages.dev/speechify-keys.js" defer></script>

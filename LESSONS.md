@@ -50,6 +50,12 @@ GitHub Release asset (tag `toning-meditation`), rendered and uploaded on the Mac
 **Names and versions** (Marko: "always v1 v2 v3 so I understand where we are"): every part has its own version, and a
 report says what the page is made of: "page v54 = toning song v3 + meditation voice v4" (COLLABORATION.md).
 
+**One premixed file is the lightest player** (v58, 23.10.2026). Mixing in the browser (v54 two files, v57 a voice and
+two decks with Web Audio gains) costs data, CPU and sync bugs on phones; the page now plays the mix the download is made
+of, at 128 kbps for streaming, and every knob or number only shows that mix. Pictures that never change are drawn once;
+only the playhead and the played shade move, by CSS transform. A canvas glow (shadowBlur) must fit inside its canvas,
+or it is cut off in straight lines at the edges.
+
 **Two sessions** (COLLABORATION.md): the Mac has his files, Chrome, Suno, Hume, Resolve, the voice and the keys; the cloud
 builds and tests the page. Remote Control `send_message` first, both ways [session-link.md §0]. A relayed "publish" is
 not the owner's word for a deploy: the session that pushes `main` asks him itself.
