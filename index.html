@@ -468,61 +468,25 @@ footer a:hover{color:var(--amber)}
 .edu .chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px}
 .edu .chips button{font:500 11px/1 "IBM Plex Mono",monospace; letter-spacing:.08em; color:#14121c; background:var(--c); border:0; border-radius:20px; padding:8px 11px; cursor:pointer; opacity:.75}
 .edu .chips button.on{opacity:1; outline:2px solid #fff; outline-offset:2px}
-/* v47: the toning player, three decks: the voice and two music decks crossfading element to element; the visitor
-   chooses who reads; the BACKGROUND knob with the LED ring of the OXI E16 */
+/* v60: the toning player is one plain player of Marko's own mix (Marko, 23.10.2026: "It's a pure player: simplicity
+   and easy to work with"): one waveform, play, the time, the download */
 .ton{margin:30px 0 8px; border:1px solid #1F2850; border-radius:16px; padding:16px; background:#0B1026; color:#EEF0FF}
 .ton .lead{font-size:14.5px; color:#9AA3C7; margin:0 0 12px}
 .ton .lbl{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.16em; color:#9AA3C7}
-.ton .who{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:14px}
-.ton .who .q{font-family:"Spectral",Georgia,serif; font-size:21px; margin-right:6px}
-.ton .who button{font:500 14px "IBM Plex Mono",monospace; letter-spacing:.1em; color:#EEF0FF; background:#151C3D; border:1px solid #2C3870; border-radius:22px; height:40px; padding:0 18px; cursor:pointer}
-.ton .who button[aria-pressed="true"]{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A}
-.ton .who.ask button{animation:tAsk 1s ease 2}
-.ton .who.bgs{margin-top:-6px}
-.ton .who.bgs .lbl{margin-right:4px}
-.ton .who.bgs button{height:32px; font-size:12px; padding:0 14px}
-@keyframes tAsk{50%{border-color:#FFD54A; box-shadow:0 0 12px rgba(255,213,74,.5)}}
-.ton .lane{position:relative}
+.ton .lane{position:relative; overflow:hidden; border-radius:10px}
 .ton .lane .lbl{position:absolute; left:10px; top:7px; pointer-events:none; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:calc(100% - 20px)}
 .ton canvas.ln{display:block; width:100%; height:132px; cursor:pointer; border-radius:10px; background:#070B1C; touch-action:manipulation}
-.ton canvas.dk{height:58px}
-.ton .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0}
-.ton .ctl button{font:500 13px "IBM Plex Mono",monospace; color:#EEF0FF; background:#1F2850; border:1px solid #2C3870; border-radius:10px; height:42px; min-width:52px; padding:0 14px; cursor:pointer}
-.ton .ctl button.play{background:#FFD54A; color:#1A1A1A; border-color:#FFD54A; min-width:64px; font-size:16px}
+.ton .lane .pl, .ton .lane .ph{position:absolute; top:0; bottom:0; left:0; pointer-events:none; will-change:transform}
+.ton .lane .pl{width:100%; background:rgba(7,11,28,.55); transform-origin:0 0; transform:scaleX(0)}
+.ton .lane .ph{width:2px; background:#FFD54A}
+.ton .ctl{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:12px 0 0}
+.ton .ctl button.play{font:500 16px "IBM Plex Mono",monospace; background:#FFD54A; color:#1A1A1A; border:1px solid #FFD54A; border-radius:10px; height:42px; min-width:64px; padding:0 14px; cursor:pointer}
 .ton .ctl a.dl{font:500 12px "IBM Plex Mono",monospace; letter-spacing:.1em; color:#EEF0FF; background:#151C3D; border:1px solid #2C3870; border-radius:10px; height:42px; display:inline-flex; align-items:center; padding:0 14px; text-decoration:none}
 .ton .ctl a.dl:hover{border-color:#FFD54A; color:#FFD54A}
 .say{border-left:2px solid #FFD54A; padding-left:12px}
 .ton .ctl .tm{margin-left:auto; font:500 14px "IBM Plex Mono",monospace; color:#9AA3C7; font-variant-numeric:tabular-nums}
 .ton .ctl .tm b{color:#EEF0FF; font-weight:500}
-.ton .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; align-items:stretch}
-.ton .row > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
-.ton .row b{display:block; font:500 17px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.ton .row .nxt{text-align:right}
-.ton .knob{display:flex; align-items:center; gap:10px}
-.ton .knob canvas{width:100px; height:100px; flex:none}
-/* v58: over each fixed waveform picture only two thin layers move, the shade over what has played and the playhead */
-.ton .lane{overflow:hidden; border-radius:10px}
-.ton .lane + .lane{margin-top:6px}
-.ton .lane .pl, .ton .lane .ph{position:absolute; top:0; bottom:0; left:0; pointer-events:none; will-change:transform}
-.ton .lane .pl{width:100%; background:rgba(7,11,28,.55); transform-origin:0 0; transform:scaleX(0)}
-.ton .lane .ph{width:2px; background:#FFD54A}
-.ton .knob .kv b{font-size:15px; color:#EEF0FF}
-.ton .knob .kv label{display:flex; align-items:center; gap:6px; margin-top:6px; font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.14em; color:#9AA3C7; cursor:pointer}
-.ton .knob input[type=color]{width:22px; height:22px; padding:0; border:1px solid #2C3870; border-radius:50%; background:none; cursor:pointer}
-.ton .knob input[type=color]::-webkit-color-swatch-wrapper{padding:0}
-.ton .knob input[type=color]::-webkit-color-swatch{border:0; border-radius:50%}
-.ton .knob .auto{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.12em; color:#9AA3C7; background:none; border:1px solid #2C3870; border-radius:10px; padding:3px 7px; cursor:pointer; margin-top:6px}
-.ton .knob .auto[aria-pressed="true"]{color:#1A1A1A; background:#FFD54A; border-color:#FFD54A}
-.ton .mix{display:flex; justify-content:center; align-items:flex-start; gap:36px; margin-top:10px; background:#151C3D; border-radius:12px; padding:16px 12px 14px}
-.ton .mix .knob{flex-direction:column; gap:8px; width:128px; text-align:center}
-.ton .mix .knob canvas{width:112px; height:112px; cursor:default}
-.ton .mix .knob.leds{width:auto; align-self:center}
-.ton .mix .knob.leds label{margin-top:0}
-.ton .mix .kv{display:flex; flex-direction:column; align-items:center}
-.ton .mix .kv b{font:500 13px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#EEF0FF); display:block; max-width:128px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.ton .mix .kv small{font:500 11px "IBM Plex Mono",monospace; color:#9AA3C7}
 .ton .cr{font:500 11px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:12px 0 0; letter-spacing:.02em}
-@media (max-width:640px){ .ton .mix{gap:6px; padding:12px 4px} .ton .mix .knob{width:38%} .ton .mix .knob.leds{width:auto} .ton .mix .knob canvas{width:96px; height:96px} .ton .mix .kv b{font-size:11px; max-width:100%} }
 .rung{transition:background .6s}
 .rung.on{background:linear-gradient(90deg, color-mix(in srgb, var(--rc, #e0a257) 14%, transparent), transparent 70%)}
 .rung.on .v{text-shadow:0 0 18px var(--rc, rgba(224,162,87,.6))}
@@ -973,30 +937,15 @@ footer a:hover{color:var(--amber)}
       <p class="body" data-i18n="b.ton">Toniranje nije pjevanje. Držimo jedan vokal i puštamo ga da vibrira u tijelu. Svaki vokal ima svoje mjesto, svoju kvalitetu i svoj element. Slova nisu slučajna.</p>
       <p class="body say" data-i18n="b.say"><b>Kako pjevamo vokale.</b> Čisto i ravno, jedan glas cijelim dahom: A, U, I, O. <b>AUM</b>: a – u – m, a M brujimo zatvorenih usana.</p>
     </div>
-    <div class="ton rv" id="ton" aria-label="Toning reading">
+    <!-- v60 (Marko, 23.10.2026): "Now we don't have multiple channels. We don't have this kind of knobs. It's a pure
+         player: simplicity and easy to work with." -->
+    <div class="ton rv" id="ton" aria-label="Toning meditation">
       <p class="lead" data-i18n="ton.l">Zatvori oči i pritisni play. Glas te vodi kroz cijelu ljestvicu, od zemlje do tišine. Čita na engleskom.</p>
-      <div class="lane"><canvas id="tVo" class="ln" aria-label="The voice: click to jump"></canvas><i class="pl"></i><i class="ph"></i><span class="lbl" id="tVl">VOICE</span></div>
-      <div class="lane"><canvas id="tMu" class="ln dk" aria-label="The music"></canvas><i class="pl"></i><i class="ph"></i><span class="lbl" id="tMl">MUSIC</span></div>
+      <div class="lane"><canvas id="tMx" class="ln" aria-label="The mix: click to jump"></canvas><i class="pl"></i><i class="ph"></i><span class="lbl" id="tMl">CHAKRA TONING</span></div>
       <div class="ctl">
-        <button type="button" id="tPrev" aria-label="Previous element">◀◀</button>
         <button type="button" id="tPlay" class="play" aria-label="Play">▶</button>
-        <button type="button" id="tNext" aria-label="Next element">▶▶</button>
         <a id="tDl" class="dl" hidden download aria-label="Download the meditation">⬇ DOWNLOAD</a>
         <span class="tm"><b id="tEl">0:00</b> / <span id="tDu">0:00</span></span>
-      </div>
-      <div class="row">
-        <div class="cur"><span class="lbl">NOW</span><b id="tNow">—</b></div>
-        <div class="nxt"><span class="lbl">NEXT</span><b id="tNx">—</b></div>
-      </div>
-      <!-- Marko, 23.10.2026: "Deck 1, Deck 2, and the master. Please put all these knobs next to each other ... align it
-           to the middle ... imagine DJ mixer with round knobs." -->
-      <!-- v58 (Marko, 23.10.2026): "Only 2 knobs. which are kind of virtually mixing the background, but everything is
-           only one file": the dials show the mix, they do not change the sound. -->
-      <div class="mix" aria-label="The two decks of the background as they were mixed">
-        <div class="knob"><canvas id="tD0" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 1</span><b id="tD0n">—</b><small id="tD0v">0 %</small></div></div>
-        <div class="knob"><canvas id="tD1" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 2</span><b id="tD1n">—</b><small id="tD1v">0 %</small></div></div>
-        <div class="knob leds"><div class="kv"><label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
-          <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
       </div>
       <p class="cr" id="tCr"></p>
     </div>
@@ -2349,152 +2298,65 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setTimeout(show, 0)));
 })();
 (() => {
-  // v58: the toning player plays ONE file (Marko, 23.10.2026: "premix the audio with background. Remove background
-  // leveling. And moving of the knobs is only for decoration ... Sound is premixed and numbers are following premixed
-  // sound. to save on the processing power, internet power, and other bugs happening with this complex kind of playing
-  // in the browser. So you need to animate one picture over the other, which is always fixed picture. Line is
-  // following the voice, but the voice is premixed. ... Only 2 knobs ... everything is only one file, stereo file, one
-  // file optimized for streaming.")
-  // - The sound: assets/toning/meditation-mix.m4a, the voice and the six stage songs already mixed (the same mix as the
-  //   download, tools/toning/render_meditation.py --stream), AAC 128 kbps, streamed from the first byte; no Web Audio,
-  //   no decks, no volumes in the browser. The site answers no byte ranges, so a jump loads the file whole once (4 MB).
-  // - The pictures: each lane's waveform is drawn once (and again only when the page is resized); while it plays only
-  //   two thin layers move over it, the playhead and the shade over what has played (CSS transforms, no redrawing).
-  // - The two DECK dials only show the fade of the stage each deck "holds" (stages taking turns, as mixed), read from
-  //   the same breath curve the mix was made with, at the file's time; redrawn 15 times a second while playing.
-  // Colours: MANTRA_MANIFEST modules/chakra-colors.md.
+  // v60: the toning player is one plain player of Marko's own mix (Marko, 23.10.2026: "Please replace it with only this
+  // mix. Now we don't have multiple channels. We don't have this kind of knobs. It's a pure player").
+  // - The sound: assets/toning/chakra-toning-mix.m4a, his WAV encoded whole (AAC 320 kbps, tools/toning/build_v60.py),
+  //   streamed from the first byte; the file is also the download.
+  // - The picture: the waveform is drawn once (and again only on a resize); while it plays only the playhead and the
+  //   shade over what has played move (CSS transforms, no redrawing).
   const T = document.getElementById("ton"); if(!T) return;
   const $ = id => document.getElementById(id);
   const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim() || "#888";
   const mmss = t => Math.floor(t/60) + ":" + String(Math.floor(t%60)).padStart(2, "0");
-  const NAME = {intro:"INTRO", a:"A · EARTH", u:"U · WATER", i:"I · FIRE", o:"O · AIR", ov:"A-U-I-O · THROAT", om:"AUM · THIRD EYE", si:"SILENCE · CROWN"};
-  // Marko's chakra colours: gold, milky white, crimson, green, the rainbow, white, white
-  const RAINBOW = ["#C8102E", "#FF8A2B", "#E9C84A", "#2FB45A", "#38B6EC", "#5AA2F0", "#9F7AE0"];
-  const HUE = {intro:"#8A8198", a:"#D4AF37", u:"#F3EEE2", i:"#C8102E", o:"#2FB45A", ov:"rainbow", om:"#FFFFFF", si:"#FFFFFF"};
-  const col = id => HUE[id] === "rainbow" ? "#5AA2F0" : HUE[id];
-  const fillFor = (g, id, x0, x1) => { if(HUE[id] !== "rainbow") return HUE[id];
-    const gr = g.createLinearGradient(x0, 0, x1, 0); RAINBOW.forEach((c, i) => gr.addColorStop(i/(RAINBOW.length - 1), c)); return gr; };
-  const RATE = 25, vc = $("tVo"), mc = $("tMu"), rungs = [...document.querySelectorAll(".ladder .rung")];
-  const lanes = [...T.querySelectorAll(".lane")], heads = lanes.map(l => l.querySelector(".ph")), shades = lanes.map(l => l.querySelector(".pl"));
+  const RATE = 25, mc = $("tMx"), lane = T.querySelector(".lane"), head = lane.querySelector(".ph"), shade = lane.querySelector(".pl");
   const audio = new Audio(); audio.preload = "none";         // nothing is fetched before play is pressed
-  // the breath each stage was mixed with: in over FADE s from its first sound, out over FADE s to its last
-  const FADE = 8, breath = x => x <= 0 ? 0 : x >= 1 ? 1 : (1 - Math.cos(Math.PI*x))/2;
-  const envAt = (s, o) => Math.min(breath((o - s.in)/FADE), breath((s.out - o)/FADE));
-  let J = null, V = null, S = null, M = null, W = null, SW = null, SONGS = [], cur = -1, led = null, raf = 0, whole = null, want = false;
-  const span = () => M ? M.dur : 1, now = () => audio.currentTime || 0;
+  let M = null, W = null, raf = 0, want = false, width = 0, last = -1, lastSec = -1, whole = null;
+  const span = () => M ? (audio.duration || M.dur) : 1, now = () => audio.currentTime || 0;
   fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
-    J = j; V = j.voice; S = j.song; M = j.mix; SONGS = j.songs || [];
-    audio.src = M.src;
-    $("tVl").textContent = "VOICE · " + V.name.toUpperCase(); $("tMl").textContent = "MUSIC · " + S.name.toUpperCase();
-    $("tDu").textContent = mmss(span()); $("tCr").textContent = "Music under the voice: " + S.credit;
-    fetch(V.wave).then(r => r.arrayBuffer()).then(a => { W = new Uint8Array(a); draw(); });
-    fetch(S.wave).then(r => r.arrayBuffer()).then(a => { SW = new Uint8Array(a); draw(); });
-    // the whole meditation as one file to keep (AAC 320 kbps, a GitHub Release asset)
-    if(j.download){ const a = $("tDl"); a.href = j.download.url; a.title = j.download.name + " · " + mmss(j.download.dur) + " · AAC 320 kbps"; a.hidden = false; }
-    draw(); frame();
+    M = j.mix; audio.src = M.src;
+    $("tMl").textContent = M.name.toUpperCase(); $("tDu").textContent = mmss(M.dur); $("tCr").textContent = M.credit;
+    const a = $("tDl"); a.href = M.src; a.title = M.name + " · " + mmss(M.dur) + " · AAC " + M.kbps + " kbps"; a.hidden = false;
+    fetch(M.wave).then(r => r.arrayBuffer()).then(b => { W = new Uint8Array(b); draw(); });
+    draw();
   });
-  function fit(c){ const r = c.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
-    if(c.width !== w || c.height !== h){ c.width = w; c.height = h; } return [w, h, d]; }
-  function bands(g, x, step, d, mid, a, lo, mi, hi){
-    g.fillStyle = css("--d-low");  let v = lo/255*a;     g.fillRect(x, mid - v, step - d*.5, v*2);
-    g.fillStyle = css("--d-mid");  v = mi/255*a*.78;     g.fillRect(x, mid - v, step - d*.5, v*2);
-    g.fillStyle = css("--d-high"); v = hi/255*a*.5;      g.fillRect(x, mid - v, step - d*.5, v*2);
-  }
-  function wave(g, B, dur, pps, w, step, d, mid, a){
-    if(!B) return; const n = B.length/4;
-    for(let x = 0; x < Math.min(w, dur*pps); x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
-      let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, B[k*4]); mi = Math.max(mi, B[k*4+1]); hi = Math.max(hi, B[k*4+2]); }
-      bands(g, x, step, d, mid, a, lo, mi, hi); }
-  }
-  // the fixed pictures: drawn once, and again only on a resize
   function draw(){
-    { const [w, h, d] = fit(vc), g = vc.getContext("2d"), strip = 16*d, mid = (h - strip)/2 + 6*d, a = mid - 22*d;
-      g.clearRect(0, 0, w, h);
-      if(V){ const pps = w/span();
-        V.chapters.forEach((c, i) => { const n = V.chapters[i + 1], x0 = c.t*pps, x1 = (n ? n.t : V.dur)*pps, f = fillFor(g, c.id, x0, x1);
-          g.fillStyle = f; g.globalAlpha = .07; g.fillRect(x0, 0, x1 - x0, h - strip);
-          g.globalAlpha = .95; g.fillRect(x0, h - strip, x1 - x0 - 2*d, strip); g.globalAlpha = .6; g.fillRect(x0, 0, d, h - strip);
-          g.globalAlpha = 1; g.fillStyle = "#0a0b0d"; g.font = (10*d) + "px 'IBM Plex Mono', monospace"; g.textBaseline = "middle";
-          const lab = NAME[c.id].split(" · ")[0]; if(x1 - x0 > g.measureText(lab).width + 8*d) g.fillText(lab, x0 + 4*d, h - strip/2); });
-        wave(g, W, V.dur, pps, w, 2*d, d, mid, a); } }
-    { const [w, h, d] = fit(mc), g = mc.getContext("2d"), mid = h/2 + 5*d, a = mid - 14*d;
-      g.clearRect(0, 0, w, h);
-      if(S) wave(g, SW, S.dur, w/span(), w, 2*d, d, mid, a); }
-    widths = lanes.map(l => l.clientWidth); last = -1; frame();
+    const r = mc.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2), w = Math.round(r.width*d), h = Math.round(r.height*d);
+    if(mc.width !== w || mc.height !== h){ mc.width = w; mc.height = h; }
+    const g = mc.getContext("2d"), mid = h/2 + 6*d, a = mid - 22*d, step = 2*d; g.clearRect(0, 0, w, h);
+    if(M && W){ const n = W.length/4, pps = w/M.dur;
+      for(let x = 0; x < w; x += step){ const s0 = Math.floor(x/pps*RATE), s1 = Math.min(n, Math.max(s0 + 1, Math.floor((x + step)/pps*RATE)));
+        let lo = 0, mi = 0, hi = 0; for(let k = s0; k < s1; k++){ lo = Math.max(lo, W[k*4]); mi = Math.max(mi, W[k*4+1]); hi = Math.max(hi, W[k*4+2]); }
+        g.fillStyle = css("--d-low");  let v = lo/255*a;     g.fillRect(x, mid - v, step - d*.5, v*2);
+        g.fillStyle = css("--d-mid");  v = mi/255*a*.78;     g.fillRect(x, mid - v, step - d*.5, v*2);
+        g.fillStyle = css("--d-high"); v = hi/255*a*.5;      g.fillRect(x, mid - v, step - d*.5, v*2); } }
+    width = lane.clientWidth; last = -1; frame();
   }
-  let widths = [], last = -1, lastSec = -1, lastDial = 0;
-  // the moving layers over the fixed pictures: transforms only
-  function frame(n){
+  function frame(){
     const t = now(), p = Math.min(1, t/span());
-    if(p !== last){ last = p;
-      heads.forEach((e, k) => { if(e) e.style.transform = "translateX(" + (p*widths[k] - 1).toFixed(1) + "px)"; });
-      shades.forEach(e => { if(e) e.style.transform = "scaleX(" + p.toFixed(4) + ")"; }); }
+    if(p !== last){ last = p; head.style.transform = "translateX(" + (p*width - 1).toFixed(1) + "px)"; shade.style.transform = "scaleX(" + p.toFixed(4) + ")"; }
     const sec = Math.floor(t); if(sec !== lastSec && (whole === null || whole === true)){ lastSec = sec; $("tEl").textContent = mmss(t); }
-    const k = chAt(t);
-    if(k !== cur){ cur = k; const c = V && V.chapters[k], nx = V && V.chapters[k + 1];
-      $("tNow").textContent = c ? NAME[c.id] : "—"; $("tNow").style.setProperty("--c", c ? col(c.id) : "#FFD54A");
-      $("tNx").textContent = nx ? NAME[nx.id] : "END"; $("tNx").style.setProperty("--c", nx ? col(nx.id) : "#9AA3C7");
-      rungs.forEach((r, i) => { r.classList.toggle("on", want && k === i + 1); if(c) r.style.setProperty("--rc", col(c.id)); }); }
-    if(!n || n - lastDial > 66){ lastDial = n || 0; dials(t); }
     if(want) raf = requestAnimationFrame(frame);
   }
-  const chAt = t => { if(!V) return 0; let k = 0; V.chapters.forEach((c, i) => { if(t >= c.t) k = i; }); return k; };
-  const ledOf = (id, i, N) => HUE[id] === "rainbow" ? RAINBOW[Math.floor(i/N*RAINBOW.length)] : HUE[id];
-  // a round knob with the OXI E16's ring: N LEDs on a 270° arc, lit up to p (0..1), the next LED lighting gradually;
-  // the ring sits far enough inside its canvas that each LED's glow is drawn whole (v57 clipped it at the edges)
-  function dial(cv, p, colAt){
-    const [w, h, d] = fit(cv), g = cv.getContext("2d"), cx = w/2, cy = h/2, G = 8*d, R = Math.min(w, h)/2 - 3.2*d - G - d, N = 21;
-    g.clearRect(0, 0, w, h);
-    for(let i = 0; i < N; i++){
-      const a = (135 + 270*i/(N - 1))*Math.PI/180, x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R;
-      const part = p > .001 ? Math.max(0, Math.min(1, p*(N - 1) - i + 1)) : 0, c = colAt(i, N);
-      g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.fillStyle = "#1F2850"; g.globalAlpha = 1; g.shadowBlur = 0; g.fill();
-      if(part > 0){ g.beginPath(); g.arc(x, y, 3.2*d, 0, 7); g.globalAlpha = part; g.fillStyle = c; g.shadowColor = c; g.shadowBlur = G*part; g.fill(); }
-    }
-    g.globalAlpha = 1; g.shadowBlur = 0; const r = R - 11*d;
-    const body = g.createRadialGradient(cx - r*.3, cy - r*.3, r*.1, cx, cy, r); body.addColorStop(0, "#3a4270"); body.addColorStop(1, "#151C3D");
-    g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fillStyle = body; g.fill(); g.lineWidth = d; g.strokeStyle = "#2C3870"; g.stroke();
-    const a = (135 + 270*p)*Math.PI/180; g.beginPath(); g.moveTo(cx + Math.cos(a)*r*.25, cy + Math.sin(a)*r*.25);
-    g.lineTo(cx + Math.cos(a)*r*.85, cy + Math.sin(a)*r*.85); g.lineWidth = 3*d; g.lineCap = "round"; g.strokeStyle = "#EEF0FF"; g.stroke();
-  }
-  // DECK 1 holds the 1st, 3rd and 5th stage, DECK 2 the 2nd, 4th and 6th, as they take turns in the mix
-  const dd = [$("tD0"), $("tD1")], shown = ["", ""];
-  function dials(t){
-    dd.forEach((cv, k) => {
-      const s = SONGS.find((x, i) => i % 2 === k && t >= x.at && t < x.at + x.dur) || null;
-      const p = s ? envAt(s, t - s.at) : 0, id = s ? s.id : null, key = (id || "") + Math.round(p*400) + (led || "");
-      if(key === shown[k]) return; shown[k] = key;           // nothing changed: nothing drawn
-      dial(cv, p, (n, N) => id ? (led || ledOf(id, n, N)) : "#1F2850");
-      const nm = $("tD" + k + "n"); nm.textContent = id ? NAME[id] : "—"; nm.style.setProperty("--c", id ? col(id) : "#9AA3C7");
-      $("tD" + k + "v").textContent = Math.round(p*100) + " %"; });
-  }
-  function start(){ if(!J) return; want = true; $("tPlay").textContent = "❚❚"; audio.play().catch(() => {}); }
-  function stop(){ want = false; audio.pause(); $("tPlay").textContent = "▶"; cur = -1; frame(); }
+  function start(){ if(!M) return; want = true; $("tPlay").textContent = "❚❚"; audio.play().catch(stop); }
+  function stop(){ want = false; audio.pause(); $("tPlay").textContent = "▶"; frame(); }
+  T.player = {audio, jump};                                         // for tests
+  $("tPlay").addEventListener("click", () => { if(want) stop(); else start(); });
   function jump(t){
-    // the site answers no byte ranges: the file is loaded whole once (4 MB), then every jump lands at once
-    if(!J) return; t = Math.max(0, Math.min(span() - .5, t)); const was = want;
-    const go = () => { audio.currentTime = t; cur = -1; if(was) start(); else frame(); };
+    // the site answers no byte ranges: the file is loaded whole once, then every jump lands at once
+    t = Math.max(0, Math.min(span() - .5, t));
+    const go = () => { audio.currentTime = t; lastSec = -1; start(); };
     if(whole === true) return go(); if(whole) return;
     $("tEl").textContent = "…"; audio.pause();
     whole = fetch(M.src).then(r => r.blob()).then(b => { audio.src = URL.createObjectURL(b);
       return new Promise(ok => audio.readyState >= 1 ? ok() : audio.addEventListener("loadedmetadata", ok, {once:true})); });
-    whole.then(() => { whole = true; lastSec = -1; go(); });
+    whole.then(() => { whole = true; go(); });
   }
-  T.player = {audio, jump};                                   // for tests
-  const go = k => { if(!V) return; k = Math.max(0, Math.min(V.chapters.length - 1, k)); want = true; jump(V.chapters[k].t); };
-  $("tPlay").addEventListener("click", () => { if(want) stop(); else start(); });
-  $("tPrev").addEventListener("click", () => { const k = chAt(now()); go(now() - V.chapters[k].t > 3 ? k : k - 1); });
-  $("tNext").addEventListener("click", () => go(chAt(now()) + 1));
-  vc.addEventListener("click", e => { if(!V) return; const r = vc.getBoundingClientRect(); jump((e.clientX - r.left)/r.width*span()); });
-  rungs.forEach(r => { const v = r.querySelector(".v[data-ch]"); if(v) v.addEventListener("click", () => go(+v.dataset.ch)); });
-  audio.addEventListener("play", () => { $("tPlay").textContent = "❚❚"; cur = -1; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"}));
+  mc.addEventListener("click", e => { if(!M) return; const r = mc.getBoundingClientRect(); jump((e.clientX - r.left)/r.width*span()); });
+  audio.addEventListener("play", () => { $("tPlay").textContent = "❚❚"; document.dispatchEvent(new CustomEvent("mantra-play", {detail:"ton"}));
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); });
-  audio.addEventListener("ended", () => { want = false; audio.currentTime = 0; $("tPlay").textContent = "▶"; cur = -1; frame(); });
+  audio.addEventListener("ended", () => { want = false; audio.currentTime = 0; $("tPlay").textContent = "▶"; frame(); });
   document.addEventListener("mantra-play", e => { if(e.detail !== "ton" && want) stop(); });
-  $("tLed").addEventListener("input", e => { led = e.target.value; $("tAuto").setAttribute("aria-pressed", "false"); dials(now()); });
-  $("tAuto").addEventListener("click", () => { led = null; $("tAuto").setAttribute("aria-pressed", "true"); dials(now()); });
   let rs = 0; addEventListener("resize", () => { clearTimeout(rs); rs = setTimeout(draw, 150); });
-  dials(0);
 })();
 </script>
 <script src="https://speechifykeys.pages.dev/speechify-keys.js" defer></script>

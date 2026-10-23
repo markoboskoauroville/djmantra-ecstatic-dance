@@ -951,3 +951,8 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > there is a new mix for my chakra toning on my web page. Please replace it with only this mix. Now we don't have multiple channels. We don't have this kind of knobs. It's a pure player: simplicity and easy to work with. You need to just re-encode from WAV to AAC, and that's itPlease check the desktop.Please check the desktop.
 
 114. (23.10.2026, 17:35) The file: ~/Desktop/chakra toning ecstatic dance mix.wav (4:20.7, stereo 48 kHz 24-bit).
+     **Built: page v60.** The WAV encoded whole: assets/toning/chakra-toning-mix.m4a, AAC 320 kbps CBR measured
+     (320022), 10.5 MB, nothing cut or levelled (tools/toning/build_v60.py; the master copied to
+     ~/Music/DJ_MANTRA_TONING). The player: one waveform (click to jump), play/pause, time, DOWNLOAD of the same file;
+     the voice/music lanes, DECK dials, LED colour, ◀◀ ▶▶ and NOW/NEXT removed, the old voice, stage songs and premix
+     deleted from assets. Tested in Chrome (muted): plays, jumps to 90 % and back to 25 % land right, pause, no errors.

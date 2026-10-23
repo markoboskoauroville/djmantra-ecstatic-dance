@@ -89,6 +89,17 @@ marko.bosko@auroville.community
   `PixelFont.qml`): time left, bar.beat from the section start, the countdown to the next section and one cell per beat
   of the phrase (8 / 16 / 32 BEATS).
 
+## The toning player: one plain player of Marko's mix (v60, 23.10.2026)
+
+* Marko: "Please replace it with only this mix. Now we don't have multiple channels. We don't have this kind of knobs.
+  It's a pure player: simplicity and easy to work with." The voices, decks, knobs, NOW/NEXT and chapter buttons of
+  v47–v59 are gone.
+* The sound is his own mix, `assets/toning/chakra-toning-mix.m4a` (4:20.7, AAC 320 kbps CBR from his WAV, Apple's
+  encoder, faststart), made by `tools/toning/build_v60.py`, which also writes the waveform and `toning.json`. The WAV
+  master stays on the Mac (~/Music/DJ_MANTRA_TONING).
+* The player: one waveform (click to jump), play/pause, the time, DOWNLOAD (the same file). Cloudflare Pages answers no
+  byte ranges, so the first jump loads the file whole (10 MB), then every jump lands at once.
+
 ## The toning voice, slow, and the breathing knob (v48, 21.10.2026)
 
 * One voice only, Orion (Marko: "use only Orion voice, that is all"), read much slower: `tools/toning/slow_toning.py`
