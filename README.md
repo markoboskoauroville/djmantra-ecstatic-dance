@@ -29,10 +29,14 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 * `assets/ss/album.json`: title, duration, a one line Croatian summary, his full English text from the YouTube playlist PLCxh3j1gI2nqVCXRWbWYWKMN7l_kVwa9d (yt-dlp --write-info-json), the art (album cover, the bonus has its own), a three band waveform of 480 bins.
 * The album and the mix never play together (a `mantra-play` event pauses the other).
 
-## The phone app section (v15, 8.10.2026)
+## The DJ Mantra app section (v59, 23.10.2026; v15 was a progress list)
 
-* "DJ Mantra za Android", before Contact: his DJ app for Android phones (repository markoboskoauroville/djmantra_app, the Mixxx engine ported to phones), a progress bar and the list of steps, links to the source code and the automatic Android builds.
-* The steps live in `assets/app/progress.json` (`status`: done / doing / todo, `hr` and `en` text, `updated` date, `repo` and `builds` links). Update that file with every app milestone; the page renders it in the chosen language. When an APK is published, add a step or change the links to the GitHub Release.
+* "Learn to DJ by ear", before Contact: the DJ Mantra app for Android (repository markoboskoauroville/djmantra_app,
+  the Mixxx engine on phones) presented as finished, a summary of its own page https://djmantraapp.pages.dev: what it
+  teaches, eight features, what it needs, and three links: the app's page, the latest APK (the GitHub Release
+  `android-latest`) and the source code. HR and EN in the page's dictionary.
+* When the app page changes, read it again and update this summary (Marko, 23.10.2026: "read the page about DJ app and
+  make a summary here and also link to that page"). The old `assets/app/progress.json` is gone.
 
 ## Deploy
 

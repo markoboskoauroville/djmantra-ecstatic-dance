@@ -932,3 +932,16 @@ Every request is saved here word for word before any code, so a quota cut loses 
      nothing drawn when nothing changes); MASTER and its leveling removed; the LED colour picker stays. The LEDs' glow
      was clipped by the edge of its canvas (the ring 5 px from the edge, the glow up to 12 px): the ring now sits
      inside by the glow's width. Tested (desktop and a 390 px phone, 2x): play, jump to U (deck 2 at 100 %), pause.
+
+## v59 — requested 23.10.2026
+
+> The part of my DJ app is outdated. I have the whole page dedicated to the app. Please present app as finished app, give its features, read the page about DJ app and make a summary here and also link to that page.
+
+113. The app section: the finished DJ Mantra app, a summary of https://djmantraapp.pages.dev, and a link to it.
+     **Status:** done, page v59: "Learn to DJ by ear" / "Nauči DJ-ati po sluhu": what it teaches (counts beats and
+     phrases, names the section now and next, lights it on the Hercules DJControl Mix Ultra), eight features (Phrasing
+     view, harmonic keys, stems, AutoMix / Tempo Blend / Auto Phase, three-colour waveforms, the Mixxx 2.5.6 engine, a
+     library for DJs, sound anywhere), Android 8+ 64-bit, free and GPL; buttons: the app's page, the latest version
+     (Release android-latest), the source code. The progress list (progress.json, its code and CSS) removed; the
+     Croatian texts of the section added to the HR dictionary (switching back from EN left English before). Also fixed:
+     the demo mix's overview read back a canvas of width 0 before layout (a rare error).
