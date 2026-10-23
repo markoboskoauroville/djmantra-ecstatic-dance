@@ -910,3 +910,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
 
 110. The mixer: DECK 1, DECK 2 and MASTER (the BACKGROUND knob, renamed) side by side in one strip, centred under the
      waveforms, each round knob with its label under it; NOW / NEXT above in two halves. **Live with page v57.**
+
+> Please fix knobs on web site they ara randomly closong amd openimg instead of folowimg smooth ramp
+
+111. The DECK dials follow the fade curve itself at the voice's time (no longer the AudioParam's value, which Safari
+     does not report during a ramp), do not breathe (the master still does), and light the next LED gradually, so the
+     ring grows and shrinks smoothly; the decks' volume follows the curve with setTargetAtTime. Tested: 0 → 47 % in
+     3.4 s in steps of 1–4 %. **Live (v57).**
