@@ -500,7 +500,7 @@ footer a:hover{color:var(--amber)}
 .say{border-left:2px solid #FFD54A; padding-left:12px}
 .ton .ctl .tm{margin-left:auto; font:500 14px "IBM Plex Mono",monospace; color:#9AA3C7; font-variant-numeric:tabular-nums}
 .ton .ctl .tm b{color:#EEF0FF; font-weight:500}
-.ton .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; gap:10px; align-items:stretch}
+.ton .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; align-items:stretch}
 .ton .row > div{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
 .ton .row b{display:block; font:500 17px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#FFD54A); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .ton .row .nxt{text-align:right}
@@ -513,13 +513,16 @@ footer a:hover{color:var(--amber)}
 .ton .knob input[type=color]::-webkit-color-swatch{border:0; border-radius:50%}
 .ton .knob .auto{font:500 9.5px "IBM Plex Mono",monospace; letter-spacing:.12em; color:#9AA3C7; background:none; border:1px solid #2C3870; border-radius:10px; padding:3px 7px; cursor:pointer; margin-top:6px}
 .ton .knob .auto[aria-pressed="true"]{color:#1A1A1A; background:#FFD54A; border-color:#FFD54A}
-.ton .mix{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px}
-.ton .mix .knob{background:#151C3D; border-radius:10px; padding:9px 12px; min-width:0}
-.ton .mix .knob canvas{cursor:default}
-.ton .mix .kv b{font:500 15px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#EEF0FF); display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ton .mix{display:flex; justify-content:center; align-items:flex-start; gap:36px; margin-top:10px; background:#151C3D; border-radius:12px; padding:16px 12px 14px}
+.ton .mix .knob{flex-direction:column; gap:8px; width:128px; text-align:center}
+.ton .mix .knob canvas{width:96px; height:96px; cursor:default}
+.ton .mix .knob.master canvas{cursor:ns-resize}
+.ton .mix .kv{display:flex; flex-direction:column; align-items:center}
+.ton .mix .kv b{font:500 13px "IBM Plex Mono",monospace; letter-spacing:.06em; color:var(--c,#EEF0FF); display:block; max-width:128px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ton .mix .knob.master .kv b{color:#EEF0FF}
 .ton .mix .kv small{font:500 11px "IBM Plex Mono",monospace; color:#9AA3C7}
 .ton .cr{font:500 11px/1.5 "IBM Plex Mono",monospace; color:#9AA3C7; margin:12px 0 0; letter-spacing:.02em}
-@media (max-width:640px){ .ton .row{grid-template-columns:1fr 1fr} .ton .row .knob{grid-column:1 / -1; justify-content:center} }
+@media (max-width:640px){ .ton .mix{gap:6px; padding:12px 4px} .ton .mix .knob{width:31%} .ton .mix .knob canvas{width:76px; height:76px} .ton .mix .kv b{font-size:11px; max-width:100%} }
 .rung{transition:background .6s}
 .rung.on{background:linear-gradient(90deg, color-mix(in srgb, var(--rc, #e0a257) 14%, transparent), transparent 70%)}
 .rung.on .v{text-shadow:0 0 18px var(--rc, rgba(224,162,87,.6))}
@@ -984,14 +987,16 @@ footer a:hover{color:var(--amber)}
       <div class="row">
         <div class="cur"><span class="lbl">NOW</span><b id="tNow">—</b></div>
         <div class="nxt"><span class="lbl">NEXT</span><b id="tNx">—</b></div>
-        <div class="knob"><canvas id="tKnob" tabindex="0" role="slider" aria-label="Background level" title="The ring breathes six times a minute: breathe with it" aria-valuemin="-60" aria-valuemax="-10"></canvas>
-          <div class="kv"><span class="lbl">BACKGROUND</span><b id="tDbv">−30 dB</b>
-            <label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
-            <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
       </div>
-      <div class="mix" aria-label="The two decks of the background, as they fade in and out">
+      <!-- Marko, 23.10.2026: "Deck 1, Deck 2, and the master. Please put all these knobs next to each other ... align it
+           to the middle ... imagine DJ mixer with round knobs." -->
+      <div class="mix" aria-label="The mixer: the two decks of the background as they fade, and the master level">
         <div class="knob"><canvas id="tD0" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 1</span><b id="tD0n">—</b><small id="tD0v">0 %</small></div></div>
         <div class="knob"><canvas id="tD1" aria-hidden="true"></canvas><div class="kv"><span class="lbl">DECK 2</span><b id="tD1n">—</b><small id="tD1v">0 %</small></div></div>
+        <div class="knob master"><canvas id="tKnob" tabindex="0" role="slider" aria-label="Background level" title="The ring breathes six times a minute: breathe with it" aria-valuemin="-60" aria-valuemax="-10"></canvas>
+          <div class="kv"><span class="lbl">MASTER</span><b id="tDbv">−30 dB</b>
+            <label>LED <input type="color" id="tLed" value="#d4af37" aria-label="LED colour"></label>
+            <button type="button" class="auto" id="tAuto" aria-pressed="true" title="Each element's own colour">ELEMENTS</button></div></div>
       </div>
       <p class="cr" id="tCr"></p>
     </div>

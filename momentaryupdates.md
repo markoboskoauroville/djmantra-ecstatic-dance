@@ -905,3 +905,8 @@ Every request is saved here word for word before any code, so a quota cut loses 
      is a slow crossfade. No loops were needed: the only empty stretches are his own silences. Two round DECK dials
      under BACKGROUND show each deck's fade with its element's LEDs. The download is the same mix (render_meditation.py).
      Tested in Chrome (audio to BlackHole): decks in step with the voice within 0.15 s, U→I crossfade, deck released.
+
+> Deck 1, Deck 2, and the master. Please put all these knobs next to each other in the— and align it to the middle according to the WAV file. It's like a— imagine DJ mixer with round knobs. That's something which is hype now.
+
+110. The mixer: DECK 1, DECK 2 and MASTER (the BACKGROUND knob, renamed) side by side in one strip, centred under the
+     waveforms, each round knob with its label under it; NOW / NEXT above in two halves. **Live with page v57.**
