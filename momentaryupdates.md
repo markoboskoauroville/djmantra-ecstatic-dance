@@ -830,3 +830,13 @@ Every request is saved here word for word before any code, so a quota cut loses 
      (his temporary page), the download, and his "push main".
      **Live:** page v56 on main 21.10.2026 (7497fbe, pushed by the Mac session on Marko's "yes, push main" there;
      deploy green, checked from the cloud: label v56, voice v5 and song v5 served); download v5 on the Release.
+
+## v57 — requested 23.10.2026 (toning song v6, the Mac)
+
+> continuing to work on the Chakra Toning and my Ecstatic Dance page. I created a template for Suno song, which is going to go under the voice prompt for Suno is just Tibetan choir singing it with a lot of reverb like in a church atmosphere. And that's all. It's a cappella, no other instruments. Very strong voices, male choir only. And timing should be followed because it's aligned exactly with the voice. And the template is there, you can time it right. Pronunciation is there. Everything is on a desktop copy that to the developer folder. And start to create Suno song keeping the original template and Suno song as it exits. You need to record it through Black Hole. Please do it
+
+105. Toning song v6: a Suno Cover of Marko's template (~/Desktop/Audio 2_001_2ICB6Z.wav, 4:25.6, mono 48 kHz 24-bit,
+     kept as tools/toning/suno/takes/toning-v6-template.wav, the WAV on the Mac only), aligned with meditation voice v5;
+     Tibetan male choir only, a cappella, strong voices, church reverb; the timing and the pronunciation of the template
+     kept; recorded through BlackHole with sox.
+     **Status:** in progress (the Mac).
