@@ -858,3 +858,9 @@ Every request is saved here word for word before any code, so a quota cut loses 
      style (male voices joining his, wider not louder, big echo, no music), "music" and every instrument excluded.
      Recorded the way Marko set down 23.10.2026 (one-take-audio.md): test 3 s, rewind, sox first, 2-3 s of silence,
      play, 3 s of silence after. **Status:** generating (the Mac).
+
+> Again, stop creation. It's not good.
+
+107. Toning song v7 stopped and discarded (the recording of one take stopped midway, set aside in takes/discarded-v7 on
+     the Mac). Nothing published; the Resolve timeline "Yoga For Healers (Thai Massage) V2" is there with his template
+     still on A2, waiting. **Waiting for Marko.**
