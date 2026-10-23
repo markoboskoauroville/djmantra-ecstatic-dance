@@ -846,3 +846,15 @@ Every request is saved here word for word before any code, so a quota cut loses 
 > if audio fits with voiceover, publish it on a website
 
 > if it doesn't fit, let me edit it manually and don't publish anything until i give you background
+
+> I am editing right inside the DaVinci Resolve. The project is open. This clip which needs to be replaced is called Audio 2 on the second audio channel under the toning.m4a, and just replace it. And then I'm going to edit. You need to duplicate the sequence called Yoga for Healers Thai Massage and rename it to V2. At the end, you add V2. And then you put the Suno audio, which is better, and I'm going to adjust the timing accordingly.
+
+> The songs are wrong. First one, the voice become too enthusiastic and too loud, and second one has music. So it needs to follow my audio 100%. Please make that no music. I just get accompaniment by different male voices to make it everything sound larger and bigger and big echo. Discard these songs, they're wrong.
+
+106. Toning song v6 discarded (take 1 too loud and excited, take 2 with music). Resolve: the timeline
+     "Yoga For Healers (Thai Massage) V2" made in the project ECSTATIC DANCE (the original untouched); the better take
+     of toning song v7 goes on its A2 in place of "Audio 2_001" (the template), Marko times it there.
+     Toning song v7: the same Cover of the template, Audio Influence 100 %, Weirdness 0, Style Influence 70 %, a calm
+     style (male voices joining his, wider not louder, big echo, no music), "music" and every instrument excluded.
+     Recorded the way Marko set down 23.10.2026 (one-take-audio.md): test 3 s, rewind, sox first, 2-3 s of silence,
+     play, 3 s of silence after. **Status:** generating (the Mac).

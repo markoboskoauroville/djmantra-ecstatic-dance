@@ -122,3 +122,16 @@ output put back to the device it was on before (audio-back-home.md).
 - Pair 1, Duration Auto: 3:33 and 3:13, shorter than the template, so they cannot sit under the voice. Kept, not used.
 - Pair 2, Duration Custom 4:25 (265 s, the template is 265.6 s): **take 1** and **take 2**, recorded whole through
   BlackHole with sox, nothing cut (Marko places them in his editor).
+
+## Discarded, and v7 (23.10.2026)
+
+Marko: take 1 "too enthusiastic and too loud", take 2 "has music"; "it needs to follow my audio 100% ... no music ...
+accompaniment by different male voices to make it everything sound larger and bigger and big echo."
+v7 = the same Cover, Audio Influence 100 %, Weirdness 0 %, Style Influence 70 %, Duration 4:25, Male.
+
+Style v7:
+```
+A cappella, human voices only, no music. Follow the reference voice exactly: the same notes, the same timing, the same quiet calm dynamics, the same silences between sounds. A soft meditative male choir joins the reference voice in unison and in the low octave, many calm male voices singing quietly together to make it sound larger and wider, never louder, never excited. Pure held vowels ah, oo, ee, oh, aum. Very big echo and a long cathedral reverb, a huge stone church. No instruments at all: no pads, no drone, no synth, no bowls, no gong, no drums, no piano, no strings, no bass. Free time, no beat, no build-up.
+```
+Exclude v7: `music, instrumental, instruments, synth pads, drone, singing bowls, gong, drums, percussion, piano, strings, guitar, bass, beat, energetic, powerful, loud, epic, dramatic, crescendo, belting, female voice, English words, pop vocals, vibrato, autotune, electronic, build-up, tempo change`
+Lyrics v7: as above, every stage note "calm male voices, soft".
