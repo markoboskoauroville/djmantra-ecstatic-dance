@@ -870,3 +870,12 @@ Every request is saved here word for word before any code, so a quota cut loses 
 108. Toning song v8: the template cut at its silences into six stage files (A, U, I, O, A-U-I-O, AUM), each its own
      Suno Cover with no lyrics written, Audio Influence 100 %, a quiet Tibetan background choir under his voice (his
      the loudest), reverb and echo; each recorded through BlackHole his way. **Status:** in progress (the Mac).
+
+> Please wait, I'm going to cut it for you and put everything on the desktop. Wait.
+
+> Mice are ready. Pick them up from the desktop and start creating solo songs and record everything and then align it and publish it to the website. Everything fully automatic. Go on, everything is ready.
+
+109. Marko's own six cuts (~/Desktop AAA, UUU, III, OOO, A-U-I-O, AUM .wav, 48 kHz 24-bit stereo; copied to
+     tools/toning/suno/takes/stages-v8-marko on the Mac) replace the Mac's cuts. Each: its own Suno Cover (no lyrics
+     written, Audio Influence 100 %), recorded through BlackHole his way, aligned to meditation voice v5 at the place it
+     has in his template, and published on the page (his word: fully automatic, publish). **Status:** in progress.
