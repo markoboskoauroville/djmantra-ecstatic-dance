@@ -1,10 +1,11 @@
 {
  "mix": {
-  "name": "Chakra toning · Ecstatic Dance mix",
-  "src": "assets/toning/chakra-toning-mix.m4a",
-  "wave": "assets/toning/chakra-toning-mix.wave.bin",
-  "dur": 260.693,
+  "name": "Chakra toning · raga, held notes",
+  "src": "assets/toning/chakra-toning-mix.mp3?v=61",
+  "wave": "assets/toning/chakra-toning-mix.wave.bin?v=61",
+  "dur": 314.616,
   "kbps": 320,
-  "credit": "Chakra toning, Ecstatic Dance mix by DJ Mantra"
+  "fmt": "MP3",
+  "credit": "Chakra toning, raga with held notes: Suno, recorded and faded in Ableton Live by DJ Mantra"
  }
 }

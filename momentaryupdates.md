@@ -956,3 +956,10 @@ Every request is saved here word for word before any code, so a quota cut loses 
      ~/Music/DJ_MANTRA_TONING). The player: one waveform (click to jump), play/pause, time, DOWNLOAD of the same file;
      the voice/music lanes, DECK dials, LED colour, ◀◀ ▶▶ and NOW/NEXT removed, the old voice, stage songs and premix
      deleted from assets. Tested in Chrome (muted): plays, jumps to 90 % and back to 25 % land right, pause, no errors.
+
+## Request 115 (9.11.2026): the new song in the toning player (page v61)
+Marko: "This is the song ... create a long, very slow fade-out at the end, 10 seconds; export an MP3 with Ableton Live; that MP3
+becomes part of the player. This is our new song: replace it on the DJ page and on MPA." Built: page v61. The Suno song
+"Chakra Toning raga (held notes)" (id 39d41591-e755-4dd3-a9d3-cb78e3b0e7c9), recorded by Marko in Ableton Live through BlackHole,
+10 s fade-out on the clip, exported by Live as MP3 CBR 320 (5:14.6; no WAV backup, he recreates it through Suno):
+assets/toning/chakra-toning-mix.mp3 + wave.bin + toning.json (?v=61), tools/toning/build_v61.py; the m4a is removed.

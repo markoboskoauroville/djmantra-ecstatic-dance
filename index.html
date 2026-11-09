@@ -2300,7 +2300,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
 (() => {
   // v60: the toning player is one plain player of Marko's own mix (Marko, 23.10.2026: "Please replace it with only this
   // mix. Now we don't have multiple channels. We don't have this kind of knobs. It's a pure player").
-  // - The sound: assets/toning/chakra-toning-mix.m4a, his WAV encoded whole (AAC 320 kbps, tools/toning/build_v60.py),
+  // - The sound: assets/toning/chakra-toning-mix.mp3, v61 (9.11.2026): the Suno song "Chakra Toning raga (held notes)" recorded in Ableton Live with a 10 s fade-out, MP3 320 kbps (tools/toning/build_v61.py),
   //   streamed from the first byte; the file is also the download.
   // - The picture: the waveform is drawn once (and again only on a resize); while it plays only the playhead and the
   //   shade over what has played move (CSS transforms, no redrawing).
@@ -2315,7 +2315,7 @@ document.addEventListener("keydown", e => { if(e.key === "Escape" && lb.classLis
   fetch("assets/toning/toning.json").then(r => r.json()).then(j => {
     M = j.mix; audio.src = M.src;
     $("tMl").textContent = M.name.toUpperCase(); $("tDu").textContent = mmss(M.dur); $("tCr").textContent = M.credit;
-    const a = $("tDl"); a.href = M.src; a.title = M.name + " · " + mmss(M.dur) + " · AAC " + M.kbps + " kbps"; a.hidden = false;
+    const a = $("tDl"); a.href = M.src; a.title = M.name + " · " + mmss(M.dur) + " · " + (M.fmt || "AAC") + " " + M.kbps + " kbps"; a.hidden = false;
     fetch(M.wave).then(r => r.arrayBuffer()).then(b => { W = new Uint8Array(b); draw(); });
     draw();
   });
