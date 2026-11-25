@@ -32,7 +32,7 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 ## The DJ Mantra app section (v59, 23.10.2026; v15 was a progress list)
 
 * "Learn to DJ by ear", before Contact: the DJ Mantra app for Android (repository markoboskoauroville/djmantra_app,
-  the Mixxx engine on phones) presented as finished, a summary of its own page https://djmantraapp.pages.dev: what it
+  the Mixxx engine on phones) presented as finished, a summary of its own page https://djmantraapp.markobosko.org: what it
   teaches, eight features, what it needs, and three links: the app's page, the latest APK (the GitHub Release
   `android-latest`) and the source code. HR and EN in the page's dictionary.
 * When the app page changes, read it again and update this summary (Marko, 23.10.2026: "read the page about DJ app and
@@ -40,7 +40,7 @@ Covers the percussion work and Tribal Jam Orchestra, the seven years in Aurovill
 
 ## Deploy
 
-Cloudflare Pages, project `djmantra`, https://djmantra.pages.dev.
+Cloudflare Pages, project `djmantra`, https://djmantra.markobosko.org.
 
 * **Automatic (since v16, 8.10.2026):** every push to `main` runs `.github/workflows/deploy.yml`, which publishes the page with wrangler. It needs the repository secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. A push to any other branch publishes nothing, so work on a branch is merged into `main` to go live. The Actions tab shows each deploy; it can also be started by hand there (Run workflow).
 * **By hand:** `npx wrangler pages deploy . --project-name djmantra --branch main` with CLOUDFLARE_ACCOUNT_ID and the token from ~/Downloads/API/Cloudflare.api.txt (the last line of 30+ token characters, as SHOP_FINDER/deploy.sh reads it).

@@ -76,6 +76,6 @@ if '--upload' in sys.argv:
     # the GitHub Release asset, replaced each time: upload it before main goes live, or the button points at nothing
     if subprocess.run(['gh', 'release', 'view', TAG, '-R', REPO], capture_output=True).returncode:
         subprocess.run(['gh', 'release', 'create', TAG, '-R', REPO, '--target', 'main', '--title', 'Toning meditation (The voice opens the channels)',
-                        '--notes', 'The toning meditation of djmantra.pages.dev as one file: the voice and the music, AAC 320 kbps. Made by tools/toning/render_meditation.py.'], check=True)
+                        '--notes', 'The toning meditation of djmantra.markobosko.org as one file: the voice and the music, AAC 320 kbps. Made by tools/toning/render_meditation.py.'], check=True)
     subprocess.run(['gh', 'release', 'upload', TAG, OUT, '-R', REPO, '--clobber'], check=True)
     print('uploaded', J['download']['url'])

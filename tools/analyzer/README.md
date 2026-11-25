@@ -1,4 +1,4 @@
-# Song analyser (djmantra.pages.dev, "Analiziraj svoju pjesmu", v38)
+# Song analyser (djmantra.markobosko.org, "Analiziraj svoju pjesmu", v38)
 
 The page's "Analyse your song" section: a visitor picks a song, the browser decodes it, a Web Worker
 (`assets/analyzer/worker.js`) runs this crate compiled to WebAssembly (`assets/analyzer/djmantra_analyzer.wasm`),

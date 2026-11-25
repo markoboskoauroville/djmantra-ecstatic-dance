@@ -1,7 +1,7 @@
 # COLLABORATION — the Mac session and the cloud session build this page together
 
 Marko, 21.10.2026: "develop the communication to develop this website", "two way communication, local and cloud
-session". Two Claude sessions work on djmantra.pages.dev at the same time, each doing what only it can do, and talking
+session". Two Claude sessions work on djmantra.markobosko.org at the same time, each doing what only it can do, and talking
 to each other directly. Marko gives the requests to either one; he is the tester and says "merge".
 
 ## Who is who
@@ -48,7 +48,7 @@ STATUS: DONE | DOING | BLOCKED <why> | QUESTION FOR MARKO <the question>
 
 When the cloud pushes a change Marko should see, it tells the Mac, and **the Mac refreshes the page in Marko's
 browser** (Marko, 21.10.2026: *"Ask the local session to refresh the browser when it updates the page."*): the tab
-with djmantra.pages.dev (or opens it), a hard reload so no cached copy stays (the version label top left must show
+with djmantra.markobosko.org (or opens it), a hard reload so no cached copy stays (the version label top left must show
 the new number), scrolled to the part that changed. A change on `main` is live about a minute after the push, when the
 Deploy run of `.github/workflows/deploy.yml` is green; the Mac waits for that before reloading.
 
@@ -87,7 +87,7 @@ Before Hume the voice was Orion (Gemini), page v48–v51; it is not counted in t
 | 2 | Build it as the only background under Orion (`python3 tools/toning/build_bg.py`), test, push | CLOUD | done, v49 on the branch; live when it is merged into main |
 | 3 | Orion's intro and O rungs, cut short by Gemini in v47: generate `00-intro.mp3` and `04-o.mp3` again with Gemini TTS, voice Alnilam, plain text from `tools/toning/readings/orion/readings.json` (no "read slowly" instruction, Gemini refuses it), the plain readings into `tools/toning/readings/orion/`, push; check each one is whole (the last words heard) | MAC | done, 21.10.2026: gemini-2.5-flash-preview-tts, Alnilam, finish STOP; intro 16.1 s, O 29.7 s; Whisper heard every word; no pause over 1.5 s |
 | 4 | Slow the new rungs (`python3 tools/toning/slow_toning.py`), test, push | CLOUD | done, v50 (0c4868a): intro 42 s, O 69 s, the reading 11:45 |
-| 5 | Marko listens on djmantra.pages.dev (slow Orion, the breathing knob, his song; the cuts per element by ear) | MARKO, asked by the MAC by voice | open |
+| 5 | Marko listens on djmantra.markobosko.org (slow Orion, the breathing knob, his song; the cuts per element by ear) | MARKO, asked by the MAC by voice | open |
 | 6 | After merge: HANDOVER, SESSIONS, PROJECTS.md in the hub | MAC | waits on 5 |
 | 8 | Hume's Female Meditation Guide reads the 8 rungs in the playground, speed 1 | MAC | done, 0479572; built as the page's voice in v52 (10:36), but read from the letters: U came out "you", O "oh" |
 | 9 | Read the 8 rungs again in the same voice and settings from the **"say"** texts of `tools/toning/readings/say.json` (the vowels spelled as their Croatian sound: Aaah, Ooooh, Eeee, Oh, Aah-ooh-mmm), same folder and names, replacing 0479572's files; Whisper check that the vowels sound as written; push | MAC | open (about 3.5k of the 6.6k free Hume characters) |

@@ -1,4 +1,4 @@
-// DJ Mantra: analyse one song (djmantra.pages.dev, "Analiziraj svoju pjesmu"). The page sends the
+// DJ Mantra: analyse one song (djmantra.markobosko.org, "Analiziraj svoju pjesmu"). The page sends the
 // decoded mono samples (transferred, not copied); this worker runs rbxport's analysis compiled to
 // WebAssembly (tools/analyzer), zeroes and frees the samples, answers with the result and is then
 // terminated by the page, so no copy of the song is left anywhere. Nothing is uploaded.
